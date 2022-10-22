@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CenterConfig {
-    //@Bean
+    @Bean
     CommandLineRunner commandLineRunner(CenterRepository centerRepository){
         return args -> {
             Center center = new Center("Vajo",new CenterAddress("Novi Sad",

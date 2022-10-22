@@ -3,10 +3,7 @@ package ftn.uns.ac.rs.bloodbank.center;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 @Entity
 @Table
@@ -16,10 +13,14 @@ public class CenterAddress {
     @Id
     @GeneratedValue
     private UUID id;
+    @Column(name = "city",nullable = false,columnDefinition = "TEXT")
     private String city;
+    @Column(name = "street",nullable = false,columnDefinition = "TEXT")
     private String street;
+    @Column(name = "country",nullable = false,columnDefinition = "TEXT")
     private String country;
-    private String number;
+    @Column(name = "streetNumber",nullable = false,columnDefinition = "TEXT")
+    private String streetNumber;
     private Double longitude;
     private Double latitude;
 
@@ -27,7 +28,7 @@ public class CenterAddress {
         this.city = city;
         this.street = street;
         this.country = country;
-        this.number = number;
+        this.streetNumber = number;
     }
 
     public CenterAddress() {
