@@ -1,6 +1,5 @@
 package ftn.uns.ac.rs.aplicationUser;
-
-import ftn.bloodbankbe.customer.Profession;
+import ftn.uns.ac.rs.customer.Profession;
 
 import java.util.UUID;
 
