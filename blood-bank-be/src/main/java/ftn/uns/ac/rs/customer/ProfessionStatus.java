@@ -1,4 +1,4 @@
-package ftn.bloodbankbe.customer;
+package ftn.uns.ac.rs.customer;
 
 public enum ProfessionStatus {
     STUDENT,

@@ -1,4 +1,4 @@
-package ftn.bloodbankbe.aplicationUser.model;
+package ftn.uns.ac.rs.aplicationUser;
 
 import ftn.bloodbankbe.customer.Profession;
 

@@ -1,6 +1,5 @@
-package ftn.bloodbankbe.centerAdministrator;
-
-import ftn.bloodbankbe.aplicationUser.model.ApplicationUser;
+package ftn.uns.ac.rs.centerAdministrator;
+import ftn.uns.ac.rs.aplicationUser.ApplicationUser;
 
 import java.util.UUID;
 

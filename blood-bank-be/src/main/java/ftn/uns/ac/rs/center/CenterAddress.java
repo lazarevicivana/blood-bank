@@ -1,6 +1,6 @@
-package ftn.bloodbankbe.aplicationUser.model;
+package ftn.uns.ac.rs.center;
 
-public class CenterAdress {
+public class CenterAddress {
     private String city;
     private String street;
     private String country;

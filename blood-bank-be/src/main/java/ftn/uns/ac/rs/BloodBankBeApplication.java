@@ -1,4 +1,4 @@
-package ftn.bloodbankbe;
+package ftn.uns.ac.rs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
