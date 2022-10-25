@@ -18,7 +18,7 @@ public class SystemAdministrator extends ApplicationUser {
 
     public SystemAdministrator() {
     }
-    public SystemAdministrator(String name, String surname, String phone, String jmbg, String email, Address address, GenderType gender) {
-        super(name, surname, phone, jmbg, email, address, gender);
+    public SystemAdministrator(String name, String surname,String username,String password, String phone, String jmbg, String email, Address address, GenderType gender) {
+        super(name, surname,username,password, phone, jmbg, email, address, gender);
     }
 }

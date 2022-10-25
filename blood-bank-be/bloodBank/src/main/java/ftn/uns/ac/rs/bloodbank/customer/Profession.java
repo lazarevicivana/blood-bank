@@ -1,6 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.customer;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.UUID;
 @Getter
 @Entity(name = "Profession")
 @Table(name="profession")
+@NoArgsConstructor
 public class Profession {
     @Id
     @GeneratedValue
@@ -17,4 +19,11 @@ public class Profession {
     private UUID id;
     private ProfessionStatus professionStatus;
     private String professionDescription;
+
+    public Profession(ProfessionStatus professionStatus, String professionDescription) {
+        this.professionStatus = professionStatus;
+        this.professionDescription = professionDescription;
+    }
+
+
 }
