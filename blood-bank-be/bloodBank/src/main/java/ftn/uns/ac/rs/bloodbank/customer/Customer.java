@@ -21,12 +21,6 @@ public class Customer extends ApplicationUser {
     private Profession profession;
 
 
-    
-
-    public Customer() {
-
-    }
-
     public Customer(String name, String surname, String phone, String jmbg, String email, Address address, GenderType gender, Profession profession) {
         super(name, surname, phone, jmbg, email, address, gender);
         this.profession = profession;
