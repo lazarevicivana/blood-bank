@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 public class CustomerConfig {
 
     @Bean
-    CommandLineRunner commandLineRunnerCustomer(CustomerRepository customerRepository){
-        return argd -> {
+    CommandLineRunner commandLineCustomer(CustomerRepository customerRepository){
+        return args -> {
           Customer customer = new Customer("Marinko","Magla","marinkocar","marinkocar","069021021","420420420","MarinkoMagla@gmail.com",
                   new Address("Kamengrad","Sudjera Boba","Dunavija","42"),
                   GenderType.MALE,new Profession(ProfessionStatus.EMPLOYED,"Sportista"));

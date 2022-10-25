@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.UUID;
 
-@MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
+@MappedSuperclass
 public class ApplicationUser {
     @Id
     @GeneratedValue
