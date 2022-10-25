@@ -16,7 +16,7 @@ import java.util.UUID;
 public class CenterAdministrator extends ApplicationUser {
     //treba rzmotriti!!
     @ManyToOne
-    @JoinColumn(name = "center_id")
+    @JoinColumn(name = "center_id", referencedColumnName = "id")
     private Center center;
 
 }
