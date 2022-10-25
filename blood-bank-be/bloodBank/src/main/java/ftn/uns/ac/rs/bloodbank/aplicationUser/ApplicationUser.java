@@ -14,17 +14,21 @@ public class ApplicationUser {
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
     private UUID id;
+
+    private String username;
+
+    private String password;
     private String name;
     private String surname;
     private String phone;
     private String jmbg;
     private String email;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     private Address address;
     private GenderType gender;
 
-    public ApplicationUser(String name, String surname, String phone, String jmbg, String email, Address address, GenderType gender) {
+    public ApplicationUser(String name, String surname,String username, String pasword,  String phone, String jmbg, String email, Address address, GenderType gender) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
@@ -32,5 +36,7 @@ public class ApplicationUser {
         this.email = email;
         this.address = address;
         this.gender = gender;
+        this.username = username;
+        this.password = pasword;
     }
 }

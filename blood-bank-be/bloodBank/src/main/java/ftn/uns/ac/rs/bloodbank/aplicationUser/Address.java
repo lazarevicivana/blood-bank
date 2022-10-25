@@ -19,4 +19,15 @@ public class Address {
     private String street;
     private String country;
     private String number;
+
+    public Address(String city, String street, String country, String number) {
+        this.city = city;
+        this.street = street;
+        this.country = country;
+        this.number = number;
+    }
+
+    public Address() {
+
+    }
 }
