@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class CustomerConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(CustomerRepository customerRepository){
+    CommandLineRunner commandLineCustomer(CustomerRepository customerRepository){
         return argd -> {
           Customer customer = new Customer();
         };
