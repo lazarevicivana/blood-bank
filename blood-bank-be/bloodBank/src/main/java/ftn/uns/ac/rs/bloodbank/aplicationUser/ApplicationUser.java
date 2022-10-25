@@ -1,12 +1,14 @@
 package ftn.uns.ac.rs.bloodbank.aplicationUser;
-
-
-import ftn.uns.ac.rs.bloodbank.customer.Profession;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.UUID;
 
 @MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
 public class ApplicationUser {
     @Id
     @GeneratedValue
@@ -22,12 +24,13 @@ public class ApplicationUser {
     private Address address;
     private GenderType gender;
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
+    public ApplicationUser(String name, String surname, String phone, String jmbg, String email, Address address, GenderType gender) {
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.jmbg = jmbg;
+        this.email = email;
         this.address = address;
+        this.gender = gender;
     }
-
 }
