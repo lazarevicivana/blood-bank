@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping(path = "api/v1/center")
 public class CenterController {
     private final CenterService centerService;
-    @GetMapping()
+    @GetMapping(path="/all")
     public List<Center> getAllCenters(){
         return centerService.getAllCenters();
     }
