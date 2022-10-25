@@ -18,4 +18,16 @@ public class Customer extends ApplicationUser {
     @ManyToOne
     @JoinColumn(name = "profession_id")
     private Profession profession;
+
+    public Customer(ApplicationUser applicationUser, Profession profession){
+
+    }
+
+    public Customer(Profession profession) {
+        this.profession = profession;
+    }
+
+    public Customer() {
+
+    }
 }
