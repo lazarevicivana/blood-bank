@@ -7,11 +7,13 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import { IonicModule } from "@ionic/angular";
+import { AllCentersComponent } from './view/all-centers/all-centers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    AllCentersComponent
   ],
   imports: [
     BrowserModule,

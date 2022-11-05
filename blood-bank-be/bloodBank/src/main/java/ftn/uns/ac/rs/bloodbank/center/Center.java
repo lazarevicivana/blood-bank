@@ -8,7 +8,10 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity(name = "Center")
-@Table(name = "center", uniqueConstraints= {@UniqueConstraint(columnNames = {"name"})})
+@Table(name = "center", uniqueConstraints= {
+        @UniqueConstraint(
+                columnNames = {"name"}
+        )})
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +20,7 @@ public class Center {
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
     private UUID id;
-    @Column(name = "name",nullable = false,columnDefinition = "TEXT")
+    @Column(name = "name",nullable = false,columnDefinition = "TEXT",unique = true)
     private String name;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "address", referencedColumnName = "id")
