@@ -1,9 +1,13 @@
 <div>
-  <div (click)="menuToggle()" >
-    <ion-icon class="toggle" name="menu-outline"></ion-icon>
-  </div>
+
   <div class ="navigation">
-    <ul>
+    <div class="logo-container"  >
+      <button class="logo" (click)="menuToggle()">
+        <ion-icon class="toggle" name="menu-outline"></ion-icon>
+      </button>
+      <div class="logo-text" >Hospital</div>
+    </div>
+    <ul class="items">
       <li *ngFor="let data of navData" class="list" (click)="klikno(data.num)">
         <b></b>
         <b></b>

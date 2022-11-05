@@ -70,6 +70,38 @@ body{
   display: block;
 }
 
+.navigation .logo-container{
+
+  display: flex;
+  align-items: center;
+  padding:1.338rem 1.938rem 0 0.938rem ;
+  width: 100%;
+
+}
+
+.items{
+  margin-top: 40px;
+}
+
+.navigation .logo-container .logo{
+  background: #fff;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius:0.313rem ;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+
+.navigation .logo-container .logo-text{
+  margin-left: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
 
 .navigation.active{
   width: 300px;
@@ -140,14 +172,14 @@ body{
   color: #333;
 }
 
-.toggle{
-  position: fixed;
-  top: 20px;
-  right: 50px;
-  width: 50px;
-  height: 20px;
-  background: #6b7dbe;
-  cursor: pointer;
-  border-radius: 10px;
+/*.toggle{*/
+/*  position: fixed;*/
+/*  top: 20px;*/
+/*  right: 50px;*/
+/*  width: 50px;*/
+/*  height: 20px;*/
+/*  background: #6b7dbe;*/
+/*  cursor: pointer;*/
+/*  border-radius: 10px;*/
 
-}
+/*}*/
