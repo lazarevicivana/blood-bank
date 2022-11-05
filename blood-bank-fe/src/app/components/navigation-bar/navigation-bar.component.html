@@ -1,1 +1,19 @@
-<p>navigation-bar works!</p>
+<div class ="navigation">
+  <ul>
+    <li *ngFor="let data of navData" class="list" (click)="klikno(data.num)">
+      <b></b>
+      <b></b>
+      <a href="#">
+        <span class="icon">
+          <ion-icon name={{data.icon}}></ion-icon>
+        </span>
+
+        <span class="title">{{data.label}}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="toggle"(click)="menuToggle()" >
+  <ion-icon name="menu-outline"></ion-icon>
+</div>
+
