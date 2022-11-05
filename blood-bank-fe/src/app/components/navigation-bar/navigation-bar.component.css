@@ -95,13 +95,15 @@ body{
   font-weight: 900;
   cursor: pointer;
   border: none;
+
 }
 
 .navigation .logo-container .logo-text{
-  margin-left: 1.5rem;
+  margin-left: 2.2rem;
   font-size: 24px;
   font-weight: 700;
   color: #fff;
+
 }
 
 .navigation.active{

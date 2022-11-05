@@ -5,7 +5,12 @@
       <button class="logo" (click)="menuToggle()">
         <ion-icon class="toggle" name="menu-outline"></ion-icon>
       </button>
-      <div class="logo-text" >Hospital</div>
+      <div class="logo-text" >Hospital
+
+      </div>
+      <button class="logo" style="margin-left: 40px; border-right-radius: 15px">
+        <ion-icon name="person-outline"></ion-icon>
+      </button>
     </div>
     <ul class="items">
       <li *ngFor="let data of navData" class="list" (click)="klikno(data.num)">
@@ -21,6 +26,7 @@
       </li>
     </ul>
   </div>
+
 </div>
 
 
