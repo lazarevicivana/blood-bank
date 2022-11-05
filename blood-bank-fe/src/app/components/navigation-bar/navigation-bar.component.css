@@ -9,11 +9,13 @@ body{
   min-height: 100vh;
   background: #fff;
 }
+.toggle{
+  font-size: 	25px;
+}
 .navigation{
   position: fixed;
-  top: 20px;
-  left: 20px;
-  bottom: 20px;
+  top: 0px;
+  bottom: 0px;
   width: 80px;
   border-radius: 10px;
   box-sizing: initial;

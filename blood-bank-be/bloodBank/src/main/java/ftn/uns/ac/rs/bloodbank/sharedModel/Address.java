@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.aplicationUser;
+package ftn.uns.ac.rs.bloodbank.sharedModel;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,13 +18,14 @@ public class Address {
     private String city;
     private String street;
     private String country;
-    private String number;
+    @Column(name = "street_number",nullable = false,columnDefinition = "TEXT")
+    private String streetNumber;
 
     public Address(String city, String street, String country, String number) {
         this.city = city;
         this.street = street;
         this.country = country;
-        this.number = number;
+        this.streetNumber = number;
     }
 
     public Address() {
