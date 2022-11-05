@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.aplicationUser;
+package ftn.uns.ac.rs.bloodbank.sharedModel;
 
 public enum GenderType {
     MALE,
