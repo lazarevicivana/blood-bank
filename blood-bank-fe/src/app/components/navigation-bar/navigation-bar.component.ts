@@ -60,6 +60,11 @@ export class NavigationBarComponent implements OnInit {
 
   viewAccount() {
     console.log("acccc")
-    this.router.navigateByUrl('/facilities')
+    this.router.navigateByUrl('/account')
+    let list = document.querySelectorAll('.list');
+    let j = 0
+    while(j<list.length){
+      list[j++].className='list';
+    }
   }
 }
