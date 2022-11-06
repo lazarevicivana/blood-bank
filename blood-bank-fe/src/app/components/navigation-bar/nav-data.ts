@@ -12,7 +12,7 @@ export const navbarData=[
     num:1
   },
   {
-    routeLink: 'create-schedule',
+    routeLink: '',
     icon: 'calendar-outline',
     label: 'Schedule',
     num:2
