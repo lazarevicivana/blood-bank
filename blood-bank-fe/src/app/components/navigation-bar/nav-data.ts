@@ -6,9 +6,9 @@ export const navbarData=[
     num:0
   },
   {
-    routeLink: 'dashboard',
+    routeLink: 'facilities',
     icon: 'home-outline',
-    label: 'Dashboard',
+    label: 'Facilities',
     num:1
   },
   {
