@@ -1,8 +1,9 @@
 package ftn.uns.ac.rs.bloodbank.mapper;
 
 import ftn.uns.ac.rs.bloodbank.center.Center;
-import ftn.uns.ac.rs.bloodbank.center.CenterDto;
-import ftn.uns.ac.rs.bloodbank.center.CenterDtoResponse;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,9 @@ public class MapperService {
         return modelMapper.map(center,CenterDtoResponse.class);
     }
     public Center CenterDtoToCenter(CenterDto centerDto){
+        return modelMapper.map(centerDto,Center.class);
+    }
+    public Center CenterDtoUpdateToCenter(CenterDtoUpdate centerDto){
         return modelMapper.map(centerDto,Center.class);
     }
 

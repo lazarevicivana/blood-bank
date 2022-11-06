@@ -1,8 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 
 import com.sun.istack.NotNull;
-import ftn.uns.ac.rs.bloodbank.center.Center;
-import ftn.uns.ac.rs.bloodbank.center.CenterDtoResponse;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +20,8 @@ public class CenterAdminController {
     private final MapperService mapperService;
 
     @GetMapping(path = "center/{id}")
-    public ResponseEntity<Center> getCenter(@NotNull @PathVariable("id") UUID id) {
-        //var center =mapperService.CenterToCenterDto(centerAdminService.GetAdminCenter(id));
-        return ResponseEntity.ok(centerAdminService.GetAdminCenter(id));
+    public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {
+        var center =mapperService.CenterToCenterDto(centerAdminService.GetAdminCenter(id));
+        return ResponseEntity.ok(center);
     }
 }

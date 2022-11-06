@@ -1,6 +1,9 @@
 package ftn.uns.ac.rs.bloodbank.center;
 
 import com.sun.istack.NotNull;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,12 +32,18 @@ public class CenterController {
     }
     @PostMapping
     public void createCenter(@RequestBody CenterDto centerDto){
-        Center center = mapperService.CenterDtoToCenter(centerDto);
+        var center = mapperService.CenterDtoToCenter(centerDto);
         centerService.createCenter(center);
     }
     @GetMapping(path = "{id}")
     public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {
         var center =mapperService.CenterToCenterDto(centerService.getCenter(id));
         return ResponseEntity.ok(center);
+    }
+    @PutMapping()
+    public ResponseEntity updateCenter(@RequestBody CenterDtoUpdate centerDto){
+        var center = mapperService.CenterDtoUpdateToCenter(centerDto);
+        centerService.updateCenter(center);
+        return ResponseEntity.noContent().build();
     }
 }

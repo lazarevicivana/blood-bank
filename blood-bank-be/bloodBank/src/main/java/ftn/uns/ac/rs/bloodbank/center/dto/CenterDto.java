@@ -1,16 +1,17 @@
-package ftn.uns.ac.rs.bloodbank.center;
+package ftn.uns.ac.rs.bloodbank.center.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.io.Serializable;
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CenterDtoResponse {
-    @NonNull
-    private String id;
+public class CenterDto{
     @NonNull
     private  String name;
     private  String description;
