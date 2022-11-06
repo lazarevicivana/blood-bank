@@ -1,10 +1,10 @@
 package ftn.uns.ac.rs.bloodbank.center;
 
+import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -12,7 +12,6 @@ import java.util.UUID;
 public class CenterService {
     private final CenterRepository centerRepository;
     public List<Center> getAllCenters(){
-
         return centerRepository.findAll();
     }
 
@@ -23,6 +22,6 @@ public class CenterService {
     public Center getCenter(UUID id) {
         return centerRepository
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException("Center with id: " + id + "does not exist"));
+                .orElseThrow(() -> new ApiNotFoundException("Center with id: " + id + "does not exist"));
     }
 }
