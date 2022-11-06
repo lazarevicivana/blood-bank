@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {navbarData} from "./nav-data";
+import {Router} from "@angular/router";
+
+interface SideNavToggle{
+  screenWidth: number;
+  collapsed: boolean;
+}
 
 @Component({
   selector: 'app-navigation-bar',
@@ -8,16 +14,23 @@ import {navbarData} from "./nav-data";
 })
 export class NavigationBarComponent implements OnInit {
   navData =navbarData;
+  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
+  screenWidth = 0;
+  collapsed = false;
+  @HostListener('window:resize',['$event'])
+  onResize(event: any) {
+    this.screenWidth = window.innerWidth;
 
-
-  constructor() { }
-
-  onReschedule() {
-    let list = document.querySelectorAll('.list');
+    this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
 
   }
 
+  constructor(private readonly router:Router) { }
+
+
   ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+
   }
 
   klikno(num: number) {
@@ -32,6 +45,21 @@ export class NavigationBarComponent implements OnInit {
 
   menuToggle() {
     let navigation = document.querySelector('.navigation');
-    navigation!.classList.toggle('active')
+
+    if(this.collapsed == false){
+      this.collapsed = true;
+      this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+      navigation!.className='navigation active'
+    }
+    else{
+      this.collapsed = false;
+      this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+      navigation!.className='navigation'
+    }
+  }
+
+  viewAccount() {
+    console.log("acccc")
+    this.router.navigateByUrl('/facilities')
   }
 }
