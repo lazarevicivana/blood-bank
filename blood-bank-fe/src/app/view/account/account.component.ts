@@ -11,6 +11,9 @@ import {MatAccordion} from '@angular/material/expansion';
 })
 export class AccountComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion | undefined;
+  city:string=""
+  street:string=""
+  streetNumber:string=""
   username:string=""
   phone:string=""
   password1:string =""
@@ -74,6 +77,18 @@ export class AccountComponent implements OnInit {
         this.password2 = ""
         this.accordion?.closeAll()
       }
+    }
+  }
+
+  changeMail() {
+    if(this.street!="" && this.streetNumber!= "" && this.city!=""){
+      this.loggedCustomer.address.street = this.street;
+      this.loggedCustomer.address.streetNumber = this.streetNumber;
+      this.loggedCustomer.address.city = this.city;
+      this.city = ""
+      this.street = ""
+      this.streetNumber = ""
+      this.accordion?.closeAll()
     }
   }
 }

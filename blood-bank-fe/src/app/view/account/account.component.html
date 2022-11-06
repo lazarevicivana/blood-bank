@@ -1,7 +1,11 @@
 <div class="container">
   <div class="container-f">
+    <div class="head">
+      <h1 class="header" >Your information</h1>
+    </div>
+
     <mat-accordion class="example-headers-align" multi>
-      <mat-expansion-panel disabled class="component">
+      <mat-expansion-panel disabled class="component" style="margin-top: 25px">
         <mat-expansion-panel-header style="color:#333333;">
           <mat-panel-title class="text" >
             Name:
@@ -22,6 +26,49 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
       </mat-expansion-panel>
+
+      <mat-expansion-panel disabled class="component">
+        <mat-expansion-panel-header style="color:#333333;">
+          <mat-panel-title class="text" >
+            Gmail:
+          </mat-panel-title>
+          <mat-panel-description>
+            {{loggedCustomer.email}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="component">
+        <mat-expansion-panel-header style="color:#333333;">
+          <mat-panel-title class="text" >
+            Adrress:
+          </mat-panel-title>
+          <mat-panel-description>
+            {{loggedCustomer.address.city}},
+            {{loggedCustomer.address.street}},
+            {{loggedCustomer.address.streetNumber}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field appearance="outline">
+          <mat-label > Insert City</mat-label>
+          <input [(ngModel)]="city" matInput placeholder="username" >
+        </mat-form-field>
+        <mat-form-field  appearance="outline">
+          <mat-label > Insert street</mat-label>
+          <input [(ngModel)]="street" matInput placeholder="username" >
+        </mat-form-field>
+        <mat-form-field  appearance="outline" style="margin-right: 15%">
+          <mat-label > Insert number</mat-label>
+          <input [(ngModel)]="streetNumber" matInput placeholder="username" >
+        </mat-form-field>
+
+        <button style="margin-right: 10%; "  (click)="changeMail()" mat-raised-button >Confirm</button>
+
+
+      </mat-expansion-panel>
+
+
 
       <mat-expansion-panel class="component">
         <mat-expansion-panel-header>
@@ -59,7 +106,7 @@
         </div>
       </mat-expansion-panel>
 
-      <mat-expansion-panel class="component">
+      <mat-expansion-panel class="component" style="margin-bottom: 20px">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Change password?
