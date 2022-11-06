@@ -11,6 +11,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { BodyComponent } from './components/body/body.component';
 import { AllCentersComponent } from './view/all-centers/all-centers.component';
 import {RouterLink, RouterOutlet} from "@angular/router";
+import { AccountComponent } from './view/account/account.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {RouterLink, RouterOutlet} from "@angular/router";
     AppComponent,
     NavigationBarComponent,
     AllCentersComponent,
-    BodyComponent
+    BodyComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
