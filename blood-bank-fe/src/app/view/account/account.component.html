@@ -1,1 +1,88 @@
-<p>account works!</p>
+<div class="container">
+  <div class="container-f">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel disabled class="component">
+        <mat-expansion-panel-header style="color:#333333;">
+          <mat-panel-title class="text" >
+            Name:
+          </mat-panel-title>
+          <mat-panel-description>
+            {{loggedCustomer.name}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel disabled class="component">
+        <mat-expansion-panel-header style="color:#333333;">
+          <mat-panel-title class="text" >
+            Surname:
+          </mat-panel-title>
+          <mat-panel-description>
+            {{loggedCustomer.surname}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="component">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Username:
+          </mat-panel-title>
+          <mat-panel-description>
+            {{loggedCustomer.username}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="onerow" style="justify-content: flex-end; justify-items: flex-end; place-items: flex-end">
+          <mat-form-field style="margin-right: 100px" appearance="outline">
+            <mat-label > Change username</mat-label>
+            <input [(ngModel)]="username" matInput placeholder="username" >
+          </mat-form-field>
+          <button (click)="changeUsername()" mat-raised-button >Confirm</button>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="component">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Phone:
+          </mat-panel-title>
+          <mat-panel-description>
+            {{loggedCustomer.phone}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div style="justify-content: flex-end; align-content: flex-end">
+          <mat-form-field style="margin-right: 100px" appearance="outline">
+            <mat-label > Change phone:</mat-label>
+            <input [(ngModel)]="phone" matInput placeholder="username" >
+          </mat-form-field>
+          <button mat-raised-button (click)="changeEmail()" >Confirm</button>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="component">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Change password?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="onerow" style="justify-content: space-evenly; justify-items:flex-start; place-items: flex-end">
+          <mat-form-field  appearance="outline">
+            <mat-label > Change password</mat-label>
+            <input [(ngModel)]="password1" matInput placeholder="username" >
+          </mat-form-field>
+          <mat-form-field  appearance="outline">
+            <mat-label > Confirm password</mat-label>
+            <input [(ngModel)]="password2" matInput placeholder="username" >
+          </mat-form-field>
+          <button (click)="changePassword()" mat-raised-button style="margin-left: 20px">Confirm</button>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+
+
+  </div>
+
+</div>
+
