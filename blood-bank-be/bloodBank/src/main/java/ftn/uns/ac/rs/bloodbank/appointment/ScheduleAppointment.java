@@ -2,9 +2,7 @@ package ftn.uns.ac.rs.bloodbank.appointment;
 
 import ftn.uns.ac.rs.bloodbank.customer.Customer;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 public class ScheduleAppointment {
@@ -14,4 +12,6 @@ public class ScheduleAppointment {
     private UUID id;
     private Appointment appointment;
     private Customer customer;
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status = AppointmentStatus.PENDING;
 }

@@ -45,7 +45,7 @@ public class ApplicationUser{
     @Column(name = "deleted")
     private boolean deleted = false;
 
-    public ApplicationUser(String username, String password, String name, String surname, String phone, String jmbg, String email, UserRole userRole, Address address, Boolean enabled, boolean deleted,boolean locked) {
+    public ApplicationUser(String username, String password, String name, String surname, String phone, String jmbg, String email, Boolean locked, GenderType gender, UserRole userRole, Address address, Boolean enabled, boolean deleted) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -53,14 +53,15 @@ public class ApplicationUser{
         this.phone = phone;
         this.jmbg = jmbg;
         this.email = email;
+        this.locked = locked;
+        this.gender = gender;
         this.userRole = userRole;
         this.address = address;
         this.enabled = enabled;
         this.deleted = deleted;
-        this.locked = locked;
     }
 
-//    @Override
+    //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
 //        SimpleGrantedAuthority authority =
 //                new SimpleGrantedAuthority(userRole.name());

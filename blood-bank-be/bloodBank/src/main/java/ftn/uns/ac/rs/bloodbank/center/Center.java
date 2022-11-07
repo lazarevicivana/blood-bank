@@ -5,6 +5,7 @@ import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -35,7 +36,13 @@ public class Center {
     @OneToMany(mappedBy="center")
     private Set<CenterAdministrator> medicalStuff;
     @OneToMany(mappedBy="center")
-    private Set<Appointment> appointments;
+    private Set<Appointment> availableAppointments;
+    @ManyToMany
+    @JoinTable(
+            name = "center_working",
+            joinColumns = @JoinColumn(name = "center_id"),
+            inverseJoinColumns = @JoinColumn(name = "working_time_id"))
+    private Set<CenterWorkingTime> centerWorkingTime;
 
     public Center( String name, CenterAddress centerAddress, String description, Double avgGrade) {
         this.name = name;
