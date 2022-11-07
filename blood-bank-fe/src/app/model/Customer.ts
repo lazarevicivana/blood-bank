@@ -22,5 +22,5 @@ export interface Customer{
     professionStatus: string,
     professionDescription: string
   },
-  "gender": string
+  gender: string
 }
