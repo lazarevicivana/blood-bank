@@ -1,8 +1,11 @@
 package ftn.uns.ac.rs.bloodbank.center;
 
+import ftn.uns.ac.rs.bloodbank.appointment.Appointment;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -29,6 +32,10 @@ public class Center {
     private String description;
     @Column(name = "avg_grade",nullable = false)
     private Double avgGrade;
+    @OneToMany(mappedBy="center")
+    private Set<CenterAdministrator> medicalStuff;
+    @OneToMany(mappedBy="center")
+    private Set<Appointment> appointments;
 
     public Center( String name, CenterAddress centerAddress, String description, Double avgGrade) {
         this.name = name;
