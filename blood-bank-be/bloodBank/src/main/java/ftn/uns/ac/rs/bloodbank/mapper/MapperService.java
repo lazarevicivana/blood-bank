@@ -1,6 +1,8 @@
 package ftn.uns.ac.rs.bloodbank.mapper;
 
+import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.center.Center;
+import ftn.uns.ac.rs.bloodbank.center.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
@@ -16,6 +18,14 @@ public class MapperService {
         this.modelMapper = modelMapper;
         this.modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
+    }
+
+    public ApplicationUserDtoResponse AppUserToAppUserDto(ApplicationUser applicationUser){
+        return modelMapper.map(applicationUser,ApplicationUserDtoResponse.class);
+    }
+
+    public ApplicationUser AppUserDtoToAppUser(ApplicationUserDtoResponse applicationUser){
+        return modelMapper.map(applicationUser,ApplicationUser.class);
     }
     public CenterDtoResponse CenterToCenterDto(Center center){
         return modelMapper.map(center,CenterDtoResponse.class);
