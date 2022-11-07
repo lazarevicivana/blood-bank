@@ -1,5 +1,5 @@
 package ftn.uns.ac.rs.bloodbank.centerAdministrator;
-import ftn.uns.ac.rs.bloodbank.sharedModel.ApplicationUser;
+import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.center.Center;
 import lombok.Getter;
 import lombok.Setter;
