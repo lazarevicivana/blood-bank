@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.sharedModel;
+package ftn.uns.ac.rs.bloodbank.applicationUser;
 
 public enum UserRole {
 
