@@ -12,22 +12,16 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity(name = "Customer")
-@Table(name="customer")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@PrimaryKeyJoinColumn(name = "id")
+@DiscriminatorValue("3")
 public class Customer extends ApplicationUser {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "profession", referencedColumnName = "id")
     private Profession profession;
-    private GenderType gender;
     private Integer penalty;
 
-    public Customer(String username, String password, String name, String surname, String phone, String jmbg, String email, UserRole userRole, Address address, Boolean enabled, boolean deleted, Profession profession, GenderType gender) {
-        super(username, password, name, surname, phone, jmbg, email, userRole, address, enabled, deleted);
-        this.profession = profession;
-        this.gender = gender;
-    }
+
 }

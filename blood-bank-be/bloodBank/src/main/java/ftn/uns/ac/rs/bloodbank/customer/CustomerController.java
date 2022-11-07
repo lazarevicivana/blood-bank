@@ -2,13 +2,11 @@ package ftn.uns.ac.rs.bloodbank.customer;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.Console;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,8 +22,7 @@ public class CustomerController {
 
     @GetMapping(value = "/{id}" )
     public Customer getById(@Parameter(name="id", description = "ID of a greeting to return", required = true) @PathVariable("id") UUID id) {
-        Customer cus = customerService.getById(id);
-        return cus;
+        return customerService.getById(id);
 //        return  customerService.getById(id);}
 
     }

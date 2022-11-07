@@ -1,10 +1,11 @@
 package ftn.uns.ac.rs.bloodbank.applicationUser;
 
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
+import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -13,12 +14,12 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
-public class ApplicationUser implements UserDetails {
+@DiscriminatorColumn(name="user_role", discriminatorType = DiscriminatorType.INTEGER)
+public class ApplicationUser{
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
@@ -31,6 +32,7 @@ public class ApplicationUser implements UserDetails {
     private String jmbg;
     private String email;
     private Boolean locked;
+    private GenderType gender;
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private UserRole userRole;
@@ -58,30 +60,33 @@ public class ApplicationUser implements UserDetails {
         this.locked = locked;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority =
-                new SimpleGrantedAuthority(userRole.name());
-        return Collections.singleton(authority);
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        SimpleGrantedAuthority authority =
+//                new SimpleGrantedAuthority(userRole.name());
+//        return Collections.singleton(authority);
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//
+//        return !locked;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//
+//        return true;
+//    }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !locked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
+//    @Override
+//    public boolean isEnabled() {
+//        return enabled;
+//    }
 }

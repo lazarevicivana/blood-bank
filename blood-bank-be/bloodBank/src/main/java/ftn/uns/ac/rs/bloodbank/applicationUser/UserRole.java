@@ -1,23 +1,18 @@
 package ftn.uns.ac.rs.bloodbank.applicationUser;
 
 public enum UserRole {
-
+    ROLE_NOT_REGISTER,
     ROLE_CENTER_ADMIN,
     ROLE_SYSTEM_ADMIN,
-    ROLE_NOT_REGISTER,
     ROLE_CUSTOMER;
 
     public static String toString(UserRole role) {
-        switch (role) {
-            case ROLE_CENTER_ADMIN:
-                return "Center admin";
-            case ROLE_SYSTEM_ADMIN:
-                return "System admin";
-            case ROLE_CUSTOMER:
-                return "Customer";
-            default:
-                return "Not register";
-        }
+        return switch (role) {
+            case ROLE_CENTER_ADMIN -> "Center admin";
+            case ROLE_SYSTEM_ADMIN -> "System admin";
+            case ROLE_CUSTOMER -> "Customer";
+            default -> "Not register";
+        };
     }
 
     public static UserRole getRoleFromString(String role) {
