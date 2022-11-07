@@ -1,9 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.systemAdministrator;
 
 
-import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
-import ftn.uns.ac.rs.bloodbank.sharedModel.ApplicationUser;
-import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
+import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
 import lombok.Getter;
 import lombok.Setter;
 
