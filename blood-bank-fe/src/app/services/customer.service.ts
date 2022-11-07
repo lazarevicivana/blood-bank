@@ -12,7 +12,7 @@ export class CustomerService {
   constructor(private http:HttpClient) { }
 
   getCustomerById(): Observable<Customer>{
-    const url = `${this.aplUrl}/34713840-ddf3-49b2-9cae-47334cb6b30a`
+    const url = `${this.aplUrl}/34713840-ddf3-49b2-9cae-47334cb6b31b`
 
     // @ts-ignore
     return this.http.get(url)
