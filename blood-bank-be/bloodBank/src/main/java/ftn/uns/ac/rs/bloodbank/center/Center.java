@@ -43,7 +43,12 @@ public class Center {
             joinColumns = @JoinColumn(name = "center_id"),
             inverseJoinColumns = @JoinColumn(name = "working_time_id"))
     private Set<CenterWorkingTime> centerWorkingTime;
-
+    @ManyToMany
+    @JoinTable(
+            name = "center_equipment",
+            joinColumns = @JoinColumn(name = "center_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipment_id"))
+    private Set<Equipment> equipment;
     public Center( String name, CenterAddress centerAddress, String description, Double avgGrade) {
         this.name = name;
         this.centerAddress = centerAddress;

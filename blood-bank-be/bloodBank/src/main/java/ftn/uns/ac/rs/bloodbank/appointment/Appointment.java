@@ -32,5 +32,5 @@ public class Appointment {
     private LocalDate date;
     private LocalDateTime startTime;
     private LocalDateTime finishTime;
-    private Boolean isScheduled=false;
+    private Boolean deleted = false;
 }

@@ -1,20 +1,20 @@
-package ftn.uns.ac.rs.bloodbank.loyaltyProgram;
+package ftn.uns.ac.rs.bloodbank.center;
 
 import ftn.uns.ac.rs.bloodbank.customer.Customer;
 
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity(name = "LoyaltyProgram")
-@Table(name = "loyalty_program")
-public class LoyaltyProgram {
+@Entity(name = "CenterGrade")
+@Table(name = "center_grade")
+public class CenterGrade {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
     private UUID id;
     @ManyToOne
-    private PredefinedLoyaltyProgram loyaltyProgram;
-    private Integer currentPoints;
-    @OneToOne
+    private Center center;
+    @ManyToOne
     private Customer customer;
+    private Integer grade;
 }
