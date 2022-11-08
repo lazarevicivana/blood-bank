@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Customer} from "../../model/Customer";
-import {CustomerService} from "../../services/customer.service";
+import {ApplicationUser} from "../../model/ApplicationUser";
+import {ApplicationUserService} from "../../services/applicationUser.service";
 import { ViewChild} from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
 
@@ -18,7 +18,7 @@ export class AccountComponent implements OnInit {
   phone:string=""
   password1:string =""
   password2:string =""
-  loggedCustomer: Customer = {
+  loggedCustomer: ApplicationUser = {
     id: "",
     username: "",
     password: "",
@@ -45,11 +45,11 @@ export class AccountComponent implements OnInit {
     "gender": ""
   }
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private userService: ApplicationUserService) { }
 
   ngOnInit(): void {
-    this.customerService.getCustomerById().subscribe((customer) =>
-      (this.loggedCustomer = customer));
+    this.userService.getApplicationUserById().subscribe((user) =>
+      (this.loggedCustomer = user));
   }
 
   changeUsername() {
@@ -57,6 +57,7 @@ export class AccountComponent implements OnInit {
       this.loggedCustomer.username=this.username
       this.username = ""
       this.accordion?.closeAll()
+      this.userService.updateApplicationUser(this.loggedCustomer).subscribe()
     }
 
   }

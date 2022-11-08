@@ -1,4 +1,4 @@
-export interface Customer{
+export interface ApplicationUser {
   id: string,
   username: string,
   password: string,

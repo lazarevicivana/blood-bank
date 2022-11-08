@@ -3,6 +3,9 @@ package ftn.uns.ac.rs.bloodbank.applicationUser;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
@@ -18,8 +21,10 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
+@Builder
 @DiscriminatorColumn(name="user_role", discriminatorType = DiscriminatorType.INTEGER)
-public class ApplicationUser{
+public class ApplicationUser implements UserDetails {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
@@ -31,8 +36,9 @@ public class ApplicationUser{
     private String phone;
     private String jmbg;
     private String email;
-    private Boolean locked;
-    private GenderType gender;
+    private Boolean locked = false;
+    @Enumerated(EnumType.STRING)
+    private GenderType gender ;
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private UserRole userRole;
@@ -61,33 +67,33 @@ public class ApplicationUser{
         this.deleted = deleted;
     }
 
-    //    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        SimpleGrantedAuthority authority =
-//                new SimpleGrantedAuthority(userRole.name());
-//        return Collections.singleton(authority);
-//    }
-//
-//    @Override
-//    public boolean isAccountNonExpired() {
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonLocked() {
-//
-//        return !locked;
-//    }
-//
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//
-//        return true;
-//    }
+        @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority =
+                new SimpleGrantedAuthority(userRole.name());
+        return Collections.singleton(authority);
+    }
 
-//    @Override
-//    public boolean isEnabled() {
-//        return enabled;
-//    }
+    @Override
+    public boolean isAccountNonExpired() {
+
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+
+        return !locked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
 }

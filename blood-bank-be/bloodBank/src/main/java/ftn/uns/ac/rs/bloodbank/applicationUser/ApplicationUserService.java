@@ -1,27 +1,69 @@
 package ftn.uns.ac.rs.bloodbank.applicationUser;
-
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
+import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationToken;
+import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationTokenService;
+import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.stereotype.Service;
-
+import java.time.LocalDateTime;
+import java.util.UUID;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @Service
-@RequiredArgsConstructor
-public class ApplicationUserService {
+@AllArgsConstructor
+public class ApplicationUserService implements UserDetailsService {
+    private final static String USER_NOT_FOUND_MSG = "user with username %s not found";
+    private final ApplicationUserRepository applicationUserRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ConfirmationTokenService confirmationTokenService;
 
-    private final ApplicationUserRepository applicationUserRepository ;
+    @Override
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+        return applicationUserRepository.findByUsername(username)
+                .orElseThrow(()-> new UsernameNotFoundException(
+                        String.format(USER_NOT_FOUND_MSG,username)));
+    }
+    public String signUpUser(ApplicationUser applicationUser){
+        var userExists = applicationUserRepository.findByUsername(applicationUser.getUsername())
+                .isPresent();
+        if(userExists){
+            throw new IllegalStateException("username already taken");
+        }
+        var encodePassword  =bCryptPasswordEncoder
+                .encode(applicationUser.getPassword());
+        applicationUser.setPassword(encodePassword);
+        applicationUserRepository.save(applicationUser);
+       return sendConfirmationToken(applicationUser);
+    }
 
+    private  String sendConfirmationToken(ApplicationUser applicationUser) {
+        var token  = UUID.randomUUID().toString();
+        var confimationToken = new ConfirmationToken(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15),
+                applicationUser
 
+        );
+        confirmationTokenService.saveConfirmationToken(confimationToken);
+        //TODO send email
+        return token;
+
+    }
+    public int enableApplicationUser(String username) {
+        return applicationUserRepository.enableAppUser(username);
+    }
+    
     public List<ApplicationUser> getAllAplicationUsers(){ return applicationUserRepository.findAll(); }
 
     public ApplicationUser getApplicationUser(UUID id){
@@ -34,7 +76,7 @@ public class ApplicationUserService {
                 .orElseThrow(() -> new ApiNotFoundException("Aplication user with this usernmame doesnt exist."));
 
     }
-
+    
     @Transactional
     public void updateApplicationUser(ApplicationUser applicationUser){
         var currentUser = getApplicationUser(applicationUser.getId());
@@ -73,11 +115,6 @@ public class ApplicationUserService {
 
 
     }
-
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return null;
-//    }
 
 }
 
