@@ -27,11 +27,13 @@ public class CenterAdminController {
         var center =mapperService.CenterToCenterDto(centerAdminService.GetAdminCenter(id));
         return ResponseEntity.ok(center);
     }
+
     @PutMapping(path = "updateCenter/{adminId}/{centerId}")
     public ResponseEntity updateAdministratorCenter(@NotNull @PathVariable("adminId") UUID adminId,@NotNull @PathVariable("centerId") UUID centerId) {
         var center = centerService.getCenter(centerId);
         centerAdminService.updateAdministratorCenter(adminId,center);
         return new ResponseEntity<CenterAdministrator>(HttpStatus.NO_CONTENT);
+
     }
     @PostMapping()
     public ResponseEntity<CenterAdministrator> createCenterAdministrator(@RequestBody CenterAdministratorDto centerAdministratorDto){
