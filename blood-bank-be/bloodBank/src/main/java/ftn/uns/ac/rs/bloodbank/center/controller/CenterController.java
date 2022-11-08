@@ -1,6 +1,7 @@
-package ftn.uns.ac.rs.bloodbank.center;
+package ftn.uns.ac.rs.bloodbank.center.controller;
 
 import com.sun.istack.NotNull;
+import ftn.uns.ac.rs.bloodbank.center.service.CenterService;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
@@ -45,11 +46,12 @@ public class CenterController {
     }
     @GetMapping(path = "{id}")
     public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {
-        var center =mapperService.CenterToCenterDto(centerService.getCenter(id));
+        var center =mapperService
+                .CenterToCenterDto(centerService.getCenter(id));
         return ResponseEntity.ok(center);
     }
     @PutMapping()
-    public ResponseEntity updateCenter(@RequestBody CenterDtoUpdate centerDto){
+    public ResponseEntity<String> updateCenter(@RequestBody CenterDtoUpdate centerDto){
         var center = mapperService.CenterDtoUpdateToCenter(centerDto);
         centerService.updateCenter(center);
         return ResponseEntity.noContent().build();

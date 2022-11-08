@@ -1,6 +1,7 @@
 .body{
   width:  calc(100% - 5rem);
   height: 100vh;
+  overflow: auto;
   margin-left: 5rem;
   z-index: 0;
   position: relative;
@@ -8,6 +9,7 @@
   transition: all .5s ease;
   background: #fff;
   padding: 3rem;
+  overflow: auto;
 }
 .body-trimmed{
   width: calc(100% -  18.5625rem);
