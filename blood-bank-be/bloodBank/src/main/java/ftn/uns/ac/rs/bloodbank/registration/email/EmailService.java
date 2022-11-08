@@ -18,7 +18,7 @@ public class EmailService {
         String link = "http://localhost:8080/api/v1/registration/confirm?token=";
         Email from = new Email("ivanalazarevic01@gmail.com");
         String subject = "the subject";
-        Email to = new Email("ivanalazarevic01@gmail.com");
+        Email to = new Email(customerRequest.getEmail());
         var text  = buildEmail(customerRequest.getName(),link+token);
         Content content = new Content("text/plain", link+token);
         Mail mail = new Mail(from,subject,to,content);

@@ -22,4 +22,11 @@ public class GlobalExceptionHandler {
     {
         return new ResponseEntity<>(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage()),HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value = ApiConflictException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public @ResponseBody ResponseEntity<ErrorResponse> handleConflictException(ApiConflictException ex)
+    {
+        return new ResponseEntity<>(new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage()),HttpStatus.CONFLICT);
+    }
 }

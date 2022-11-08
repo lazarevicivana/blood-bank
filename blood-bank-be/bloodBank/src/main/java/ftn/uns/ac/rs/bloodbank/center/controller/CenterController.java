@@ -1,9 +1,9 @@
 package ftn.uns.ac.rs.bloodbank.center.controller;
 
 import com.sun.istack.NotNull;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.service.CenterService;
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
@@ -36,14 +36,8 @@ public class CenterController {
     @PostMapping()
     public ResponseEntity<Center> createCenter(@RequestBody CenterDto centerDto){
         var center = mapperService.CenterDtoToCenter(centerDto);
-        Center savedCenter = null;
-        try {
-            savedCenter = centerService.createCenter(center);
-            return new ResponseEntity<Center>(savedCenter, HttpStatus.CREATED);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<Center>(savedCenter, HttpStatus.CONFLICT);
-        }
+        Center savedCenter = centerService.createCenter(center);
+        return new ResponseEntity<Center>(savedCenter, HttpStatus.CREATED);
     }
     @GetMapping(path = "{id}")
     public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {

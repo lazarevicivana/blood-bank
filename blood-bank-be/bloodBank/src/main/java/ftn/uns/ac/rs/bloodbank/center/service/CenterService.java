@@ -3,6 +3,7 @@ package ftn.uns.ac.rs.bloodbank.center.service;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
+import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiConflictException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,12 @@ public class CenterService {
     }
 
     public Center createCenter(Center center) {
-        if(center.getName() != null){
-            var centerExist = centerRepository.GetByName(center.getName());
-            if(centerExist.isPresent()){
-                throw  new ApiBadRequestException("This name is already taken");
-            }
-            centerRepository.save(center);
-            return center;
+        var centerExist = centerRepository.GetByName(center.getName());
+        if(centerExist.isPresent()){
+            throw  new ApiConflictException("This name is already taken");
         }
-        return null;
+        centerRepository.save(center);
+        return center;
     }
 
     public Center getCenter(UUID id) {

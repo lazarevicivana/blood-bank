@@ -5,6 +5,8 @@ import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
@@ -54,5 +56,4 @@ public class Center {
         this.description = description;
         this.avgGrade = avgGrade;
     }
-
 }
