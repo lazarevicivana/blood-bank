@@ -5,6 +5,7 @@ import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,10 +31,17 @@ public class CenterController {
                 .toList();
         return ResponseEntity.ok(centers);
     }
-    @PostMapping
-    public void createCenter(@RequestBody CenterDto centerDto){
+    @PostMapping()
+    public ResponseEntity<Center> createCenter(@RequestBody CenterDto centerDto){
         var center = mapperService.CenterDtoToCenter(centerDto);
-        centerService.createCenter(center);
+        Center savedCenter = null;
+        try {
+            savedCenter = centerService.createCenter(center);
+            return new ResponseEntity<Center>(savedCenter, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Center>(savedCenter, HttpStatus.CONFLICT);
+        }
     }
     @GetMapping(path = "{id}")
     public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {

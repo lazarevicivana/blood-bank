@@ -17,8 +17,16 @@ public class CenterService {
         return centerRepository.findAll();
     }
 
-    public void createCenter(Center center) {
-        centerRepository.save(center);
+    public Center createCenter(Center center) {
+        if(center.getName() != null){
+            var centerExist = centerRepository.GetByName(center.getName());
+            if(centerExist.isPresent()){
+                throw  new ApiBadRequestException("This name is already taken");
+            }
+            centerRepository.save(center);
+            return center;
+        }
+        return null;
     }
 
     public Center getCenter(UUID id) {
