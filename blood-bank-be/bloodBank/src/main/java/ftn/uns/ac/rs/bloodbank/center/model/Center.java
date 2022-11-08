@@ -1,11 +1,10 @@
-package ftn.uns.ac.rs.bloodbank.center;
+package ftn.uns.ac.rs.bloodbank.center.model;
 
 import ftn.uns.ac.rs.bloodbank.appointment.Appointment;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 

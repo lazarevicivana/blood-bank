@@ -16,5 +16,12 @@ export const navbarData=[
     icon: 'calendar-outline',
     label: 'Schedule',
     num:2
+  },
+  {
+    routeLink: 'center-profile',
+    icon: 'business-outline',
+    label: 'Schedule',
+    num:3
   }
+
   ];

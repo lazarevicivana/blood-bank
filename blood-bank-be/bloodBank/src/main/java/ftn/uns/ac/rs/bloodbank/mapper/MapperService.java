@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.mapper;
 
-import ftn.uns.ac.rs.bloodbank.center.Center;
+import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
