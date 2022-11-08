@@ -4,6 +4,7 @@ import {CenterProfileComponent} from "./center-profile/center-profile.component"
 import {MaterialModule} from "../../material/material.module";
 import {AllCentersComponent} from "./all-centers/all-centers.component";
 import {NgImageSliderModule} from "ng-image-slider";
+import {GoogleMapsModule} from "@angular/google-maps";
 
 
 
@@ -12,7 +13,8 @@ import {NgImageSliderModule} from "ng-image-slider";
   imports: [
     CommonModule,
     MaterialModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    GoogleMapsModule
   ]
 })
 export class CenterViewModule { }

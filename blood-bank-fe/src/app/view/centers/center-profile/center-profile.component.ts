@@ -17,13 +17,14 @@ export class CenterProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCenter()
     let loader = new Loader(
       {
-        apiKey:'AIzaSyAT7ERt8tnUqLdbZs-gnknNKuBoUnIMEOE'
+        apiKey:'AIzaSyCRireAseTUQ65GrN5xRvAWzkqRHrl83eE',
+        id: "__googleMapsScriptId",
+        version: "weekly",
+        libraries: ["places"]
       }
     )
-    let myLatLng = { lat: -25.363, lng: 131.044 };
     loader.load().then(()=>{
       this.map =  new google.maps.Map(
         document.getElementById("map") as HTMLElement,{
@@ -31,12 +32,10 @@ export class CenterProfileComponent implements OnInit {
           zoom: 6
         }
       )
-      new google.maps.Marker({
-        position: myLatLng,
-        map: this.map,
-        title: "Hello World!",
-      });
-    })
+    }).catch(e => {
+      console.log("Something went wrong")
+    });
+    this.getCenter()
   }
   private getCenter(){
     this.centerService.getCenter(this.id).subscribe(
@@ -77,5 +76,4 @@ export class CenterProfileComponent implements OnInit {
       alt: 'Image 3'
     }
   ];
-
 }
