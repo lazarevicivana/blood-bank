@@ -44,8 +44,9 @@ public class CenterController {
     }
     @GetMapping(path = "{id}")
     public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {
+        var c = centerService.getCenter(id);
         var center =mapperService
-                .CenterToCenterDto(centerService.getCenter(id));
+                .CenterToCenterDto(c);
         return ResponseEntity.ok(center);
     }
     @PutMapping()

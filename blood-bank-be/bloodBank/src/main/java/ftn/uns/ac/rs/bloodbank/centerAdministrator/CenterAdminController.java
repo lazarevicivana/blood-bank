@@ -5,6 +5,7 @@ import ftn.uns.ac.rs.bloodbank.center.dto.CenterAdministratorDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
+import ftn.uns.ac.rs.bloodbank.center.service.CenterService;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CenterAdminController {
     private final CenterAdminService centerAdminService;
+    private final CenterService centerService;
     private final MapperService mapperService;
 
     @GetMapping(path = "center/{id}")
@@ -25,17 +27,13 @@ public class CenterAdminController {
         var center =mapperService.CenterToCenterDto(centerAdminService.GetAdminCenter(id));
         return ResponseEntity.ok(center);
     }
-    @PutMapping(path = "updateCenter/{id}")
-    public ResponseEntity updateCenter(@NotNull @PathVariable("id") UUID id,@RequestBody Center center) {
-        CenterAdministrator admin = null;
-        try {
-            admin = centerAdminService.getCenterAdministrator(id);
-            admin.setCenter(center);
-            return new ResponseEntity<CenterAdministrator>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<CenterAdministrator>(HttpStatus.NOT_FOUND);
-        }
+
+    @PutMapping(path = "updateCenter/{adminId}/{centerId}")
+    public ResponseEntity updateAdministratorCenter(@NotNull @PathVariable("adminId") UUID adminId,@NotNull @PathVariable("centerId") UUID centerId) {
+        var center = centerService.getCenter(centerId);
+        centerAdminService.updateAdministratorCenter(adminId,center);
+        return new ResponseEntity<CenterAdministrator>(HttpStatus.NO_CONTENT);
+
     }
     @PostMapping()
     public ResponseEntity<CenterAdministrator> createCenterAdministrator(@RequestBody CenterAdministratorDto centerAdministratorDto){

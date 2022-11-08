@@ -6,6 +6,7 @@ import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Service
@@ -25,6 +26,13 @@ public class CenterAdminService {
     public CenterAdministrator createCenterAdministrator(CenterAdministrator centerAdministrator) {
         centerAdminRepository.save(centerAdministrator);
         return centerAdministrator;
+    }
+
+    @Transactional
+    public void updateAdministratorCenter(UUID adminId, Center center)
+    {
+        var admin = getCenterAdministrator(adminId);
+        admin.setCenter(center);
     }
 
 }
