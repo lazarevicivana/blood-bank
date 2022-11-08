@@ -11,10 +11,15 @@ import ftn.uns.ac.rs.bloodbank.registration.dto.AddressRequest;
 import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;
 import ftn.uns.ac.rs.bloodbank.registration.dto.ProfessionRequest;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
+import ftn.uns.ac.rs.bloodbank.center.dto.*;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
+
+import java.util.Collections;
+import java.util.Set;
 
 @Component
 public class MapperService {
@@ -36,6 +41,7 @@ public class MapperService {
     public CenterDtoResponse CenterToCenterDto(Center center){
         return modelMapper.map(center,CenterDtoResponse.class);
     }
+
     public Center CenterDtoToCenter(CenterDto centerDto){
         return modelMapper.map(centerDto,Center.class);
     }
@@ -45,4 +51,6 @@ public class MapperService {
     public Customer CustomerRequestToCustomer(CustomerRequest request) {return  modelMapper.map(request, Customer.class);}
     public Address AdressRequestToAdress(AddressRequest request){return modelMapper.map(request,Address.class);}
     public Profession ProfessionRequestToProfession(ProfessionRequest request){return modelMapper.map(request,Profession.class);}
+    public CenterAdministrator CenterAdministratorDtoToCenterAdministrator(CenterAdministratorDto dto) {return  modelMapper.map(dto, CenterAdministrator.class);}
+
 }
