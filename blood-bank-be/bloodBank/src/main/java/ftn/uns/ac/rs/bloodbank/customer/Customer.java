@@ -1,7 +1,5 @@
 package ftn.uns.ac.rs.bloodbank.customer;
 
-
-import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.complains.Complain;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
@@ -17,7 +15,6 @@ import java.util.Set;
 @Entity(name = "Customer")
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @DiscriminatorValue("3")
 public class Customer extends ApplicationUser {
 
