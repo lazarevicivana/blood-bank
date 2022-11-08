@@ -1,5 +1,7 @@
-package ftn.uns.ac.rs.bloodbank.center;
+package ftn.uns.ac.rs.bloodbank.center.service;
 
+import ftn.uns.ac.rs.bloodbank.center.model.Center;
+import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +31,7 @@ public class CenterService {
     @Transactional
     public void updateCenter(Center center){
         var currentCenter = getCenter(center.getId());
-        if(center.getName() != null){
+        if(center.getName() != null && !center.getName().equals(currentCenter.getName())){
             var centerExist = centerRepository.GetByName(center.getName());
             if(centerExist.isPresent()){
                 throw  new ApiBadRequestException("This name is already taken.");

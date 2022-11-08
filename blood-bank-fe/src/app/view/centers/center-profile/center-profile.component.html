@@ -1,0 +1,44 @@
+<div class="container">
+  <ng-image-slider [images]="imgCollection" [imageSize]="{width: 650, height: 250, space: 10}" #nav></ng-image-slider>
+  <div class="header-margin-top">
+  <h1 class="header">{{center.name}}</h1>
+  </div>
+  <mat-card class="border-card">
+    <mat-card-title>Center Inforamtions</mat-card-title>
+    <mat-list class="list-margin">
+      <div mat-subheader>Description:</div>
+      <mat-list-item>
+        <div>
+          {{center.description}}
+        </div>
+      </mat-list-item>
+      <mat-divider class="sub-color"></mat-divider>
+      <div mat-subheader>Average grade:</div>
+      <mat-list-item>
+        <div>
+          {{center.avgGrade}}
+        </div>
+      </mat-list-item>
+      <mat-divider class="sub-color"></mat-divider>
+      <div mat-subheader>Country:</div>
+      <mat-list-item>
+        <div>
+          {{center.country}}
+        </div>
+      </mat-list-item>
+      <mat-divider class="sub-color"></mat-divider>
+      <div mat-subheader>Address:</div>
+      <mat-list-item>
+        <div>
+          {{center.street}} {{center.streetNumber}}
+        </div>
+      </mat-list-item>
+      <mat-divider class="sub-color"></mat-divider>
+    </mat-list>
+    <mat-card-actions align="end">
+      <button mat-button>UPDATE</button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="full-map" id="map"></div>
+</div>
+

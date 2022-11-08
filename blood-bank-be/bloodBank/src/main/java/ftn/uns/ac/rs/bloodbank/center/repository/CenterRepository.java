@@ -1,5 +1,6 @@
-package ftn.uns.ac.rs.bloodbank.center;
+package ftn.uns.ac.rs.bloodbank.center.repository;
 
+import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
