@@ -34,7 +34,8 @@ public class ApplicationUserService implements UserDetailsService {
                         String.format(USER_NOT_FOUND_MSG,username)));
     }
     public String signUpUser(ApplicationUser applicationUser){
-        var userExists = applicationUserRepository.findByUsername(applicationUser.getUsername())
+        var userExists = applicationUserRepository.
+                findByUsername(applicationUser.getUsername())
                 .isPresent();
         if(userExists){
             throw new IllegalStateException("username already taken");
@@ -111,8 +112,6 @@ public class ApplicationUserService implements UserDetailsService {
         if(applicationUser.getGender()!=null){
             currentUser.setGender(applicationUser.getGender());
         }
-
-
 
     }
 
