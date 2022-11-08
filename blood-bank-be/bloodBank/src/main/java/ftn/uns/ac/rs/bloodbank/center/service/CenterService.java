@@ -34,7 +34,7 @@ public class CenterService {
         if(center.getName() != null && !center.getName().equals(currentCenter.getName())){
             var centerExist = centerRepository.GetByName(center.getName());
             if(centerExist.isPresent()){
-                throw  new ApiBadRequestException("This name is already taken");
+                throw  new ApiBadRequestException("This name is already taken.");
             }
             currentCenter.setName(center.getName());
         }
