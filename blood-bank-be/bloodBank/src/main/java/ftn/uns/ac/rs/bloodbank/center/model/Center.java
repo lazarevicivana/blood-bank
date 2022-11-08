@@ -5,10 +5,7 @@ import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 @Setter
@@ -35,7 +32,7 @@ public class Center {
     @Column(name = "avg_grade",nullable = false)
     private Double avgGrade;
     @OneToMany(mappedBy="center")
-    private Set<CenterAdministrator> medicalStuff;
+    private List<CenterAdministrator> medicalStuff;
     @OneToMany(mappedBy="center")
     private Set<Appointment> availableAppointments;
     @ManyToMany

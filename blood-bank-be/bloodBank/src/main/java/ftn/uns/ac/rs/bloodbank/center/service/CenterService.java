@@ -2,6 +2,7 @@ package ftn.uns.ac.rs.bloodbank.center.service;
 
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiConflictException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -68,5 +70,9 @@ public class CenterService {
         if(center.getCenterAddress().getStreetNumber() != null){
             currentCenter.getCenterAddress().setStreetNumber(center.getCenterAddress().getStreetNumber());
         }
+    }
+
+    public List<CenterAdministrator> getAdminsForCenter(UUID id) {
+        return centerRepository.GetAdmins(id);
     }
 }

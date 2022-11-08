@@ -1,9 +1,12 @@
 package ftn.uns.ac.rs.bloodbank.center.dto;
 
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor

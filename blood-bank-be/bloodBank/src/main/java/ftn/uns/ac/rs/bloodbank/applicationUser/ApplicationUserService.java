@@ -65,7 +65,9 @@ public class ApplicationUserService implements UserDetailsService {
         return applicationUserRepository.enableAppUser(username);
     }
     
-    public List<ApplicationUser> getAllAplicationUsers(){ return applicationUserRepository.findAll(); }
+    public List<ApplicationUser> getAllAplicationUsers(){
+        return applicationUserRepository.findAll();
+    }
 
     public ApplicationUser getApplicationUser(UUID id){
         return  applicationUserRepository.findById(id)

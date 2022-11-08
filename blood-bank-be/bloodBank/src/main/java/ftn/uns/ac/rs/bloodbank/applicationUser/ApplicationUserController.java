@@ -7,6 +7,7 @@ import lombok.NonNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -27,9 +28,18 @@ public class ApplicationUserController {
     }
 
     @PutMapping()
-    public ResponseEntity updateApplicationUser(@RequestBody ApplicationUserDtoResponse userDto){
+    public ResponseEntity<String> updateApplicationUser(@RequestBody ApplicationUserDtoResponse userDto){
         var user = mapperService.AppUserDtoToAppUser(userDto);
         applicationUserService.updateApplicationUser(user);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping()
+    public ResponseEntity<List<ApplicationUserDtoResponse>> getAllUsers(){
+        var users = applicationUserService
+                .getAllAplicationUsers()
+                .stream()
+                .map(mapperService::AppUserToAppUserDto)
+                .toList();
+        return ResponseEntity.ok(users);
     }
 }

@@ -41,6 +41,9 @@ public class MapperService {
     public CenterDtoResponse CenterToCenterDto(Center center){
         return modelMapper.map(center,CenterDtoResponse.class);
     }
+    public CenterAdministratorDto CenterAdministratorToCenterAdministratorDto(CenterAdministrator centerAdministrator){
+        return modelMapper.map(centerAdministrator,CenterAdministratorDto.class);
+    }
 
     public Center CenterDtoToCenter(CenterDto centerDto){
         return modelMapper.map(centerDto,Center.class);
