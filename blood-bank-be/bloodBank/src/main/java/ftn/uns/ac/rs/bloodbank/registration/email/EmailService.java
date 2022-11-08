@@ -16,7 +16,7 @@ public class EmailService {
 
     public String sendEmail(CustomerRequest customerRequest, String token) throws IOException{
         String link = "http://localhost:8080/api/v1/registration/confirm?token=";
-        Email from = new Email("ivanalazarevic01@gmail.com");
+        Email from = new Email(customerRequest.getUsername());
         String subject = "the subject";
         Email to = new Email("ivanalazarevic01@gmail.com");
         var text  = buildEmail(customerRequest.getName(),link+token);
