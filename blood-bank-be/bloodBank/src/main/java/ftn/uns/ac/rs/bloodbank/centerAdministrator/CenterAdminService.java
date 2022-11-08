@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 
-import ftn.uns.ac.rs.bloodbank.center.Center;
+import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

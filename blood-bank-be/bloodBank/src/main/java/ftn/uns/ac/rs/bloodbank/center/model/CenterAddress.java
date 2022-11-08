@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.center;
+package ftn.uns.ac.rs.bloodbank.center.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
