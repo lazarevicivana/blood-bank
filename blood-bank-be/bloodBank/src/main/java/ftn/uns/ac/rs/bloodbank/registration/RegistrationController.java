@@ -4,6 +4,7 @@ import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.io.IOException;
 
 @RestController
