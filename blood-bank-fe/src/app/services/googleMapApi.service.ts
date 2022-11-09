@@ -3,7 +3,11 @@ import {Loader} from "@googlemaps/js-api-loader";
 const GOOGLE_MAPS_API_KEY = 'AIzaSyCRireAseTUQ65GrN5xRvAWzkqRHrl83eE';
 export type Maps = typeof google.maps;
 
-@Injectable()
+@Injectable(
+  {
+    providedIn: 'root'
+  }
+)
 export class GoogleMapApiService {
 
   public readonly googleApi = this.load();
