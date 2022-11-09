@@ -28,12 +28,6 @@ export class CenterProfileComponent implements OnInit {
       console.log("Something goes wrong",e)
     });
     loaded.then(()=>{
-      this.map.addListener("click", (mapsMouseEvent:any) => {
-        console.log(mapsMouseEvent.latLng.lat())
-        console.log(mapsMouseEvent.latLng.lng())
-      })
-    })
-    loaded.then(()=>{
         this.getCenter()
       }
     )
