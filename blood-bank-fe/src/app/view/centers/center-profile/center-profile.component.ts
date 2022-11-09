@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CenterService} from "../../../services/center.service";
 import {Center} from "../../../model/Center";
-import {Loader} from "@googlemaps/js-api-loader";
+import {GoogleMapApiService} from "../../../services/googleMapApi.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-center-profile',
@@ -10,32 +11,35 @@ import {Loader} from "@googlemaps/js-api-loader";
 })
 export class CenterProfileComponent implements OnInit {
   public center: Center;
-  private map?: google.maps.Map|null|google.maps.StreetViewPanorama;
+  private map!: google.maps.Map;
   private id:string = "ef81c6fc-bd01-4148-b460-b9f2eb7c53c3"
-  constructor(private centerService:CenterService) {
+  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private readonly router:Router) {
     this.center = new Center();
   }
-
   ngOnInit(): void {
-    let loader = new Loader(
-      {
-        apiKey:'AIzaSyCRireAseTUQ65GrN5xRvAWzkqRHrl83eE',
-        id: "__googleMapsScriptId",
-        version: "weekly",
-        libraries: ["places"]
-      }
-    )
-    loader.load().then(()=>{
+    const loaded = this.mapLoader.googleApi.then(()=>{
       this.map =  new google.maps.Map(
         document.getElementById("map") as HTMLElement,{
-          center: {lat: 51.23334,lng: 6.78},
+          center: {lat: 44.0165,lng: 21.0059},
           zoom: 6
         }
       )
     }).catch(e => {
-      console.log("Something went wrong")
+      console.log("Something goes wrong",e)
     });
-    this.getCenter()
+    loaded.then(()=>{
+      this.map.addListener("click", (mapsMouseEvent:any) => {
+        console.log(mapsMouseEvent.latLng.lat())
+        console.log(mapsMouseEvent.latLng.lng())
+      })
+    })
+    loaded.then(()=>{
+        this.getCenter()
+      }
+    )
+  }
+  public async updateCenter(): Promise<void>{
+    await this.router.navigateByUrl('/update-center')
   }
   private getCenter(){
     this.centerService.getCenter(this.id).subscribe(
@@ -45,13 +49,11 @@ export class CenterProfileComponent implements OnInit {
           console.log(response)
           new google.maps.Marker({
             position: {
-              // @ts-ignore
               lat: this.center.latitude,
-              // @ts-ignore
               lng: this.center.longitude
             },
             map: this.map,
-            title: "Hello World!",
+            title: '1',
           });
         }
       }

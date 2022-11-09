@@ -4,7 +4,7 @@
     <h1 class="header">{{center.name}}</h1>
   </div>
   <mat-card class="border-card">
-    <mat-card-title>Center Informations</mat-card-title>
+    <mat-card-title>Center Information's</mat-card-title>
     <mat-list class="list-margin">
       <div mat-subheader>Description:</div>
       <mat-list-item>
@@ -36,9 +36,9 @@
       <mat-divider class="sub-color"></mat-divider>
     </mat-list>
     <mat-card-actions align="end">
-      <button mat-button>UPDATE</button>
+      <button mat-button (click)="updateCenter()">UPDATE</button>
     </mat-card-actions>
   </mat-card>
-  <div class="full-map" id="map"></div>
+  <div class="g-map" id="map"></div>
 </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ApplicationUser} from "../../model/ApplicationUser";
-import {ApplicationUserService} from "../../services/applicationUser.service";
+import {ApplicationUser} from "../../../model/ApplicationUser";
+import {ApplicationUserService} from "../../../services/applicationUser.service";
 import { ViewChild} from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
 

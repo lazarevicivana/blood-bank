@@ -42,3 +42,7 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-right: auto;
   margin-left: auto;
 }
+.g-map{
+  width: 100%;
+  height: 700px;
+}

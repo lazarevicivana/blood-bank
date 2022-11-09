@@ -33,7 +33,6 @@ public class CenterAdminController {
         var center = centerService.getCenter(centerId);
         centerAdminService.updateAdministratorCenter(adminId,center);
         return new ResponseEntity<CenterAdministrator>(HttpStatus.NO_CONTENT);
-
     }
     @PostMapping()
     public ResponseEntity<CenterAdministrator> createCenterAdministrator(@RequestBody CenterAdministratorDto centerAdministratorDto){

@@ -18,8 +18,8 @@ export class Center implements ICenter {
   street?: string;
   country?: string;
   streetNumber?: string;
-  longitude?: number;
-  latitude?: number;
+  longitude!: number;
+  latitude!: number;
   constructor(data?: ICenter){
     if (data) {
       for (const property in data) {

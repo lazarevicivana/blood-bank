@@ -10,13 +10,14 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { BodyComponent } from './components/body/body.component';
 import {RouterLink, RouterOutlet} from "@angular/router";
-import { AccountComponent } from './view/account/account.component';
+import { AccountComponent } from './view/accounts/account/account.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {CenterViewModule} from "./view/centers/center-view.module";
+import {GoogleMapApiService} from "./services/googleMapApi.service";
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import {CenterViewModule} from "./view/centers/center-view.module";
     MatButtonModule,
     CenterViewModule
   ],
-  providers: [],
+  providers: [GoogleMapApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
