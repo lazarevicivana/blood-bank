@@ -11,6 +11,7 @@ import {MatAccordion} from '@angular/material/expansion';
 })
 export class AccountComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion | undefined;
+  country:string=""
   city:string=""
   street:string=""
   streetNumber:string=""
@@ -28,13 +29,10 @@ export class AccountComponent implements OnInit {
     jmbg: "",
     email: "",
     userRole: "",
-    address: {
-      id: "",
-      city: "",
-      street: "",
-      country: "",
-      streetNumber: ""
-    },
+    city: "",
+    street: "",
+    country: "",
+    streetNumber: "",
     enabled: false,
     deleted: false,
     profession: {
@@ -49,7 +47,8 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getApplicationUserById().subscribe((user) =>
-      (this.loggedCustomer = user));
+      (this.loggedCustomer = user , console.log(this.loggedCustomer)));
+
   }
 
   changeUsername() {
@@ -62,11 +61,12 @@ export class AccountComponent implements OnInit {
 
   }
 
-  changeEmail() {
+  changePhone() {
     if(this.phone!="") {
       this.loggedCustomer.phone = this.phone
       this.phone = ""
       this.accordion?.closeAll()
+      this.userService.updateApplicationUser(this.loggedCustomer).subscribe()
     }
   }
 
@@ -77,19 +77,23 @@ export class AccountComponent implements OnInit {
         this.password1 = ""
         this.password2 = ""
         this.accordion?.closeAll()
+        this.userService.updateApplicationUser(this.loggedCustomer).subscribe()
       }
     }
   }
 
-  changeMail() {
-    if(this.street!="" && this.streetNumber!= "" && this.city!=""){
-      this.loggedCustomer.address.street = this.street;
-      this.loggedCustomer.address.streetNumber = this.streetNumber;
-      this.loggedCustomer.address.city = this.city;
+  changeAdress() {
+    if(this.street!="" && this.streetNumber!= "" && this.city!="" && this.country!="" ){
+      this.loggedCustomer.country = this.country;
+      this.loggedCustomer.street = this.street;
+      this.loggedCustomer.streetNumber = this.streetNumber;
+      this.loggedCustomer.city = this.city;
+      this.country = ""
       this.city = ""
       this.street = ""
       this.streetNumber = ""
       this.accordion?.closeAll()
+      this.userService.updateApplicationUser(this.loggedCustomer).subscribe()
     }
   }
 }

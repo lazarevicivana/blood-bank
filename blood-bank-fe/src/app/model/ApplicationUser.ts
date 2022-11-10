@@ -8,13 +8,10 @@ export interface ApplicationUser {
   jmbg: string,
   email: string,
   userRole: string,
-  address: {
-    id: string,
-    city: string,
-    street: string,
-    country: string,
-    streetNumber: string
-  },
+  street: string;
+  country: string;
+  city:string;
+  streetNumber: string;
   enabled: boolean,
   deleted: boolean,
   profession: {

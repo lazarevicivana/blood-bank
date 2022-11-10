@@ -10,6 +10,7 @@ import {FormsModule} from "@angular/forms";
 import {CreateCenterComponent} from "./create-center/create-center.component";
 import { MatSelectModule } from '@angular/material/select';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 
@@ -18,14 +19,15 @@ import {MatExpansionModule} from "@angular/material/expansion";
   exports: [
     CreateCenterComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    NgImageSliderModule,
-    GoogleMapsModule,
-    FormsModule,
-    MatSelectModule,
-    MatExpansionModule
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        NgImageSliderModule,
+        GoogleMapsModule,
+        FormsModule,
+        MatSelectModule,
+        MatExpansionModule,
+        MatGridListModule
+    ]
 })
 export class CenterViewModule { }

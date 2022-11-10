@@ -3,42 +3,55 @@
   <div class="header-margin-top">
     <h1 class="header">{{center.name}}</h1>
   </div>
-  <mat-card class="border-card">
-    <mat-card-title>Center Information's</mat-card-title>
-    <mat-list class="list-margin">
-      <div mat-subheader>Description:</div>
-      <mat-list-item>
-        <div>
-          {{center.description}}
-        </div>
-      </mat-list-item>
-      <mat-divider class="sub-color"></mat-divider>
-      <div mat-subheader>Average grade:</div>
-      <mat-list-item>
-        <div>
-          {{center.avgGrade}}
-        </div>
-      </mat-list-item>
-      <mat-divider class="sub-color"></mat-divider>
-      <div mat-subheader>Country:</div>
-      <mat-list-item>
-        <div>
-          {{center.country}}
-        </div>
-      </mat-list-item>
-      <mat-divider class="sub-color"></mat-divider>
-      <div mat-subheader>Address:</div>
-      <mat-list-item>
-        <div>
-          {{center.street}} {{center.streetNumber}}
-        </div>
-      </mat-list-item>
-      <mat-divider class="sub-color"></mat-divider>
-    </mat-list>
-    <mat-card-actions align="end">
-      <button mat-button (click)="updateCenter()">UPDATE</button>
-    </mat-card-actions>
+  <mat-card class="border-card" >
+  <mat-grid-list cols="2" rowHeight="1:1" style="margin-left: 10px; margin-right: 10px">
+    <mat-grid-tile>
+      <mat-card class="information">
+        <mat-card-title>Center Information's</mat-card-title>
+        <mat-list class="list-margin">
+          <div mat-subheader>Description:</div>
+          <mat-list-item>
+            <div>
+              {{center.description}}
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+          <div mat-subheader>Average grade:</div>
+          <mat-list-item>
+            <div>
+              {{center.avgGrade}}
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+          <div mat-subheader>Country:</div>
+          <mat-list-item>
+            <div>
+              {{center.country}}
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+          <div mat-subheader>Address:</div>
+          <mat-list-item>
+            <div>
+              {{center.street}} {{center.streetNumber}}
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+        </mat-list>
+        <mat-card-actions align="end">
+          <button mat-button (click)="updateCenter()">UPDATE</button>
+        </mat-card-actions>
+      </mat-card>
+
+
+      </mat-grid-tile>
+    <mat-grid-tile >
+      <div class="g-map" id="map" style="height: 93%; width: 100%; margin-right: 30px"></div>
+    </mat-grid-tile>
+  </mat-grid-list>
   </mat-card>
-  <div class="g-map" id="map"></div>
+
+
+
 </div>
 
