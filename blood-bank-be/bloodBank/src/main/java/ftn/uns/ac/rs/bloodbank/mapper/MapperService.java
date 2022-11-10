@@ -55,5 +55,7 @@ public class MapperService {
     public Address AdressRequestToAdress(AddressRequest request){return modelMapper.map(request,Address.class);}
     public Profession ProfessionRequestToProfession(ProfessionRequest request){return modelMapper.map(request,Profession.class);}
     public CenterAdministrator CenterAdministratorDtoToCenterAdministrator(CenterAdministratorDto dto) {return  modelMapper.map(dto, CenterAdministrator.class);}
-
+    public CenterAdministratorDtoResponse CenterAdministratorToCenterAdministratorDtoResponse(CenterAdministrator centerAdministrator){
+        return modelMapper.map(centerAdministrator,CenterAdministratorDtoResponse.class);
+    }
 }

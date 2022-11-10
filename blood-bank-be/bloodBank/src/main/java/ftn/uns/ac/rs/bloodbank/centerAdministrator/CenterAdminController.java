@@ -2,6 +2,7 @@ package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 
 import com.sun.istack.NotNull;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterAdministratorDto;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterAdministratorDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -41,5 +43,14 @@ public class CenterAdminController {
         centerAdministrator.setAddress(adress);
         CenterAdministrator savedCenterAdministrator =centerAdminService.createCenterAdministrator(centerAdministrator);
         return new ResponseEntity<CenterAdministrator>(savedCenterAdministrator, HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "availableAdmins")
+    public ResponseEntity<List<CenterAdministratorDtoResponse>> getAvailableAdmins() {
+        var admins = centerAdminService.getAvailableAdmins()
+                .stream()
+                .map(mapperService::CenterAdministratorToCenterAdministratorDtoResponse)
+                .toList();
+        return ResponseEntity.ok(admins);
     }
 }
