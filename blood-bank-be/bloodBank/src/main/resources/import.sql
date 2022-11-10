@@ -53,11 +53,20 @@ insert into center_address (city, street, country, street_number, longitude, lat
 insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b9f2eb7c53c3', 'd6a4c034-83ef-4c6d-8419-c4b39059810b', 'Kassulke, Koepp and Windler', 'Change Other Device in Thoracic Duct, External Approach', 1);
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-52584a2194db', '2848e74d-c1a9-40dc-9764-402bb5553ee9', 'Bednar, Davis and Schumm', 'Excision of Left Renal Artery, Percutaneous Approach', 1);
 insert into center (id, address, name, description, avg_grade) values ('262bb7c8-28a8-43fe-8c24-d79a00055872', '5ee042dc-c099-433d-8a91-d6eda807f917', 'Bogisich-Zulauf', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 1);
--- insert into center (id, address, name, description, avg_grade) values ('42b82373-c643-48da-a0a1-76e4fa0b5b8d', '57306980-4e15-4f53-a971-2fc66e65582e', 'Douglas, Ryan and Hettinger', 'Remove Autol Sub from Epididymis/Sperm Cord, Perc Endo', 0);
--- insert into center (id, address, name, description, avg_grade) values ('b53992af-19a5-4be1-9cfe-139bd0c81441', 'ba340340-869a-4569-8520-29c7e9583a4e', 'Hintz-Wehner', 'Dilate L Com Iliac Art, Bifurc, w 2 Drug-elut, Open', 1);
--- insert into center (id, address, name, description, avg_grade) values ('76dece30-ad72-4f66-a283-3323e5787232', 'ad315a33-69bd-4519-9346-aead55dcd1ac', 'Romaguera LLC', 'Insert Intralum Dev in R Less Saphenous, Perc Endo', 0);
--- insert into center (id, address, name, description, avg_grade) values ('6fc73c01-8d1f-44e6-83f5-47c01d653bf3', '9015cde3-036d-4c72-9ca9-02cfae74b61d', 'Kessler, Hegmann and O''Hara', 'Excision of Left Eustachian Tube, Endo, Diagn', 1);
--- insert into center (id, address, name, description, avg_grade) values ('025967b5-1dbd-4f55-ba78-2615830e39f7', 'ad088b7d-7870-467d-a10b-2d4ed85c9928', 'Herman-Bernier', 'Extirpation of Matter from Right Fallopian Tube, Via Opening', 1);
+
+insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b9f2eb7c53a5', '532fbd46-8677-4990-89d2-73e1d37c534a', 'Hospital 123', 'Change Other Device in Thoracic Duct, External Approach', 1);
+insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-52584a2194dk', '9a70f727-0efd-4047-b8d9-f0281e7c38c1', 'Betanija', 'Excision of Left Renal Artery, Percutaneous Approach', 2);
+insert into center (id, address, name, description, avg_grade) values ('262bb7c8-28a8-43fe-8c24-d79a00011872', '1e02993f-e3a9-4ed6-8fa2-955078bc3eaf', 'Health Care', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 3);
+
+insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b1f2eb7c53a5', 'cbdb6c8e-a454-46ce-b489-552269672301', 'Russian health care ', 'Change Other Device in Thoracic Duct, External Approach', 1);
+insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-88584a2194dk', '9a70f727-0efd-4047-b8d9-f0281e7c38c1', 'Pfizer', 'Excision of Left Renal Artery, Percutaneous Approach', 2);
+insert into center (id, address, name, description, avg_grade) values ('262bb7c8-28a8-43fe-8c24-d59i00011872', '1e02993f-e3a9-4ed6-8fa2-955078bc3eaf', 'Your care', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 3);
+
+insert into center (id, address, name, description, avg_grade) values ('42b82373-c643-48da-a0a1-76e4fa0b5b8d', '671b92b9-d9d7-43e4-bfb2-3eb67410c2c1', 'Douglas, Ryan and Hettinger', 'Remove Autol Sub from Epididymis/Sperm Cord, Perc Endo', 0);
+insert into center (id, address, name, description, avg_grade) values ('b53992af-19a5-4be1-9cfe-139bd0c81441', '56784936-c0a3-41a6-8d4a-123abf8748c3', 'Hintz-Wehner', 'Dilate L Com Iliac Art, Bifurc, w 2 Drug-elut, Open', 1);
+insert into center (id, address, name, description, avg_grade) values ('76dece30-ad72-4f66-a283-3323e5787232', 'af5b8a93-bcb3-4d29-a7b7-dd1012013f81', 'Romaguera LLC', 'Insert Intralum Dev in R Less Saphenous, Perc Endo', 0);
+insert into center (id, address, name, description, avg_grade) values ('6fc73c01-8d1f-44e6-83f5-47c01d653bf3', '300d4552-ef84-46ae-a5b2-42f810ec37fe', 'Kessler, Hegmann and O''Hara', 'Excision of Left Eustachian Tube, Endo, Diagn', 1);
+insert into center (id, address, name, description, avg_grade) values ('025967b5-1dbd-4f55-ba78-2615830e39f7', '5c971bf4-7df2-4bad-976d-a3ceaca4b6c2', 'Herman-Bernier', 'Extirpation of Matter from Right Fallopian Tube, Via Opening', 1);
 -- insert into center (id, address, name, description, avg_grade) values ('337ea82d-d6c5-4e4c-a10b-77bce6487cee', '9516ed25-9548-496d-8869-4dc6af109b14', 'Walsh-Raynor', 'Fusion Cerv Jt w Synth Sub, Ant Appr A Col, Open', 1);
 -- insert into center (id, address, name, description, avg_grade) values ('56321b4d-df2a-499c-9f4f-0177431a450d', '4bae7f00-0290-4511-be5f-03674929ce18', 'Toy-Beatty', 'Drainage of R Ext Auditory Canal, Extern Approach, Diagn', 0);
 -- insert into center (id, address, name, description, avg_grade) values ('52b38530-099f-4119-ad95-661a1cdda5cf', '6a11f1fd-8a74-43b1-b18d-337b9ff35011', 'Breitenberg, Schumm and Turner', 'Extirpation of Matter from Thalamus, Percutaneous Approach', 1);
@@ -72,56 +81,22 @@ insert into center (id, address, name, description, avg_grade) values ('262bb7c8
 -- insert into center (id, address, name, description, avg_grade) values ('606ddf23-21d0-49c3-b10c-773239141025', '88189e49-a5f7-49b5-a5c8-1054605e27b4', 'Bahringer, Bergstrom and Murazik', 'Fusion T-lum Jt w Intbd Fus Dev, Post Appr A Col, Open', 0);
 
 --address
-insert into address (id, city, street, street_number) values ('a4750193-0dfe-4059-b56c-d4919ec7252e', 'Huangsha', 'Everett', '14644');
-insert into address (id, city, street, street_number) values ('0beada52-42c4-458f-9dc1-3ede5e7fd1db', 'Nekhayevskiy', 'Nobel', '5604');
-insert into address (id, city, street, street_number) values ('d3be3049-1dd6-4df3-92ac-6dd9150f79f7', 'Saint Louis', 'Mockingbird', '5120');
-insert into address (id, city, street, street_number) values ('91e7ecf8-37b1-48d9-8415-39281f25e444', 'Bontang Baru', 'Maple Wood', '8');
-insert into address (id, city, street, street_number) values ('8c146e8f-09dd-4cb6-8562-fd4b66477c76', 'Säffle', 'Dahle', '0');
-insert into address (id, city, street, street_number) values ('710a5ceb-f789-4b8a-8674-a58a40524ded', 'Sundbyberg', 'Algoma', '9');
-insert into address (id, city, street, street_number) values ('56004a1b-d42d-45f4-a33d-3ffdc85805ab', 'Tawan tawan', 'Mallory', '68543');
-insert into address (id, city, street, street_number) values ('a776089f-a54c-4a01-8095-147f6e4dd8ef', 'Chocianów', 'Bluestem', '8492');
-insert into address (id, city, street, street_number) values ('0645b5a9-9544-4111-a265-d7a4f5da53af', 'Anuling', 'Swallow', '30742');
-insert into address (id, city, street, street_number) values ('3d3e105e-1108-47a4-92eb-f0c0dbb6277c', 'Kokubunji', 'Cardinal', '682');
-insert into address (id, city, street, street_number) values ('71969619-edc9-4468-a808-9735ab6e7303', 'San Mateo', 'Katie', '17169');
-insert into address (id, city, street, street_number) values ('609c975c-2bdb-4230-aff3-d19b01f6eb74', 'Watubura', 'Glacier Hill', '96');
-insert into address (id, city, street, street_number) values ('599e2149-7eef-44a2-9a8f-691358b73d57', 'Chengtian', 'Di Loreto', '2419');
-insert into address (id, city, street, street_number) values ('3d98a5e5-6cc8-4c5b-bd0f-b40728e4b128', 'Montfort-sur-Meu', 'Coleman', '19823');
-insert into address (id, city, street, street_number) values ('613a57af-e947-4ec0-a962-e7784b31ae7c', 'Melun', 'Stephen', '2');
-insert into address (id, city, street, street_number) values ('5e32bc0c-c7b5-4c83-b026-11b43b37b931', 'Loyola', 'Sugar', '98395');
-insert into address (id, city, street, street_number) values ('2a903107-b037-443c-a146-b5f4a9407f18', 'Mainz', 'Blaine', '150');
-insert into address (id, city, street, street_number) values ('276b531b-fd9b-4697-a42b-70d64e938a26', 'Nanterre', 'Garrison', '00982');
-insert into address (id, city, street, street_number) values ('30a8d5f3-dd58-499b-a361-ee7ec5a4bf0a', 'Heřmanova Huť', 'Moose', '39509');
-insert into address (id, city, street, street_number) values ('4798e880-2498-4aab-92c0-7fb150331f93', 'Milwaukee', 'Namekagon', '1805');
-insert into address (id, city, street, street_number) values ('171878a9-0cd5-436b-8879-8873e5cc3be8', 'Fonte Boa da Brincosa', 'Eggendart', '224');
-insert into address (id, city, street, street_number) values ('f5db4ba7-3ded-48c6-9803-0f721e28bc6c', 'Крушопек', 'Ridge Oak', '1687');
-insert into address (id, city, street, street_number) values ('96b22635-58c8-4fd6-a442-c7aa03f315ac', 'Phan Rang-Tháp Chàm', 'Fuller', '90');
-insert into address (id, city, street, street_number) values ('4485c3b0-cfb8-4f2c-a8cb-d9426d9f7eb4', 'Jajawai', 'Dwight', '320');
-insert into address (id, city, street, street_number) values ('eb3724a3-de54-480a-8708-24cae6f3cfa1', 'Lincoln', 'Blue Bill Park', '4');
-insert into address (id, city, street, street_number) values ('c20ef97b-72e7-477c-adcd-d5815d3152be', 'Harrismith', 'Emmet', '662');
-insert into address (id, city, street, street_number) values ('346dc756-4115-4876-911a-69134d812b54', 'Khashuri', 'Old Shore', '100');
-insert into address (id, city, street, street_number) values ('2834f532-e13c-43e0-ba0b-540fa7dc0120', 'Lypova Dolyna', 'Mayfield', '4');
-insert into address (id, city, street, street_number) values ('6d80d408-5969-4f9b-b712-08de9d1fafc4', 'Červená Voda', 'Brown', '319');
-insert into address (id, city, street, street_number) values ('c8c6e909-40b1-4a2e-a39e-83ec7925ea35', 'Campos do Jordão', 'Melrose', '9');
-insert into address (id, city, street, street_number) values ('12e5e84b-a1d0-48c7-b369-d7b50b2d1ecd', 'Khinjān', 'Warner', '97');
-insert into address (id, city, street, street_number) values ('031911c2-a99e-4c9d-88d5-7ccd3d9ed1f7', 'Ajuda', 'Cambridge', '04864');
-insert into address (id, city, street, street_number) values ('8cafac90-bab6-4221-9835-048c2d712c54', 'Chok Chai', 'Oak', '8');
-insert into address (id, city, street, street_number) values ('ee1d5d4d-e09b-43e8-9c94-8a31a6eeaa6f', 'Ferrol', 'Dahle', '98855');
-insert into address (id, city, street, street_number) values ('112fed5b-0c45-4d91-a344-fafc02d49c43', 'Warungbanten', 'Duke', '5');
-insert into address (id, city, street, street_number) values ('390ec6dd-dfa2-462e-b875-b3443f14b8ea', 'Ortega', '1st', '9');
-insert into address (id, city, street, street_number) values ('2803af08-6628-4829-9fd9-5e3b165799e5', 'Obršani', 'Schmedeman', '50');
-insert into address (id, city, street, street_number) values ('1dfb0be8-54cc-4259-8321-d2439487a3cc', 'Mantalongon', 'Dryden', '46');
-insert into address (id, city, street, street_number) values ('6ab467d1-6dfa-4598-a688-296e77d6bc2d', 'Jönköping', 'Village', '42');
-insert into address (id, city, street, street_number) values ('78beafab-f3f7-4080-ba65-9d0bed6b95f0', 'Alcácer do Sal', 'Fordem', '71713');
-insert into address (id, city, street, street_number) values ('cf70dd05-d1fa-4755-9c57-f510250cfbeb', 'Wutun', '7th', '38417');
-insert into address (id, city, street, street_number) values ('6b4b736b-8651-4e91-b6b6-9f5dcf0f76a3', 'Qaţanah', 'Butternut', '63831');
-insert into address (id, city, street, street_number) values ('c1d0bdb6-b7ae-4f8d-aa43-8fef14257a58', 'Čerčany', 'Calypso', '123');
-insert into address (id, city, street, street_number) values ('5f7cf62b-e6d0-418c-91d8-0355511ca528', 'Sukamanah', 'Old Shore', '01637');
-insert into address (id, city, street, street_number) values ('ccdd2abf-d982-4055-bdfe-eb8409ac899a', 'Qingfa', 'Pennsylvania', '10');
-insert into address (id, city, street, street_number) values ('4bf1a5b3-d592-48ab-867e-807058a5f755', 'Pancas', 'Caliangt', '6');
-insert into address (id, city, street, street_number) values ('da98b833-3cb6-4f59-baf5-0bf55355df98', 'Boavista', 'Vidon', '031');
-insert into address (id, city, street, street_number) values ('512c51ef-0eb1-4538-b865-b6c7fc7f08ba', 'Melaka', 'Waxwing', '222');
-insert into address (id, city, street, street_number) values ('b7058518-95ba-4642-a61c-349c8bfb5627', 'Chatian', 'Fordem', '797');
-insert into address (id, city, street, street_number) values ('043e5200-6a84-4802-bff0-f91246872a7f', 'Xiliu', 'Truax', '00673');
+insert into address (id, city,country, street, street_number) values ('a4750193-0dfe-4059-b56c-d4919ec7252e', 'Huangsha','Srbija', 'Everett', '14644');
+insert into address (id, city,country, street, street_number) values ('0beada52-42c4-458f-9dc1-3ede5e7fd1db', 'Nekhayevskiy','Srbija', 'Nobel', '5604');
+insert into address (id, city,country, street, street_number) values ('d3be3049-1dd6-4df3-92ac-6dd9150f79f7', 'Saint Louis','Srbija', 'Mockingbird', '5120');
+insert into address (id, city,country, street, street_number) values ('91e7ecf8-37b1-48d9-8415-39281f25e444', 'Bontang Baru','Srbija', 'Maple Wood', '8');
+insert into address (id, city,country, street, street_number) values ('8c146e8f-09dd-4cb6-8562-fd4b66477c76', 'Säffle','Srbija', 'Dahle', '0');
+insert into address (id, city,country, street, street_number) values ('710a5ceb-f789-4b8a-8674-a58a40524ded', 'Sundbyberg','Srbija', 'Algoma', '9');
+insert into address (id, city,country, street, street_number) values ('56004a1b-d42d-45f4-a33d-3ffdc85805ab', 'Tawan tawan','Srbija', 'Mallory', '68543');
+insert into address (id, city,country, street, street_number) values ('a776089f-a54c-4a01-8095-147f6e4dd8ef', 'Chocianów','Srbija', 'Bluestem', '8492');
+insert into address (id, city,country, street, street_number) values ('0645b5a9-9544-4111-a265-d7a4f5da53af', 'Anuling','Srbija', 'Swallow', '30742');
+insert into address (id, city,country, street, street_number) values ('3d3e105e-1108-47a4-92eb-f0c0dbb6277c', 'Kokubunji','Srbija', 'Cardinal', '682');
+insert into address (id, city,country, street, street_number) values ('71969619-edc9-4468-a808-9735ab6e7303', 'San Mateo','Srbija', 'Katie', '17169');
+insert into address (id, city,country, street, street_number) values ('609c975c-2bdb-4230-aff3-d19b01f6eb74', 'Watubura','Srbija', 'Glacier Hill', '96');
+insert into address (id, city,country, street, street_number) values ('599e2149-7eef-44a2-9a8f-691358b73d57', 'Chengtian','Srbija', 'Di Loreto', '2419');
+insert into address (id, city,country, street, street_number) values ('3d98a5e5-6cc8-4c5b-bd0f-b40728e4b128', 'Montfort-sur-Meu','Srbija', 'Coleman', '19823');
+insert into address (id, city,country, street, street_number) values ('613a57af-e947-4ec0-a962-e7784b31ae7c', 'Melun','Srbija', 'Stephen', '2');
+
 
 --profession
 insert into profession (id, profession_status, profession_description) values ('f5587aa8-b662-4f3c-8d2a-c308e0e4e8d3', 1, 'Brainlounge');
@@ -179,7 +154,8 @@ insert into profession (id, profession_status, profession_description) values ('
 
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender) values (1,'34713840-ddf3-49b2-9cae-47334cb6b30a', 'username', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c3','MALE');
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,address,profession,penalty,gender) values (3,'34713840-ddf3-49b2-9cae-47334cb6b31b', 'kshwalbe0', '1iF0ZQ4IDswj', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CUSTOMER', false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','3efbe2a3-645a-4d69-974a-3dfdb06913eb',0,'MALE');
-insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,address,gender) values (2,'8a05df51-6c71-433c-802d-96a916273d7c', 'kshwalbe0', '1iF0ZQ4IDswj', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_SYSTEM_ADMIN', false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','MALE');
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,gender) values (2,'8a05df51-6c71-433c-802d-96a916273d7c', 'sys', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_SYSTEM_ADMIN', true, false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','MALE');
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender) values (1,'34713840-ddf3-49b2-9cae-47334cb6b30d', 'kshwalbe1', '2iF0ZQ4IDswj', 'Kristian', '283-314-3046', 'Shwalbe', '4525567465', 'krshwalbe0@arizona.edu', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e',null,'MALE');
 
 -- insert into application_user (id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted, address) values ('8a05df51-6c71-433c-802d-96a916273d6e', 'mdrakes1', 'YrSgvFFK', 'Miller', '260-183-6752', 'Drakes', '4571221398', 'mdrakes1@dyndns.org', 3, false, false, '5f7cf62b-e6d0-418c-91d8-0355511ca528');
 -- insert into application_user (id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,address) values ('34713840-ddf3-49b2-9cae-47334cb6b31b', 'cadmin1', '123', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 0, false, false, '91e7ecf8-37b1-48d9-8415-39281f25e444');

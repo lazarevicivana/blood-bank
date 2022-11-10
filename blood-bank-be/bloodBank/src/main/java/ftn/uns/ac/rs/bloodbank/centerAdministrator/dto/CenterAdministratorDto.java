@@ -1,13 +1,15 @@
-package ftn.uns.ac.rs.bloodbank.center.dto;
+package ftn.uns.ac.rs.bloodbank.centerAdministrator.dto;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.UserRole;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.UserRole;
 import ftn.uns.ac.rs.bloodbank.registration.dto.AddressRequest;
-import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +21,8 @@ public class CenterAdministratorDto {
     @NonNull
     private String surname;
     @NonNull
+    private String password;
+    @NonNull
     private String phone;
     @NonNull
     private String jmbg;
@@ -26,11 +30,14 @@ public class CenterAdministratorDto {
     private String email;
     @NonNull
     private GenderType gender;
-    @NonNull
-    private AddressRequest addressRequest;
+    private String city;
+    private String street;
+    private String country;
+    private String streetNumber;
     @NonNull
     private Boolean enabled;
     @NonNull
     private boolean deleted;
     private UserRole role;
+    private UUID center;
 }

@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.applicationUser;
+package ftn.uns.ac.rs.bloodbank.applicationUser.model;
 
 public enum UserRole {
     ROLE_NOT_REGISTER,

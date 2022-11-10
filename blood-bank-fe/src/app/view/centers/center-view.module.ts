@@ -7,17 +7,32 @@ import {NgImageSliderModule} from "ng-image-slider";
 import {GoogleMapsModule} from "@angular/google-maps";
 import { UpdateCenterComponent } from './update-center/update-center.component';
 import {FormsModule} from "@angular/forms";
+import {CreateCenterComponent} from "./create-center/create-center.component";
+import { MatSelectModule } from '@angular/material/select';
+import {MatExpansionModule} from "@angular/material/expansion";
+
+import {MatGridListModule} from "@angular/material/grid-list";
+
+import {CenterCardComponent} from "../../components/center-card/center-card.component";
+
 
 
 
 @NgModule({
-  declarations: [CenterProfileComponent,AllCentersComponent, UpdateCenterComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    NgImageSliderModule,
-    GoogleMapsModule,
-    FormsModule
-  ]
+  declarations: [CenterProfileComponent, AllCentersComponent, UpdateCenterComponent, CreateCenterComponent,CenterCardComponent],
+  exports: [
+    CreateCenterComponent,
+    CenterCardComponent
+  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        NgImageSliderModule,
+        GoogleMapsModule,
+        FormsModule,
+        MatSelectModule,
+        MatExpansionModule,
+        MatGridListModule
+    ]
 })
 export class CenterViewModule { }

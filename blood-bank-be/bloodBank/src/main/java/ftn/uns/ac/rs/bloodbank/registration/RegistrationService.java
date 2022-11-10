@@ -1,7 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.registration;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
-import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUserService;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
+import ftn.uns.ac.rs.bloodbank.applicationUser.service.ApplicationUserService;
 import ftn.uns.ac.rs.bloodbank.customer.Customer;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;

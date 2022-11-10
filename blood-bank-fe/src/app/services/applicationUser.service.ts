@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
 import {ApplicationUser} from "../model/ApplicationUser";
+import {UserResponse} from "../model/UserResponse";
 
 const httpOptions ={
   headers: new HttpHeaders({
@@ -14,6 +15,7 @@ const httpOptions ={
 })
 export class ApplicationUserService {
   private aplUrl = 'http://localhost:8080/api/v1/applicationUser'
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http:HttpClient) { }
 
@@ -26,9 +28,11 @@ export class ApplicationUserService {
   }
 
   updateApplicationUser(user: ApplicationUser):Observable<ApplicationUser>{
-
     console.log(user);
     // @ts-ignore
     return this.http.put(this.aplUrl,user,httpOptions);
   }
+  getAllUsers():Observable<UserResponse[]> {
+  return this.http.get<UserResponse[]>(this.aplUrl , {headers: this.headers});
+}
 }

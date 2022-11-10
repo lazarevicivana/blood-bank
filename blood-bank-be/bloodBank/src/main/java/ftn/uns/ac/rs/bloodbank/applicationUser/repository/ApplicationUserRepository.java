@@ -1,5 +1,6 @@
-package ftn.uns.ac.rs.bloodbank.applicationUser;
+package ftn.uns.ac.rs.bloodbank.applicationUser.repository;
 
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

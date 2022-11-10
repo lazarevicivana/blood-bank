@@ -2,9 +2,9 @@ package ftn.uns.ac.rs.bloodbank.customer;
 
 import ftn.uns.ac.rs.bloodbank.complains.Complain;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
-import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
-import ftn.uns.ac.rs.bloodbank.applicationUser.UserRole;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.UserRole;
 import lombok.*;
 
 import javax.persistence.*;

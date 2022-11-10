@@ -1,7 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.registration.token;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
-import lombok.AllArgsConstructor;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

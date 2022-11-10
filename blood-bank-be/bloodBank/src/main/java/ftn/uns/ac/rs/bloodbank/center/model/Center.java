@@ -53,4 +53,8 @@ public class Center {
         this.description = description;
         this.avgGrade = avgGrade;
     }
+    public void addAdmin(CenterAdministrator centerAdministrator){
+        medicalStuff.add(centerAdministrator);
+        centerAdministrator.setCenter(this);
+    }
 }

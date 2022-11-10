@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.security.jwt;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUserService;
+import ftn.uns.ac.rs.bloodbank.applicationUser.service.ApplicationUserService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
@@ -27,7 +27,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     private JwtUtils jwtUtils;
     @Autowired
     private ApplicationUserService applicationUserService;
-    @Autowired
     private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
     @Override

@@ -1,7 +1,10 @@
-package ftn.uns.ac.rs.bloodbank.applicationUser;
+package ftn.uns.ac.rs.bloodbank.applicationUser.controller;
 
-import ftn.uns.ac.rs.bloodbank.center.dto.ApplicationUserDtoResponse;
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
+
+import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserUpdate;
+import ftn.uns.ac.rs.bloodbank.applicationUser.service.ApplicationUserService;
+
+import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.NonNull;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "api/v1/applicationUser")
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;
@@ -22,14 +26,14 @@ public class ApplicationUserController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ApplicationUserDtoResponse> getApplicationUser(@NonNull @PathVariable("id") UUID id){
-        var user = mapperService.AppUserToAppUserDto((applicationUserService.getApplicationUser(id)));
+    public ResponseEntity<ApplicationUserUpdate> getApplicationUser(@NonNull @PathVariable("id") UUID id){
+        var user = mapperService.AppUserToAppUserUpdate((applicationUserService.getApplicationUser(id)));
         return ResponseEntity.ok(user);
     }
 
     @PutMapping()
-    public ResponseEntity<String> updateApplicationUser(@RequestBody ApplicationUserDtoResponse userDto){
-        var user = mapperService.AppUserDtoToAppUser(userDto);
+    public ResponseEntity<String> updateApplicationUser(@RequestBody ApplicationUserUpdate userDto){
+        var user = mapperService.AppUserUpdateToAppUser(userDto);
         applicationUserService.updateApplicationUser(user);
         return ResponseEntity.noContent().build();
     }
