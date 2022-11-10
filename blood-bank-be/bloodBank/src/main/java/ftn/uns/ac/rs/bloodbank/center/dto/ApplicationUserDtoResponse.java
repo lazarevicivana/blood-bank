@@ -26,6 +26,9 @@ public class ApplicationUserDtoResponse {
     private String surname;
 
     @NonNull
+    private String password;
+
+    @NonNull
     private String phone;
 
     @NonNull
