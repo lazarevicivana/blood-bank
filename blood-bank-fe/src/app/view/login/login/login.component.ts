@@ -4,6 +4,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {AddressRequest} from "../../../model/AddressRequest";
 import {ProfessionRequest} from "../../../model/ProfessionRequest";
 import {AuthService} from "../../../services/auth.service";
+import {TokenStorageService} from "../../../services/token-storage.service";
+import {LoginRequest} from "../../../model/LoginRequest";
 
 @Component({
   selector: 'app-login',
@@ -31,22 +33,48 @@ export class LoginComponent implements OnInit {
       professionDescription: new FormControl<string | undefined>(undefined),
     })
   });
+
   rightActive:boolean = false
   userId:string = "";
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  isLoggedIn = false;
+  isLoginFailed = false;
+  loginForm = new FormGroup({
+  username: new FormControl<string | undefined>(undefined),
+  password: new FormControl<string | undefined>(undefined)
+})
 
-  constructor(private client: AuthService) { }
+  constructor(private client: AuthService, private tokenStorage: TokenStorageService ) { }
   ngOnInit(): void {
-
+      if (this.tokenStorage.getToken()){
+        this.isLoggedIn = true;
+      }
   }
   activatePanel():void {
     this.rightActive = ! this.rightActive
   }
 
-  public signIn() {
+  onSignIn() {
+    const user = new LoginRequest({
+      username: this.loginForm.controls.username.value!,
+      password: this.loginForm.controls.password.value!
+    })
+    this.client.login(user).subscribe({
+      next: response => {
+        console.log('aaaa')
+        console.log(response)
+        this.tokenStorage.saveToken(response.jwt);
+        this.tokenStorage.saveUser(response);
 
+        this.isLoggedIn = true;
+      //  this.reloadPage();
+      }
+    })
+  }
+  reloadPage(){
+    window.location.reload();
   }
   onSignUp(){
     const customer = this.createCustomer();

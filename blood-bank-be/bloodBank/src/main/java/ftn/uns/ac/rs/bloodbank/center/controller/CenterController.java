@@ -11,6 +11,7 @@ import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +43,7 @@ public class CenterController {
         Center savedCenter = centerService.createCenter(center);
         return new ResponseEntity<>(savedCenter, HttpStatus.CREATED);
     }
+    @PreAuthorize("hasAnyRole('ROLE_NOT_REGISTER','ROLE_SYSTEM_ADMIN','ROLE_CUSTOMER')")
     @GetMapping(path = "{id}")
     public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {
         var c = centerService.getCenter(id);
