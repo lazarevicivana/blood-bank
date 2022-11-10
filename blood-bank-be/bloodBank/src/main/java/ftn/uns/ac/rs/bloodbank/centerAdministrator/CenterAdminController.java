@@ -11,6 +11,7 @@ import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class CenterAdminController {
     }
 
     @PutMapping(path = "updateCenter/{adminId}/{centerId}")
-    public ResponseEntity updateAdministratorCenter(@NotNull @PathVariable("adminId") UUID adminId,@NotNull @PathVariable("centerId") UUID centerId) {
+    public ResponseEntity<CenterAdministrator> updateAdministratorCenter(@NotNull @PathVariable("adminId") UUID adminId,@NotNull @PathVariable("centerId") UUID centerId) {
         var center = centerService.getCenter(centerId);
         centerAdminService.updateAdministratorCenter(adminId,center);
         return new ResponseEntity<CenterAdministrator>(HttpStatus.NO_CONTENT);
@@ -51,6 +52,7 @@ public class CenterAdminController {
                 .stream()
                 .map(mapperService::CenterAdministratorToCenterAdministratorDtoResponse)
                 .toList();
+
         return ResponseEntity.ok(admins);
     }
 }
