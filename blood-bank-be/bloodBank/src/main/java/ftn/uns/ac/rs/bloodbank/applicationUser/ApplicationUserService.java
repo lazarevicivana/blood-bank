@@ -6,6 +6,7 @@ package ftn.uns.ac.rs.bloodbank.applicationUser;
 
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
+import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -68,6 +69,21 @@ public class ApplicationUserService {
         }
         if(applicationUser.getGender()!=null){
             currentUser.setGender(applicationUser.getGender());
+        }
+        if(applicationUser.getAddress().getCountry()!=null) {
+            currentUser.getAddress().setCountry(applicationUser.getAddress().getCountry());
+        }
+        if(applicationUser.getAddress().getCity()!=null) {
+            currentUser.getAddress().setCountry(applicationUser.getAddress().getCity());
+
+        }
+        if(applicationUser.getAddress().getStreet()!=null) {
+            currentUser.getAddress().setCountry(applicationUser.getAddress().getStreet());
+
+
+        }
+        if(applicationUser.getAddress().getStreetNumber()!=null) {
+            currentUser.getAddress().setCountry(applicationUser.getAddress().getStreetNumber());
         }
 
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "api/v1/applicationUser")
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;
