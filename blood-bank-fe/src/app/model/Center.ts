@@ -5,7 +5,7 @@ export interface ICenter {
   avgGrade?: number;
   street?: string;
   country?: string;
-  city?: string;
+  city?:string;
   streetNumber?: string;
   longitude?: number;
   latitude?: number;
@@ -18,7 +18,7 @@ export class Center implements ICenter {
   avgGrade?: number;
   street?: string;
   country?: string;
-  city?: string;
+  city?:string;
   streetNumber?: string;
   longitude!: number;
   latitude!: number;

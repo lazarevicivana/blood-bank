@@ -2,6 +2,7 @@ package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 
 import com.sun.istack.NotNull;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterAdministratorDto;
+import ftn.uns.ac.rs.bloodbank.center.dto.CenterAdministratorDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
@@ -10,8 +11,10 @@ import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -29,7 +32,7 @@ public class CenterAdminController {
     }
 
     @PutMapping(path = "updateCenter/{adminId}/{centerId}")
-    public ResponseEntity updateAdministratorCenter(@NotNull @PathVariable("adminId") UUID adminId,@NotNull @PathVariable("centerId") UUID centerId) {
+    public ResponseEntity<CenterAdministrator> updateAdministratorCenter(@NotNull @PathVariable("adminId") UUID adminId,@NotNull @PathVariable("centerId") UUID centerId) {
         var center = centerService.getCenter(centerId);
         centerAdminService.updateAdministratorCenter(adminId,center);
         return new ResponseEntity<CenterAdministrator>(HttpStatus.NO_CONTENT);
@@ -41,5 +44,15 @@ public class CenterAdminController {
         centerAdministrator.setAddress(adress);
         CenterAdministrator savedCenterAdministrator =centerAdminService.createCenterAdministrator(centerAdministrator);
         return new ResponseEntity<CenterAdministrator>(savedCenterAdministrator, HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "availableAdmins")
+    public ResponseEntity<List<CenterAdministratorDtoResponse>> getAvailableAdmins() {
+        var admins = centerAdminService.getAvailableAdmins()
+                .stream()
+                .map(mapperService::CenterAdministratorToCenterAdministratorDtoResponse)
+                .toList();
+
+        return ResponseEntity.ok(admins);
     }
 }

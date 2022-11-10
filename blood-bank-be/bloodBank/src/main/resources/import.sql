@@ -119,10 +119,9 @@ insert into address (id, city, street, street_number) values ('5f7cf62b-e6d0-418
 insert into address (id, city, street, street_number) values ('ccdd2abf-d982-4055-bdfe-eb8409ac899a', 'Qingfa', 'Pennsylvania', '10');
 insert into address (id, city, street, street_number) values ('4bf1a5b3-d592-48ab-867e-807058a5f755', 'Pancas', 'Caliangt', '6');
 insert into address (id, city, street, street_number) values ('da98b833-3cb6-4f59-baf5-0bf55355df98', 'Boavista', 'Vidon', '031');
--- ad
-insert into address (id, city, street, street_number,country) values ('512c51ef-0eb1-4538-b865-b6c7fc7f08ba', 'Melaka', 'Waxwing', '222','Serbia');
-insert into address (id, city, street, street_number,country) values ('b7058518-95ba-4642-a61c-349c8bfb5627', 'Chatian', 'Fordem', '797','Serbia');
-insert into address (id, city, street, street_number,country) values ('043e5200-6a84-4802-bff0-f91246872a7f', 'Xiliu', 'Truax', '00673','Serbia');
+insert into address (id, city, street, street_number) values ('512c51ef-0eb1-4538-b865-b6c7fc7f08ba', 'Melaka', 'Waxwing', '222');
+insert into address (id, city, street, street_number) values ('b7058518-95ba-4642-a61c-349c8bfb5627', 'Chatian', 'Fordem', '797');
+insert into address (id, city, street, street_number) values ('043e5200-6a84-4802-bff0-f91246872a7f', 'Xiliu', 'Truax', '00673');
 
 --profession
 insert into profession (id, profession_status, profession_description) values ('f5587aa8-b662-4f3c-8d2a-c308e0e4e8d3', 1, 'Brainlounge');
@@ -178,9 +177,10 @@ insert into profession (id, profession_status, profession_description) values ('
 
 --customer--
 
-insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender) values (1,'34713840-ddf3-49b2-9cae-47334cb6b30a', 'username', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CENTER_ADMIN', true, false,false, '512c51ef-0eb1-4538-b865-b6c7fc7f08ba','ef81c6fc-bd01-4148-b460-b9f2eb7c53c3','MALE');
-insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,profession,penalty,gender) values (3,'34713840-ddf3-49b2-9cae-47334cb6b31b', 'c1', '$2y$10$Y.47UyDIMOF6VzoFp0ZbZOD97CP1S3r9qbpFxoXaEvSJ5FJYTeHxq', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CUSTOMER', true, false,false ,'b7058518-95ba-4642-a61c-349c8bfb5627','f5587aa8-b662-4f3c-8d2a-c308e0e4e8d3',0,'MALE');
-insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,address,gender) values (2,'8a05df51-6c71-433c-802d-96a916273d7c', 'kshwalbe0', '1iF0ZQ4IDswj', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_SYSTEM_ADMIN', false, false, '043e5200-6a84-4802-bff0-f91246872a7f' ,'MALE');
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender) values (1,'34713840-ddf3-49b2-9cae-47334cb6b30a', 'username', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c3','MALE');
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,address,profession,penalty,gender) values (3,'34713840-ddf3-49b2-9cae-47334cb6b31b', 'kshwalbe0', '1iF0ZQ4IDswj', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CUSTOMER', false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','3efbe2a3-645a-4d69-974a-3dfdb06913eb',0,'MALE');
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,gender) values (2,'8a05df51-6c71-433c-802d-96a916273d7c', 'sys', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_SYSTEM_ADMIN', true, false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','MALE');
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender) values (1,'34713840-ddf3-49b2-9cae-47334cb6b30d', 'kshwalbe1', '2iF0ZQ4IDswj', 'Kristian', '283-314-3046', 'Shwalbe', '4525567465', 'krshwalbe0@arizona.edu', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e',null,'MALE');
 
 -- insert into application_user (id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted, address) values ('8a05df51-6c71-433c-802d-96a916273d6e', 'mdrakes1', 'YrSgvFFK', 'Miller', '260-183-6752', 'Drakes', '4571221398', 'mdrakes1@dyndns.org', 3, false, false, '5f7cf62b-e6d0-418c-91d8-0355511ca528');
 -- insert into application_user (id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,address) values ('34713840-ddf3-49b2-9cae-47334cb6b31b', 'cadmin1', '123', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 0, false, false, '91e7ecf8-37b1-48d9-8415-39281f25e444');

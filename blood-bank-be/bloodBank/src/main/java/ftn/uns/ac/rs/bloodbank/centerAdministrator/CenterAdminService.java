@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -33,6 +34,10 @@ public class CenterAdminService {
     {
         var admin = getCenterAdministrator(adminId);
         admin.setCenter(center);
+    }
+
+    public List<CenterAdministrator> getAvailableAdmins(){
+        return centerAdminRepository.GetAvailableAdmins();
     }
 
 }

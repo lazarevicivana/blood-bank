@@ -38,10 +38,10 @@ public class CenterController {
         return ResponseEntity.ok(centers);
     }
     @PostMapping()
-    public ResponseEntity<Center> createCenter(@RequestBody CenterDto centerDto){
+    public ResponseEntity<CenterDtoResponse> createCenter(@RequestBody CenterDto centerDto){
         var center = mapperService.CenterDtoToCenter(centerDto);
-        Center savedCenter = centerService.createCenter(center);
-        return new ResponseEntity<>(savedCenter, HttpStatus.CREATED);
+        var savedCenter = mapperService.CenterToCenterDto(centerService.createCenter(center));
+        return new ResponseEntity<CenterDtoResponse>(savedCenter, HttpStatus.CREATED);
     }
     @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN','ROLE_SYSTEM_ADMIN','ROLE_CUSTOMER')")
     @GetMapping(path = "{id}")

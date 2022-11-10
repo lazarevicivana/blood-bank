@@ -27,8 +27,10 @@ public class CenterService {
         if(centerExist.isPresent()){
             throw  new ApiConflictException("This name is already taken");
         }
-        centerRepository.save(center);
-        return center;
+        Center saveCenter = centerRepository.save(center);
+        //centerRepository.delete(getCenter(UUID. fromString("baeee9d9-91c0-44fa-adbd-834e7aad2b1b")));
+        //centerRepository.delete(getCenter(UUID. fromString("e098f9c8-9704-4934-8268-383882c32216")));
+        return saveCenter;
     }
 
     public Center getCenter(UUID id) {
