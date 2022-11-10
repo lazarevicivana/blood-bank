@@ -32,7 +32,10 @@ public class CenterAdminService {
     public void createCenterAdministrator(CenterAdministratorDto centerAdministratorDto) {
         CenterAdministrator centerAdministrator = mapperService.CenterAdministratorDtoToCenterAdministrator(centerAdministratorDto);
         var center = centerRepository.findById(centerAdministratorDto.getCenter());
-        center.get().addAdmin(centerAdministrator);
+        if(center.isPresent()){
+            center.get().addAdmin(centerAdministrator);
+            centerAdminRepository.save(centerAdministrator);
+        }
         centerAdminRepository.save(centerAdministrator);
         //return centerAdministrator;
     }

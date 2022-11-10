@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 @Repository
 public interface CenterAdminRepository extends JpaRepository<CenterAdministrator, UUID> {
-    @Query("select c.center from CenterAdministrator c where c.id=?1")
+    @Query("select ca.center from CenterAdministrator ca where ca.id=?1")
    Center GetAdminCenter(UUID adminID);
 
     @Query("select c from CenterAdministrator c where c.center is null ")

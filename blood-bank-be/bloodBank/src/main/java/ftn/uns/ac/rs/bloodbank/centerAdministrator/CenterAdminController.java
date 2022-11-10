@@ -22,12 +22,11 @@ public class CenterAdminController {
     private final CenterService centerService;
     private final MapperService mapperService;
 
-    @GetMapping(path = "center/{id}")
-    public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {
+    @GetMapping(path = "center-for-admin/{id}")
+    public ResponseEntity<CenterDtoResponse> getCenterForAdmin(@NotNull @PathVariable("id") UUID id) {
         var center =mapperService.CenterToCenterDto(centerAdminService.GetAdminCenter(id));
         return ResponseEntity.ok(center);
     }
-
     @PutMapping(path = "updateCenter/{adminId}/{centerId}")
     public ResponseEntity<CenterAdministrator> updateAdministratorCenter(@NotNull @PathVariable("adminId") UUID adminId,@NotNull @PathVariable("centerId") UUID centerId) {
         var center = centerService.getCenter(centerId);

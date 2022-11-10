@@ -16,7 +16,7 @@ import java.util.UUID;
 public interface ApplicationUserRepository extends JpaRepository<ApplicationUser, UUID> {
     Optional<ApplicationUser> findByUsername(String username);
     @Query("Select user from ApplicationUser user where user.username = ?1")
-    Optional<ApplicationUser> GetByUsername(String name);
+    Optional<ApplicationUser> getByUsername(String name);
     @Transactional
     @Modifying
     @Query("UPDATE ApplicationUser a " +

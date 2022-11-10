@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Center} from "../model/Center";
 import {CenterAdministrator} from "../model/CenterAdministrator";
+import {UserResponse} from "../model/UserResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,8 @@ export class CenterService {
   }
   getAllCenters(): Observable<Center[]> {
     return this.http.get<Center[]>(this.apiHost + 'api/v1/center/', {headers: this.headers});
+  }
+  getOtherCenterAdmins(centerId: string,adminId: string): Observable<UserResponse[]> {
+    return this.http.get<UserResponse[]>(this.apiHost + `api/v1/center/other-admins/${centerId}/${adminId}`, {headers: this.headers});
   }
 }

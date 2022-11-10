@@ -2,6 +2,7 @@ package ftn.uns.ac.rs.bloodbank.center.service;
 
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdminRepository;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiConflictException;
@@ -18,7 +19,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CenterService {
     private final CenterRepository centerRepository;
+    private final CenterAdminRepository centerAdminRepository;
     public List<Center> getAllCenters(){
+
         return centerRepository.findAll();
     }
 
@@ -32,7 +35,6 @@ public class CenterService {
         //centerRepository.delete(getCenter(UUID. fromString("e098f9c8-9704-4934-8268-383882c32216")));
         return saveCenter;
     }
-
     public Center getCenter(UUID id) {
         return centerRepository
                 .findById(id)
@@ -75,6 +77,16 @@ public class CenterService {
     }
 
     public List<CenterAdministrator> getAdminsForCenter(UUID id) {
+
         return centerRepository.GetAdmins(id);
+    }
+    public List<CenterAdministrator> getOtherCenterAdmins(UUID centerId,UUID adminId){
+            var admin = centerAdminRepository.findById(adminId)
+                    .orElseThrow(() -> new ApiNotFoundException());
+            var otherAdmins = getAdminsForCenter(centerId)
+                    .stream()
+                    .filter((x) -> x.getId() != adminId)
+                    .toList();
+            return otherAdmins;
     }
 }

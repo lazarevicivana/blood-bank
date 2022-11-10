@@ -53,7 +53,6 @@ public class ApplicationUserService implements UserDetailsService {
                 LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(15),
                 applicationUser
-
         );
         confirmationTokenService.saveConfirmationToken(confimationToken);
         //TODO send email
@@ -74,7 +73,7 @@ public class ApplicationUserService implements UserDetailsService {
 
     }
     public ApplicationUser getByUsername(String name) {
-        return applicationUserRepository.GetByUsername(name)
+        return applicationUserRepository.getByUsername(name)
                 .orElseThrow(() -> new ApiNotFoundException("Aplication user with this usernmame doesnt exist."));
 
     }
@@ -84,7 +83,7 @@ public class ApplicationUserService implements UserDetailsService {
         var currentUser = getApplicationUser(applicationUser.getId());
 
         if (applicationUser.getUsername() != null) {
-            var checkUsername = applicationUserRepository.GetByUsername(applicationUser.getUsername());
+            var checkUsername = applicationUserRepository.getByUsername(applicationUser.getUsername());
             if(checkUsername.isPresent() &&  applicationUser.getId() != checkUsername.get().getId()){
                 throw new ApiBadRequestException("This username is already taken.");
             }
