@@ -85,7 +85,7 @@ button:focus {
   outline: none;
 }
 .title{
-  margin: 5px 0;
+  margin: 0px 0;
 }
 button.ghost {
   background-color: transparent;
@@ -109,7 +109,7 @@ input {
   border: none;
   padding: 8px 8px;
   margin: 4px 0;
-  width: 100%;
+  width: 80%;
 }
 
 .container {
@@ -237,7 +237,7 @@ input {
 }
 
 .title-container {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .social-container a {

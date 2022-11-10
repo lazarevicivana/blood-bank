@@ -3,7 +3,7 @@
     <div class="form-container sign-up-container">
       <form action="#" [formGroup]="formGroup" >
         <div class="title-container">
-          <h1 class="title">Create Account</h1>
+          <h2 class="title">Create Account</h2>
           <span>or use your email for registration</span>
         </div>
         <input type="text" placeholder="Name" formControlName="name" />
@@ -15,10 +15,12 @@
         <input type="text" placeholder="Phone" formControlName="jmbg" />
         <input type="text" placeholder="Jmbg" formControlName="phone" />
         <div formGroupName="profession">
+          <h4>Profession</h4>
           <input  type="text" placeholder="Status" formControlName="professionStatus"/>
           <input  type="text" placeholder="Description" formControlName="professionDescription"/>
         </div>
         <div formGroupName="address">
+          <h4>Address</h4>
           <input  type="text" placeholder="Street" formControlName="street"/>
           <input  type="text" placeholder="City" formControlName="city"/>
           <input  type="text" placeholder="Country" formControlName="country"/>
@@ -28,15 +30,15 @@
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form (ngSubmit)="signIn()">
+      <form (ngSubmit)="onSignIn()" [formGroup]="loginForm">
         <div class="title-container">
           <h1>Sign in</h1>
           <span>or use your account</span>
         </div>
-        <input type="text" placeholder="Email" [(ngModel)]="userId" name="userId"/>
-        <input type="password" placeholder="Password" />
+        <input type="text" placeholder="Username" formControlName="username" name="userId"/>
+        <input type="password" placeholder="Password" formControlName="password" />
         <a href="#">Forgot your password?</a>
-        <button (click)="signIn()">Sign In</button>
+        <button (click)="onSignIn()">Sign In</button>
       </form>
     </div>
     <div class="overlay-container">
