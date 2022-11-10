@@ -17,4 +17,7 @@ export class CenterService {
   createCenter(center:Center): Observable<Center> {
     return this.http.post<Center>(this.apiHost + 'api/v1/center' , center,{headers: this.headers});
   }
+  getAllCenters(): Observable<Center[]> {
+    return this.http.get<Center[]>(this.apiHost + 'api/v1/center/', {headers: this.headers});
+  }
 }

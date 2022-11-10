@@ -1,8 +1,10 @@
 package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
-import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
+import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDto;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
+import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,10 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CenterAdminService {
     private final CenterAdminRepository centerAdminRepository;
+    private final CenterRepository centerRepository;
+    private final MapperService mapperService;
     public Center GetAdminCenter(UUID adminID){
+
         return centerAdminRepository.GetAdminCenter(adminID);
     }
 
@@ -23,10 +28,13 @@ public class CenterAdminService {
                 .findById(id)
                 .orElseThrow(() -> new ApiNotFoundException("Center administrator with id: " + id + "does not exist"));
     }
-
-    public CenterAdministrator createCenterAdministrator(CenterAdministrator centerAdministrator) {
+    @Transactional
+    public void createCenterAdministrator(CenterAdministratorDto centerAdministratorDto) {
+        CenterAdministrator centerAdministrator = mapperService.CenterAdministratorDtoToCenterAdministrator(centerAdministratorDto);
+        var center = centerRepository.findById(centerAdministratorDto.getCenter());
+        center.get().addAdmin(centerAdministrator);
         centerAdminRepository.save(centerAdministrator);
-        return centerAdministrator;
+        //return centerAdministrator;
     }
 
     @Transactional

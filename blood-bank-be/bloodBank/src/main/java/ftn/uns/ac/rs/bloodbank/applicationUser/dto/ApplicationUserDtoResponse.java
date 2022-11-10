@@ -1,38 +1,49 @@
-package ftn.uns.ac.rs.bloodbank.center.dto;
+package ftn.uns.ac.rs.bloodbank.applicationUser.dto;
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.UserRole;
-import ftn.uns.ac.rs.bloodbank.registration.dto.AddressRequest;
+import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CenterAdministratorDtoResponse {
+public class ApplicationUserDtoResponse {
     @NonNull
-    private String id;
+    private UUID id;
+
     @NonNull
     private String username;
+
     @NonNull
     private String name;
+
     @NonNull
     private String surname;
+
+    @NonNull
+    private String password;
+
     @NonNull
     private String phone;
+
     @NonNull
     private String jmbg;
+
     @NonNull
     private String email;
+
+    private UserRole role;
+
     @NonNull
     private GenderType gender;
+
     @NonNull
-    private AddressRequest addressRequest;
-    @NonNull
-    private Boolean enabled;
-    @NonNull
-    private boolean deleted;
-    private UserRole role;
+    private Address address;
+
 }

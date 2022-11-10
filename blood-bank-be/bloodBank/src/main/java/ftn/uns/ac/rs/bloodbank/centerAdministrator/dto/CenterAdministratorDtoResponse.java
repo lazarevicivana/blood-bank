@@ -1,17 +1,19 @@
-package ftn.uns.ac.rs.bloodbank.center.dto;
+package ftn.uns.ac.rs.bloodbank.centerAdministrator.dto;
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.UserRole;
 import ftn.uns.ac.rs.bloodbank.registration.dto.AddressRequest;
-import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CenterAdministratorDto {
+public class CenterAdministratorDtoResponse {
+    @NonNull
+    private String id;
     @NonNull
     private String username;
     @NonNull

@@ -1,25 +1,23 @@
 package ftn.uns.ac.rs.bloodbank.mapper;
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
-import ftn.uns.ac.rs.bloodbank.center.dto.ApplicationUserDtoResponse;
+import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDto;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDtoResponse;
 import ftn.uns.ac.rs.bloodbank.customer.Customer;
 import ftn.uns.ac.rs.bloodbank.customer.Profession;
 import ftn.uns.ac.rs.bloodbank.registration.dto.AddressRequest;
 import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;
 import ftn.uns.ac.rs.bloodbank.registration.dto.ProfessionRequest;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
-import ftn.uns.ac.rs.bloodbank.center.dto.*;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
-
-import java.util.Collections;
-import java.util.Set;
 
 @Component
 public class MapperService {

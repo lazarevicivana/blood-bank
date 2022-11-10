@@ -14,10 +14,9 @@ import java.util.Set;
 @Entity(name = "CenterAdministrator")
 @DiscriminatorValue("1")
 public class CenterAdministrator extends ApplicationUser {
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "center_id", referencedColumnName = "id")
     private Center center;
-    @ManyToMany(mappedBy = "centerAdministrators")
+    @ManyToMany(mappedBy = "centerAdministrators",cascade=CascadeType.ALL)
     private Set<Appointment> appointments;
-
 }

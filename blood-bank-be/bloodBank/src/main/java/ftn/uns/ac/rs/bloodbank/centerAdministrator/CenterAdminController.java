@@ -1,17 +1,14 @@
 package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 
 import com.sun.istack.NotNull;
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterAdministratorDto;
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterAdministratorDtoResponse;
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDto;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
-import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.service.CenterService;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,12 +35,12 @@ public class CenterAdminController {
         return new ResponseEntity<CenterAdministrator>(HttpStatus.NO_CONTENT);
     }
     @PostMapping()
-    public ResponseEntity<CenterAdministrator> createCenterAdministrator(@RequestBody CenterAdministratorDto centerAdministratorDto){
-        var adress = mapperService.AdressRequestToAdress(centerAdministratorDto.getAddressRequest());
-        CenterAdministrator centerAdministrator = mapperService.CenterAdministratorDtoToCenterAdministrator(centerAdministratorDto);
-        centerAdministrator.setAddress(adress);
-        CenterAdministrator savedCenterAdministrator =centerAdminService.createCenterAdministrator(centerAdministrator);
-        return new ResponseEntity<CenterAdministrator>(savedCenterAdministrator, HttpStatus.CREATED);
+    public ResponseEntity<String> createCenterAdministrator(@RequestBody CenterAdministratorDto centerAdministratorDto){
+        //var address = mapperService.AdressRequestToAdress(centerAdministratorDto.getAddressRequest());
+        //CenterAdministrator centerAdministrator = mapperService.CenterAdministratorDtoToCenterAdministrator(centerAdministratorDto);
+        //centerAdministrator.setAddress(address);
+        centerAdminService.createCenterAdministrator(centerAdministratorDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(path = "availableAdmins")

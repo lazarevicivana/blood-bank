@@ -1,7 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.applicationUser;
 
-import ftn.uns.ac.rs.bloodbank.center.dto.ApplicationUserDtoResponse;
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
+import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.NonNull;
 import org.springframework.http.ResponseEntity;
