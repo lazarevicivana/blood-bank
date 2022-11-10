@@ -23,7 +23,7 @@ import java.util.Optional;
 public class ApplicationUserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "user with username %s not found";
     private final ApplicationUserRepository applicationUserRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    //private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
 
     @Override
@@ -40,9 +40,9 @@ public class ApplicationUserService implements UserDetailsService {
         if(userExists){
             throw new IllegalStateException("username already taken");
         }
-        var encodePassword  =bCryptPasswordEncoder
-                .encode(applicationUser.getPassword());
-        applicationUser.setPassword(encodePassword);
+//        var encodePassword  =bCryptPasswordEncoder
+//                .encode(applicationUser.getPassword());
+//        applicationUser.setPassword(encodePassword);
         applicationUserRepository.save(applicationUser);
        return sendConfirmationToken(applicationUser);
     }
