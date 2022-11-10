@@ -9,7 +9,12 @@ import {GoogleMapApiService} from "../../../services/googleMapApi.service";
   styleUrls: ['./all-centers.component.css']
 })
 export class AllCentersComponent implements OnInit {
+  selectedCountry =""
+  selectedCity =""
   centers : Center[]= []
+  centersFiltered : Center[]= []
+  centersFilterdByCountry : Center[]= []
+  centersFilterdByCity : Center[]= []
   private map!: google.maps.Map;
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService) { }
 
@@ -31,10 +36,31 @@ export class AllCentersComponent implements OnInit {
     loaded.then()
 
   }
+
+  public getByCountryFilter(name: string){
+    if(name ==="All"){
+      this.centersFiltered = this.centers
+      this.centersFilterdByCountry = this.centers
+      this.selectedCountry=""
+    }
+    else{
+      this.centersFilterdByCountry = this.centersFilterdByCity.filter((obj) => {
+        return obj.country === name;
+      });
+      this.centersFiltered = this.centersFilterdByCountry
+    }
+
+    console.log(this.selectedCountry)
+    console.log(this.centersFilterdByCountry)
+  }
+
   private getAllCenters(){
     this.centerService.getAllCenters().subscribe(
       (response)=>{
-        this.centers = response
+        this.centers = response;
+        this.centersFiltered = response;
+        this.centersFilterdByCity = response;
+        this.centersFilterdByCountry = response;
         console.log(this.centers)
         this.centers.forEach((center)=>{
           new google.maps.Marker({
@@ -50,4 +76,16 @@ export class AllCentersComponent implements OnInit {
     )
   }
 
+  getByCityFilter(city: string) {
+    if(city ==="All"){
+      this.centersFiltered = this.centersFilterdByCountry
+      this.centersFilterdByCity = this.centers
+      this.selectedCity=""
+    }
+    else{
+      this.centersFiltered = this.centersFilterdByCountry.filter((obj) => {
+        return obj.city === city;
+      });
+    }
+  }
 }
