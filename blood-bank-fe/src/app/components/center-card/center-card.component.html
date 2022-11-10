@@ -2,14 +2,11 @@
 <article class="card">
   <div class="thumb"></div>
   <div class="infos">
-    <h2 class="title">{{center.name}}<span class="flag"></span></h2>
-    <h3 class="date">november 2 - 4</h3>
-    <h3 class="seats">seats remaining: 2</h3>
-    <p class="txt">Join us for our Live Infinity Session in
-      beautiful New York City. This is a 3 day
-      intensive workshop where you'll learn
-      how to become a better version of...</p>
-    <h3 class="details">event details</h3>
+    <h2 class="title">{{center.name}}<img class="flag" src="assets/blood-test.png"></h2>
+    <h3 class="date">Working time: <span class="working-h">8 AM - 8 PM</span></h3>
+    <h3 class="seats">Average grade: {{center.avgGrade}}</h3>
+    <p class="txt">Description: {{center.description}}</p>
+    <button class="details" (click)="centerProfile()">Center profile</button>
   </div>
 </article>
 </div>

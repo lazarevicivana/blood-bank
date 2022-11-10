@@ -7,7 +7,7 @@ export const navbarData=[
   },
   {
     routeLink: 'facilities',
-    icon: 'home-outline',
+    icon: 'business-outline',
     label: 'Facilities',
     num:1
   },
@@ -16,11 +16,12 @@ export const navbarData=[
     icon: 'calendar-outline',
     label: 'Schedule',
     num:2
-  },
-  {
-    routeLink: 'center-profile',
-    icon: 'business-outline',
-    label: 'Schedule',
-    num:3
   }
+  // ,
+  // {
+  //   routeLink: 'center-profile',
+  //   icon: 'business-outline',
+  //   label: 'Schedule',
+  //   num:3
+  // }
   ];

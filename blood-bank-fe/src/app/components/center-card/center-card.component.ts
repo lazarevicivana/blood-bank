@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Center} from "../../model/Center";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-center-card',
@@ -8,9 +9,12 @@ import {Center} from "../../model/Center";
 })
 export class CenterCardComponent implements OnInit {
   @Input() center = new Center();
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+  centerProfile(){
+    this.router.navigate(['center-profile'], { state: { centerId: this.center.id } })
   }
 
 }

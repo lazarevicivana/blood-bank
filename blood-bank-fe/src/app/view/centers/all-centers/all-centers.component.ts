@@ -28,12 +28,24 @@ export class AllCentersComponent implements OnInit {
       this.getAllCenters()
       }
     )
+    loaded.then()
+
   }
   private getAllCenters(){
     this.centerService.getAllCenters().subscribe(
       (response)=>{
         this.centers = response
         console.log(this.centers)
+        this.centers.forEach((center)=>{
+          new google.maps.Marker({
+            position: {
+              lat: center.latitude,
+              lng: center.longitude
+            },
+            map: this.map,
+            title:'1'
+          });
+        })
       },
     )
   }
