@@ -16,6 +16,7 @@ export class AppComponent {
   isLoggedIn = false;
   isSideNavCollapsed = false;
   screenWidth = 0;
+
   username?: string;
   constructor(private tokenStorageService: TokenStorageService) { }
   onToggleSideNav(data: SideNavToggle):void {
