@@ -40,7 +40,7 @@ export class AccountComponent implements OnInit {
       professionStatus: "",
       professionDescription: ""
     },
-    "gender": ""
+    gender: ""
   }
 
   constructor(private userService: ApplicationUserService) { }

@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.center.dto;
+package ftn.uns.ac.rs.bloodbank.centerAdministrator.dto;
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.model.UserRole;
 import ftn.uns.ac.rs.bloodbank.registration.dto.AddressRequest;
@@ -8,18 +8,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CenterAdministratorDtoResponse {
-    @NonNull
-    private String id;
+public class CenterAdministratorDto {
     @NonNull
     private String username;
     @NonNull
     private String name;
     @NonNull
     private String surname;
+    @NonNull
+    private String password;
     @NonNull
     private String phone;
     @NonNull
@@ -28,11 +30,14 @@ public class CenterAdministratorDtoResponse {
     private String email;
     @NonNull
     private GenderType gender;
-    @NonNull
-    private AddressRequest addressRequest;
+    private String city;
+    private String street;
+    private String country;
+    private String streetNumber;
     @NonNull
     private Boolean enabled;
     @NonNull
     private boolean deleted;
     private UserRole role;
+    private UUID center;
 }

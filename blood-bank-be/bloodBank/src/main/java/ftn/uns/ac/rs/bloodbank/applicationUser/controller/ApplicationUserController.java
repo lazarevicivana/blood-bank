@@ -1,6 +1,9 @@
 package ftn.uns.ac.rs.bloodbank.applicationUser.controller;
 
+
+import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserUpdate;
 import ftn.uns.ac.rs.bloodbank.applicationUser.service.ApplicationUserService;
+
 import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.NonNull;
@@ -23,14 +26,14 @@ public class ApplicationUserController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ApplicationUserDtoResponse> getApplicationUser(@NonNull @PathVariable("id") UUID id){
-        var user = mapperService.AppUserToAppUserDto((applicationUserService.getApplicationUser(id)));
+    public ResponseEntity<ApplicationUserUpdate> getApplicationUser(@NonNull @PathVariable("id") UUID id){
+        var user = mapperService.AppUserToAppUserUpdate((applicationUserService.getApplicationUser(id)));
         return ResponseEntity.ok(user);
     }
 
     @PutMapping()
-    public ResponseEntity<String> updateApplicationUser(@RequestBody ApplicationUserDtoResponse userDto){
-        var user = mapperService.AppUserDtoToAppUser(userDto);
+    public ResponseEntity<String> updateApplicationUser(@RequestBody ApplicationUserUpdate userDto){
+        var user = mapperService.AppUserUpdateToAppUser(userDto);
         applicationUserService.updateApplicationUser(user);
         return ResponseEntity.noContent().build();
     }

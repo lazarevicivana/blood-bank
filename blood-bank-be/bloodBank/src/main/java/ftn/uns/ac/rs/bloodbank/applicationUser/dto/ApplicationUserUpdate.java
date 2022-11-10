@@ -1,7 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.applicationUser.dto;
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.model.UserRole;
-import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +12,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApplicationUserDtoResponse {
+public class ApplicationUserUpdate {
     @NonNull
     private UUID id;
 
@@ -44,6 +43,11 @@ public class ApplicationUserDtoResponse {
     private GenderType gender;
 
     @NonNull
-    private Address address;
-
+    private  String city;
+    @NonNull
+    private  String street;
+    @NonNull
+    private  String country;
+    @NonNull
+    private  String streetNumber;
 }

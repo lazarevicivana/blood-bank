@@ -10,14 +10,19 @@ import {FormsModule} from "@angular/forms";
 import {CreateCenterComponent} from "./create-center/create-center.component";
 import { MatSelectModule } from '@angular/material/select';
 import {MatExpansionModule} from "@angular/material/expansion";
+
 import {MatGridListModule} from "@angular/material/grid-list";
+
+import {CenterCardComponent} from "../../components/center-card/center-card.component";
+
 
 
 
 @NgModule({
-  declarations: [CenterProfileComponent, AllCentersComponent, UpdateCenterComponent, CreateCenterComponent],
+  declarations: [CenterProfileComponent, AllCentersComponent, UpdateCenterComponent, CreateCenterComponent,CenterCardComponent],
   exports: [
-    CreateCenterComponent
+    CreateCenterComponent,
+    CenterCardComponent
   ],
     imports: [
         CommonModule,
