@@ -7,6 +7,7 @@ import {UpdateCenterComponent} from "./view/centers/update-center/update-center.
 import {AccountComponent} from "./view/account/account.component";
 import {CreateCenterComponent} from "./view/centers/create-center/create-center.component";
 import {AllUsersComponent} from "./view/all-users/all-users.component";
+import {CenterAdminProfileComponent} from "./view/centers/center-admin-profile/center-admin-profile.component";
 
 const routes: Routes = [
   { path: 'facilities', component: AllCentersComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'update-center', component: UpdateCenterComponent},
   { path: 'create-center', component: CreateCenterComponent},
   { path: 'all-users', component: AllUsersComponent},
-  { path:'',component:LoginComponent}
+  { path:'',component:LoginComponent},
+  { path:'admin-center-profile',component:CenterAdminProfileComponent}
 ];
 
 @NgModule({

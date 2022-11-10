@@ -14,12 +14,25 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatGridListModule} from "@angular/material/grid-list";
 
 import {CenterCardComponent} from "../../components/center-card/center-card.component";
+import { CenterAdminProfileComponent } from './center-admin-profile/center-admin-profile.component';
+import {AppModule} from "../../app.module";
+import {UserCardComponent} from "../../components/user-card/user-card.component";
+import {CommonComponentsModule} from "../../components/common-components.module";
 
 
 
 
 @NgModule({
-  declarations: [CenterProfileComponent, AllCentersComponent, UpdateCenterComponent, CreateCenterComponent,CenterCardComponent],
+  declarations:
+    [
+      CenterProfileComponent,
+      AllCentersComponent,
+      UpdateCenterComponent,
+      CreateCenterComponent,
+      CenterCardComponent,
+      CenterAdminProfileComponent,
+      CenterAdminProfileComponent
+    ],
   exports: [
     CreateCenterComponent,
     CenterCardComponent
@@ -32,7 +45,8 @@ import {CenterCardComponent} from "../../components/center-card/center-card.comp
         FormsModule,
         MatSelectModule,
         MatExpansionModule,
-        MatGridListModule
+        MatGridListModule,
+        CommonComponentsModule
     ]
 })
 export class CenterViewModule { }

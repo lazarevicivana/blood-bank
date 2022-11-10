@@ -1,22 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {CenterService} from "../../../services/center.service";
 import {Center} from "../../../model/Center";
+import {CenterService} from "../../../services/center.service";
 import {GoogleMapApiService} from "../../../services/googleMapApi.service";
 import {Router} from "@angular/router";
+import {CenterAdminService} from "../../../services/center-admin.service";
 import {TokenStorageService} from "../../../services/token-storage.service";
+import {UserToken} from "../../../model/UserToken";
+import {ApplicationUser} from "../../../model/ApplicationUser";
+import {UserResponse} from "../../../model/UserResponse";
+import {Observable, switchMap, tap} from "rxjs";
 
 @Component({
-  selector: 'app-center-profile',
-  templateUrl: './center-profile.component.html',
-  styleUrls: ['./center-profile.component.css']
+  selector: 'app-center-admin-profile',
+  templateUrl: './center-admin-profile.component.html',
+  styleUrls: ['./center-admin-profile.component.css']
 })
-export class CenterProfileComponent implements OnInit {
+export class CenterAdminProfileComponent implements OnInit {
+
   public center: Center;
   private map!: google.maps.Map;
-  private id:string = "ef81c6fc-bd01-4148-b460-b9f2eb7c53c3"
-  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private readonly router:Router,private tokenStorageService: TokenStorageService) {
-    this.id = this.router.getCurrentNavigation()?.extras?.state?.['centerId']!
+  private readonly user: UserToken;
+  public otherAdmins: UserResponse[] = [];
+  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private readonly router:Router,private adminCenterService: CenterAdminService,private tokenStorageService: TokenStorageService ) {
     this.center = new Center();
+    this.user = this.tokenStorageService.getUser();
+    console.log(this.user)
   }
   ngOnInit(): void {
     const loaded = this.mapLoader.googleApi.then(()=>{
@@ -37,12 +45,10 @@ export class CenterProfileComponent implements OnInit {
   public async updateCenter(): Promise<void>{
     await this.router.navigateByUrl('/update-center')
   }
-  private getCenter(){
-    this.centerService.getCenter(this.id).subscribe(
-      {
-        next: response => {
+  private getCenter():void{
+    this.adminCenterService.getCenterForAdmin(this.user.id).subscribe(
+        response => {
           this.center = response;
-          console.log(response)
           new google.maps.Marker({
             position: {
               lat: this.center.latitude,
@@ -51,9 +57,18 @@ export class CenterProfileComponent implements OnInit {
             map: this.map,
             title: '1',
           });
+          this.getOtherAdmins()
         }
-      }
     )
+  }
+  private getOtherAdmins():void{
+    this.centerService.getOtherCenterAdmins(this.center.id!,this.user.id)
+      .subscribe({
+        next: response => {
+          this.otherAdmins = response;
+          console.log(this.otherAdmins)
+        }
+      })
   }
   imgCollection: Array<object> = [
     {
@@ -74,4 +89,5 @@ export class CenterProfileComponent implements OnInit {
       alt: 'Image 3'
     }
   ];
+
 }
