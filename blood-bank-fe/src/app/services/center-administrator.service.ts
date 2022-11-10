@@ -20,4 +20,9 @@ export class CenterAdministratorService {
   getAvailableAdmins(): Observable<CenterAdministrator[]> {
     return this.http.get<CenterAdministrator[]>(this.aplUrl+'/availableAdmins' ,httpHeaders);
   }
+
+  updateAdminCenter(adminId: string, centerId: string): Observable<CenterAdministrator> {
+    return this.http.put<CenterAdministrator>(this.aplUrl+'/updateCenter/'+adminId+'/'+centerId ,httpHeaders);
+  }
+
 }

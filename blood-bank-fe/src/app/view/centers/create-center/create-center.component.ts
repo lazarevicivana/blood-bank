@@ -4,6 +4,7 @@ import {CenterService} from "../../../services/center.service";
 import {GoogleMapApiService} from "../../../services/googleMapApi.service";
 import {CenterAdministrator} from "../../../model/CenterAdministrator";
 import {CenterAdministratorService} from "../../../services/center-administrator.service";
+import {waitForAsync} from "@angular/core/testing";
 
 
 @Component({
@@ -14,13 +15,12 @@ import {CenterAdministratorService} from "../../../services/center-administrator
 export class CreateCenterComponent implements OnInit {
   public center: Center
   public admins: CenterAdministrator[] = []
-  selectedAdmin: CenterAdministrator
+  selectedAdmin: string = ""
   private map!: google.maps.Map;
   private infoWindow!: google.maps.InfoWindow;
 
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService, private centerAdminService:CenterAdministratorService) {
     this.center = new Center();
-    this.selectedAdmin = new CenterAdministrator();
   }
 
   ngOnInit(): void {
@@ -29,14 +29,29 @@ export class CreateCenterComponent implements OnInit {
   }
 
   createCenter() {
-    console.log(this.center)
-    console.log('dsds')
-    console.log(this.selectedAdmin)
     this.centerService.createCenter(this.center).subscribe({
+      next: response => {
+        this.center.id = response.id
+        console.log('respooooonse' + response.id)
+        console.log(this.center.id)
+        this.updateAdminCenter()
+
+      }
+    })
+  }
+
+  private updateAdminCenter() {
+    console.log('Azuriiiranje')
+    console.log('admin id:' + this.selectedAdmin)
+    console.log('centar id:' + this.center.id)
+    console.log('izraz:' + (this.center.id != null && this.selectedAdmin != null))
+    if (this.center.id != null && this.selectedAdmin != null) {
+      this.centerAdminService.updateAdminCenter(this.selectedAdmin, this.center.id).subscribe({
         next: response => {
           console.log(response)
-        }})
-    
+        }
+      })
+    }
   }
 
   private getAvailableAdmins() {
@@ -92,5 +107,8 @@ export class CreateCenterComponent implements OnInit {
     })
   }
 
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 
 }
