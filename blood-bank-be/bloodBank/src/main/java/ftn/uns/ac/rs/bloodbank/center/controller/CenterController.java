@@ -43,7 +43,7 @@ public class CenterController {
         Center savedCenter = centerService.createCenter(center);
         return new ResponseEntity<>(savedCenter, HttpStatus.CREATED);
     }
-    @PreAuthorize("hasAnyRole('ROLE_NOT_REGISTER','ROLE_SYSTEM_ADMIN','ROLE_CUSTOMER')")
+    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN','ROLE_SYSTEM_ADMIN','ROLE_CUSTOMER')")
     @GetMapping(path = "{id}")
     public ResponseEntity<CenterDtoResponse> getCenter(@NotNull @PathVariable("id") UUID id) {
         var c = centerService.getCenter(id);
