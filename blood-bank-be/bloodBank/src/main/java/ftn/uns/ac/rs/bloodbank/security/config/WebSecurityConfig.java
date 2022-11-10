@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.security.config;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUserService;
+import ftn.uns.ac.rs.bloodbank.applicationUser.service.ApplicationUserService;
 import ftn.uns.ac.rs.bloodbank.security.jwt.AuthEntryPointJwt;
 import ftn.uns.ac.rs.bloodbank.security.jwt.AuthTokenFilter;
 import lombok.AllArgsConstructor;

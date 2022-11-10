@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.security.jwt;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import org.springframework.beans.factory.annotation.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.registration.dto;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.UserRole;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

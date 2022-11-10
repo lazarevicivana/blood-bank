@@ -1,22 +1,20 @@
-package ftn.uns.ac.rs.bloodbank.applicationUser;
+package ftn.uns.ac.rs.bloodbank.applicationUser.service;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
+import ftn.uns.ac.rs.bloodbank.applicationUser.repository.ApplicationUserRepository;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationToken;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
-import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -119,16 +117,16 @@ public class ApplicationUserService implements UserDetailsService {
             currentUser.getAddress().setCountry(applicationUser.getAddress().getCountry());
         }
         if(applicationUser.getAddress().getCity()!=null) {
-            currentUser.getAddress().setCountry(applicationUser.getAddress().getCity());
+            currentUser.getAddress().setCity(applicationUser.getAddress().getCity());
 
         }
         if(applicationUser.getAddress().getStreet()!=null) {
-            currentUser.getAddress().setCountry(applicationUser.getAddress().getStreet());
+            currentUser.getAddress().setStreet(applicationUser.getAddress().getStreet());
 
 
         }
         if(applicationUser.getAddress().getStreetNumber()!=null) {
-            currentUser.getAddress().setCountry(applicationUser.getAddress().getStreetNumber());
+            currentUser.getAddress().setStreetNumber(applicationUser.getAddress().getStreetNumber());
         }
 
     }

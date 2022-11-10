@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.center.dto;
+package ftn.uns.ac.rs.bloodbank.applicationUser.dto;
 
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
@@ -42,7 +42,13 @@ public class ApplicationUserDtoResponse {
     private GenderType gender;
 
     @NonNull
-    private Address address;
+    private  String city;
+    @NonNull
+    private  String street;
+    @NonNull
+    private  String country;
+    @NonNull
+    private  String streetNumber;
 
     @NonNull
     private Boolean enabled;

@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.applicationUser;
+package ftn.uns.ac.rs.bloodbank.applicationUser.model;
 
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;

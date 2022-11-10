@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.appointment.Appointment;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import lombok.Getter;

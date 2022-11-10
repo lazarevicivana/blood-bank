@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.center.dto;
 
-import ftn.uns.ac.rs.bloodbank.applicationUser.UserRole;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.UserRole;
 import ftn.uns.ac.rs.bloodbank.registration.dto.AddressRequest;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
 import lombok.AllArgsConstructor;
