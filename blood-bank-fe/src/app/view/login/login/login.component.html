@@ -1,30 +1,81 @@
 <div class="container-main">
   <div class="container" [ngClass]="rightActive ? 'right-panel-active' :''"  id="container">
-    <div class="form-container sign-up-container">
-      <form action="#" [formGroup]="formGroup" >
+    <div class="form-container-reg sign-up-container">
+      <form action="#" [formGroup]="formGroup" class="reg-form" >
         <div class="title-container">
           <h2 class="title">Create Account</h2>
-          <span>or use your email for registration</span>
         </div>
-        <input type="text" placeholder="Name" formControlName="name" />
-        <input type="text" placeholder="Surname" formControlName="surname" />
-        <input type="text" placeholder="Username" formControlName="username" />
-        <input type="email" placeholder="Email" formControlName="email" />
-        <input type="password" placeholder="Password" formControlName="password" />
-        <input type="text" placeholder="Phone" formControlName="phone" />
-        <input type="text" placeholder="Phone" formControlName="jmbg" />
-        <input type="text" placeholder="Jmbg" formControlName="phone" />
-        <div formGroupName="profession">
+        <mat-form-field class="mat"   appearance="outline">
+          <mat-label class="mat" > Name</mat-label>
+          <input class="mat" formControlName="name" matInput placeholder="username" >
+        </mat-form-field>
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label >Surname</mat-label>
+          <input   formControlName="surname" matInput placeholder="username" >
+        </mat-form-field>
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label > Username</mat-label>
+          <input formControlName="username" matInput placeholder="username" >
+        </mat-form-field>
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label > email</mat-label>
+          <input type="email" formControlName="email" matInput placeholder="username" >
+        </mat-form-field>
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label > password</mat-label>
+          <input type="password" formControlName="password" matInput placeholder="username" >
+        </mat-form-field>
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label > jmbg</mat-label>
+          <input formControlName="jmbg" matInput placeholder="username" >
+        </mat-form-field>
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label > phone</mat-label>
+          <input formControlName="phone" matInput placeholder="phone" >
+        </mat-form-field>
+<!--        <input type="text" placeholder="Name" formControlName="name" />-->
+<!--        <input type="text" placeholder="Surname" formControlName="surname" />-->
+<!--        <input type="text" placeholder="Username" formControlName="username" />-->
+<!--        <input type="email" placeholder="Email" formControlName="email" />-->
+<!--        <input type="password" placeholder="Password" formControlName="password" />-->
+<!--        <input type="text" placeholder="Phone" formControlName="phone" />-->
+<!--        <input type="text" placeholder="Phone" formControlName="jmbg" />-->
+<!--        <input type="text" placeholder="Jmbg" formControlName="phone" />-->
+        <div formGroupName="profession" style="width: 100%">
           <h4>Profession</h4>
-          <input  type="text" placeholder="Status" formControlName="professionStatus"/>
-          <input  type="text" placeholder="Description" formControlName="professionDescription"/>
+             <mat-form-field class="mat" appearance="outline">
+            <mat-label >professionStatus</mat-label>
+            <input formControlName="professionStatus" matInput placeholder="phone" >
+             </mat-form-field>
+          <mat-form-field class="mat"  appearance="outline">
+            <mat-label >professionDescription</mat-label>
+            <input formControlName="professionDescription" matInput placeholder="phone" >
+             </mat-form-field>
+<!--          <input  type="text" placeholder="Status" formControlName="professionStatus"/>-->
+<!--          <input  type="text" placeholder="Description" formControlName="professionDescription"/>-->
         </div>
         <div formGroupName="address">
           <h4>Address</h4>
-          <input  type="text" placeholder="Street" formControlName="street"/>
-          <input  type="text" placeholder="City" formControlName="city"/>
-          <input  type="text" placeholder="Country" formControlName="country"/>
-          <input  type="text" placeholder="Street number" formControlName="streetNumber"/>
+          <mat-form-field class="mat"  appearance="outline">
+            <mat-label >professionDescription</mat-label>
+            <input formControlName="street" matInput placeholder="phone" >
+          </mat-form-field>
+          <mat-form-field class="mat"  appearance="outline">
+            <mat-label >professionDescription</mat-label>
+            <input formControlName="city" matInput placeholder="phone" >
+          </mat-form-field>
+          <mat-form-field class="mat"  appearance="outline">
+            <mat-label >professionDescription</mat-label>
+            <input formControlName="country" matInput placeholder="phone" >
+          </mat-form-field>
+          <mat-form-field class="mat"  appearance="outline">
+            <mat-label >professionDescription</mat-label>
+            <input formControlName="streetNumber" matInput placeholder="phone" >
+          </mat-form-field>
+<!--          <input  type="text" placeholder="Street" formControlName="street"/>-->
+<!--          <input  type="text" placeholder="City" formControlName="city"/>-->
+<!--          <input  type="text" placeholder="Country" formControlName="country"/>-->
+<!--          <input  type="text" placeholder="Street number" formControlName="streetNumber"/>-->
         </div>
         <button (click)="onSignUp()">Sign Up</button>
       </form>
