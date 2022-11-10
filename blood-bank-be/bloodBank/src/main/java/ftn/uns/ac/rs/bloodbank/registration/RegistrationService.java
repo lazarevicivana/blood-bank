@@ -13,10 +13,13 @@ import ftn.uns.ac.rs.bloodbank.security.jwt.JwtUtils;
 import lombok.AllArgsConstructor;
 import java.io.IOException;
 import java.lang.String;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,20 +32,23 @@ public class RegistrationService {
     private EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailService mailService;
-    private final MapperService mapperService;
     private JwtUtils jwtUtils;
     private AuthenticationManager authenticationManager;
+    private PasswordEncoder encoder;
 
-
-    public String register(CustomerRequest request) throws IOException {
+    public String register(Customer request) throws IOException {
        var isValidEmail = emailValidator.test(request.getEmail());
        if(!isValidEmail){
            throw new IllegalStateException("email not valid");
        }
-        var token = applicationUserService.signUpUser(createNewCustomer(request));
+        var token = applicationUserService.signUpUser(hashPassword(request));
         mailService.sendEmail(request,token);
 
         return token;
+    }
+    public Customer hashPassword(Customer customer){
+        customer.setPassword(encoder.encode(customer.getPassword()));
+        return customer;
     }
     public JwtResponse login(LoginRequest loginRequest){
         Authentication authentication = authenticationManager.authenticate(
@@ -58,15 +64,6 @@ public class RegistrationService {
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 userDetails.getUserRole());
-    }
-
-    private  Customer createNewCustomer(CustomerRequest request) {
-        var address = mapperService.AdressRequestToAdress(request.getAddress());
-        var profession = mapperService.ProfessionRequestToProfession(request.getProfession());
-        var customer = mapperService.CustomerRequestToCustomer(request);
-        customer.setAddress(address);
-        customer.setProfession(profession);
-        return customer;
     }
 
     @Transactional
