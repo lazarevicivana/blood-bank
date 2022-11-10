@@ -22,6 +22,12 @@ export const navbarData=[
     icon: 'business-outline',
     label: 'Schedule',
     num:3
+  },
+  {
+    routeLink: 'create-center',
+    icon: 'business-outline',
+    label: 'Create',
+    num:4
   }
 
   ];
