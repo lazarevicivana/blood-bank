@@ -1,15 +1,22 @@
 package ftn.uns.ac.rs.bloodbank.registration;
 
+import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.applicationUser.ApplicationUserService;
 import ftn.uns.ac.rs.bloodbank.customer.Customer;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;
+import ftn.uns.ac.rs.bloodbank.registration.dto.JwtResponse;
+import ftn.uns.ac.rs.bloodbank.registration.dto.LoginRequest;
 import ftn.uns.ac.rs.bloodbank.registration.email.EmailService;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationTokenService;
+import ftn.uns.ac.rs.bloodbank.security.jwt.JwtUtils;
 import lombok.AllArgsConstructor;
-
 import java.io.IOException;
 import java.lang.String;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +30,8 @@ public class RegistrationService {
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailService mailService;
     private final MapperService mapperService;
+    private JwtUtils jwtUtils;
+    private AuthenticationManager authenticationManager;
 
 
     public String register(CustomerRequest request) throws IOException {
@@ -35,8 +44,23 @@ public class RegistrationService {
 
         return token;
     }
+    public JwtResponse login(LoginRequest loginRequest){
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt = jwtUtils.generateJwtToken(authentication);
+        ApplicationUser userDetails = (ApplicationUser) authentication.getPrincipal();
+//        List<String> roles = userDetails.getAuthorities().stream()
+//                .map(item -> item.getAuthority())
+//                .collect(Collectors.toList());
+        return new JwtResponse(jwt,
+                userDetails.getId(),
+                userDetails.getUsername(),
+                userDetails.getEmail(),
+                userDetails.getUserRole());
+    }
 
-    private Customer createNewCustomer(CustomerRequest request) {
+    private  Customer createNewCustomer(CustomerRequest request) {
         var address = mapperService.AdressRequestToAdress(request.getAddress());
         var profession = mapperService.ProfessionRequestToProfession(request.getProfession());
         var customer = mapperService.CustomerRequestToCustomer(request);
