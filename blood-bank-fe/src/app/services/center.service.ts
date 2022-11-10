@@ -13,4 +13,7 @@ export class CenterService {
   getCenter(id: string): Observable<Center> {
     return this.http.get<Center>(this.apiHost + 'api/v1/center/' + id, {headers: this.headers});
   }
+  getAllCenters(): Observable<Center[]> {
+    return this.http.get<Center[]>(this.apiHost + 'api/v1/center/', {headers: this.headers});
+  }
 }

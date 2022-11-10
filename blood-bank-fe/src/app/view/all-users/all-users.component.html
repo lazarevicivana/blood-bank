@@ -1,0 +1,7 @@
+<div class="container-fluid">
+  <div class="row col col-md">
+  <div *ngFor="let user of users" class="col-4 col-md-4">
+      <app-user-card  [user]="user"></app-user-card>
+    </div>
+  </div>
+</div>

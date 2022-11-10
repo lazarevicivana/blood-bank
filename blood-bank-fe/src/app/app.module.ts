@@ -18,33 +18,40 @@ import {MatButtonModule} from "@angular/material/button";
 import {CenterViewModule} from "./view/centers/center-view.module";
 import { LoginComponent } from './view/login/login/login.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { AllUsersComponent } from './view/all-users/all-users.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { CenterCardComponent } from './components/center-card/center-card.component';
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavigationBarComponent,
-    BodyComponent,
-    AccountComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatButtonModule,
-    CenterViewModule
-  ],
-  providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavigationBarComponent,
+        BodyComponent,
+        AccountComponent,
+        LoginComponent,
+        AllUsersComponent,
+        UserCardComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        HttpClientModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatButtonModule,
+        CenterViewModule
+    ],
+    providers: [authInterceptorProviders],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

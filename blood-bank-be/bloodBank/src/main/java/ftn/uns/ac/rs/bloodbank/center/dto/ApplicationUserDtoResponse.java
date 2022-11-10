@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.center.dto;
 
+import ftn.uns.ac.rs.bloodbank.applicationUser.UserRole;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,7 @@ public class ApplicationUserDtoResponse {
     @NonNull
     private String email;
 
+    private UserRole role;
 
     @NonNull
     private GenderType gender;
@@ -41,9 +43,4 @@ public class ApplicationUserDtoResponse {
     @NonNull
     private Address address;
 
-    @NonNull
-    private Boolean enabled;
-
-    @NonNull
-    private boolean deleted;
 }
