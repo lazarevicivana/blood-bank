@@ -3,6 +3,7 @@ import {Center} from "../../../model/Center";
 import {CenterService} from "../../../services/center.service";
 import {GoogleMapApiService} from "../../../services/googleMapApi.service";
 import {CenterAdministrator} from "../../../model/CenterAdministrator";
+import {CenterAdministratorService} from "../../../services/center-administrator.service";
 
 
 @Component({
@@ -17,27 +18,32 @@ export class CreateCenterComponent implements OnInit {
   private map!: google.maps.Map;
   private infoWindow!: google.maps.InfoWindow;
 
-  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService) {
+  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService, private centerAdminService:CenterAdministratorService) {
     this.center = new Center();
     this.selectedAdmin = new CenterAdministrator();
   }
 
   ngOnInit(): void {
     this.handleMap();
+    this.getAvailableAdmins();
   }
 
   createCenter() {
     console.log(this.center)
     console.log('dsds')
     console.log(this.selectedAdmin)
-    this.centerService.createCenter(this.center).subscribe(
-      {
+    this.centerService.createCenter(this.center).subscribe({
         next: response => {
           console.log(response)
-        }
-      }
-    )
+        }})
+    
+  }
 
+  private getAvailableAdmins() {
+    this.centerAdminService.getAvailableAdmins().subscribe({
+      next: response => {
+        this.admins = response;
+      }})
   }
 
   private handleMap() {
@@ -85,5 +91,6 @@ export class CreateCenterComponent implements OnInit {
       })
     })
   }
+
 
 }
