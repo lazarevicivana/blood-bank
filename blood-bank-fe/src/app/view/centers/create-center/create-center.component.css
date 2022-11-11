@@ -5,19 +5,10 @@
   flex-direction: column;
 }
 
-.input-create-center {
-  margin-top: 10px;
-  width: 55%;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+.center-text {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
 }
 
-.address-container .mat-form-field + .mat-form-field+ .mat-form-field {
-  margin-left: 10px;
-}
-
-.g1-map{
-  width: 55%;
-  height: 700px;
-}

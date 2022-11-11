@@ -11,11 +11,13 @@ import {CreateCenterComponent} from "./create-center/create-center.component";
 import { MatSelectModule } from '@angular/material/select';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {CenterCardComponent} from "../../components/center-card/center-card.component";
+import { CenterFormComponent } from './create-center/center-form/center-form.component';
+import { AdminFormComponent } from './create-center/admin-form/admin-form.component';
 
 
 
 @NgModule({
-  declarations: [CenterProfileComponent, AllCentersComponent, UpdateCenterComponent, CreateCenterComponent,CenterCardComponent],
+  declarations: [CenterProfileComponent, AllCentersComponent, UpdateCenterComponent, CreateCenterComponent,CenterCardComponent, CenterFormComponent, AdminFormComponent],
   exports: [
     CreateCenterComponent,
     CenterCardComponent
