@@ -25,4 +25,8 @@ export class CenterAdministratorService {
     return this.http.put<CenterAdministrator>(this.aplUrl+'/updateCenter/'+adminId+'/'+centerId ,httpHeaders);
   }
 
+  createAdmin(admin:CenterAdministrator): Observable<CenterAdministrator> {
+    return this.http.post<CenterAdministrator>(this.aplUrl,admin ,httpHeaders);
+  }
+
 }
