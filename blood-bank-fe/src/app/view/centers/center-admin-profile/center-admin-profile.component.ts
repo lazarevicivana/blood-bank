@@ -6,9 +6,9 @@ import {Router} from "@angular/router";
 import {CenterAdminService} from "../../../services/center-admin.service";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {UserToken} from "../../../model/UserToken";
-import {ApplicationUser} from "../../../model/ApplicationUser";
 import {UserResponse} from "../../../model/UserResponse";
-import {Observable, switchMap, tap} from "rxjs";
+import {AppointmentService} from "../../../services/appointment.service";
+import {AppointmentResponse} from "../../../model/AppointmentResponse";
 
 @Component({
   selector: 'app-center-admin-profile',
@@ -21,7 +21,10 @@ export class CenterAdminProfileComponent implements OnInit {
   private map!: google.maps.Map;
   private readonly user: UserToken;
   public otherAdmins: UserResponse[] = [];
-  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private readonly router:Router,private adminCenterService: CenterAdminService,private tokenStorageService: TokenStorageService ) {
+  public appointments: AppointmentResponse[] = [];
+  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,
+              private readonly router:Router,private adminCenterService: CenterAdminService
+              ,private appService:AppointmentService, private tokenStorageService: TokenStorageService ) {
     this.center = new Center();
     this.user = this.tokenStorageService.getUser();
     console.log(this.user)
@@ -43,7 +46,7 @@ export class CenterAdminProfileComponent implements OnInit {
     )
   }
   public async updateCenter(): Promise<void>{
-    await this.router.navigateByUrl('/update-center')
+    // await this.router.navigateByUrl('/update-center')
   }
   private getCenter():void{
     this.adminCenterService.getCenterForAdmin(this.user.id).subscribe(
@@ -58,6 +61,7 @@ export class CenterAdminProfileComponent implements OnInit {
             title: '1',
           });
           this.getOtherAdmins()
+          this.getAppointmentsForCenter()
         }
     )
   }
@@ -69,6 +73,22 @@ export class CenterAdminProfileComponent implements OnInit {
           console.log(this.otherAdmins)
         }
       })
+  }
+  private getAppointmentsForCenter(){
+    this.appService.getAppointmentsForCenter(this.center.id!).subscribe(
+      {
+        next: response =>{
+          this.appointments = response;
+          console.log(this.appointments)
+          // this.appointments.forEach( app =>{
+          //   console.log(app.medicalStaffs?.forEach(st =>{
+          //     console.log(st.name)
+          //     console.log(st.surname)
+          //   }))
+          // })
+        }
+      }
+    )
   }
   imgCollection: Array<object> = [
     {

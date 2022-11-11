@@ -34,9 +34,7 @@ public class CenterAdministratorDto {
     private String street;
     private String country;
     private String streetNumber;
-    @NonNull
     private Boolean enabled;
-    @NonNull
     private boolean deleted;
     private UserRole role;
     private UUID center;

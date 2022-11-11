@@ -21,7 +21,6 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @Builder
 @DiscriminatorColumn(name="user_role", discriminatorType = DiscriminatorType.INTEGER)
 public class ApplicationUser implements UserDetails {
