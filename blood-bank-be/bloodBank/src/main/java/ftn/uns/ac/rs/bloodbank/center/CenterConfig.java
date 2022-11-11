@@ -1,7 +1,9 @@
 package ftn.uns.ac.rs.bloodbank.center;
 
+import ftn.uns.ac.rs.bloodbank.center.model.Center;
+import ftn.uns.ac.rs.bloodbank.center.model.CenterAddress;
+import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

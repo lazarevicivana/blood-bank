@@ -1,24 +1,20 @@
 package ftn.uns.ac.rs.bloodbank.systemAdministrator;
 
 
-import ftn.uns.ac.rs.bloodbank.aplicationUser.Address;
-import ftn.uns.ac.rs.bloodbank.aplicationUser.ApplicationUser;
-import ftn.uns.ac.rs.bloodbank.aplicationUser.GenderType;
+import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Setter
 @Getter
 @Entity(name = "SystemAdministrator")
-@Table(name="system_administrator")
+@DiscriminatorValue("2")
 public class SystemAdministrator extends ApplicationUser {
 
     public SystemAdministrator() {
     }
-    public SystemAdministrator(String name, String surname,String username,String password, String phone, String jmbg, String email, Address address, GenderType gender) {
-        super(name, surname,username,password, phone, jmbg, email, address, gender);
-    }
+
 }

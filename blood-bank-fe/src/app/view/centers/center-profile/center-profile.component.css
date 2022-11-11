@@ -1,0 +1,33 @@
+*{
+  overflow: auto;
+}
+.header {
+  font-size: 45px;
+  font-weight: 600;
+  background-image: linear-gradient(to left,#3b4d79, #3C779BFF);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+}
+.header-margin-top{
+  padding-top: 20px;
+}
+.sub-color{
+  background: rgba(59, 77, 121, 0.12);
+}
+.border-card{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25),
+  0 10px 10px rgba(0,0,0,0.22);
+  transition: all 0.6s ease-in-out;
+  width: 100%;
+}
+.list-margin{
+  margin-top: 10px;
+}
+.information{
+  width: 93%;
+  height: 100%;
+}
+.map{
+  /*width: 50%;*/
+}

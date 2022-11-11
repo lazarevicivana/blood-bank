@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "spring.sendgrid.username",
+      "type": "java.lang.String",
+      "description": "Description for spring.sendgrid.username."
+    },
+    {
+      "name": "jwtSecret",
+      "type": "java.lang.String",
+      "description": "Description for jwtSecret."
+    },
+    {
+      "name": "jwtExpirationMs",
+      "type": "java.lang.String",
+      "description": "Description for jwtExpirationMs."
+    },
+    {
+      "name": "spring.sendgrid.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.sendgrid.password."
+    }
+  ]
+}

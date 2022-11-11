@@ -1,0 +1,14 @@
+<mat-stepper linear #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Edit address</ng-template>
+    <div>
+      <input type="number" [(ngModel)]="latitude"/>
+    </div>
+    <div>
+      <input type="number" [(ngModel)]="longitude"/>
+    </div>
+    <div class="g-map" id="map"></div>
+  </mat-step>
+  <mat-step>
+  </mat-step>
+</mat-stepper>

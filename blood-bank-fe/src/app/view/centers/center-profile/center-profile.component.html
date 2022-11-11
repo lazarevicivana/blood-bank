@@ -1,0 +1,67 @@
+<div class="container">
+  <div style="margin-top: 10px;">
+  <ng-image-slider [images]="imgCollection" [imageSize]="{width: 650, height: 250, space: 10}" #nav></ng-image-slider>
+  </div>
+  <div class="header-margin-top">
+    <h1 class="header">{{center.name}}</h1>
+  </div>
+  <mat-divider class="sub-color"></mat-divider>
+  <mat-grid-list cols="2" rowHeight="1:1.2" style="margin-left: 10px; margin-right: 10px; margin-top: 20px">
+    <mat-grid-tile>
+      <mat-card class="information border-card">
+        <mat-card-title>Center Information's</mat-card-title>
+        <mat-list class="list-margin">
+          <div mat-subheader>Description:</div>
+          <mat-list-item>
+            <div>
+              {{center.description}}
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+          <div mat-subheader>Average grade:</div>
+          <mat-list-item>
+            <div>
+              {{center.avgGrade}}
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+          <div mat-subheader>Country:</div>
+          <mat-list-item>
+            <div>
+              {{center.country}}
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+          <div mat-subheader>City:</div>
+          <mat-list-item>
+            <div>
+              {{center.city}}
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+          <div mat-subheader>Address:</div>
+          <mat-list-item>
+          <div>
+            {{center.street}} {{center.streetNumber}}
+          </div>
+          </mat-list-item>
+            <mat-divider class="sub-color"></mat-divider>
+          <div mat-subheader>Working time:</div>
+          <mat-list-item>
+            <div>
+              8 AM - 8 PM
+            </div>
+          </mat-list-item>
+          <mat-divider class="sub-color"></mat-divider>
+        </mat-list>
+<!--        <mat-card-actions align="end">-->
+<!--          <button mat-button (click)="updateCenter()">UPDATE</button>-->
+<!--        </mat-card-actions>-->
+      </mat-card>
+      </mat-grid-tile>
+    <mat-grid-tile >
+      <div class="g-map" id="map" style="margin-right: 30px"></div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+

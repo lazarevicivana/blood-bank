@@ -1,0 +1,84 @@
+<div class="card" [ngClass]="{ 'green' : user.role === 'ROLE_CENTER_ADMIN','blue' : user.role === 'ROLE_SYSTEM_ADMIN'}">
+  <div class="additional">
+    <div class="user-card">
+      <div class="level center">
+        {{resolveUserRole()}}
+      </div>
+      <div class="points center">
+<!--        0 Points-->
+        Available
+      </div>
+      <div class="center">
+        <img *ngIf="user.role === 'ROLE_CENTER_ADMIN'" src="assets/medical-stuff.png"/>
+        <img *ngIf="user.role === 'ROLE_CUSTOMER'" src="assets/patient.png"/>
+        <img *ngIf="user.role === 'ROLE_SYSTEM_ADMIN'" src="assets/admin.png"/>
+      </div>
+    </div>
+    <div class="more-info">
+      <h1>{{user.username}}</h1>
+      <div class="coords">
+        <span>Country:</span>
+        <span>{{user.address.country}}</span>
+      </div>
+      <div class="coords">
+        <span>City:</span>
+        <span>{{user.address.city}}</span>
+      </div>
+      <div class="coords">
+        <span>Address:</span>
+        <span>{{user.address.street}} {{user.address.streetNumber}}</span>
+      </div>
+      <div class="coords">
+        <span>Role:</span>
+        <span>{{resolveUserRole()}}</span>
+      </div>
+      <div class="coords">
+        <span>Gender:</span>
+        <span>{{user.gender}}</span>
+      </div>
+      <div class="stats">
+        <div>
+          <div class="title">Awards</div>
+          <i class="fa fa-trophy"></i>
+          <div class="value">0</div>
+        </div>
+        <div>
+          <div class="title">Matches</div>
+          <i class="fa fa-gamepad"></i>
+          <div class="value">27</div>
+        </div>
+        <div>
+          <div class="title">Pals</div>
+          <i class="fa fa-group"></i>
+          <div class="value">123</div>
+        </div>
+        <div>
+          <div class="title">Coffee</div>
+          <i class="fa fa-coffee"></i>
+          <div class="value infinity">∞</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="general">
+    <h1>{{user.name}} {{user.surname}}</h1>
+    <div>
+      <div class="info" >
+        <span>Username:</span>
+        <span class="right-t">{{user.username}}</span>
+      </div>
+    <div class="info">
+      <span>Email:</span>
+      <span class="right-t">{{user.email}}</span>
+    </div>
+    </div>
+    <div class="info">
+      <span>Phone:</span>
+      <span class="right-t">{{user.phone}}</span>
+    </div>
+    <div>
+      <span class="more">Mouse over the card for more info</span>
+    </div>
+  </div>
+</div>
+
