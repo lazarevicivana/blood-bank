@@ -5,14 +5,15 @@
           <ng-template matStepLabel>Create center</ng-template>
           <app-center-form [center]="center"></app-center-form>
           <div align="end">
-            <button mat-flat-button matStepperNext color="primary" (click)="createCenter()">Next</button>
+            <button mat-flat-button matStepperNext color="primary" (click)="createCenter(stepper)">Next</button>
           </div>
         </mat-step>
+
         <mat-step>
           <ng-template matStepLabel>Create center administrator</ng-template>
           <app-admin-form [admin]="admin"></app-admin-form>
           <div align="end">
-            <button mat-flat-button matStepperNext color="primary" (click)="createAdmin()" >Next</button>
+            <button mat-flat-button color="primary" (click)="createAdmin()" >Next</button>
           </div>
         </mat-step>
 
@@ -21,11 +22,9 @@
           <div class="center-text">
             <p>You are now done, if you want to add more center administrators please go back.</p>
           </div>
-          <div>
+          <div class="space-between-container">
             <button mat-flat-button matStepperPrevious color="primary">Back</button>
-          </div>
-          <div align="end">
-            <button mat-flat-button color="basic" (click)="redirectToCenters()">Done</button>
+            <button mat-flat-button color="success" (click)="redirectToCenters()">Done</button>
           </div>
         </mat-step>
 

@@ -13,11 +13,12 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {CenterCardComponent} from "../../components/center-card/center-card.component";
 import { CenterFormComponent } from './create-center/center-form/center-form.component';
 import { AdminFormComponent } from './create-center/admin-form/admin-form.component';
+import { AnotherAdminDialogComponent } from './create-center/another-admin-dialog/another-admin-dialog.component';
 
 
 
 @NgModule({
-  declarations: [CenterProfileComponent, AllCentersComponent, UpdateCenterComponent, CreateCenterComponent,CenterCardComponent, CenterFormComponent, AdminFormComponent],
+  declarations: [CenterProfileComponent, AllCentersComponent, UpdateCenterComponent, CreateCenterComponent,CenterCardComponent, CenterFormComponent, AdminFormComponent, AnotherAdminDialogComponent],
   exports: [
     CreateCenterComponent,
     CenterCardComponent
