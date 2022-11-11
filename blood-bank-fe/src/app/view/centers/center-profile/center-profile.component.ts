@@ -14,7 +14,7 @@ export class CenterProfileComponent implements OnInit {
   public center: Center;
   private map!: google.maps.Map;
   private id:string = "ef81c6fc-bd01-4148-b460-b9f2eb7c53c3"
-  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private readonly router:Router,private tokenStorageService: TokenStorageService) {
+  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private readonly router:Router) {
     this.id = this.router.getCurrentNavigation()?.extras?.state?.['centerId']!
     this.center = new Center();
   }
@@ -34,9 +34,6 @@ export class CenterProfileComponent implements OnInit {
       }
     )
   }
-  public async updateCenter(): Promise<void>{
-    await this.router.navigateByUrl('/update-center')
-  }
   private getCenter(){
     this.centerService.getCenter(this.id).subscribe(
       {
@@ -49,7 +46,7 @@ export class CenterProfileComponent implements OnInit {
               lng: this.center.longitude
             },
             map: this.map,
-            title: '1',
+            title: this.center.name,
           });
         }
       }

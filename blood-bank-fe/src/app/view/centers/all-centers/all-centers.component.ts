@@ -66,7 +66,7 @@ export class AllCentersComponent implements OnInit {
               lng: center.longitude
             },
             map: this.map,
-            title:'1'
+            title: center.name
           });
         })
       },
@@ -81,7 +81,7 @@ export class AllCentersComponent implements OnInit {
           lng: center.longitude
         },
         map: this.map,
-        title: '1'
+        title: center.name
       });
     })
   }

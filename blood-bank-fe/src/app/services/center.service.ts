@@ -24,4 +24,7 @@ export class CenterService {
   getOtherCenterAdmins(centerId: string,adminId: string): Observable<UserResponse[]> {
     return this.http.get<UserResponse[]>(this.apiHost + `api/v1/center/other-admins/${centerId}/${adminId}`, {headers: this.headers});
   }
+  updateCenter(center:Center): Observable<Center>{
+    return this.http.put<Center>(this.apiHost + 'api/v1/center/',center,{headers: this.headers})
+  }
 }
