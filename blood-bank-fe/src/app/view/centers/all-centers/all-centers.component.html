@@ -1,36 +1,11 @@
 <div class="container-fluid">
-  <div class="filter">
-    <mat-form-field appearance="fill" class="filter-item">
-      <mat-label>Filter by country</mat-label>
-      <mat-select placeholder="Filter by country" (selectionChange)="getByCountryFilter(selectedCountry)" [(ngModel)] = "selectedCountry" >
-        <mat-option value="All">All</mat-option>
-        <mat-option *ngFor="let center of centers" [value]="center.country">{{center.country}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="filter-item">
-      <mat-label>Filter by city</mat-label>
-      <mat-select placeholder="Filter by city" (selectionChange)="getByCityFilter(selectedCity)" [(ngModel)] = "selectedCity" >
-        <mat-option value="All">All</mat-option>
-        <mat-option *ngFor="let center of centersFilterdByCountry" [value]="center.city">{{center.city}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="example-form-field filter-item" appearance="fill">
-      <mat-label>Search by name</mat-label>
-      <input matInput type="text" >
-      <button  matSuffix mat-icon-button aria-label="Clear" >
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-
-  </div>
+  <app-filter-bar (onCountryFilter)="getByCountryFilter($event)"  (onCityFilter)="getByCityFilter($event)"></app-filter-bar>
   <div class="row">
-  <div class="col-7 scroll row col-md-7 parent">
-    <div *ngFor="let center of centersFiltered" class="col-6 col-md-6">
+    <div class="col-7 scroll row col-md-7 parent">
+      <div *ngFor="let center of centersFiltered" class="col-6 col-md-6">
         <app-center-card [center]="center"></app-center-card>
       </div>
-  </div>
+    </div>
   <div class="col-5 col-md-5">
   <div class="main-map" id="map"></div>
   </div>

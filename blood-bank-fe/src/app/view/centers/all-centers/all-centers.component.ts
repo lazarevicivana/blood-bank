@@ -9,12 +9,9 @@ import {GoogleMapApiService} from "../../../services/googleMapApi.service";
   styleUrls: ['./all-centers.component.css']
 })
 export class AllCentersComponent implements OnInit {
-  selectedCountry =""
-  selectedCity =""
   centers : Center[]= []
   centersFiltered : Center[]= []
   centersFilterdByCountry : Center[]= []
-  centersFilterdByCity : Center[]= []
   private map!: google.maps.Map;
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService) { }
 
@@ -41,16 +38,17 @@ export class AllCentersComponent implements OnInit {
     if(name ==="All"){
       this.centersFiltered = this.centers
       this.centersFilterdByCountry = this.centers
-      this.selectedCountry=""
+      this.filterMap();
     }
     else{
-      this.centersFilterdByCountry = this.centersFilterdByCity.filter((obj) => {
+      this.centersFilterdByCountry = this.centers.filter((obj) => {
         return obj.country === name;
       });
       this.centersFiltered = this.centersFilterdByCountry
+      this.filterMap();
     }
 
-    console.log(this.selectedCountry)
+
     console.log(this.centersFilterdByCountry)
   }
 
@@ -59,10 +57,9 @@ export class AllCentersComponent implements OnInit {
       (response)=>{
         this.centers = response;
         this.centersFiltered = response;
-        this.centersFilterdByCity = response;
         this.centersFilterdByCountry = response;
         console.log(this.centers)
-        this.centers.forEach((center)=>{
+        this.centersFiltered.forEach((center)=>{
           new google.maps.Marker({
             position: {
               lat: center.latitude,
@@ -76,16 +73,30 @@ export class AllCentersComponent implements OnInit {
     )
   }
 
+  private filterMap(){
+    this.centersFiltered.forEach((center)=> {
+      new google.maps.Marker({
+        position: {
+          lat: center.latitude,
+          lng: center.longitude
+        },
+        map: this.map,
+        title: '1'
+      });
+    })
+  }
+
   getByCityFilter(city: string) {
     if(city ==="All"){
       this.centersFiltered = this.centersFilterdByCountry
-      this.centersFilterdByCity = this.centers
-      this.selectedCity=""
+
+      this.filterMap();
     }
     else{
       this.centersFiltered = this.centersFilterdByCountry.filter((obj) => {
         return obj.city === city;
       });
+      this.filterMap();
     }
   }
 }
