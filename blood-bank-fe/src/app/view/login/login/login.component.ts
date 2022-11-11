@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(response);
 
         this.isLoggedIn = true;
-      //  this.reloadPage();
+        this.reloadPage();
       }
     })
   }
