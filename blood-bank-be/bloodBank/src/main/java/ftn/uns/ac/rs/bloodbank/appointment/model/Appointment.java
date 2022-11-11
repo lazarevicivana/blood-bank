@@ -36,4 +36,15 @@ public class Appointment {
     private LocalTime startTime;
     private LocalTime finishTime;
     private Boolean deleted = false;
+    public boolean isValidDate(){
+        return !date.isBefore(LocalDateTime.now());
+    }
+    public boolean isValidDateInput(@NonNull LocalDateTime localDateTime){
+        return date.getYear() == localDateTime.getYear()
+                && date.getMonth() == localDateTime.getMonth()
+                && date.getDayOfMonth() == localDateTime.getDayOfMonth();
+    }
+    public boolean isValidDateTime(){
+        return startTime.isBefore(finishTime);
+    }
 }

@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.appointment.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,10 @@ public class AppointmentRequest implements Serializable {
     @NonNull
     private  LocalDateTime date;
     @NonNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime startTime;
     @NonNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private  LocalTime finishTime;
     private  List<UUID>  medical_stuff;
     private  UUID centerId;
