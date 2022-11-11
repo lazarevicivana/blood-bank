@@ -13,6 +13,7 @@ import { AccountComponent } from './view/account/account.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatDialogModule} from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {CenterViewModule} from "./view/centers/center-view.module";
@@ -20,11 +21,12 @@ import { LoginComponent } from './view/login/login/login.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AllUsersComponent } from './view/all-users/all-users.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
-import { CenterCardComponent } from './components/center-card/center-card.component';
+
 
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {CommonComponentsModule} from "./components/common-components.module";
 
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -34,31 +36,38 @@ import {CommonComponentsModule} from "./components/common-components.module";
         BodyComponent,
         AccountComponent,
         LoginComponent,
-        AllUsersComponent
+        AllUsersComponent,
+
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        HttpClientModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatButtonModule,
+        CenterViewModule,
+        MatButtonToggleModule,
+        CommonComponentsModule,
+        MatDialogModule,
+      MatSelectModule
     ],
 
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatButtonModule,
-    CenterViewModule,
-    MatButtonToggleModule,
-    CommonComponentsModule
-  ],
-  
+
+
+
     providers: [authInterceptorProviders],
-    exports: [
+  exports: [
 
-    ],
+
+
+  ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

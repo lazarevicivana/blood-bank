@@ -1,0 +1,13 @@
+.marg{
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.space-between-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-stroked-button.mat-success {
+  color: #155724;
+}

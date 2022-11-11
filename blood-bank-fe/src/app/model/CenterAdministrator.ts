@@ -1,22 +1,21 @@
 export interface ICenterAdministrator {
   id?: string;
   username?: string;
+  password?:string;
   name?: string;
   surname?: string;
   phone?: string;
   jmbg?: string;
   email?: string;
-  gender?: string;
-  address?: {
-    id?: string;
-    city?: string;
-    street?: string;
-    country?: string;
-    streetNumber?: string;
-  };
+  city?: string;
+  street?: string;
+  country?: string;
+  streetNumber?: string;
   enabled?: boolean;
   deleted?: boolean;
-  userRole?: string;
+  role?: string;
+  gender?: string;
+  center?:string;
 }
 export class CenterAdministrator implements ICenterAdministrator {
   id?: string;
@@ -27,16 +26,15 @@ export class CenterAdministrator implements ICenterAdministrator {
   jmbg?: string;
   email?: string;
   gender?: string;
-  address?: {
-    id?: string;
-    city?: string;
-    street?: string;
-    country?: string;
-    streetNumber?: string;
-  }
-  enabled?: boolean;
-  deleted?: boolean;
-  userRole?: string;
+  city?: string;
+  street?: string;
+  country?: string;
+  streetNumber?: string;
+  enabled?: boolean = true;
+  deleted?: boolean = false;
+  role?: string = "ROLE_CENTER_ADMIN";
+  center?:string;
+  password?:string;
   constructor(data?: ICenterAdministrator){
     if (data) {
       for (const property in data) {

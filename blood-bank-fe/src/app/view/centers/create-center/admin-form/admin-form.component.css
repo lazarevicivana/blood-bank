@@ -1,0 +1,13 @@
+.input-create-center {
+  margin-top: 5px;
+  width: 56%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  height: 60px;
+}
+
+.address-container .mat-form-field + .mat-form-field+ .mat-form-field {
+  margin-left: 5px;
+}
+

@@ -301,4 +301,13 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex: 0 0 auto;
     width: 91.66666667%;
   }
+
+  .mat-raised-button.mat-success,
+  .mat-flat-button.mat-success,
+  .mat-fab.mat-success,
+  .mat-mini-fab.mat-success {
+    color: #f0fff3;
+    background-color: #155724;
+  }
+
 }

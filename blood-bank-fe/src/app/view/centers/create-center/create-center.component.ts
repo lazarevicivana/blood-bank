@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Center} from "../../../model/Center";
 import {CenterService} from "../../../services/center.service";
-import {GoogleMapApiService} from "../../../services/googleMapApi.service";
-import {CenterAdministrator} from "../../../model/CenterAdministrator";
 import {CenterAdministratorService} from "../../../services/center-administrator.service";
-import {waitForAsync} from "@angular/core/testing";
+import {CenterAdministrator} from "../../../model/CenterAdministrator";
+import {MatDialog} from "@angular/material/dialog";
+import {AnotherAdminDialogComponent} from "./another-admin-dialog/another-admin-dialog.component";
+import {MatStepper} from "@angular/material/stepper";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,101 +16,76 @@ import {waitForAsync} from "@angular/core/testing";
 })
 export class CreateCenterComponent implements OnInit {
   public center: Center
-  public admins: CenterAdministrator[] = []
-  selectedAdmin: string = ""
-  private map!: google.maps.Map;
-  private infoWindow!: google.maps.InfoWindow;
+  public admin: CenterAdministrator
+  stepper: MatStepper | undefined;
 
-  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService, private centerAdminService:CenterAdministratorService) {
+  constructor(private centerService:CenterService, private centerAdminService:CenterAdministratorService,public dialog: MatDialog,private readonly router:Router) {
     this.center = new Center();
+    this.admin = new CenterAdministrator()
   }
 
   ngOnInit(): void {
-    this.handleMap();
-    this.getAvailableAdmins();
   }
 
-  createCenter() {
-    this.centerService.createCenter(this.center).subscribe({
+  createCenter(stepper:MatStepper) {
+   this.centerService.createCenter(this.center).subscribe({
       next: response => {
         this.center.id = response.id
-        console.log('respooooonse' + response.id)
-        console.log(this.center.id)
-        this.updateAdminCenter()
-
+        this.admin.center = this.center.id
+        this.stepper = stepper
       }
     })
   }
 
-  private updateAdminCenter() {
-    console.log('Azuriiiranje')
-    console.log('admin id:' + this.selectedAdmin)
-    console.log('centar id:' + this.center.id)
-    console.log('izraz:' + (this.center.id != null && this.selectedAdmin != null))
-    if (this.center.id != null && this.selectedAdmin != null) {
-      this.centerAdminService.updateAdminCenter(this.selectedAdmin, this.center.id).subscribe({
+  createAdmin() {
+    if(this.admin.username != "") {
+      this.centerAdminService.createAdmin(this.admin).subscribe({
         next: response => {
-          console.log(response)
+          this.resetAdminForm();
+          this.openDialog();
         }
       })
+    }else{
+      this.openDialog();
     }
   }
 
-  private getAvailableAdmins() {
-    this.centerAdminService.getAvailableAdmins().subscribe({
-      next: response => {
-        this.admins = response;
-      }})
+  async redirectToCenters() : Promise<void>{
+    await this.router.navigateByUrl('/facilities')
   }
 
-  private handleMap() {
-    const preloaded = this.mapLoader.googleApi.then(()=>{
-      this.map =  new google.maps.Map(
-        document.getElementById("map") as HTMLElement,{
-          center: {lat: 44.0165,lng: 21.0059},
-          zoom: 6
+  openDialog(): void {
+    let dialogRef = this.dialog.open(AnotherAdminDialogComponent, {
+      width: '380px',
+      height:'220px',
+      data: { name: this.center.name,stepper: this.stepper}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        console.log(result);
+        if (result == false){
+          this.stepper?.next();
+          console.log('ss'+result);
         }
-      )
-    }).catch(e => {
-      console.log("Something goes wrong",e)
+        else
+          this.resetAdminForm();
+
     });
-
-    const myLatlng = { lat: 44.0165, lng: 21.0059 };
-
-    // Create the initial InfoWindow.
-    const loaded = preloaded.then(()=>{
-      this.infoWindow = new google.maps.InfoWindow({
-        content: "Click the map to get Lat/Lng!",
-        position: myLatlng,
-      });
-    });
-    loaded.then(()=>{
-      this.infoWindow.open(this.map);
-      this.map.addListener("click", (mapsMouseEvent:any) => {
-        this.infoWindow.close();
-        // Create a new InfoWindow.
-        this.infoWindow = new google.maps.InfoWindow({
-          position: mapsMouseEvent.latLng,
-        });
-        this.infoWindow.setContent(
-          JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-        );
-        this.infoWindow.open(this.map);
-        this.center.longitude = mapsMouseEvent.latLng.lng();
-        this.center.latitude = mapsMouseEvent.latLng.lat();
-        const marker = new google.maps.Marker({
-          position: mapsMouseEvent.latLng,
-          map:  this.map,
-        });
-
-        this.infoWindow.open( this.map, marker);
-
-      })
-    })
   }
 
-  delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+  private resetAdminForm(){
+    this.admin.username="";
+    this.admin.name="";
+    this.admin.surname="";
+    this.admin.password="";
+    this.admin.email="";
+    this.admin.phone="";
+    this.admin.jmbg="";
+    this.admin.gender="";
+    this.admin.username="";
+    this.admin.country="";
+    this.admin.street="";
+    this.admin.city="";
+    this.admin.streetNumber="";
   }
-
 }
