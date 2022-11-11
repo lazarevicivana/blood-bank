@@ -49,7 +49,7 @@
 
           </mat-expansion-panel>
 
-          <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+          <mat-expansion-panel formGroupName="profession" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
             <mat-expansion-panel-header style="justify-content: space-between;
   align-items: center;
 " >
@@ -59,41 +59,39 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field class="mat" appearance="outline">
-              <mat-label >professionStatus</mat-label>
-              <input formControlName="professionStatus" matInput placeholder="phone" >
+              <mat-label >status</mat-label>
+              <input formControlName="professionStatus" matInput placeholder="profession status" >
             </mat-form-field>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="professionDescription" matInput placeholder="phone" >
+              <mat-label >description</mat-label>
+              <input formControlName="professionDescription" matInput placeholder="profession description" >
             </mat-form-field>
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>
               <button mat-button color="primary" (click)="nextStep()">Next</button>
             </mat-action-row>
           </mat-expansion-panel>
-
-          <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+          <mat-expansion-panel formGroupName="address" [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
             <mat-expansion-panel-header>
               <mat-panel-description>
                 Insert your address data
-
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="street" matInput placeholder="phone" >
+              <mat-label >street</mat-label>
+              <input formControlName="street" matInput placeholder="street" >
             </mat-form-field>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="city" matInput placeholder="phone" >
+              <mat-label >city</mat-label>
+              <input formControlName="city" matInput placeholder="city" >
             </mat-form-field>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="country" matInput placeholder="phone" >
+              <mat-label >country</mat-label>
+              <input formControlName="country" matInput placeholder="country" >
             </mat-form-field>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="streetNumber" matInput placeholder="phone" >
+              <mat-label >street number</mat-label>
+              <input formControlName="streetNumber" matInput placeholder="street number" >
             </mat-form-field>
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -101,7 +99,6 @@
             </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>
-
       </form>
     </div>
     <div class="form-container sign-in-container">
@@ -110,8 +107,8 @@
           <h1>Sign in</h1>
           <span>or use your account</span>
         </div>
-        <input type="text" placeholder="Username" formControlName="username" name="userId"/>
-        <input type="password" placeholder="Password" formControlName="password" />
+        <input class="inputa" type="text" placeholder="Username" formControlName="username" name="userId"/>
+        <input class="inputa" type="password" placeholder="Password" formControlName="password" />
         <a href="#">Forgot your password?</a>
         <button class="button" (click)="onSignIn()">Sign In</button>
       </form>
