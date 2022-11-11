@@ -5,7 +5,6 @@
         Appointment
       </div>
       <div class="points center">
-        <!--        0 Points-->
         Upcoming
       </div>
       <div class="center">
@@ -14,9 +13,9 @@
     </div>
     <div class="more-info">
       <h1>Appointment Staff</h1>
-      <div class="coords">
-        <div *ngFor="let staff of appointment.medicalStaffs">
-          <div class="info">{{staff.name}} {{staff.surname}}</div>
+      <div class="coords parent">
+        <div *ngFor="let staff of appointment.medicalStaffs;let i = index" [attr.data-index]="i">
+          <div class="right-t">{{i+1}}.{{staff.name}} {{staff.surname}}</div>
         </div>
       </div>
       <div class="stats">

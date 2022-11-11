@@ -100,9 +100,13 @@
 }
 
 .card .additional .coords {
-  margin: 0 1.1rem;
   color: #fff;
   font-size: 1.1rem;
+}
+.parent{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 

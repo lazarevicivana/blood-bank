@@ -46,7 +46,7 @@ export class CenterAdminProfileComponent implements OnInit {
     )
   }
   public async updateCenter(): Promise<void>{
-    // await this.router.navigateByUrl('/update-center')
+    await this.router.navigateByUrl('/update-center')
   }
   private getCenter():void{
     this.adminCenterService.getCenterForAdmin(this.user.id).subscribe(
