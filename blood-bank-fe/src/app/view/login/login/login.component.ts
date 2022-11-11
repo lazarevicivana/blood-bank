@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerRequest} from "../../../model/CustomerRequest";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AddressRequest} from "../../../model/AddressRequest";
 import {ProfessionRequest} from "../../../model/ProfessionRequest";
 import {AuthService} from "../../../services/auth.service";
@@ -14,24 +14,23 @@ import {LoginRequest} from "../../../model/LoginRequest";
 })
 export class LoginComponent implements OnInit {
   step = 0;
-
-
+  submitted: boolean = false;
   formGroup = new FormGroup({
     name: new FormControl<string | undefined>(undefined,Validators.required),
     username:new FormControl<string | undefined>(undefined,Validators.required),
     surname:new FormControl<string | undefined>(undefined,Validators.required),
     password:new FormControl<string | undefined>(undefined,Validators.required),
-    confirmPassword : new FormControl<string | undefined>(undefined,Validators.required),
+    confirmPassword : new FormControl<string | undefined>(undefined,[Validators.required]),
     phone:new FormControl<string | undefined>(undefined,Validators.required),
     jmbg:new FormControl<string | undefined>(undefined,Validators.required),
     email:new FormControl<string | undefined>(undefined,Validators.required),
     role:new FormControl<string | undefined>("ROLE_CUSTOMER"),
     address: new FormGroup({
-       city: new FormControl<string | undefined>(undefined,Validators.required),
-       street: new FormControl<string | undefined>(undefined,Validators.required),
-       country: new FormControl<string | undefined>(undefined,Validators.required),
-       streetNumber:new FormControl<string | undefined>(undefined,Validators.required)
-}),
+      city: new FormControl<string | undefined>(undefined,Validators.required),
+      street: new FormControl<string | undefined>(undefined,Validators.required),
+      country: new FormControl<string | undefined>(undefined,Validators.required),
+      streetNumber:new FormControl<string | undefined>(undefined,Validators.required)
+    }),
     profession: new FormGroup({
       professionStatus: new FormControl<string | undefined>(undefined,Validators.required),
       professionDescription: new FormControl<string | undefined>(undefined,Validators.required),
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
   password: new FormControl<string | undefined>(undefined)
 })
 
-  constructor(private client: AuthService, private tokenStorage: TokenStorageService ) { }
+  constructor(private client: AuthService, private tokenStorage: TokenStorageService, private fb: FormBuilder) {}
   ngOnInit(): void {
       if (this.tokenStorage.getToken()){
         this.isLoggedIn = true;
@@ -67,8 +66,6 @@ export class LoginComponent implements OnInit {
     })
     this.client.login(user).subscribe({
       next: response => {
-        console.log('aaaa')
-        console.log(response)
         this.tokenStorage.saveToken(response.jwt);
         this.tokenStorage.saveUser(response);
         this.isLoggedIn = true;
@@ -80,11 +77,10 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
   onSignUp(){
+    this.submitted = true;
     const customer = this.createCustomer();
-   console.log(customer)
     this.client.register(customer).subscribe({
       next: response => {
-        console.log(response)
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       }
@@ -116,7 +112,6 @@ export class LoginComponent implements OnInit {
   setStep(index: number) {
     this.step = index;
   }
-
   nextStep() {
     this.step++;
   }

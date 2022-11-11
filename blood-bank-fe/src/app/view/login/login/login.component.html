@@ -17,11 +17,11 @@
             </mat-expansion-panel-header>
             <mat-form-field class="mat"   appearance="outline">
               <mat-label class="mat" > Name</mat-label>
-              <input class="mat" formControlName="name" matInput placeholder="username" >
+              <input class="mat" formControlName="name" matInput placeholder="name" >
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label >Surname</mat-label>
-              <input   formControlName="surname" matInput placeholder="username" >
+              <input   formControlName="surname" matInput placeholder="surname" >
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label > Username</mat-label>
@@ -29,11 +29,15 @@
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label > email</mat-label>
-              <input type="email" formControlName="email" matInput placeholder="username" >
+              <input type="email" formControlName="email" matInput placeholder="email" >
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label > password</mat-label>
-              <input type="password" formControlName="password" matInput placeholder="username" >
+              <input type="password" formControlName="password" matInput placeholder="password" >
+            </mat-form-field>
+            <mat-form-field class="mat" appearance="outline">
+              <mat-label >confirm password</mat-label>
+              <input type="password" formControlName="password" matInput placeholder="confirm password" >
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label > jmbg</mat-label>
@@ -46,9 +50,7 @@
             <mat-action-row>
               <button mat-button color="primary" (click)="nextStep()">Next</button>
             </mat-action-row>
-
           </mat-expansion-panel>
-
           <mat-expansion-panel formGroupName="profession" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
             <mat-expansion-panel-header style="justify-content: space-between;
   align-items: center;
