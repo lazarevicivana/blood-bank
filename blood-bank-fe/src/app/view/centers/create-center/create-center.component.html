@@ -1,57 +1,34 @@
 <div class="container">
   <div class="container-f">
-    <div class="parent">
-      <div class="title-container">
-        <h1 class="title">Create Center</h1>
-      </div>
+      <mat-stepper  #stepper >
+        <mat-step [editable]="false">
+          <ng-template matStepLabel>Create center</ng-template>
+          <app-center-form [center]="center"></app-center-form>
+          <div align="end">
+            <button mat-flat-button matStepperNext color="primary" (click)="createCenter(stepper)">Next</button>
+          </div>
+        </mat-step>
 
-        <mat-form-field appearance="fill" class="input-create-center">
-          <mat-label>Center name:</mat-label>
-          <input matInput [(ngModel)]="center.name" placeholder="Name" >
-        </mat-form-field>
+        <mat-step>
+          <ng-template matStepLabel>Create center administrator</ng-template>
+          <app-admin-form [admin]="admin"></app-admin-form>
+          <div align="end">
+            <button mat-flat-button color="primary" (click)="createAdmin()" >Next</button>
+          </div>
+        </mat-step>
 
-        <mat-form-field appearance="fill" class="input-create-center">
-          <mat-label>Center description:</mat-label>
-          <input matInput [(ngModel)]="center.description" placeholder="Description" >
-        </mat-form-field>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <div class="center-text">
+            <p>You are now done, if you want to add more center administrators please go back.</p>
+          </div>
+          <div class="space-between-container">
+            <button mat-flat-button matStepperPrevious color="primary">Back</button>
+            <button mat-flat-button color="success" (click)="redirectToCenters()">Done</button>
+          </div>
+        </mat-step>
 
-        <mat-form-field appearance="fill" class="input-create-center">
-          <mat-label>Center rating:</mat-label>
-          <input matInput [(ngModel)]="center.avgGrade" placeholder="Rating:" >
-        </mat-form-field>
+      </mat-stepper>
 
-      <mat-form-field appearance="fill" class="input-create-center">
-        <mat-label>Center country:</mat-label>
-        <input matInput [(ngModel)]="center.country" placeholder="Country" >
-      </mat-form-field>
-
-      <div class="address-container" class="input-create-center">
-        <mat-form-field appearance="fill" >
-          <mat-label>Center city:</mat-label>
-          <input matInput [(ngModel)]="center.city" placeholder="City" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" >
-          <mat-label>Center street:</mat-label>
-          <input matInput [(ngModel)]="center.street" placeholder="Street" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" >
-          <mat-label>Center street number:</mat-label>
-          <input matInput [(ngModel)]="center.streetNumber" placeholder="Street number" >
-        </mat-form-field>
-      </div>
-
-      <mat-form-field appearance="fill" class="input-create-center">
-        <mat-label>Select center administrator</mat-label>
-        <mat-select [(ngModel)]="selectedAdmin">
-          <mat-option *ngFor="let admin of admins" [value]="admin.id" >
-            {{admin.name}}
-            {{admin.surname}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div class="g1-map" id="map"></div>
-
-      <button mat-flat-button color="primary" (click)="createCenter()">Create</button>
-    </div>
   </div>
 </div>

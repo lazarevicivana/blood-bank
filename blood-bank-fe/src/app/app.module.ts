@@ -13,6 +13,7 @@ import { AccountComponent } from './view/account/account.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatDialogModule} from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {CenterViewModule} from "./view/centers/center-view.module";
@@ -28,7 +29,6 @@ import {CommonComponentsModule} from "./components/common-components.module";
 import {MatSelectModule} from "@angular/material/select";
 
 
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -39,25 +39,28 @@ import {MatSelectModule} from "@angular/material/select";
         AllUsersComponent,
 
     ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        HttpClientModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatButtonModule,
+        CenterViewModule,
+        MatButtonToggleModule,
+        CommonComponentsModule,
+        MatDialogModule,
+      MatSelectModule
+    ],
 
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatButtonModule,
-    CenterViewModule,
-    MatButtonToggleModule,
-    CommonComponentsModule,
-    MatSelectModule
-  ],
+  
+
 
     providers: [authInterceptorProviders],
   exports: [

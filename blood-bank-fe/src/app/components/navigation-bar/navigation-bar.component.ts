@@ -1,7 +1,11 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
-import {navbarData} from "./nav-data";
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {navbarData} from "./nav-data/nav-data";
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../../services/token-storage.service";
+import {publicNavData} from "./nav-data/public-nav-data";
+import {stuffNavData} from "./nav-data/nav-data-stuff";
+import {adminSystemNavData} from "./nav-data/admin-system-nav-data";
+import {customerNavData} from "./nav-data/customer-nav-data";
 
 interface SideNavToggle{
   screenWidth: number;
@@ -15,6 +19,11 @@ interface SideNavToggle{
 })
 export class NavigationBarComponent implements OnInit {
   navData =navbarData;
+  publicNavData = publicNavData;
+  stuffNavData = stuffNavData;
+  adminNavData = adminSystemNavData;
+  customerNavData = customerNavData;
+  @Input() userRole : string='';
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   screenWidth = 0;
   collapsed = false;
@@ -33,7 +42,9 @@ export class NavigationBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-
+    const user = this.tkStorage.getUser();
+      this.userRole = user.role;
+      console.log(this.userRole);
   }
 
   clicked(num: number) {
@@ -69,5 +80,11 @@ export class NavigationBarComponent implements OnInit {
     while(j<list.length){
       list[j++].className='list';
     }
+  }
+
+  onSignOut() {
+    this.tkStorage.signOut();
+    window.location.reload();
+    this.router.navigateByUrl("/");
   }
 }

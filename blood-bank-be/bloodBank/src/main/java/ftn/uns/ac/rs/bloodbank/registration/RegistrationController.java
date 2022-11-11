@@ -1,5 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.registration;
 
+import ftn.uns.ac.rs.bloodbank.customer.Customer;
+import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;
 import ftn.uns.ac.rs.bloodbank.registration.dto.LoginRequest;
 import lombok.AllArgsConstructor;
@@ -13,10 +15,16 @@ import java.io.IOException;
 @AllArgsConstructor
 public class RegistrationController {
     private final RegistrationService registrationService;
+    private final MapperService mapperService;
 
     @PostMapping
     public String register(@RequestBody CustomerRequest request) throws IOException {
-     return registrationService.register(request);
+        var address = mapperService.AdressRequestToAdress(request.getAddress());
+        var profession = mapperService.ProfessionRequestToProfession(request.getProfession());
+        var customer = mapperService.CustomerRequestToCustomer(request);
+        customer.setAddress(address);
+        customer.setProfession(profession);
+     return registrationService.register(customer);
     }
     @PostMapping(path = "login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){

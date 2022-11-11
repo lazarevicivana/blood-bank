@@ -4,9 +4,11 @@ import ftn.uns.ac.rs.bloodbank.applicationUser.repository.ApplicationUserReposit
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationToken;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
@@ -22,7 +24,7 @@ import java.util.List;
 public class ApplicationUserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "user with username %s not found";
     private final ApplicationUserRepository applicationUserRepository;
-    //private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
     private final ConfirmationTokenService confirmationTokenService;
 
     @Override
@@ -41,7 +43,7 @@ public class ApplicationUserService implements UserDetailsService {
         }
 //        var encodePassword  =bCryptPasswordEncoder
 //                .encode(applicationUser.getPassword());
-//        applicationUser.setPassword(encodePassword);
+//        applicationUser.setPassword(encoder.encode(applicationUser.getPassword()));
         applicationUserRepository.save(applicationUser);
        return sendConfirmationToken(applicationUser);
     }

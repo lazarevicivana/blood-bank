@@ -7,7 +7,7 @@ export const navbarData=[
   },
   {
     routeLink: 'facilities',
-    icon: 'home-outline',
+    icon: 'business-outline',
     label: 'Facilities',
     num:1
   },
