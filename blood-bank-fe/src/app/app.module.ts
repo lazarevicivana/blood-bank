@@ -21,10 +21,12 @@ import { LoginComponent } from './view/login/login/login.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AllUsersComponent } from './view/all-users/all-users.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
-import { CenterCardComponent } from './components/center-card/center-card.component';
+
 
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {CommonComponentsModule} from "./components/common-components.module";
+
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import {CommonComponentsModule} from "./components/common-components.module";
         BodyComponent,
         AccountComponent,
         LoginComponent,
-        AllUsersComponent
+        AllUsersComponent,
+
     ],
     imports: [
         BrowserModule,
@@ -52,13 +55,19 @@ import {CommonComponentsModule} from "./components/common-components.module";
         CenterViewModule,
         MatButtonToggleModule,
         CommonComponentsModule,
-        MatDialogModule
+        MatDialogModule,
+      MatSelectModule
     ],
+
+
+
 
     providers: [authInterceptorProviders],
-    exports: [
+  exports: [
 
-    ],
+
+
+  ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

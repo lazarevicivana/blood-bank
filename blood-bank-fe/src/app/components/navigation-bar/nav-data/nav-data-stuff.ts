@@ -8,7 +8,7 @@ export const stuffNavData=[
   {
     routeLink: 'admin-center-profile',
     icon: 'home-outline',
-    label: 'Create',
+    label: 'Center profile',
     num:1
   }
 ];

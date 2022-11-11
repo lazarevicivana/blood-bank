@@ -6,6 +6,7 @@ import {CenterAdministrator} from "../../../model/CenterAdministrator";
 import {MatDialog} from "@angular/material/dialog";
 import {AnotherAdminDialogComponent} from "./another-admin-dialog/another-admin-dialog.component";
 import {MatStepper} from "@angular/material/stepper";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CreateCenterComponent implements OnInit {
   public admin: CenterAdministrator
   stepper: MatStepper | undefined;
 
-  constructor(private centerService:CenterService, private centerAdminService:CenterAdministratorService,public dialog: MatDialog) {
+  constructor(private centerService:CenterService, private centerAdminService:CenterAdministratorService,public dialog: MatDialog,private readonly router:Router) {
     this.center = new Center();
     this.admin = new CenterAdministrator()
   }
@@ -49,8 +50,8 @@ export class CreateCenterComponent implements OnInit {
     }
   }
 
-  redirectToCenters() {
-
+  async redirectToCenters() : Promise<void>{
+    await this.router.navigateByUrl('/facilities')
   }
 
   openDialog(): void {

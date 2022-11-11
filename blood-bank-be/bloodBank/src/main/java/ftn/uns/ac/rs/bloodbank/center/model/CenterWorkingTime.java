@@ -19,12 +19,10 @@ public class CenterWorkingTime {
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
     private UUID id;
-    @Enumerated(EnumType.STRING)
-    private DayOfWeek dayOfWeek;
+//    @Enumerated(EnumType.STRING)
+//    private DayOfWeek dayOfWeek;
     private LocalDateTime workingStartTime;
     private LocalDateTime workingFinishTime;
-    @ManyToMany(mappedBy = "centerWorkingTime")
-    private Set<Center> center;
 
 
 }

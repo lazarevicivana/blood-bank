@@ -35,9 +35,6 @@ public class CenterAdminController {
     }
     @PostMapping()
     public ResponseEntity<String> createCenterAdministrator(@RequestBody CenterAdministratorDto centerAdministratorDto){
-        //var address = mapperService.AdressRequestToAdress(centerAdministratorDto.getAddressRequest());
-        //CenterAdministrator centerAdministrator = mapperService.CenterAdministratorDtoToCenterAdministrator(centerAdministratorDto);
-        //centerAdministrator.setAddress(address);
         centerAdminService.createCenterAdministrator(centerAdministratorDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -48,7 +45,6 @@ public class CenterAdminController {
                 .stream()
                 .map(mapperService::CenterAdministratorToCenterAdministratorDtoResponse)
                 .toList();
-
         return ResponseEntity.ok(admins);
     }
 }
