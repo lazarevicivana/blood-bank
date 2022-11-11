@@ -20,13 +20,10 @@ import {CenterViewModule} from "./view/centers/center-view.module";
 import { LoginComponent } from './view/login/login/login.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AllUsersComponent } from './view/all-users/all-users.component';
-import { UserCardComponent } from './components/user-card/user-card.component';
-
-
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {CommonComponentsModule} from "./components/common-components.module";
-
 import {MatSelectModule} from "@angular/material/select";
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -36,8 +33,7 @@ import {MatSelectModule} from "@angular/material/select";
         BodyComponent,
         AccountComponent,
         LoginComponent,
-        AllUsersComponent,
-
+        AllUsersComponent
     ],
     imports: [
         BrowserModule,
@@ -56,18 +52,12 @@ import {MatSelectModule} from "@angular/material/select";
         MatButtonToggleModule,
         CommonComponentsModule,
         MatDialogModule,
-      MatSelectModule
+        MatSelectModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot()
     ],
-
-
-
-
     providers: [authInterceptorProviders],
-  exports: [
-
-
-
-  ],
+    exports: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

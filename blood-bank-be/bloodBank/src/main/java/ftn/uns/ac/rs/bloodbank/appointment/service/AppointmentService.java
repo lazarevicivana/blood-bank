@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -30,25 +31,35 @@ public class AppointmentService {
                 .date(appointmentRequest.getDate())
                 .deleted(false)
                 .build();
-        var staff =appointmentRequest.getMedical_stuff().stream()
-                        .map(uuid -> {
-                            var admin = new CenterAdministrator();
-                            if(centerAdminRepository.findById(uuid).isPresent()){
-                                admin =centerAdminRepository.findById(uuid).get();
-                                System.out.println(admin.getUsername());
-                            }
-                            return admin;
-                        })
-                        .collect(Collectors.toSet());
+        validateDate(appointment);
+        Set<CenterAdministrator> staff = getCenterAdministrators(appointmentRequest);
         appointment.setMedicalStaffs(staff);
         var center =centerRepository.findById(appointmentRequest.getCenterId()).orElseThrow(() -> new ApiBadRequestException("Center doesnt exist!"));
         center.addAppointment(appointment);
         appointmentRepository.save(appointment);
     }
+    private Set<CenterAdministrator> getCenterAdministrators(AppointmentRequest appointmentRequest) {
+        return appointmentRequest.getMedical_stuff().stream()
+                        .map(uuid -> {
+                            var admin =centerAdminRepository.findById(uuid).orElseThrow(() -> new ApiBadRequestException("Wrong staff id provided!"));
+                            System.out.println(admin.getUsername());
+                            return admin;
+                        })
+                        .collect(Collectors.toSet());
+    }
+
     public List<Appointment> getAllAppointmentsForCenter(UUID centerId){
         return appointmentRepository.getAllAppointmentsForCenter(centerId);
     }
     public List<CenterAdministrator> getMedicalStaffsForAppointment(UUID appointmentId){
         return appointmentRepository.getMedicalStaffsForAppointment(appointmentId);
+    }
+    private void validateDate(Appointment appointment){
+        if(!appointment.isValidDate()){
+            throw new ApiBadRequestException("Please select upcoming date!");
+        }
+        if(!appointment.isValidDateTime()){
+            throw new ApiBadRequestException("Wrong start time and end time range!");
+        }
     }
 }

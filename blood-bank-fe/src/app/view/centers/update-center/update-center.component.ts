@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {GoogleMapApiService} from "../../../services/googleMapApi.service";
+import {Center} from "../../../model/Center";
+import {Router} from "@angular/router";
+import {CenterService} from "../../../services/center.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-update-center',
@@ -11,7 +15,12 @@ export class UpdateCenterComponent implements OnInit {
   private infoWindow!: google.maps.InfoWindow;
   public longitude:number = 44.0165;
   public latitude:number = 21.0059;
-  constructor(private mapLoader:GoogleMapApiService) { }
+  public center:Center;
+  private centerId: string;
+  constructor(private mapLoader:GoogleMapApiService, private router:Router, private centerService:CenterService,private toast: ToastrService) {
+    this.center = new Center()
+    this.centerId = this.router.getCurrentNavigation()?.extras?.state?.['centerId'];
+  }
 
   ngOnInit(): void {
     const preloaded = this.mapLoader.googleApi.then(()=>{
@@ -44,12 +53,44 @@ export class UpdateCenterComponent implements OnInit {
           JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
         );
         this.infoWindow.open(this.map);
-        console.log(mapsMouseEvent.latLng.lat())
-        console.log(mapsMouseEvent.latLng.lng())
-        this.longitude = mapsMouseEvent.latLng.lng();
-        this.latitude = mapsMouseEvent.latLng.lat();
+        this.center.longitude = mapsMouseEvent.latLng.lng();
+        this.center.latitude  = mapsMouseEvent.latLng.lat();
       })
+      this.getCenterById()
     })
   }
+  getCenterById(){
+      this.centerService.getCenter(this.centerId).subscribe(
+        {
+          next: value => {
+            this.center = value;
+            console.log(this.center)
+            new google.maps.Marker(
+              {
+                position: {
+                  lat: this.center.latitude,
+                  lng: this.center.longitude
+                },
+                map: this.map,
+                title: "Current lat/lng"
+              }
+            )
+          }
+        }
+      )
+  }
 
+  updateCenter() {
+    this.centerService.updateCenter(this.center).subscribe(
+      {
+        next: res => {
+          this.toast.success("You are successfully update center!","Success")
+          this.router.navigateByUrl('/admin-center-profile')
+        },
+        error: err => {
+          this.toast.error(err.error.message,"Error")
+        }
+      }
+    )
+  }
 }
