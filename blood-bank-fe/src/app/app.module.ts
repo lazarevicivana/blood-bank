@@ -21,7 +21,9 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AllUsersComponent } from './view/all-users/all-users.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { CenterCardComponent } from './components/center-card/center-card.component';
+
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {CommonComponentsModule} from "./components/common-components.module";
 
 
 
@@ -32,9 +34,9 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
         BodyComponent,
         AccountComponent,
         LoginComponent,
-        AllUsersComponent,
-        UserCardComponent
+        AllUsersComponent
     ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -49,10 +51,13 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     FormsModule,
     MatButtonModule,
     CenterViewModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    CommonComponentsModule
   ],
+  
     providers: [authInterceptorProviders],
     exports: [
+
     ],
     bootstrap: [AppComponent]
 })

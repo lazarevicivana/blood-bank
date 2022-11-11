@@ -12,21 +12,9 @@ export const navbarData=[
     num:1
   },
   {
-    routeLink: '',
-    icon: 'calendar-outline',
-    label: 'Schedule',
-    num:2
-  },
-  {
-    routeLink: 'create-center',
-    icon: 'business-outline',
-    label: 'Create',
-    num:3
-  },
-  {
     routeLink: 'admin-center-profile',
     icon: 'home-outline',
-    label: 'Center profile',
-    num:4
+    label: 'Create',
+    num:2
   }
-  ];
+];

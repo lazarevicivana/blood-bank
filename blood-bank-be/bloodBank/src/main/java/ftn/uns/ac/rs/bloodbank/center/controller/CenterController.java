@@ -1,6 +1,8 @@
 package ftn.uns.ac.rs.bloodbank.center.controller;
 
 import com.sun.istack.NotNull;
+import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
+import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.service.CenterService;
@@ -46,6 +48,13 @@ public class CenterController {
         var center =mapperService
                 .CenterToCenterDto(c);
         return ResponseEntity.ok(center);
+    }
+    @GetMapping(path = "/other-admins/{centerId}/{adminId}")
+    public List<ApplicationUserDtoResponse> getOtherCenterAdmins(@NotNull @PathVariable("centerId") UUID centerId, @NotNull @PathVariable("adminId") UUID adminId){
+        var admins = centerService.getOtherCenterAdmins(centerId,adminId);
+        return admins.stream()
+                .map(mapperService::AppUserToAppUserDto)
+                .toList();
     }
     @PutMapping()
     public ResponseEntity<String> updateCenter(@RequestBody CenterDtoUpdate centerDto){

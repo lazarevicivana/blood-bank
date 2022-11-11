@@ -1,6 +1,7 @@
 import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {navbarData} from "./nav-data";
 import {Router} from "@angular/router";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 interface SideNavToggle{
   screenWidth: number;
@@ -25,7 +26,9 @@ export class NavigationBarComponent implements OnInit {
 
   }
 
-  constructor(private readonly router:Router) { }
+  constructor(private readonly router:Router,private tkStorage: TokenStorageService) {
+
+  }
 
 
   ngOnInit(): void {
@@ -33,7 +36,7 @@ export class NavigationBarComponent implements OnInit {
 
   }
 
-  klikno(num: number) {
+  clicked(num: number) {
     let list = document.querySelectorAll('.list');
     let j = 0
     while(j<list.length){
