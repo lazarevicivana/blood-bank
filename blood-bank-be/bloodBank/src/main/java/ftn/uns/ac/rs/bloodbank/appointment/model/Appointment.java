@@ -1,13 +1,13 @@
-package ftn.uns.ac.rs.bloodbank.appointment;
+package ftn.uns.ac.rs.bloodbank.appointment.model;
 
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -15,6 +15,9 @@ import java.util.UUID;
 @Table(name = "appointment")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Appointment {
     @Id
     @GeneratedValue
@@ -28,9 +31,9 @@ public class Appointment {
             name = "appointment_stuff",
             joinColumns = @JoinColumn(name = "appointment_id"),
             inverseJoinColumns = @JoinColumn(name = "stuff_id"))
-    private Set<CenterAdministrator> centerAdministrators;
-    private LocalDate date;
-    private LocalDateTime startTime;
-    private LocalDateTime finishTime;
+    private Set<CenterAdministrator> medicalStaffs = new HashSet<>();
+    private LocalDateTime date;
+    private LocalTime startTime;
+    private LocalTime finishTime;
     private Boolean deleted = false;
 }

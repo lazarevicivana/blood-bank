@@ -60,7 +60,7 @@ insert into center (id, address, name, description, avg_grade) values ('262bb7c8
 
 insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b1f2eb7c53a5', 'cbdb6c8e-a454-46ce-b489-552269672301', 'Russian health care ', 'Change Other Device in Thoracic Duct, External Approach', 1);
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-88584a2194dk', '9a70f727-0efd-4047-b8d9-f0281e7c38c1', 'Pfizer', 'Excision of Left Renal Artery, Percutaneous Approach', 2);
-insert into center (id, address, name, description, avg_grade) values ('262bb7c8-28a8-43fe-8c24-d59i00011872', '1e02993f-e3a9-4ed6-8fa2-955078bc3eaf', 'Your care', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 3);
+insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b1f2eb7c53a6', '1e02993f-e3a9-4ed6-8fa2-955078bc3eaf', 'Your care', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 3);
 
 insert into center (id, address, name, description, avg_grade) values ('42b82373-c643-48da-a0a1-76e4fa0b5b8d', '671b92b9-d9d7-43e4-bfb2-3eb67410c2c1', 'Douglas, Ryan and Hettinger', 'Remove Autol Sub from Epididymis/Sperm Cord, Perc Endo', 0);
 insert into center (id, address, name, description, avg_grade) values ('b53992af-19a5-4be1-9cfe-139bd0c81441', '56784936-c0a3-41a6-8d4a-123abf8748c3', 'Hintz-Wehner', 'Dilate L Com Iliac Art, Bifurc, w 2 Drug-elut, Open', 1);

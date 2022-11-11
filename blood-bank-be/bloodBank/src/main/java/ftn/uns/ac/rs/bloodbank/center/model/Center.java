@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.center.model;
 
-import ftn.uns.ac.rs.bloodbank.appointment.Appointment;
+import ftn.uns.ac.rs.bloodbank.appointment.model.Appointment;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.*;
 
@@ -32,15 +32,12 @@ public class Center {
     @Column(name = "avg_grade",nullable = false)
     private Double avgGrade;
     @OneToMany(mappedBy="center")
-    private List<CenterAdministrator> medicalStuff;
+    private Set<CenterAdministrator> medicalStuff;
     @OneToMany(mappedBy="center")
     private Set<Appointment> availableAppointments;
-    @ManyToMany
-    @JoinTable(
-            name = "center_working",
-            joinColumns = @JoinColumn(name = "center_id"),
-            inverseJoinColumns = @JoinColumn(name = "working_time_id"))
-    private Set<CenterWorkingTime> centerWorkingTime;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "working_time_id",referencedColumnName = "id")
+    private CenterWorkingTime centerWorkingTime;
     @ManyToMany
     @JoinTable(
             name = "center_equipment",
@@ -56,5 +53,9 @@ public class Center {
     public void addAdmin(CenterAdministrator centerAdministrator){
         medicalStuff.add(centerAdministrator);
         centerAdministrator.setCenter(this);
+    }
+    public void addAppointment(Appointment appointment){
+        availableAppointments.add(appointment);
+        appointment.setCenter(this);
     }
 }

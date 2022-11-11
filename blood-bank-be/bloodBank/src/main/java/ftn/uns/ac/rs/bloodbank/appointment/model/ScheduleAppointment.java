@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.appointment;
+package ftn.uns.ac.rs.bloodbank.appointment.model;
 
 import ftn.uns.ac.rs.bloodbank.customer.Customer;
 import lombok.Getter;

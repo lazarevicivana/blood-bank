@@ -37,6 +37,9 @@ public class MapperService {
     public ApplicationUserDtoResponse AppUserToAppUserDto(ApplicationUser applicationUser){
         return modelMapper.map(applicationUser,ApplicationUserDtoResponse.class);
     }
+//    public ApplicationUserDtoResponse MedicalStaffToAppUserDto(CenterAdministrator applicationUser){
+//        return modelMapper.map(applicationUser,ApplicationUserDtoResponse.class);
+//    }
 
     public ApplicationUserUpdate AppUserToAppUserUpdate(ApplicationUser applicationUser){
         return modelMapper.map(applicationUser,ApplicationUserUpdate.class);

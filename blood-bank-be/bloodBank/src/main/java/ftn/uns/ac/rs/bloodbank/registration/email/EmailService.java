@@ -24,16 +24,12 @@ public class EmailService {
         Mail mail = new Mail(from,subject,to,content);
 
         Request request = new Request();
-        try {
-            request.setMethod(Method.POST);
-            request.setEndpoint("mail/send");
-            request.setBody(mail.build());
-            Response response = sendGrid.api(request);
-            logger.info(response.getBody());
-            return response.getBody();
-        } catch (IOException ex) {
-            throw ex;
-        }
+        request.setMethod(Method.POST);
+        request.setEndpoint("mail/send");
+        request.setBody(mail.build());
+        Response response = sendGrid.api(request);
+        logger.info(response.getBody());
+        return response.getBody();
     }
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
