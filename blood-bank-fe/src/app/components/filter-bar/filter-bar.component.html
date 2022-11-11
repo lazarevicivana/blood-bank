@@ -3,7 +3,7 @@
     <mat-label>Filter by country</mat-label>
     <mat-select placeholder="Filter by country" (selectionChange)="selectCountry(selectedCountry)" [(ngModel)] = "selectedCountry" >
       <mat-option value="All">All</mat-option>
-      <mat-option *ngFor="let center of centers" [value]="center.country">{{center.country}}</mat-option>
+      <mat-option *ngFor="let center of centersUnique" [value]="center.country">{{center.country}}</mat-option>
     </mat-select>
   </mat-form-field>
 

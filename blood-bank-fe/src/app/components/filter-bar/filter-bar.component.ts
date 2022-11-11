@@ -12,9 +12,9 @@ export class FilterBarComponent implements OnInit {
   selectedCountry =""
   selectedCity =""
   centers : Center[]= []
-  centersFiltered : Center[]= []
+  centersUnique : Center[]= []
   centersFilterdByCountry : Center[]= []
-  centersFilterdByCity : Center[]= []
+
 
   @Output() onCountryFilter: EventEmitter<string> = new EventEmitter<string>();
   @Output() onCityFilter: EventEmitter<string> = new EventEmitter<string>();
@@ -24,9 +24,11 @@ export class FilterBarComponent implements OnInit {
   ngOnInit(): void {
     this.centerService.getAllCenters().subscribe(
       (response)=>{
+        this.centersUnique = response.filter(
+          (Center,i,arr)=> arr.findIndex(t=>t.country===Center.country)===i
+        );
         this.centers = response;
-        this.centersFiltered = response;
-        this.centersFilterdByCity = response;
+
         this.centersFilterdByCountry = response;
       });
   }
@@ -38,8 +40,9 @@ export class FilterBarComponent implements OnInit {
     }
     else{
       this.centersFilterdByCountry = this.centers.filter((obj) => {
-        return obj.country === selectedCountry;});
+        return obj.country === selectedCountry;})
       this.selectedCity=""
+
     }
     this.onCountryFilter.emit(selectedCountry)
 
