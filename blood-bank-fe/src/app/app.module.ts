@@ -21,6 +21,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AllUsersComponent } from './view/all-users/all-users.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { CenterCardComponent } from './components/center-card/center-card.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 
 
@@ -34,21 +35,22 @@ import { CenterCardComponent } from './components/center-card/center-card.compon
         AllUsersComponent,
         UserCardComponent
     ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        IonicModule.forRoot(),
-        AppRoutingModule,
-        HttpClientModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatButtonModule,
-        CenterViewModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatButtonModule,
+    CenterViewModule,
+    MatButtonToggleModule
+  ],
     providers: [authInterceptorProviders],
     exports: [
     ],

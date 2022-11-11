@@ -13,6 +13,9 @@ import {LoginRequest} from "../../../model/LoginRequest";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  step = 0;
+
+
   formGroup = new FormGroup({
     name: new FormControl<string | undefined>(undefined),
     username:new FormControl<string | undefined>(undefined),
@@ -109,5 +112,16 @@ export class LoginComponent implements OnInit {
         professionStatus: this.formGroup.controls.profession.controls.professionStatus.value!
       })
     })
+  }
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 }
