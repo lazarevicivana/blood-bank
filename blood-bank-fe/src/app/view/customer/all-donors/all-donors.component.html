@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="container-f">
+    <div class="parent">
+      <div class="title-container">
+        <h1 class="title">Blood donors</h1>
+      </div>
+
+      <div class="row ion-justify-content-center">
+        <div class="col-lg-6 col-md-6 col-sm-12 user-search-area">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 col-md-10">
+                <div class="mb-1">
+                  <p class="ms-1">
+                    Enter donors name and surname:
+                  </p>
+                  <div class="card row ion-justify-content-between" style="margin: 30px">
+                    <div class="row d-flex ion-justify-content-around" style="width: auto">
+                      <input placeholder="Name" class="input-style" [(ngModel)]="searchDonor.searchName">
+                      <input placeholder="Surname" class="input-style" [(ngModel)]="searchDonor.searchSurname">
+                      <button mat-flat-button color="primary" style="width: 100px" (click)="search()">Search</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="row col col-md parent1">
+          <div *ngFor="let donor of donors" class="col-6 col-md-6">
+            <app-donor-card  [user]="donor"></app-donor-card>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>

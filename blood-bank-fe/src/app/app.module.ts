@@ -26,6 +26,10 @@ import {MatSelectModule} from "@angular/material/select";
 import { ToastrModule } from 'ngx-toastr';
 import {AppointmentModule} from "./view/appointment/appointment.module";
 import {NgToastModule} from "ng-angular-popup";
+import { AllDonorsComponent } from './view/customer/all-donors/all-donors.component';
+import {MatDividerModule} from "@angular/material/divider";
+import { DonorCardComponent } from './view/customer/donor-card/donor-card.component';
+import { CenterDonorsComponent } from './view/customer/center-donors/center-donors.component';
 
 
 @NgModule({
@@ -35,7 +39,10 @@ import {NgToastModule} from "ng-angular-popup";
         BodyComponent,
         AccountComponent,
         LoginComponent,
-        AllUsersComponent
+        AllUsersComponent,
+        AllDonorsComponent,
+        DonorCardComponent,
+        CenterDonorsComponent
     ],
     imports: [
         BrowserModule,
@@ -59,7 +66,8 @@ import {NgToastModule} from "ng-angular-popup";
         ToastrModule.forRoot(),
         AppointmentModule,
         MatDialogModule,
-        NgToastModule
+        NgToastModule,
+        MatDividerModule
     ],
     providers: [authInterceptorProviders],
     exports: [],
