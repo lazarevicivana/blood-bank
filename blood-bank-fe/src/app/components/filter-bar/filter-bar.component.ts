@@ -9,15 +9,19 @@ import {CenterService} from "../../services/center.service";
 })
 export class FilterBarComponent implements OnInit {
 
-  selectedCountry =""
-  selectedCity =""
+  selectedCountry ="";
+  selectedCity ="";
+  selectedSort = '';
   centers : Center[]= []
   centersUnique : Center[]= []
   centersFilterdByCountry : Center[]= []
+  sort : string[] =['nameAsc','nameDesc','cityAsc','cityDesc','gradeAsc', 'gradeDesc','Sort']
+
 
 
   @Output() onCountryFilter: EventEmitter<string> = new EventEmitter<string>();
   @Output() onCityFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onSortFilter: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private centerService:CenterService) { }
 
@@ -50,5 +54,8 @@ export class FilterBarComponent implements OnInit {
 
   selectCity(selectedCity: string) {
     this.onCityFilter.emit(selectedCity)
+  }
+  selectSort(selectedSort : string){
+    this.onSortFilter.emit(selectedSort);
   }
 }
