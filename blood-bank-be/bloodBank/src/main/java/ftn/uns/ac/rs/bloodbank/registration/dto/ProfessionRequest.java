@@ -9,6 +9,6 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 public class ProfessionRequest {
-    private String profession;
+    private String professionDescription;
     private ProfessionStatus professionStatus;
 }

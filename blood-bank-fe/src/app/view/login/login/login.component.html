@@ -17,11 +17,11 @@
             </mat-expansion-panel-header>
             <mat-form-field class="mat"   appearance="outline">
               <mat-label class="mat" > Name</mat-label>
-              <input class="mat" formControlName="name" matInput placeholder="username" >
+              <input class="mat" formControlName="name" matInput placeholder="name" >
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label >Surname</mat-label>
-              <input   formControlName="surname" matInput placeholder="username" >
+              <input   formControlName="surname" matInput placeholder="surname" >
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label > Username</mat-label>
@@ -29,11 +29,28 @@
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label > email</mat-label>
-              <input type="email" formControlName="email" matInput placeholder="username" >
+              <input type="email" formControlName="email" matInput placeholder="email" >
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label > password</mat-label>
-              <input type="password" formControlName="password" matInput placeholder="username" >
+              <input type="password" formControlName="password" matInput placeholder="password" >
+            </mat-form-field>
+            <mat-form-field class="mat" appearance="outline">
+              <mat-label >confirm password</mat-label>
+              <input type="password" formControlName="confirmPassword" matInput placeholder="confirm password" >
+            </mat-form-field>
+            <mat-error *ngIf="passwordMatchError">
+              Password does not match
+            </mat-error>
+            <mat-form-field style="width: 70%" appearance="fill">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender" required>
+                <mat-option>--</mat-option>
+                <mat-option [value]="male">Male</mat-option>
+                <mat-option [value]="female">Female</mat-option>
+              </mat-select>
+<!--              <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>-->
+<!--              <mat-hint>{{animalControl.value?.sound}}</mat-hint>-->
             </mat-form-field>
             <mat-form-field class="mat" appearance="outline">
               <mat-label > jmbg</mat-label>
@@ -46,10 +63,8 @@
             <mat-action-row>
               <button mat-button color="primary" (click)="nextStep()">Next</button>
             </mat-action-row>
-
           </mat-expansion-panel>
-
-          <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+          <mat-expansion-panel formGroupName="profession" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
             <mat-expansion-panel-header style="justify-content: space-between;
   align-items: center;
 " >
@@ -58,50 +73,53 @@
                 <mat-icon style="margin-left: 150px">account_circle</mat-icon>
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <mat-form-field class="mat" appearance="outline">
-              <mat-label >professionStatus</mat-label>
-              <input formControlName="professionStatus" matInput placeholder="phone" >
+            <mat-form-field style="width: 70%" appearance="fill">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="professionStatus" required>
+                <mat-option>--</mat-option>
+                <mat-option [value]="student">Student</mat-option>
+                <mat-option [value]="pupil">Pupil</mat-option>
+                <mat-option [value]="notEmployed">Not employed</mat-option>
+                <mat-option [value]="employed">Employed</mat-option>
+              </mat-select>
             </mat-form-field>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="professionDescription" matInput placeholder="phone" >
+              <mat-label >description</mat-label>
+              <input formControlName="professionDescription" matInput placeholder="profession description" >
             </mat-form-field>
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>
               <button mat-button color="primary" (click)="nextStep()">Next</button>
             </mat-action-row>
           </mat-expansion-panel>
-
-          <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+          <mat-expansion-panel formGroupName="address" [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
             <mat-expansion-panel-header>
               <mat-panel-description>
                 Insert your address data
-
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="street" matInput placeholder="phone" >
+              <mat-label >street</mat-label>
+              <input formControlName="street" matInput placeholder="street" >
             </mat-form-field>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="city" matInput placeholder="phone" >
+              <mat-label >city</mat-label>
+              <input formControlName="city" matInput placeholder="city" >
             </mat-form-field>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="country" matInput placeholder="phone" >
+              <mat-label >country</mat-label>
+              <input formControlName="country" matInput placeholder="country" >
             </mat-form-field>
             <mat-form-field class="mat"  appearance="outline">
-              <mat-label >professionDescription</mat-label>
-              <input formControlName="streetNumber" matInput placeholder="phone" >
+              <mat-label >street number</mat-label>
+              <input formControlName="streetNumber" matInput placeholder="street number" >
             </mat-form-field>
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button  color="primary" (click)="nextStep()">Register</button>
+              <button mat-button  color="primary" (click)="onSignUp()">Register</button>
             </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>
-
       </form>
     </div>
     <div class="form-container sign-in-container">
@@ -110,8 +128,8 @@
           <h1>Sign in</h1>
           <span>or use your account</span>
         </div>
-        <input type="text" placeholder="Username" formControlName="username" name="userId"/>
-        <input type="password" placeholder="Password" formControlName="password" />
+        <input class="inputa" type="text" placeholder="Username" formControlName="username" name="userId"/>
+        <input class="inputa" type="password" placeholder="Password" formControlName="password" />
         <a href="#">Forgot your password?</a>
         <button class="button" (click)="onSignIn()">Sign In</button>
       </form>
