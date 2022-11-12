@@ -96,4 +96,21 @@ export class AllCentersComponent implements OnInit {
       this.filterMap();
     }
   }
+  sortCenters(sort: string){
+    console.log(sort)
+    if(sort === "nameAsc"){
+      this.centersFiltered.sort((a, b) => (a.name?.toLowerCase()! > b.name?.toLowerCase()! ? 1 : -1));
+    }else if(sort === "nameDesc"){
+      this.centersFiltered.sort((a, b) => (a.name?.toLowerCase()! > b.name?.toLowerCase()! ? -1 : 1));
+    }else if(sort === "cityAsc"){
+      this.centersFiltered.sort((a, b) => (a.city?.toLowerCase()! > b.city?.toLowerCase()! ? 1 : -1));
+    }else if(sort === "cityDesc"){
+      this.centersFiltered.sort((a, b) => (a.city?.toLowerCase()! > b.city?.toLowerCase()! ? -1 : 1));
+    }else if(sort === "gradeAsc"){
+      this.centersFiltered.sort((a, b) => (a > b ? 1 : -1));
+    }else if(sort === "gradeDesc"){
+      this.centersFiltered.sort((a, b) => (a > b ? -1 : 1));
+    }
+
+  }
 }
