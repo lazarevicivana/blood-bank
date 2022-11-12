@@ -25,6 +25,7 @@ import {CommonComponentsModule} from "./components/common-components.module";
 import {MatSelectModule} from "@angular/material/select";
 import { ToastrModule } from 'ngx-toastr';
 import {AppointmentModule} from "./view/appointment/appointment.module";
+import {NgToastModule} from "ng-angular-popup";
 
 
 @NgModule({
@@ -56,7 +57,9 @@ import {AppointmentModule} from "./view/appointment/appointment.module";
         MatSelectModule,
         BrowserAnimationsModule, // required animations module
         ToastrModule.forRoot(),
-        AppointmentModule
+        AppointmentModule,
+        MatDialogModule,
+        NgToastModule
     ],
     providers: [authInterceptorProviders],
     exports: [],

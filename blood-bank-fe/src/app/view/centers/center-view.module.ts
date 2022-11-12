@@ -15,6 +15,7 @@ import {CommonComponentsModule} from "../../components/common-components.module"
 import { CenterFormComponent } from './create-center/center-form/center-form.component';
 import { AdminFormComponent } from './create-center/admin-form/admin-form.component';
 import { AnotherAdminDialogComponent } from './create-center/another-admin-dialog/another-admin-dialog.component';
+import {NgToastModule} from "ng-angular-popup";
 
 @NgModule({
 
@@ -43,6 +44,7 @@ import { AnotherAdminDialogComponent } from './create-center/another-admin-dialo
     GoogleMapsModule,
     FormsModule,
     CommonComponentsModule,
+    NgToastModule,
   ]
 })
 export class CenterViewModule { }
