@@ -25,6 +25,7 @@ import { CenterCardComponent } from './components/center-card/center-card.compon
 
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {CommonComponentsModule} from "./components/common-components.module";
+import {NgToastModule} from "ng-angular-popup";
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {CommonComponentsModule} from "./components/common-components.module";
         CenterViewModule,
         MatButtonToggleModule,
         CommonComponentsModule,
-        MatDialogModule
+        MatDialogModule,
+        NgToastModule
     ],
 
     providers: [authInterceptorProviders],

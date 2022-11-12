@@ -25,6 +25,7 @@
     "@ionic/angular": "^6.3.4",
     "bootstrap": "^5.2.2",
     "ionicons": "^6.0.3",
+    "ng-angular-popup": "^0.2.0",
     "ng-image-slider": "^6.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
