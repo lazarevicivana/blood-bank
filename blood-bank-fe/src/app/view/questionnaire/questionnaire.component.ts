@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {QuestionnaireRequest} from "../../model/Questionnaire";
 import {TokenStorageService} from "../../services/token-storage.service";
 import {ApplicationUserService} from "../../services/applicationUser.service";
+import {QuestionnaireService} from "../../services/customer-form.service";
 
 @Component({
   selector: 'app-questionnaire',
@@ -25,45 +26,65 @@ export class QuestionnaireComponent implements OnInit {
     '4. Do tou have any allergies?',
     '5. Have tou been sick in the last 7 days?'
   ]
-  constructor(private tokenStorage : TokenStorageService) { }
+  constructor(private tokenStorage : TokenStorageService,private customerClient : ApplicationUserService, private client: QuestionnaireService) { }
 
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
-    //this.questionnaire.customerId = user.id;
+    this.customerClient.getApplicationUserById(user.id).subscribe({
+      next: response => {
+        this.questionnaire.applicationUser = response;
+        console.log( this.questionnaire.applicationUser);
+      }
+      }
+    )
   }
   next(stepper:MatStepper){
     this.stepper = stepper;
     this.stepper.next();
   }
-  onAnswer1(answer: boolean){
-    this.questionnaire.isAge = answer;
+  onAnswer1(answer: string){
+    this.questionnaire.isAge = this.stringToBoolean(answer);
   }
-  onAnswer2(answer: boolean){
-    this.questionnaire.isWeight = answer;
+  onAnswer2(answer: string){
+    this.questionnaire.isWeight = this.stringToBoolean(answer);
   }
-  onAnswer3(answer: boolean){
-    this.questionnaire.isSexual = answer;
+  onAnswer3(answer: string){
+    this.questionnaire.isSexual = this.stringToBoolean(answer);
   }
-  onAnswer4(answer: boolean){
-    this.questionnaire.isPregnant = answer;
+  onAnswer4(answer: string){
+    this.questionnaire.isPregnant = this.stringToBoolean(answer);
   }
-  onAnswer5(answer: boolean){
-    this.questionnaire.onPeriod = answer;
+  onAnswer5(answer: string){
+    this.questionnaire.onPeriod =this.stringToBoolean(answer);
     }
-  onAnswer6(answer: boolean){
-      this.questionnaire.hadTransfusion = answer;
+  onAnswer6(answer: string){
+      this.questionnaire.hadTransfusion = this.stringToBoolean(answer);
     }
-  onAnswer7(answer: boolean){
-      this.questionnaire.hadCancer = answer;
+  onAnswer7(answer: string){
+      this.questionnaire.hadCancer = this.stringToBoolean(answer);
     }
-  onAnswer8(answer: boolean){
-      this.questionnaire.useMedication = answer;
+  onAnswer8(answer: string){
+      this.questionnaire.useMedication = this.stringToBoolean(answer);
     }
-  onAnswer9(answer: boolean){
-      this.questionnaire.isAllergic = answer;
+  onAnswer9(answer: string){
+      this.questionnaire.isAllergic = this.stringToBoolean(answer);
     }
-  onAnswer10(answer: boolean){
-      this.questionnaire.isSick = answer;
+  onAnswer10(answer: string){
+    console.log(typeof(answer));
+      this.questionnaire.isSick = this.stringToBoolean(answer);
     }
+  onSubmitQuestionnaire(){
+    this.questionnaire.submissionDate = new Date();
+    this.client.createQuestionnaire(this.questionnaire).subscribe({
+      next: response => {
+        console.log(response);
+      }
+    })
+  }
+  stringToBoolean(answer : string){
+    if(answer === 'yes')
+      return true;
+    return false;
+  }
 
 }

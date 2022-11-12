@@ -2,7 +2,7 @@
   <div class="container-f">
     <h1>Become a blood donor</h1>
     <mat-stepper  #stepper >
-      <mat-step [editable]="false">
+      <mat-step >
         <ng-template matStepLabel>Personal informations</ng-template>
           <app-blood-donor-question [question]="questions[0]" (answerEmit)="onAnswer1($event)"></app-blood-donor-question>
           <app-blood-donor-question [question]="questions[1]" (answerEmit)="onAnswer2($event)"></app-blood-donor-question>
@@ -24,18 +24,9 @@
         <app-blood-donor-question [question]="questions[8]" (answerEmit)="onAnswer9($event)"></app-blood-donor-question>
         <app-blood-donor-question [question]="questions[9]" (answerEmit)="onAnswer10($event)"></app-blood-donor-question>
         <div align="end">
-          <button mat-flat-button color="primary" >Next</button>
+          <button mat-flat-button color="primary" (click)="onSubmitQuestionnaire()" >Submit</button>
         </div>
         <lib-ng-toast></lib-ng-toast>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <div class="center-text">
-          <p>You have successfuly create .</p>
-        </div>
-        <div align="end">
-          <button mat-flat-button color="success" >Done</button>
-        </div>
       </mat-step>
     </mat-stepper>
   </div>

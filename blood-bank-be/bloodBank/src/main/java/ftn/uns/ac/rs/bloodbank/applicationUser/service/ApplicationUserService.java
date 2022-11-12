@@ -1,12 +1,9 @@
 package ftn.uns.ac.rs.bloodbank.applicationUser.service;
 import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.applicationUser.repository.ApplicationUserRepository;
-import ftn.uns.ac.rs.bloodbank.customer.Customer;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationToken;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

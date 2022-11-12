@@ -8,15 +8,15 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class BloodDonorQuestionComponent implements OnInit {
   @Input() question : string ='';
-  yes  = true;
-  no = false;
-  @Output() answerEmit : EventEmitter<boolean> = new EventEmitter<boolean>();
-  answer  : boolean | undefined;
+  yes  :  string = 'yes';
+  no : string = 'no';
+  @Output() answerEmit : EventEmitter<string> = new EventEmitter<string>();
+  answer  : string | undefined;
   constructor() { }
 
   ngOnInit(): void {
   }
-  onRadioButton(answer: boolean){
+  onRadioButton(answer: string){
     this.answerEmit.emit(answer);
   }
 

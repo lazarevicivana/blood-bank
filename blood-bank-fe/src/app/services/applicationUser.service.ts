@@ -21,10 +21,7 @@ export class ApplicationUserService {
 
   getApplicationUserById(idUser:string): Observable<ApplicationUser>{
     const url = `${this.aplUrl}/${idUser}`
-
-    // @ts-ignore
-    return this.http.get(url)
-
+    return this.http.get<ApplicationUser>(url);
   }
 
   updateApplicationUser(user: ApplicationUser):Observable<ApplicationUser>{
