@@ -31,7 +31,7 @@ public class CustomerController {
         return customerService.getCenterDonors(centerId);
     }
 
-    @GetMapping(value = "/searchCenterDonors/{centerId}")
+    @PostMapping(value = "/searchCenterDonors/{centerId}")
     public List<Customer> searchCenterDonors(@PathVariable("centerId") UUID centerId, @RequestBody CustomerSearchDto dto)
     {
         return customerService.searchCenterDonors(centerId,dto);
@@ -43,7 +43,7 @@ public class CustomerController {
         return customerService.getDonors();
     }
 
-    @GetMapping(path = "/searchDonors")
+    @PostMapping(path = "/searchDonors")
     public List<Customer> searchDonors(@RequestBody CustomerSearchDto dto)
     {
         return customerService.searchDonors(dto);
