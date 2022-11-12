@@ -9,6 +9,7 @@ import {CenterService} from "../../services/center.service";
 })
 export class FilterBarComponent implements OnInit {
 
+  selectedName=""
   selectedCountry =""
   selectedCity =""
   centers : Center[]= []
@@ -18,6 +19,7 @@ export class FilterBarComponent implements OnInit {
 
   @Output() onCountryFilter: EventEmitter<string> = new EventEmitter<string>();
   @Output() onCityFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onNameFilter: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private centerService:CenterService) { }
 
@@ -50,5 +52,14 @@ export class FilterBarComponent implements OnInit {
 
   selectCity(selectedCity: string) {
     this.onCityFilter.emit(selectedCity)
+  }
+
+  onNameChange() {
+    this.onNameFilter.emit(this.selectedName)
+  }
+
+  clearName() {
+    this.selectedName=""
+    this.onNameFilter.emit("All")
   }
 }
