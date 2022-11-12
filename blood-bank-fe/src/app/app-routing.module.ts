@@ -9,6 +9,8 @@ import {CreateCenterComponent} from "./view/centers/create-center/create-center.
 import {AllUsersComponent} from "./view/all-users/all-users.component";
 import {CenterAdminProfileComponent} from "./view/centers/center-admin-profile/center-admin-profile.component";
 import {CreateAppointmentComponent} from "./view/appointment/create-appointment/create-appointment.component";
+import {AllDonorsComponent} from "./view/customer/all-donors/all-donors.component";
+import {CenterDonorsComponent} from "./view/customer/center-donors/center-donors.component";
 
 const routes: Routes = [
   { path: 'facilities', component: AllCentersComponent },
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'all-users', component: AllUsersComponent},
   { path:'',component:LoginComponent},
   { path:'admin-center-profile',component:CenterAdminProfileComponent},
-  { path:'add-appointment',component:CreateAppointmentComponent}
+  { path:'add-appointment',component:CreateAppointmentComponent},
+  { path:'all-donors',component:AllDonorsComponent},
+  { path:'center-donors',component:CenterDonorsComponent}
 ];
 
 @NgModule({
