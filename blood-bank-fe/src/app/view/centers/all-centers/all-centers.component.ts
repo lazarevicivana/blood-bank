@@ -141,9 +141,9 @@ export class AllCentersComponent implements OnInit {
     }else if(sort === "cityDesc"){
       this.centersFiltered.sort((a, b) => (a.city?.toLowerCase()! > b.city?.toLowerCase()! ? -1 : 1));
     }else if(sort === "gradeAsc"){
-      this.centersFiltered.sort((a, b) => (a > b ? 1 : -1));
+      this.centersFiltered.sort((a, b) => (a.avgGrade! > b.avgGrade! ? 1 : -1));
     }else if(sort === "gradeDesc"){
-      this.centersFiltered.sort((a, b) => (a > b ? -1 : 1));
+      this.centersFiltered.sort((a, b) => (a.avgGrade! > b.avgGrade! ? -1 : 1));
     }
 
   }
