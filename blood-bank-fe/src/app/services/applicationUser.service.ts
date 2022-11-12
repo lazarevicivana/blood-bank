@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
-import {ApplicationUser} from "../model/ApplicationUser";
+import {ApplicationUser, ApplicationUserImp} from "../model/ApplicationUser";
 import {UserResponse} from "../model/UserResponse";
 
 const httpOptions ={
@@ -22,6 +22,10 @@ export class ApplicationUserService {
   getApplicationUserById(idUser:string): Observable<ApplicationUser>{
     const url = `${this.aplUrl}/${idUser}`
     return this.http.get<ApplicationUser>(url);
+  }
+  getCustomerById(idUser:string): Observable<ApplicationUserImp>{
+    const url = `${this.aplUrl}/${idUser}`
+    return this.http.get<ApplicationUserImp>(url);
   }
 
   updateApplicationUser(user: ApplicationUser):Observable<ApplicationUser>{

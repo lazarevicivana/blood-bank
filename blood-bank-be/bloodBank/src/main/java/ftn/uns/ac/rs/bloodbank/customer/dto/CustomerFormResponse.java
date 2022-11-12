@@ -22,6 +22,6 @@ public class CustomerFormResponse {
     private Boolean isSexual;
     private Boolean isAllergic;
     private Boolean useMedication;
-    private ApplicationUser customerId;
+    private UUID customerId;
     private Date submissionDate;
 }

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {MatStepper} from "@angular/material/stepper";
-import {FormControl, FormGroup} from "@angular/forms";
 import {QuestionnaireRequest} from "../../model/Questionnaire";
 import {TokenStorageService} from "../../services/token-storage.service";
 import {ApplicationUserService} from "../../services/applicationUser.service";
 import {QuestionnaireService} from "../../services/customer-form.service";
+import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
+import { ApplicationUserImp} from "../../model/ApplicationUser";
 
 @Component({
   selector: 'app-questionnaire',
@@ -13,7 +15,9 @@ import {QuestionnaireService} from "../../services/customer-form.service";
 })
 export class QuestionnaireComponent implements OnInit {
   stepper: MatStepper | undefined;
+  applicationUser = new ApplicationUserImp();
   questionnaire  = new QuestionnaireRequest();
+  female : boolean = false;
   questions : string[] =[
     '1. Are you 16 – 65 years old?',
     '2. Do you currently weigh less than 50kg (7 stone 12 pounds)?',
@@ -26,23 +30,37 @@ export class QuestionnaireComponent implements OnInit {
     '4. Do tou have any allergies?',
     '5. Have tou been sick in the last 7 days?'
   ]
-  constructor(private tokenStorage : TokenStorageService,private customerClient : ApplicationUserService, private client: QuestionnaireService) { }
+    enableSubmit =  false;
+  constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,private customerClient : ApplicationUserService, private client: QuestionnaireService) { }
 
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
-    this.customerClient.getApplicationUserById(user.id).subscribe({
-      next: response => {
-        this.questionnaire.applicationUser = response;
-        console.log( this.questionnaire.applicationUser);
-      }
-      }
-    )
+   this.questionnaire.customerId = user.id;
+    this.getUserById(user.id);
   }
+
+  private getUserById(id: string) {
+    this.customerClient.getCustomerById(id).subscribe({
+      next: response => {
+        this.applicationUser = response;
+        console.log(this.applicationUser.gender);
+        this.checkGender();
+      }
+    })
+  }
+
+  private checkGender() {
+    if (this.applicationUser.gender === "FEMALE") {
+      this.female = true;
+    }
+  }
+
   next(stepper:MatStepper){
     this.stepper = stepper;
     this.stepper.next();
   }
   onAnswer1(answer: string){
+    console.log(answer);
     this.questionnaire.isAge = this.stringToBoolean(answer);
   }
   onAnswer2(answer: string){
@@ -74,17 +92,55 @@ export class QuestionnaireComponent implements OnInit {
       this.questionnaire.isSick = this.stringToBoolean(answer);
     }
   onSubmitQuestionnaire(){
-    this.questionnaire.submissionDate = new Date();
-    this.client.createQuestionnaire(this.questionnaire).subscribe({
-      next: response => {
-        console.log(response);
-      }
-    })
-  }
-  stringToBoolean(answer : string){
-    if(answer === 'yes')
-      return true;
-    return false;
+    this.checkAllFieldstoneSubmitting();
+    if(this.enableSubmit){
+      this.questionnaire.submissionDate = new Date();
+      this.client.createQuestionnaire(this.questionnaire).subscribe({
+        next: _ => {
+          this.toast.success("You have successfully submitted your blood donor questionnaire!","Success");
+          this.router.navigateByUrl("/facilities");
+        }
+      })
+    }else {
+      this.toast.error("All questions must be answered!","Error");
+    }
   }
 
+  private checkAllFieldstoneSubmitting() {
+    if(this.applicationUser.gender === "MALE"){
+      this.checkForMaleDonors();
+    }else {
+      this.checkForFemaleDonors();
+    }
+  }
+
+  private checkForMaleDonors() {
+    if (this.questionnaire.isSick !== undefined
+      && this.questionnaire.isAllergic !== undefined
+      && this.questionnaire.useMedication !== undefined
+      && this.questionnaire.hadCancer !== undefined
+      && this.questionnaire.hadTransfusion !== undefined
+      && this.questionnaire.isSexual !== undefined
+      && this.questionnaire.isAge !== undefined) {
+      this.enableSubmit = true;
+    }
+  }
+
+  private checkForFemaleDonors() {
+    if (this.questionnaire.isSick !== undefined
+      && this.questionnaire.isAllergic !== undefined
+      && this.questionnaire.useMedication !== undefined
+      && this.questionnaire.hadCancer !== undefined
+      && this.questionnaire.hadTransfusion !== undefined
+      && this.questionnaire.isSexual !== undefined
+      && this.questionnaire.isPregnant !== undefined
+      && this.questionnaire.onPeriod !== undefined
+      && this.questionnaire.isAge !== undefined) {
+      this.enableSubmit = true;
+    }
+  }
+
+  stringToBoolean(answer : string){
+    return answer === 'yes';
+  }
 }

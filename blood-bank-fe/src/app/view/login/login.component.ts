@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
         next: response => {
           this.isSuccessful = true;
           this.isSignUpFailed = false;
-          this.toast.success("You have successfuly registered, please verify your account!",'Succes');
+          this.toast.success("You have successfully registered, please verify your account!",'Succes');
         },
         error: err => {
           this.toast.error(err.error.message,"Error")

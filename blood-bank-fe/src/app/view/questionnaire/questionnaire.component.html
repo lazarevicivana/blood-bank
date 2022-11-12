@@ -4,13 +4,11 @@
     <mat-stepper  #stepper >
       <mat-step >
         <ng-template matStepLabel>Personal informations</ng-template>
-          <app-blood-donor-question [question]="questions[0]" (answerEmit)="onAnswer1($event)"></app-blood-donor-question>
-          <app-blood-donor-question [question]="questions[1]" (answerEmit)="onAnswer2($event)"></app-blood-donor-question>
-          <app-blood-donor-question [question]="questions[2]" (answerEmit)="onAnswer3($event)"></app-blood-donor-question>
-          <h4>For women</h4>
-          <mat-divider style="margin-bottom: 2rem"></mat-divider>
-          <app-blood-donor-question [question]="questions[3]" (answerEmit)="onAnswer4($event)"></app-blood-donor-question>
-          <app-blood-donor-question [question]="questions[4]" (answerEmit)="onAnswer5($event)"></app-blood-donor-question>
+          <app-blood-donor-question [question]="questions[0]" (answerEmit)="onAnswer1($event)" ></app-blood-donor-question>
+          <app-blood-donor-question [question]="questions[1]" (answerEmit)="onAnswer2($event)" ></app-blood-donor-question>
+          <app-blood-donor-question [question]="questions[2]" (answerEmit)="onAnswer3($event)" ></app-blood-donor-question>
+          <app-blood-donor-question *ngIf="female" [question]="questions[3]" (answerEmit)="onAnswer4($event)"></app-blood-donor-question>
+          <app-blood-donor-question *ngIf="female" [question]="questions[4]" (answerEmit)="onAnswer5($event)"></app-blood-donor-question>
           <div align="end">
             <button mat-flat-button color="primary"  (click)="next(stepper)">Next</button>
           </div>
@@ -18,11 +16,11 @@
       </mat-step>
       <mat-step >
         <ng-template matStepLabel>Health condition</ng-template>
-        <app-blood-donor-question [question]="questions[5]" (answerEmit)="onAnswer5($event)"></app-blood-donor-question>
-        <app-blood-donor-question [question]="questions[6]" (answerEmit)="onAnswer7($event)"></app-blood-donor-question>
-        <app-blood-donor-question [question]="questions[7]" (answerEmit)="onAnswer8($event)"></app-blood-donor-question>
-        <app-blood-donor-question [question]="questions[8]" (answerEmit)="onAnswer9($event)"></app-blood-donor-question>
-        <app-blood-donor-question [question]="questions[9]" (answerEmit)="onAnswer10($event)"></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[5]" (answerEmit)="onAnswer6($event)" ></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[6]" (answerEmit)="onAnswer7($event)" ></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[7]" (answerEmit)="onAnswer8($event)" ></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[8]" (answerEmit)="onAnswer9($event)" ></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[9]" (answerEmit)="onAnswer10($event)" ></app-blood-donor-question>
         <div align="end">
           <button mat-flat-button color="primary" (click)="onSubmitQuestionnaire()" >Submit</button>
         </div>

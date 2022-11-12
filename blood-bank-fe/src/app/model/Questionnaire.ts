@@ -12,7 +12,7 @@ export interface IQuestionnaireRequest{
   isAllergic? : boolean,
   hadCancer? : boolean,
   hadTransfusion? : boolean,
-  applicationUser? : ApplicationUser,
+  customerId? : string,
   submissionDate? : Date
 }
 export class QuestionnaireRequest implements IQuestionnaireRequest {
@@ -26,7 +26,7 @@ export class QuestionnaireRequest implements IQuestionnaireRequest {
   isAllergic? : boolean;
   hadCancer? : boolean;
   hadTransfusion? : boolean;
-  applicationUser? : ApplicationUser;
+  customerId? : string;
   submissionDate? : Date;
 
 
