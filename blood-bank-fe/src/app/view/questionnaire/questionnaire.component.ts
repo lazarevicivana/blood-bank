@@ -29,7 +29,7 @@ export class QuestionnaireComponent implements OnInit {
 
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
-    this.questionnaire.customerId = user.id;
+    //this.questionnaire.customerId = user.id;
   }
   next(stepper:MatStepper){
     this.stepper = stepper;
