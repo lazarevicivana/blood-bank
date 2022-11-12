@@ -3,6 +3,9 @@ import {ApplicationUser} from "../../model/ApplicationUser";
 import {ApplicationUserService} from "../../services/applicationUser.service";
 import { ViewChild} from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
+import {TokenStorageService} from "../../services/token-storage.service";
+import {UserToken} from "../../model/UserToken";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-account',
@@ -42,11 +45,14 @@ export class AccountComponent implements OnInit {
     },
     gender: ""
   }
+  userToken: UserToken;
 
-  constructor(private userService: ApplicationUserService) { }
+  constructor(private userService: ApplicationUserService,private tkStorage:TokenStorageService,private toast:ToastrService) {
+    this.userToken = this.tkStorage.getUser()
+  }
 
   ngOnInit(): void {
-    this.userService.getApplicationUserById().subscribe((user) =>
+    this.userService.getApplicationUserById(this.userToken.id).subscribe((user) =>
       (this.loggedCustomer = user , console.log(this.loggedCustomer)));
 
   }
@@ -57,6 +63,7 @@ export class AccountComponent implements OnInit {
       this.username = ""
       this.accordion?.closeAll()
       this.userService.updateApplicationUser(this.loggedCustomer).subscribe()
+      this.toast.success("You are successfully update profile!","Success")
     }
 
   }
@@ -67,22 +74,27 @@ export class AccountComponent implements OnInit {
       this.phone = ""
       this.accordion?.closeAll()
       this.userService.updateApplicationUser(this.loggedCustomer).subscribe()
+      this.toast.success("You are successfully update profile!","Success")
     }
   }
 
   changePassword() {
     if(this.password1 != ""){
-      if(this.password1 == this.password2){
+      if(this.password1 === this.password2){
         this.loggedCustomer.password = this.password1
         this.password1 = ""
         this.password2 = ""
         this.accordion?.closeAll()
         this.userService.updateApplicationUser(this.loggedCustomer).subscribe()
+        this.toast.success("You are successfully update profile!","Success")
+      }
+      else{
+        this.toast.error("Passwords must match!","Error")
       }
     }
   }
 
-  changeAdress() {
+  changeAddress() {
     if(this.street!="" && this.streetNumber!= "" && this.city!="" && this.country!="" ){
       this.loggedCustomer.country = this.country;
       this.loggedCustomer.street = this.street;
@@ -94,6 +106,7 @@ export class AccountComponent implements OnInit {
       this.streetNumber = ""
       this.accordion?.closeAll()
       this.userService.updateApplicationUser(this.loggedCustomer).subscribe()
+      this.toast.success("You are successfully update profile!","Success")
     }
   }
 }

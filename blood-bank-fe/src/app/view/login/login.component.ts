@@ -8,7 +8,7 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {LoginRequest} from "../../model/LoginRequest";
 import {ToastrService} from "ngx-toastr";
 import {CustomValidators} from "../../validators/CustomValidators";
-import {Gender} from "../../model/Gender";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
   password: new FormControl<string | undefined>(undefined)
 })
 
-  constructor(private client: AuthService, private tokenStorage: TokenStorageService, private fb: FormBuilder,private toast:ToastrService) {}
+  constructor(private router: Router,private client: AuthService, private tokenStorage: TokenStorageService, private fb: FormBuilder,private toast:ToastrService) {}
   ngOnInit(): void {
       if (this.tokenStorage.getToken()){
         this.isLoggedIn = true;
@@ -90,6 +90,8 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(response);
         this.isLoggedIn = true;
         this.reloadPage();
+        this.router.navigate(['facilities'])
+
       }
     })
   }

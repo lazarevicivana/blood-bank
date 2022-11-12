@@ -27,6 +27,11 @@ import { ToastrModule } from 'ngx-toastr';
 import {AppointmentModule} from "./view/appointment/appointment.module";
 import {NgToastModule} from "ng-angular-popup";
 import {QuestionnaireModule} from "./view/questionnaire/questionnaire.module";
+import { AllDonorsComponent } from './view/customer/all-donors/all-donors.component';
+import {MatDividerModule} from "@angular/material/divider";
+import { DonorCardComponent } from './view/customer/donor-card/donor-card.component';
+import { CenterDonorsComponent } from './view/customer/center-donors/center-donors.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -34,33 +39,37 @@ import {QuestionnaireModule} from "./view/questionnaire/questionnaire.module";
         BodyComponent,
         AccountComponent,
         LoginComponent,
-        AllUsersComponent
+        AllUsersComponent,
+        AllDonorsComponent,
+        DonorCardComponent,
+        CenterDonorsComponent
     ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatButtonModule,
-    CenterViewModule,
-    MatButtonToggleModule,
-    CommonComponentsModule,
-    MatDialogModule,
-    MatSelectModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(),
-    AppointmentModule,
-    MatDialogModule,
-    NgToastModule,
-    QuestionnaireModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        HttpClientModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatButtonModule,
+        CenterViewModule,
+        MatButtonToggleModule,
+        CommonComponentsModule,
+        MatDialogModule,
+        MatSelectModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(),
+        AppointmentModule,
+        MatDialogModule,
+        NgToastModule,
+        MatDividerModule,
+        QuestionnaireModule
+    ],
     providers: [authInterceptorProviders],
     exports: [],
     bootstrap: [AppComponent]

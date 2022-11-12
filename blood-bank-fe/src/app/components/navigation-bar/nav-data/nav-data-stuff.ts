@@ -16,5 +16,11 @@ export const stuffNavData=[
     icon: 'add-circle-outline',
     label: 'Add appointment',
     num:2
+  },
+  {
+    routeLink: 'center-donors',
+    icon: 'accessibility-outline',
+    label: 'Center donors',
+    num:3
   }
 ];

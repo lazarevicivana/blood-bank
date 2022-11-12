@@ -35,23 +35,24 @@ import java.util.Arrays;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final ApplicationUserService applicationUserService;
     private AuthEntryPointJwt unauthorizedHandler;
+    private PasswordEncodeConfig passwordEncodeConfig;
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
     }
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(applicationUserService).passwordEncoder(passwordEncoder());
+        authenticationManagerBuilder.userDetailsService(applicationUserService).passwordEncoder(passwordEncodeConfig.passwordEncoder());
     }
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
     @Override
     public void configure(WebSecurity web) throws Exception {
         web

@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <app-filter-bar (onCountryFilter)="getByCountryFilter($event)"  (onCityFilter)="getByCityFilter($event)" (onSortFilter)="sortCenters($event)"></app-filter-bar>
+  <app-filter-bar (onCountryFilter)="getByCountryFilter($event)"  (onCityFilter)="getByCityFilter($event)"  (onGradeFilter)="getByGradeFilter($event)"
+                  (onNameFilter)="getByNameFilter($event)" (onSortFilter)="sortCenters($event)"></app-filter-bar>
   <div class="row">
     <div class="col-7 scroll row col-md-7 parent">
       <div *ngFor="let center of centersFiltered" class="col-6 col-md-6">

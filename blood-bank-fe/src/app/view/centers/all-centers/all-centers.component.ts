@@ -9,9 +9,15 @@ import {GoogleMapApiService} from "../../../services/googleMapApi.service";
   styleUrls: ['./all-centers.component.css']
 })
 export class AllCentersComponent implements OnInit {
+  selectedCity="All"
+  selectedName="All"
+  selectedCountry="All"
   centers : Center[]= []
   centersFiltered : Center[]= []
   centersFilterdByCountry : Center[]= []
+  centersFilterdByCity : Center[]= []
+  centersFilterdByName : Center[]= []
+  centersFilterdByGrade : Center[]= []
   private map!: google.maps.Map;
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService) { }
 
@@ -34,20 +40,7 @@ export class AllCentersComponent implements OnInit {
 
   }
 
-  public getByCountryFilter(name: string){
-    if(name ==="All"){
-      this.centersFiltered = this.centers
-      this.centersFilterdByCountry = this.centers
-      this.filterMap();
-    }
-    else{
-      this.centersFilterdByCountry = this.centers.filter((obj) => {
-        return obj.country === name;
-      });
-      this.centersFiltered = this.centersFilterdByCountry
-      this.filterMap();
-    }
-  }
+
 
   private getAllCenters(){
     this.centerService.getAllCenters().subscribe(
@@ -55,6 +48,9 @@ export class AllCentersComponent implements OnInit {
         this.centers = response;
         this.centersFiltered = response;
         this.centersFilterdByCountry = response;
+        this.centersFilterdByCity = response;
+        this.centersFilterdByName = response;
+        this.centersFilterdByGrade = response;
         console.log(this.centers)
         this.centersFiltered.forEach((center)=>{
           new google.maps.Marker({
@@ -83,18 +79,56 @@ export class AllCentersComponent implements OnInit {
     })
   }
 
-  getByCityFilter(city: string) {
-    if(city ==="All"){
-      this.centersFiltered = this.centersFilterdByCountry
+  private filterCentersByAllFilters(){
+    this.centersFiltered = this.centers.filter(e => {
+      return this.centersFilterdByCountry.some(item => item.id === e.id);});
+    this.centersFiltered = this.centersFiltered.filter(e => {
+      return this.centersFilterdByCity.some(item => item.id === e.id);});
+    this.centersFiltered = this.centersFiltered.filter(e => {
+      return this.centersFilterdByName.some(item => item.id === e.id);});
+    this.centersFiltered = this.centersFiltered.filter(e => {
+      return this.centersFilterdByGrade.some(item => item.id === e.id);});
+  }
 
-      this.filterMap();
+
+
+  public getByCountryFilter(name: string){
+    this.selectedCountry=name
+    if(name != "All" && name!=""){
+      this.centersFilterdByCity = this.centers
+        this.centersFilterdByCountry = this.centers.filter((obj) => {
+          return obj.country === name;
+        });
+    }else {
+      this.centersFilterdByCountry = this.centers
+      this.centersFilterdByCity=this.centers
     }
-    else{
-      this.centersFiltered = this.centersFilterdByCountry.filter((obj) => {
-        return obj.city === city;
-      });
-      this.filterMap();
+    this.filterCentersByAllFilters();
+  }
+
+  getByCityFilter(city: string) {
+    this.selectedCity = city
+    if(this.selectedCity!="All" && this.selectedCity!=""){
+      this.centersFilterdByCity = this.centers.filter((obj) => {
+        return obj.city === city;});
     }
+    else {
+      this.centersFilterdByCity = this.centers
+    }
+    this.filterCentersByAllFilters();
+  }
+
+
+  getByNameFilter(name: string) {
+    this.selectedName = name
+    if(name!="All" && name!=""){
+      this.centersFilterdByName = this.centers.filter((obj) => {
+        return obj.name?.toLowerCase().includes(name.toLowerCase())})
+    }
+    else {
+      this.centersFilterdByName= this.centers
+    }
+    this.filterCentersByAllFilters();
   }
   sortCenters(sort: string){
     console.log(sort)
@@ -112,5 +146,20 @@ export class AllCentersComponent implements OnInit {
       this.centersFiltered.sort((a, b) => (a > b ? -1 : 1));
     }
 
+  }
+
+  getByGradeFilter(grade: string) {
+    console.log(Number(grade))
+    if (grade != "All" && grade!=""){
+
+      this.centersFilterdByGrade = this.centers.filter((obj) => {
+        return (Number(obj.avgGrade)>=Number(grade))
+      });
+    }
+    else {
+
+      this.centersFilterdByGrade= this.centers
+    }
+    this.filterCentersByAllFilters()
   }
 }

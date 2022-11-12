@@ -7,8 +7,14 @@ export const adminSystemNavData =[
   },
   {
     routeLink: 'create-center',
-    icon: 'business-outline',
-    label: 'Create',
+    icon: 'add-circle-outline',
+    label: 'Create center',
     num:1
+  },
+  {
+    routeLink: 'all-donors',
+    icon: 'accessibility-outline',
+    label: 'Donors',
+    num:2
   }
 ]

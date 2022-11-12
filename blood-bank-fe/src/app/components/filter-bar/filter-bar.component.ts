@@ -9,9 +9,14 @@ import {CenterService} from "../../services/center.service";
 })
 export class FilterBarComponent implements OnInit {
 
-  selectedCountry ="";
-  selectedCity ="";
+
+  selectedName=""
+  selectedCountry =""
+  selectedCity =""
+  selectedGrade=""
+
   selectedSort = '';
+
   centers : Center[]= []
   centersUnique : Center[]= []
   centersFilterdByCountry : Center[]= []
@@ -21,7 +26,11 @@ export class FilterBarComponent implements OnInit {
 
   @Output() onCountryFilter: EventEmitter<string> = new EventEmitter<string>();
   @Output() onCityFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onGradeFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onNameFilter: EventEmitter<string> = new EventEmitter<string>();
+
   @Output() onSortFilter: EventEmitter<string> = new EventEmitter<string>();
+
 
   constructor(private centerService:CenterService) { }
 
@@ -55,7 +64,22 @@ export class FilterBarComponent implements OnInit {
   selectCity(selectedCity: string) {
     this.onCityFilter.emit(selectedCity)
   }
+
+
+  onNameChange() {
+    this.onNameFilter.emit(this.selectedName)
+  }
+
+  clearName() {
+    this.selectedName = ""
+    this.onNameFilter.emit("All")
+  }
   selectSort(selectedSort : string){
     this.onSortFilter.emit(selectedSort);
+
+  }
+
+  selectGrade(selectedGrade: any) {
+    this.onGradeFilter.emit(selectedGrade);
   }
 }
