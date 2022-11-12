@@ -47,9 +47,6 @@ export class AllCentersComponent implements OnInit {
       this.centersFiltered = this.centersFilterdByCountry
       this.filterMap();
     }
-
-
-    console.log(this.centersFilterdByCountry)
   }
 
   private getAllCenters(){
