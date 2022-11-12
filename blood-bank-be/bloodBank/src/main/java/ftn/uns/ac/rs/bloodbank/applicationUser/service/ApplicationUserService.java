@@ -1,10 +1,12 @@
 package ftn.uns.ac.rs.bloodbank.applicationUser.service;
 import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.applicationUser.repository.ApplicationUserRepository;
+import ftn.uns.ac.rs.bloodbank.customer.Customer;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationToken;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,8 +26,8 @@ import java.util.List;
 public class ApplicationUserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "user with username %s not found";
     private final ApplicationUserRepository applicationUserRepository;
-
     private final ConfirmationTokenService confirmationTokenService;
+    private PasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String username)
@@ -44,7 +46,6 @@ public class ApplicationUserService implements UserDetailsService {
         applicationUserRepository.save(applicationUser);
        return sendConfirmationToken(applicationUser);
     }
-
     private  String sendConfirmationToken(ApplicationUser applicationUser) {
         var token  = UUID.randomUUID().toString();
         var confimationToken = new ConfirmationToken(
@@ -103,7 +104,7 @@ public class ApplicationUserService implements UserDetailsService {
             currentUser.setEmail(applicationUser.getEmail());
         }
         if(applicationUser.getPassword()!=null){
-            currentUser.setPassword(applicationUser.getPassword());
+            currentUser.setPassword(hashPassword(applicationUser.getPassword()));
         }
         if(applicationUser.getPhone()!=null){
             currentUser.setPhone(applicationUser.getPhone());
@@ -127,6 +128,10 @@ public class ApplicationUserService implements UserDetailsService {
             currentUser.getAddress().setStreetNumber(applicationUser.getAddress().getStreetNumber());
         }
 
+    }
+    public String hashPassword(String userPassword){
+        var encodedPassword = encoder.encode(userPassword);
+        return encodedPassword;
     }
 
 }

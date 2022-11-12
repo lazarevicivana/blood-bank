@@ -9,6 +9,7 @@ import * as moment from "moment/moment";
 import {AppointmentService} from "../../../services/appointment.service";
 import {Appointment} from "../../../model/Appointment";
 import {AppointmentRequest} from "../../../model/AppointmentRequest";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-create-appointment',
   templateUrl: './create-appointment.component.html',
@@ -25,7 +26,7 @@ export class CreateAppointmentComponent implements OnInit {
   public isLoaded:boolean = false;
   public center: Center;
   constructor(private tokenService:TokenStorageService,private toast:ToastrService
-              ,private adminService: CenterAdministratorService,private appService: AppointmentService) {
+              ,private adminService: CenterAdministratorService,private appService: AppointmentService,private router: Router) {
     this.userToken = tokenService.getUser()
     this.center = new Center();
   }
@@ -57,6 +58,11 @@ export class CreateAppointmentComponent implements OnInit {
       {
         next: res => {
           console.log(res)
+          this.toast.success("You are successfully crated an appointment!","Success")
+          this.router.navigateByUrl('/admin-center-profile')
+        },
+        error: err => {
+          this.toast.error(err.error.message,"Error")
         }
       }
     )
