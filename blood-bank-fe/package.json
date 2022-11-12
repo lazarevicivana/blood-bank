@@ -27,6 +27,7 @@
     "bootstrap": "^5.2.2",
     "ionicons": "^6.0.3",
     "moment": "^2.29.4",
+    "ng-angular-popup": "^0.2.0",
     "ng-image-slider": "^6.1.0",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-toastr": "^15.2.1",

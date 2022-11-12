@@ -24,6 +24,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {CommonComponentsModule} from "./components/common-components.module";
 import {MatSelectModule} from "@angular/material/select";
 import { ToastrModule } from 'ngx-toastr';
+import {NgToastModule} from "ng-angular-popup";
+
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { ToastrModule } from 'ngx-toastr';
         MatSelectModule,
         BrowserAnimationsModule, // required animations module
         ToastrModule.forRoot(),
+        NgToastModule
+
     ],
     providers: [authInterceptorProviders],
     exports: [],

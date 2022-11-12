@@ -3,6 +3,7 @@ package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDto;
+import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiConflictException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,10 @@ public class CenterAdminService {
     @Transactional
     public void createCenterAdministrator(CenterAdministratorDto centerAdministratorDto) {
         CenterAdministrator centerAdministrator = mapperService.CenterAdministratorDtoToCenterAdministrator(centerAdministratorDto);
+        var adminExist = centerAdminRepository.GetByUsername(centerAdministratorDto.getUsername());
+        if(adminExist.isPresent()){
+            throw  new ApiConflictException("This username is already taken");
+        }
         var center = centerRepository.findById(centerAdministratorDto.getCenter());
         if(center.isPresent()){
             center.get().addAdmin(centerAdministrator);
