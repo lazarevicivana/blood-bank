@@ -17,6 +17,7 @@ export class AllCentersComponent implements OnInit {
   centersFilterdByCountry : Center[]= []
   centersFilterdByCity : Center[]= []
   centersFilterdByName : Center[]= []
+  centersFilterdByGrade : Center[]= []
   private map!: google.maps.Map;
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService) { }
 
@@ -49,6 +50,7 @@ export class AllCentersComponent implements OnInit {
         this.centersFilterdByCountry = response;
         this.centersFilterdByCity = response;
         this.centersFilterdByName = response;
+        this.centersFilterdByGrade = response;
         console.log(this.centers)
         this.centersFiltered.forEach((center)=>{
           new google.maps.Marker({
@@ -79,15 +81,13 @@ export class AllCentersComponent implements OnInit {
 
   private filterCentersByAllFilters(){
     this.centersFiltered = this.centers.filter(e => {
-      return this.centersFilterdByCountry.some(item => item.id === e.id);
-    });
+      return this.centersFilterdByCountry.some(item => item.id === e.id);});
     this.centersFiltered = this.centersFiltered.filter(e => {
-      return this.centersFilterdByCity.some(item => item.id === e.id);
-    });
+      return this.centersFilterdByCity.some(item => item.id === e.id);});
     this.centersFiltered = this.centersFiltered.filter(e => {
-      return this.centersFilterdByName.some(item => item.id === e.id);
-    });
-    console.log(this.centersFiltered)
+      return this.centersFilterdByName.some(item => item.id === e.id);});
+    this.centersFiltered = this.centersFiltered.filter(e => {
+      return this.centersFilterdByGrade.some(item => item.id === e.id);});
   }
 
 
@@ -146,5 +146,20 @@ export class AllCentersComponent implements OnInit {
       this.centersFiltered.sort((a, b) => (a > b ? -1 : 1));
     }
 
+  }
+
+  getByGradeFilter(grade: string) {
+    console.log(Number(grade))
+    if (grade != "All" && grade!=""){
+
+      this.centersFilterdByGrade = this.centers.filter((obj) => {
+        return (Number(obj.avgGrade)>=Number(grade))
+      });
+    }
+    else {
+
+      this.centersFilterdByGrade= this.centers
+    }
+    this.filterCentersByAllFilters()
   }
 }

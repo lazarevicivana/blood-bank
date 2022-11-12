@@ -1,4 +1,13 @@
 <div class="filter">
+
+  <mat-form-field class="example-form-field filter-item" appearance="fill">
+    <mat-label>Search by name</mat-label>
+    <input matInput type="text" [(ngModel)] = "selectedName" (ngModelChange)="onNameChange()" >
+    <button (click)="clearName()"   matSuffix mat-icon-button aria-label="Clear" >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
   <mat-form-field appearance="fill" class="filter-item">
     <mat-label>Filter by country</mat-label>
     <mat-select placeholder="Filter by country" (selectionChange)="selectCountry(selectedCountry)" [(ngModel)] = "selectedCountry" >
@@ -15,15 +24,18 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field class="example-form-field filter-item" appearance="fill">
+  <mat-form-field appearance="fill" class="filter-item">
+    <mat-label>Filter by grade</mat-label>
+    <mat-select placeholder="Filter by city" (selectionChange)="selectGrade(selectedGrade)" [(ngModel)] = "selectedGrade" >
+      <mat-option value="All">All</mat-option>
+      <mat-option [value]="1">Higher then 1</mat-option>
+      <mat-option [value]="2">Higher then 2</mat-option>
+      <mat-option [value]="3">Higher then 3</mat-option>
+      <mat-option [value]="4">Higher then 4</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-    <mat-label>Search by name</mat-label>
-    <input matInput type="text" [(ngModel)] = "selectedName" (ngModelChange)="onNameChange()" >
-    <button (click)="clearName()"   matSuffix mat-icon-button aria-label="Clear" >
-      <mat-icon>close</mat-icon>
-    </button>
 
-</mat-form-field>
   <mat-form-field class="example-form-field filter-item" appearance="fill">
     <mat-label>Sort</mat-label>
     <mat-select [(ngModel)] = "selectedSort" (selectionChange)="selectSort(selectedSort)">
