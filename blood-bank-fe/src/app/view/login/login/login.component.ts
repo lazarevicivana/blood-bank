@@ -6,6 +6,9 @@ import {ProfessionRequest} from "../../../model/ProfessionRequest";
 import {AuthService} from "../../../services/auth.service";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {LoginRequest} from "../../../model/LoginRequest";
+import {ToastrService} from "ngx-toastr";
+import {CustomValidators} from "../../../validators/CustomValidators";
+import {Gender} from "../../../model/Gender";
 
 @Component({
   selector: 'app-login',
@@ -14,6 +17,13 @@ import {LoginRequest} from "../../../model/LoginRequest";
 })
 export class LoginComponent implements OnInit {
   step = 0;
+  male ="MALE";
+  female ="FEMALE";
+  student = "STUDENT";
+  pupil = "PUPIL";
+  notEmployed = "NOT_EMPLOYED";
+  employed = "NOT_EMPLOYED"
+
   submitted: boolean = false;
   formGroup = new FormGroup({
     name: new FormControl<string | undefined>(undefined,Validators.required),
@@ -23,7 +33,11 @@ export class LoginComponent implements OnInit {
     confirmPassword : new FormControl<string | undefined>(undefined,[Validators.required]),
     phone:new FormControl<string | undefined>(undefined,Validators.required),
     jmbg:new FormControl<string | undefined>(undefined,Validators.required),
-    email:new FormControl<string | undefined>(undefined,Validators.required),
+    email:new FormControl<string | undefined>(undefined,[
+                                              Validators.required,
+                                              Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
+    ]),
+    gender: new FormControl<string | undefined>(undefined, Validators.required),
     role:new FormControl<string | undefined>("ROLE_CUSTOMER"),
     address: new FormGroup({
       city: new FormControl<string | undefined>(undefined,Validators.required),
@@ -35,7 +49,8 @@ export class LoginComponent implements OnInit {
       professionStatus: new FormControl<string | undefined>(undefined,Validators.required),
       professionDescription: new FormControl<string | undefined>(undefined,Validators.required),
     })
-  });
+  },
+    [CustomValidators.MatchValidator('password', 'confirmPassword')]);
 
   rightActive:boolean = false
   userId:string = "";
@@ -49,7 +64,7 @@ export class LoginComponent implements OnInit {
   password: new FormControl<string | undefined>(undefined)
 })
 
-  constructor(private client: AuthService, private tokenStorage: TokenStorageService, private fb: FormBuilder) {}
+  constructor(private client: AuthService, private tokenStorage: TokenStorageService, private fb: FormBuilder,private toast:ToastrService) {}
   ngOnInit(): void {
       if (this.tokenStorage.getToken()){
         this.isLoggedIn = true;
@@ -58,7 +73,12 @@ export class LoginComponent implements OnInit {
   activatePanel():void {
     this.rightActive = ! this.rightActive
   }
-
+  get passwordMatchError() {
+    return (
+      this.formGroup.getError('mismatch') &&
+      this.formGroup.get('confirmPassword')?.touched
+    );
+  }
   onSignIn() {
     const user = new LoginRequest({
       username: this.loginForm.controls.username.value!,
@@ -77,14 +97,18 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
   onSignUp(){
-    this.submitted = true;
-    const customer = this.createCustomer();
-    this.client.register(customer).subscribe({
-      next: response => {
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-      }
-    })
+      this.submitted = true;
+      const customer = this.createCustomer();
+      this.client.register(customer).subscribe({
+        next: response => {
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+          this.toast.success("You have successfuly registered, please verify your account!",'Succes');
+        },
+        error: err => {
+          this.toast.error(err.error.message,"Error")
+        }
+      })
   }
 
   private createCustomer(): CustomerRequest {
@@ -96,6 +120,7 @@ export class LoginComponent implements OnInit {
       password: this.formGroup.controls.password.value!,
       phone: this.formGroup.controls.phone.value!,
       jmbg: this.formGroup.controls.jmbg.value!,
+      gender: this.formGroup.controls.gender.value!,
       address: new AddressRequest({
         street: this.formGroup.controls.address.controls.street.value!,
         country: this.formGroup.controls.address.controls.country.value!,

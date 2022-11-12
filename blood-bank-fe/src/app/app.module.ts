@@ -54,7 +54,7 @@ import { ToastrModule } from 'ngx-toastr';
         MatDialogModule,
         MatSelectModule,
         BrowserAnimationsModule, // required animations module
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
     ],
     providers: [authInterceptorProviders],
     exports: [],

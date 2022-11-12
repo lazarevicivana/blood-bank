@@ -39,11 +39,8 @@ public class ApplicationUserService implements UserDetailsService {
                 findByUsername(applicationUser.getUsername())
                 .isPresent();
         if(userExists){
-            throw new IllegalStateException("username already taken");
+            throw new ApiBadRequestException("username already taken");
         }
-//        var encodePassword  =bCryptPasswordEncoder
-//                .encode(applicationUser.getPassword());
-//        applicationUser.setPassword(encoder.encode(applicationUser.getPassword()));
         applicationUserRepository.save(applicationUser);
        return sendConfirmationToken(applicationUser);
     }
