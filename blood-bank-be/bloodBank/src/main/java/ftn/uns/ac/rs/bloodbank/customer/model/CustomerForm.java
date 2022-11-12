@@ -1,6 +1,8 @@
 package ftn.uns.ac.rs.bloodbank.customer.model;
 
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,6 +10,8 @@ import java.util.UUID;
 
 @Entity(name = "CustomerForm")
 @Table(name = "customer_form")
+@Getter
+@Setter
 public class CustomerForm {
     @Id
     @GeneratedValue
@@ -23,7 +27,6 @@ public class CustomerForm {
     private Boolean isSexual;
     private Boolean isAllergic;
     private Boolean useMedication;
-    private UUID customerId;
     private Date submissionDate;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "customer", referencedColumnName = "id")
