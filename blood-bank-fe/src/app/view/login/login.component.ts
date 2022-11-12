@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {CustomerRequest} from "../../../model/CustomerRequest";
+import {CustomerRequest} from "../../model/CustomerRequest";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AddressRequest} from "../../../model/AddressRequest";
-import {ProfessionRequest} from "../../../model/ProfessionRequest";
-import {AuthService} from "../../../services/auth.service";
-import {TokenStorageService} from "../../../services/token-storage.service";
-import {LoginRequest} from "../../../model/LoginRequest";
+import {AddressRequest} from "../../model/AddressRequest";
+import {ProfessionRequest} from "../../model/ProfessionRequest";
+import {AuthService} from "../../services/auth.service";
+import {TokenStorageService} from "../../services/token-storage.service";
+import {LoginRequest} from "../../model/LoginRequest";
 import {ToastrService} from "ngx-toastr";
-import {CustomValidators} from "../../../validators/CustomValidators";
-import {Gender} from "../../../model/Gender";
+import {CustomValidators} from "../../validators/CustomValidators";
 import {Router} from "@angular/router";
 
 @Component({
@@ -106,7 +105,7 @@ export class LoginComponent implements OnInit {
         next: response => {
           this.isSuccessful = true;
           this.isSignUpFailed = false;
-          this.toast.success("You have successfuly registered, please verify your account!",'Succes');
+          this.toast.success("You have successfully registered, please verify your account!",'Succes');
         },
         error: err => {
           this.toast.error(err.error.message,"Error")

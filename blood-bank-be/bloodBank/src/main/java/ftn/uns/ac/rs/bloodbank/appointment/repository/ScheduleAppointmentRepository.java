@@ -2,7 +2,7 @@ package ftn.uns.ac.rs.bloodbank.appointment.repository;
 
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
-import ftn.uns.ac.rs.bloodbank.customer.Customer;
+import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerSearchDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

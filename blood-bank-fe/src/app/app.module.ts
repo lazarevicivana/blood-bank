@@ -17,7 +17,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {CenterViewModule} from "./view/centers/center-view.module";
-import { LoginComponent } from './view/login/login/login.component';
+import { LoginComponent } from './view/login/login.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AllUsersComponent } from './view/all-users/all-users.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
@@ -26,11 +26,11 @@ import {MatSelectModule} from "@angular/material/select";
 import { ToastrModule } from 'ngx-toastr';
 import {AppointmentModule} from "./view/appointment/appointment.module";
 import {NgToastModule} from "ng-angular-popup";
+import {QuestionnaireModule} from "./view/questionnaire/questionnaire.module";
 import { AllDonorsComponent } from './view/customer/all-donors/all-donors.component';
 import {MatDividerModule} from "@angular/material/divider";
 import { DonorCardComponent } from './view/customer/donor-card/donor-card.component';
 import { CenterDonorsComponent } from './view/customer/center-donors/center-donors.component';
-
 
 @NgModule({
     declarations: [
@@ -67,7 +67,8 @@ import { CenterDonorsComponent } from './view/customer/center-donors/center-dono
         AppointmentModule,
         MatDialogModule,
         NgToastModule,
-        MatDividerModule
+        MatDividerModule,
+        QuestionnaireModule
     ],
     providers: [authInterceptorProviders],
     exports: [],

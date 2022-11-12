@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.customer;
+package ftn.uns.ac.rs.bloodbank.customer.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

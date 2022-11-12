@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.customer;
+package ftn.uns.ac.rs.bloodbank.customer.model;
 
 import ftn.uns.ac.rs.bloodbank.complains.Complain;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;

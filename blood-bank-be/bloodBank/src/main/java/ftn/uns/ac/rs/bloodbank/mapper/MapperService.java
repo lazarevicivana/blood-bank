@@ -13,8 +13,11 @@ import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDto;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDtoResponse;
-import ftn.uns.ac.rs.bloodbank.customer.Customer;
-import ftn.uns.ac.rs.bloodbank.customer.Profession;
+import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerFormRequest;
+import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerFormResponse;
+import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
+import ftn.uns.ac.rs.bloodbank.customer.model.CustomerForm;
+import ftn.uns.ac.rs.bloodbank.customer.model.Profession;
 import ftn.uns.ac.rs.bloodbank.registration.dto.AddressRequest;
 import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;
 import ftn.uns.ac.rs.bloodbank.registration.dto.ProfessionRequest;
@@ -72,5 +75,11 @@ public class MapperService {
     }
     public MedicalStaffResponse MedicalStaffToAppUserDto(CenterAdministrator applicationUser){
         return modelMapper.map(applicationUser, MedicalStaffResponse.class);
+    }
+    public CustomerForm CustomerFormDtoToCustomerForm(CustomerFormRequest customerFormRequest){
+        return modelMapper.map(customerFormRequest,CustomerForm.class);
+    }
+    public CustomerFormResponse CustomerFormToCustomerFormDto(CustomerForm customerForm){
+        return modelMapper.map(customerForm,CustomerFormResponse.class);
     }
 }

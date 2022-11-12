@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.complains;
 
-import ftn.uns.ac.rs.bloodbank.customer.Customer;
+import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import lombok.Getter;
 import lombok.Setter;
 

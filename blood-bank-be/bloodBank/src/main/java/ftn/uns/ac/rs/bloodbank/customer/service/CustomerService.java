@@ -1,11 +1,10 @@
-package ftn.uns.ac.rs.bloodbank.customer;
+package ftn.uns.ac.rs.bloodbank.customer.service;
 
-import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
+import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
+import ftn.uns.ac.rs.bloodbank.customer.repository.CustomerRepository;
 import ftn.uns.ac.rs.bloodbank.appointment.repository.ScheduleAppointmentRepository;
 import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerSearchDto;
-import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
-import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiConflictException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

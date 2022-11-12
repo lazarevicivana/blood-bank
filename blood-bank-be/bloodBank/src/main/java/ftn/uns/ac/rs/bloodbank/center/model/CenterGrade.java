@@ -1,7 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.center.model;
 
-import ftn.uns.ac.rs.bloodbank.center.model.Center;
-import ftn.uns.ac.rs.bloodbank.customer.Customer;
+import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 
 import javax.persistence.*;
 import java.util.UUID;
