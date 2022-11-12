@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="container-f">
+    <h1>Become a blood donor</h1>
+    <mat-stepper  #stepper >
+      <mat-step [editable]="false">
+        <ng-template matStepLabel>Personal informations</ng-template>
+          <app-blood-donor-question [question]="questions[0]" (answerEmit)="onAnswer1($event)"></app-blood-donor-question>
+          <app-blood-donor-question [question]="questions[1]" (answerEmit)="onAnswer2($event)"></app-blood-donor-question>
+          <app-blood-donor-question [question]="questions[2]" (answerEmit)="onAnswer3($event)"></app-blood-donor-question>
+          <h4>For women</h4>
+          <mat-divider style="margin-bottom: 2rem"></mat-divider>
+          <app-blood-donor-question [question]="questions[3]" (answerEmit)="onAnswer4($event)"></app-blood-donor-question>
+          <app-blood-donor-question [question]="questions[4]" (answerEmit)="onAnswer5($event)"></app-blood-donor-question>
+          <div align="end">
+            <button mat-flat-button color="primary"  (click)="next(stepper)">Next</button>
+          </div>
+        <lib-ng-toast></lib-ng-toast>
+      </mat-step>
+      <mat-step >
+        <ng-template matStepLabel>Health condition</ng-template>
+        <app-blood-donor-question [question]="questions[5]" (answerEmit)="onAnswer5($event)"></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[6]" (answerEmit)="onAnswer7($event)"></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[7]" (answerEmit)="onAnswer8($event)"></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[8]" (answerEmit)="onAnswer9($event)"></app-blood-donor-question>
+        <app-blood-donor-question [question]="questions[9]" (answerEmit)="onAnswer10($event)"></app-blood-donor-question>
+        <div align="end">
+          <button mat-flat-button color="primary" >Next</button>
+        </div>
+        <lib-ng-toast></lib-ng-toast>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div class="center-text">
+          <p>You have successfuly create .</p>
+        </div>
+        <div align="end">
+          <button mat-flat-button color="success" >Done</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>

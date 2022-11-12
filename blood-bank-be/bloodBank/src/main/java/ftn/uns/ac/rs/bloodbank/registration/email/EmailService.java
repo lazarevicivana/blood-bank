@@ -1,8 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.registration.email;
 
 import com.sendgrid.*;
-import ftn.uns.ac.rs.bloodbank.customer.Customer;
-import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;
+import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -2,9 +2,7 @@ package ftn.uns.ac.rs.bloodbank.registration;
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.applicationUser.service.ApplicationUserService;
-import ftn.uns.ac.rs.bloodbank.customer.Customer;
-import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
-import ftn.uns.ac.rs.bloodbank.registration.dto.CustomerRequest;
+import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import ftn.uns.ac.rs.bloodbank.registration.dto.JwtResponse;
 import ftn.uns.ac.rs.bloodbank.registration.dto.LoginRequest;
 import ftn.uns.ac.rs.bloodbank.registration.email.EmailService;
@@ -14,7 +12,6 @@ import lombok.AllArgsConstructor;
 import java.io.IOException;
 import java.lang.String;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -37,20 +34,22 @@ public class RegistrationService {
     private PasswordEncoder encoder;
 
     public String register(Customer request) throws IOException {
-       var isValidEmail = emailValidator.test(request.getEmail());
-       if(!isValidEmail){
-           throw new IllegalStateException("email not valid");
-       }
+        var isValidEmail = emailValidator.test(request.getEmail());
+        if (!isValidEmail) {
+            throw new IllegalStateException("email not valid");
+        }
         var token = applicationUserService.signUpUser(hashPassword(request));
-        mailService.sendEmail(request,token);
+        mailService.sendEmail(request, token);
 
         return token;
     }
-    public Customer hashPassword(Customer customer){
+
+    public Customer hashPassword(Customer customer) {
         customer.setPassword(encoder.encode(customer.getPassword()));
         return customer;
     }
-    public JwtResponse login(LoginRequest loginRequest){
+
+    public JwtResponse login(LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -67,22 +66,20 @@ public class RegistrationService {
     }
 
     @Transactional
-    public String confirmToken(String token){
+    public String confirmToken(String token) {
         var confirmationToken = confirmationTokenService
                 .getToken(token)
                 .orElseThrow(() ->
                         new IllegalStateException("token not found"));
-        if(confirmationToken.getConfirmedAt() != null){
+        if (confirmationToken.getConfirmedAt() != null) {
             throw new IllegalStateException("email already confirmed");
         }
         var expiredAt = confirmationToken.getExpiresAt();
-        if(expiredAt.isBefore(LocalDateTime.now())){
+        if (expiredAt.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("token expired");
         }
         confirmationTokenService.setConfirmedAt(token);
         applicationUserService.enableApplicationUser(confirmationToken.getUser().getUsername());
         return "confirmed";
     }
-
 }
-

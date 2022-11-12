@@ -1,5 +1,7 @@
-package ftn.uns.ac.rs.bloodbank.customer;
+package ftn.uns.ac.rs.bloodbank.customer.controller;
 
+import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
+import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

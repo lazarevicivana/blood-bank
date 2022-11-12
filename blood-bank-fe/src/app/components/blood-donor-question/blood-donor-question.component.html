@@ -1,0 +1,11 @@
+<div  class="div-questions">
+  <label id="example-radio-group-label">{{question}}</label>
+  <mat-radio-group  [(ngModel)]="answer"  (change)="onRadioButton(answer!)"
+                    aria-labelledby="example-radio-group-label"
+    class="example-radio-group">
+    <mat-radio-button  value="yes" class="example-radio-button" > Yes
+    </mat-radio-button>
+    <mat-radio-button  value="no" class="example-radio-button" > No
+    </mat-radio-button>
+  </mat-radio-group>
+</div>

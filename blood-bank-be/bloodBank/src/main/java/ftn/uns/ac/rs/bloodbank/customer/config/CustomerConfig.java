@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.customer;
+package ftn.uns.ac.rs.bloodbank.customer.config;
 
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.sharedModel.GenderType;
