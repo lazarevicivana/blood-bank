@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -25,6 +24,6 @@ public class AppointmentRequest implements Serializable {
     @NonNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private  LocalTime finishTime;
-    private  List<UUID>  medical_stuff;
+    private  List<UUID> medicalStaffs;
     private  UUID centerId;
 }

@@ -1,5 +1,5 @@
 import {MedicalStaffResponse} from "./MedicalStaffResponse";
-export class AppointmentResponse {
+export class Appointment {
   id?: string;
   date?: Date;
   startTime?: string;

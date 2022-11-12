@@ -8,7 +8,7 @@ import {TokenStorageService} from "../../../services/token-storage.service";
 import {UserToken} from "../../../model/UserToken";
 import {UserResponse} from "../../../model/UserResponse";
 import {AppointmentService} from "../../../services/appointment.service";
-import {AppointmentResponse} from "../../../model/AppointmentResponse";
+import {Appointment} from "../../../model/Appointment";
 
 @Component({
   selector: 'app-center-admin-profile',
@@ -21,7 +21,7 @@ export class CenterAdminProfileComponent implements OnInit {
   private map!: google.maps.Map;
   private readonly user: UserToken;
   public otherAdmins: UserResponse[] = [];
-  public appointments: AppointmentResponse[] = [];
+  public appointments: Appointment[] = [];
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,
               private readonly router:Router,private adminCenterService: CenterAdminService
               ,private appService:AppointmentService, private tokenStorageService: TokenStorageService ) {

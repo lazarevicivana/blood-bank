@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import { IonicModule } from "@ionic/angular";
 import { AppRoutingModule } from "./app-routing.module";
-import {HttpClientModule,HttpHeaders} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http'
 import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
@@ -24,6 +24,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {CommonComponentsModule} from "./components/common-components.module";
 import {MatSelectModule} from "@angular/material/select";
 import { ToastrModule } from 'ngx-toastr';
+import {AppointmentModule} from "./view/appointment/appointment.module";
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ToastrModule } from 'ngx-toastr';
         MatDialogModule,
         MatSelectModule,
         BrowserAnimationsModule, // required animations module
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
+        AppointmentModule
     ],
     providers: [authInterceptorProviders],
     exports: [],

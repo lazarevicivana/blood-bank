@@ -19,8 +19,11 @@
   margin-left: auto;
   margin-top: 5px;
 }
+.sub-color{
+  background: #3b4d79;
+}
 .input-create-center {
-  margin-top: 5px;
+  margin-top: 10px;
   width: 56%;
   display: block;
   margin-right: auto;

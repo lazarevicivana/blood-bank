@@ -1,0 +1,25 @@
+.container-f {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+  0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  min-height: 550px;
+  max-height: 850px;
+  width: 80%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.input-appointment{
+  margin-top: 20px;
+  width: 56%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  height: 60px;
+}
+.align-me{
+  margin-top: 20px;
+}

@@ -1,0 +1,12 @@
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+.input-appointment{
+  margin-top: 20px;
+  width: 56%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  height: 60px;
+}

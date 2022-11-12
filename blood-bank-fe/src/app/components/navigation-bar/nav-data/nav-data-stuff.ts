@@ -10,5 +10,11 @@ export const stuffNavData=[
     icon: 'home-outline',
     label: 'Center profile',
     num:1
+  },
+  {
+    routeLink: 'add-appointment',
+    icon: 'add-circle-outline',
+    label: 'Add appointment',
+    num:2
   }
 ];

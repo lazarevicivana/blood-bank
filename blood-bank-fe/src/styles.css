@@ -319,5 +319,22 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; }
   .divider-b{
     background: #3b4d79;
   }
+  .btn-b{
+    align-content: center;
+    left: 0;
+    bottom: 0;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-family: 'Roboto',sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 30%;
+    background-color: #3b4d79;
+    transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
+    opacity: 1;
+  }
+
 
 }

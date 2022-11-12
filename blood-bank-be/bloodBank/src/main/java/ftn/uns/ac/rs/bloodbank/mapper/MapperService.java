@@ -7,6 +7,7 @@ import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.MedicalStaffResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
@@ -68,5 +69,8 @@ public class MapperService {
     public CenterAdministrator CenterAdministratorDtoToCenterAdministrator(CenterAdministratorDto dto) {return  modelMapper.map(dto, CenterAdministrator.class);}
     public CenterAdministratorDtoResponse CenterAdministratorToCenterAdministratorDtoResponse(CenterAdministrator centerAdministrator){
         return modelMapper.map(centerAdministrator,CenterAdministratorDtoResponse.class);
+    }
+    public MedicalStaffResponse MedicalStaffToAppUserDto(CenterAdministrator applicationUser){
+        return modelMapper.map(applicationUser, MedicalStaffResponse.class);
     }
 }

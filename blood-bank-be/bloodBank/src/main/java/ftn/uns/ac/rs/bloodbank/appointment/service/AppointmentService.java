@@ -39,7 +39,7 @@ public class AppointmentService {
         appointmentRepository.save(appointment);
     }
     private Set<CenterAdministrator> getCenterAdministrators(AppointmentRequest appointmentRequest) {
-        return appointmentRequest.getMedical_stuff().stream()
+        return appointmentRequest.getMedicalStaffs().stream()
                         .map(uuid -> {
                             var admin =centerAdminRepository.findById(uuid).orElseThrow(() -> new ApiBadRequestException("Wrong staff id provided!"));
                             System.out.println(admin.getUsername());

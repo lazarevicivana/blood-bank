@@ -12,6 +12,10 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatSelectModule} from "@angular/material/select";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [],
@@ -27,7 +31,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatListModule,
     MatStepperModule,
     MatDatepickerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatDividerModule,
   ],
   exports: [
     CommonModule,
@@ -40,7 +48,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatFormFieldModule,
     MatListModule,
     MatStepperModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatDatepickerModule
   ]
 })
 export class MaterialModule {}

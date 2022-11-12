@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Center} from "../../model/Center";
-import {AppointmentResponse} from "../../model/AppointmentResponse";
+import {Appointment} from "../../model/Appointment";
 
 @Component({
   selector: 'app-appointment-card',
@@ -8,7 +8,7 @@ import {AppointmentResponse} from "../../model/AppointmentResponse";
   styleUrls: ['./appointment-card.component.css']
 })
 export class AppointmentCardComponent implements OnInit {
-  @Input() appointment = new AppointmentResponse();
+  @Input() appointment = new Appointment();
   constructor() { }
 
   ngOnInit(): void {

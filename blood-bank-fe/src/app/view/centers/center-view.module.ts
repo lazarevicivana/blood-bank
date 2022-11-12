@@ -8,20 +8,13 @@ import {GoogleMapsModule} from "@angular/google-maps";
 import { UpdateCenterComponent } from './update-center/update-center.component';
 import {FormsModule} from "@angular/forms";
 import {CreateCenterComponent} from "./create-center/create-center.component";
-import { MatSelectModule } from '@angular/material/select';
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MatGridListModule} from "@angular/material/grid-list";
 import {CenterCardComponent} from "../../components/center-card/center-card.component";
 import{FilterBarComponent} from "../../components/filter-bar/filter-bar.component";
 import { CenterAdminProfileComponent } from './center-admin-profile/center-admin-profile.component';
-import {AppModule} from "../../app.module";
-import {UserCardComponent} from "../../components/user-card/user-card.component";
 import {CommonComponentsModule} from "../../components/common-components.module";
 import { CenterFormComponent } from './create-center/center-form/center-form.component';
 import { AdminFormComponent } from './create-center/admin-form/admin-form.component';
 import { AnotherAdminDialogComponent } from './create-center/another-admin-dialog/another-admin-dialog.component';
-
-
 
 @NgModule({
 
@@ -34,15 +27,11 @@ import { AnotherAdminDialogComponent } from './create-center/another-admin-dialo
       CenterCardComponent,
       CenterAdminProfileComponent,
       CenterAdminProfileComponent,
-
       FilterBarComponent,
-
       CenterFormComponent,
       AdminFormComponent,
       AnotherAdminDialogComponent
-
     ],
-
   exports: [
     CreateCenterComponent,
     CenterCardComponent
@@ -53,11 +42,7 @@ import { AnotherAdminDialogComponent } from './create-center/another-admin-dialo
     NgImageSliderModule,
     GoogleMapsModule,
     FormsModule,
-    MatSelectModule,
-    MatExpansionModule,
-    MatGridListModule,
     CommonComponentsModule,
-
   ]
 })
 export class CenterViewModule { }
