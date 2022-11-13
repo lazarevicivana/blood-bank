@@ -14,6 +14,7 @@ export class FilterBarComponent implements OnInit {
   selectedCountry =""
   selectedCity =""
   selectedGrade=""
+  selectedRange=""
 
   selectedSort = '';
 
@@ -28,7 +29,7 @@ export class FilterBarComponent implements OnInit {
   @Output() onCityFilter: EventEmitter<string> = new EventEmitter<string>();
   @Output() onGradeFilter: EventEmitter<string> = new EventEmitter<string>();
   @Output() onNameFilter: EventEmitter<string> = new EventEmitter<string>();
-
+  @Output() onRangeFilter: EventEmitter<string> = new EventEmitter<string>();
   @Output() onSortFilter: EventEmitter<string> = new EventEmitter<string>();
 
 
@@ -81,5 +82,9 @@ export class FilterBarComponent implements OnInit {
 
   selectGrade(selectedGrade: any) {
     this.onGradeFilter.emit(selectedGrade);
+  }
+
+  selectRange(selectedRange: any) {
+    this.onRangeFilter.emit(selectedRange);
   }
 }

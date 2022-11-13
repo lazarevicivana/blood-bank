@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CenterService} from "../../../services/center.service";
 import {Center} from "../../../model/Center";
 import {GoogleMapApiService} from "../../../services/googleMapApi.service";
+import {TokenStorageService} from "../../../services/token-storage.service";
 
 @Component({
   selector: 'app-all-centers',
@@ -9,6 +10,8 @@ import {GoogleMapApiService} from "../../../services/googleMapApi.service";
   styleUrls: ['./all-centers.component.css']
 })
 export class AllCentersComponent implements OnInit {
+  yourLat=0
+  yourLong = 0
   selectedCity="All"
   selectedName="All"
   selectedCountry="All"
@@ -18,8 +21,9 @@ export class AllCentersComponent implements OnInit {
   centersFilterdByCity : Center[]= []
   centersFilterdByName : Center[]= []
   centersFilterdByGrade : Center[]= []
+  centersFilterdByRange : Center[]= []
   private map!: google.maps.Map;
-  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService) { }
+  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
     const loaded = this.mapLoader.googleApi.then(()=>{
@@ -38,9 +42,19 @@ export class AllCentersComponent implements OnInit {
     )
     loaded.then()
 
+    this.getLocation().then(resp=>{
+      this.yourLat = resp.lat
+      this.yourLong = resp.lng
+    })
   }
 
-
+  getLocation():Promise<any>{
+    return new Promise((resolve,reject) =>{
+      navigator.geolocation.getCurrentPosition(resp =>{
+        resolve({lng: resp.coords.longitude, lat: resp.coords.latitude})
+      })
+    })
+  }
 
   private getAllCenters(){
     this.centerService.getAllCenters().subscribe(
@@ -51,6 +65,7 @@ export class AllCentersComponent implements OnInit {
         this.centersFilterdByCity = response;
         this.centersFilterdByName = response;
         this.centersFilterdByGrade = response;
+        this.centersFilterdByRange = response;
         console.log(this.centers)
         this.centersFiltered.forEach((center)=>{
           new google.maps.Marker({
@@ -88,6 +103,9 @@ export class AllCentersComponent implements OnInit {
       return this.centersFilterdByName.some(item => item.id === e.id);});
     this.centersFiltered = this.centersFiltered.filter(e => {
       return this.centersFilterdByGrade.some(item => item.id === e.id);});
+    this.centersFiltered = this.centersFiltered.filter(e => {
+      return this.centersFilterdByRange.some(item => item.id === e.id);});
+
   }
 
 
@@ -116,6 +134,7 @@ export class AllCentersComponent implements OnInit {
       this.centersFilterdByCity = this.centers
     }
     this.filterCentersByAllFilters();
+    console.log(this.tokenStorage.getUser())
   }
 
 
@@ -159,6 +178,20 @@ export class AllCentersComponent implements OnInit {
     else {
 
       this.centersFilterdByGrade= this.centers
+    }
+    this.filterCentersByAllFilters()
+  }
+
+  getByRangeFilter(num: string) {
+    if (num != "All" && num != "") {
+      let closestCenters = this.centers.sort((a, b) => (
+        // a.avgGrade! > b.avgGrade! ? 1 : -1
+        ((a.latitude - this.yourLat) * (a.latitude - this.yourLat) + (a.longitude - this.yourLong) * (a.longitude - this.yourLong)) <
+        ((b.latitude - this.yourLat) * (b.latitude - this.yourLat) + (b.longitude - this.yourLong) * (b.longitude - this.yourLong)) ? -1 : 1
+      ));
+      this.centersFilterdByRange = closestCenters.slice(0, Number(num))
+    }else{
+      this.centersFilterdByRange = this.centers
     }
     this.filterCentersByAllFilters()
   }

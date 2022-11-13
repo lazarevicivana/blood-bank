@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CustomerRequest} from "../../model/CustomerRequest";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AddressRequest} from "../../model/AddressRequest";
@@ -9,6 +9,7 @@ import {LoginRequest} from "../../model/LoginRequest";
 import {ToastrService} from "ngx-toastr";
 import {CustomValidators} from "../../validators/CustomValidators";
 import {Router} from "@angular/router";
+import {ApplicationUser} from "../../model/ApplicationUser";
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,8 @@ export class LoginComponent implements OnInit {
   pupil = "PUPIL";
   notEmployed = "NOT_EMPLOYED";
   employed = "NOT_EMPLOYED"
+
+  @Output() onLogin: EventEmitter<ApplicationUser> = new EventEmitter<ApplicationUser>();
 
   submitted: boolean = false;
   formGroup = new FormGroup({
@@ -69,6 +72,7 @@ export class LoginComponent implements OnInit {
       if (this.tokenStorage.getToken()){
         this.isLoggedIn = true;
       }
+
   }
   activatePanel():void {
     this.rightActive = ! this.rightActive
@@ -91,6 +95,8 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.reloadPage();
         this.router.navigate(['facilities'])
+
+        this.onLogin.emit(response)
 
       }
     })
