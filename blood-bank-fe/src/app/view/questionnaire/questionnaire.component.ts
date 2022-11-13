@@ -28,7 +28,7 @@ export class QuestionnaireComponent implements OnInit {
     '2.Have you ever had a cancer other than basal cell carcinoma or cervical carcinoma insitu (CIN)?',
     '3. Do you take any medication?',
     '4. Do tou have any allergies?',
-    '5. Have tou been sick in the last 7 days?'
+    '5. Have you been sick in the last 7 days?'
   ]
     enableSubmit =  false;
   constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,private customerClient : ApplicationUserService, private client: QuestionnaireService) { }

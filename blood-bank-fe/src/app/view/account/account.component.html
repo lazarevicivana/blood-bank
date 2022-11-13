@@ -141,11 +141,11 @@
         <div>
           <mat-form-field  appearance="outline">
             <mat-label > Change password</mat-label>
-            <input [(ngModel)]="password1" matInput placeholder="username" >
+            <input type="password" [(ngModel)]="password1" matInput placeholder="username" >
           </mat-form-field>
           <mat-form-field  appearance="outline">
             <mat-label > Confirm password</mat-label>
-            <input [(ngModel)]="password2" matInput placeholder="username" >
+            <input type="password" [(ngModel)]="password2" matInput placeholder="username" >
           </mat-form-field>
           <mat-action-row>
             <button (click)="changePassword()" mat-raised-button >Confirm</button>
