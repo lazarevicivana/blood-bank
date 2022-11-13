@@ -97,7 +97,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['facilities'])
 
         this.onLogin.emit(response)
-
+      },
+      error: err => {
+        this.toast.error(err.error.message,"Error")
       }
     })
   }
