@@ -44,7 +44,6 @@ export class NavigationBarComponent implements OnInit {
     this.screenWidth = window.innerWidth;
     const user = this.tkStorage.getUser();
       this.userRole = user.role;
-      console.log(this.userRole);
   }
 
   clicked(num: number) {
