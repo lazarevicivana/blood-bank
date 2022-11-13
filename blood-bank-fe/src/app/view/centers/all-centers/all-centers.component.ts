@@ -12,6 +12,7 @@ import {TokenStorageService} from "../../../services/token-storage.service";
 export class AllCentersComponent implements OnInit {
   yourLat=0
   yourLong = 0
+  selectedRange="All"
   selectedCity="All"
   selectedName="All"
   selectedCountry="All"
@@ -103,11 +104,20 @@ export class AllCentersComponent implements OnInit {
       return this.centersFilterdByName.some(item => item.id === e.id);});
     this.centersFiltered = this.centersFiltered.filter(e => {
       return this.centersFilterdByGrade.some(item => item.id === e.id);});
-    this.centersFiltered = this.centersFiltered.filter(e => {
-      return this.centersFilterdByRange.some(item => item.id === e.id);});
+    this.filterByRange()
 
   }
 
+  private filterByRange(){
+    if (this.selectedRange != "All" && this.selectedRange != "") {
+      let closestCenters = this.centersFiltered.sort((a, b) => (
+        // a.avgGrade! > b.avgGrade! ? 1 : -1
+        ((a.latitude - this.yourLat) * (a.latitude - this.yourLat) + (a.longitude - this.yourLong) * (a.longitude - this.yourLong)) <
+        ((b.latitude - this.yourLat) * (b.latitude - this.yourLat) + (b.longitude - this.yourLong) * (b.longitude - this.yourLong)) ? -1 : 1
+      ));
+      this.centersFiltered = closestCenters.slice(0, Number(this.selectedRange))
+    }
+  }
 
 
   public getByCountryFilter(name: string){
@@ -183,16 +193,7 @@ export class AllCentersComponent implements OnInit {
   }
 
   getByRangeFilter(num: string) {
-    if (num != "All" && num != "") {
-      let closestCenters = this.centers.sort((a, b) => (
-        // a.avgGrade! > b.avgGrade! ? 1 : -1
-        ((a.latitude - this.yourLat) * (a.latitude - this.yourLat) + (a.longitude - this.yourLong) * (a.longitude - this.yourLong)) <
-        ((b.latitude - this.yourLat) * (b.latitude - this.yourLat) + (b.longitude - this.yourLong) * (b.longitude - this.yourLong)) ? -1 : 1
-      ));
-      this.centersFilterdByRange = closestCenters.slice(0, Number(num))
-    }else{
-      this.centersFilterdByRange = this.centers
-    }
+    this.selectedRange = num
     this.filterCentersByAllFilters()
   }
 }
