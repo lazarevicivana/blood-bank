@@ -301,4 +301,40 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex: 0 0 auto;
     width: 91.66666667%;
   }
+  .mat-raised-button.mat-success,
+  .mat-flat-button.mat-success,
+  .mat-fab.mat-success,
+  .mat-mini-fab.mat-success {
+    color: #f0fff3;
+    background-color: #155724;
+  }
+  .header-b {
+    font-size: 35px;
+    font-weight: 600;
+    background-image: linear-gradient(to left,#3b4d79, #3C779BFF);
+    color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+  }
+  .divider-b{
+    background: #3b4d79;
+  }
+  .btn-b{
+    align-content: center;
+    left: 0;
+    bottom: 0;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-family: 'Roboto',sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 30%;
+    background-color: #3b4d79;
+    transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
+    opacity: 1;
+  }
+
+
 }

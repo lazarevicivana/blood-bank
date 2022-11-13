@@ -1,0 +1,66 @@
+<div class="filter">
+
+  <mat-form-field class="example-form-field filter-item" appearance="fill">
+    <mat-label>Search by name</mat-label>
+    <input matInput type="text" [(ngModel)] = "selectedName" (ngModelChange)="onNameChange()" >
+    <button (click)="clearName()"   matSuffix mat-icon-button aria-label="Clear" >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="filter-item">
+    <mat-label>Filter by country</mat-label>
+    <mat-select placeholder="Filter by country" (selectionChange)="selectCountry(selectedCountry)" [(ngModel)] = "selectedCountry" >
+      <mat-option value="All">All</mat-option>
+      <mat-option *ngFor="let center of centersUnique" [value]="center.country">{{center.country}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="filter-item">
+    <mat-label>Filter by city</mat-label>
+    <mat-select placeholder="Filter by city" (selectionChange)="selectCity(selectedCity)" [(ngModel)] = "selectedCity" >
+      <mat-option value="All">All</mat-option>
+      <mat-option *ngFor="let center of centersFilterdByCountry" [value]="center.city">{{center.city}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="filter-item">
+    <mat-label>Filter by grade</mat-label>
+    <mat-select placeholder="Filter by city" (selectionChange)="selectGrade(selectedGrade)" [(ngModel)] = "selectedGrade" >
+      <mat-option value="All">All</mat-option>
+      <mat-option [value]="1">Higher then 1</mat-option>
+      <mat-option [value]="2">Higher then 2</mat-option>
+      <mat-option [value]="3">Higher then 3</mat-option>
+      <mat-option [value]="4">Higher then 4</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="filter-item">
+    <mat-label>Filter by distance</mat-label>
+    <mat-select placeholder="Filter by city" (selectionChange)="selectRange(selectedRange)" [(ngModel)] = "selectedRange" >
+      <mat-option value="All">All</mat-option>
+      <mat-option [value]="3">Nearest 3</mat-option>
+      <mat-option [value]="5">Nearest 5</mat-option>
+      <mat-option [value]="10">Nearest 10</mat-option>
+      <mat-option [value]="20">Nearest 20</mat-option>
+      <mat-option [value]="50">Nearest 50</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <mat-form-field class="example-form-field filter-item" appearance="fill">
+    <mat-label>Sort</mat-label>
+    <mat-select [(ngModel)] = "selectedSort" (selectionChange)="selectSort(selectedSort)">
+      <mat-option [value]="sort[6]">Sort</mat-option>
+      <mat-option [value]="sort[0]">NameAsc</mat-option>
+      <mat-option [value]="sort[1]">NameDesc</mat-option>
+      <mat-option [value]="sort[2]">CityAsc</mat-option>
+      <mat-option [value]="sort[3]">CityDesc</mat-option>
+      <mat-option [value]="sort[4]">GradeAsc</mat-option>
+      <mat-option [value]="sort[5]">GradeDesc</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+</div>

@@ -9,6 +9,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatListModule} from "@angular/material/list";
 import {MatStepperModule} from "@angular/material/stepper";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatSelectModule} from "@angular/material/select";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [],
@@ -22,7 +29,13 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatTooltipModule,
     MatFormFieldModule,
     MatListModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDatepickerModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatDividerModule,
   ],
   exports: [
     CommonModule,
@@ -34,7 +47,13 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatTooltipModule,
     MatFormFieldModule,
     MatListModule,
-    MatStepperModule
+    MatStepperModule,
+    MatMomentDateModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatDatepickerModule
   ]
 })
 export class MaterialModule {}

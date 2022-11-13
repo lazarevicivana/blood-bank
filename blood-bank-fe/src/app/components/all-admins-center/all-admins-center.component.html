@@ -1,0 +1,6 @@
+<mat-form-field appearance="fill" class="input-appointment">
+<mat-label>Medical staff</mat-label>
+<mat-select [formControl]="formControl" (ngModelChange)="selectedAdmins($event)" multiple>
+  <mat-option *ngFor="let staff of staffs" [value]="staff.id">{{staff.name}} {{staff.surname}}</mat-option>
+</mat-select>
+</mat-form-field>

@@ -12,16 +12,12 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CenterDtoUpdate {
     private UUID id;
-    @NonNull
     private  String name;
     private  String description;
-    @NonNull
+    private  String avgGrade;
     private  String city;
-    @NonNull
     private  String street;
-    @NonNull
     private  String country;
-    @NonNull
     private  String streetNumber;
     private  Double longitude;
     private  Double latitude;

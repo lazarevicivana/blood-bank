@@ -2,6 +2,7 @@ package ftn.uns.ac.rs.bloodbank.center.controller;
 
 import com.sun.istack.NotNull;
 import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.MedicalStaffResponse;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.dto.CenterAdministratorDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
@@ -63,10 +64,10 @@ public class CenterController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/admins/{id}")
-    public ResponseEntity<List<CenterAdministratorDto>> getAdminsForCenter(@NotNull @PathVariable("id") UUID id){
+    public ResponseEntity<List<MedicalStaffResponse>> getAdminsForCenter(@NotNull @PathVariable("id") UUID id){
         var stuff = centerService.getAdminsForCenter(id)
                 .stream()
-                .map(mapperService::CenterAdministratorToCenterAdministratorDto)
+                .map(mapperService::MedicalStaffToAppUserDto)
                 .toList();
         return ResponseEntity.ok(stuff);
     }

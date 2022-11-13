@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
@@ -43,10 +44,11 @@ public class CenterService {
     @Transactional
     public void updateCenter(Center center){
         var currentCenter = getCenter(center.getId());
-        if(center.getName() != null && !center.getName().equals(currentCenter.getName())){
+        if(center.getName() != null && !center.getName().toLowerCase(Locale.ROOT).
+                equals(currentCenter.getName().toLowerCase(Locale.ROOT))){
             var centerExist = centerRepository.GetByName(center.getName());
             if(centerExist.isPresent()){
-                throw  new ApiBadRequestException("This name is already taken.");
+                throw  new ApiBadRequestException("Center name "+center.getName()+" is already taken.");
             }
             currentCenter.setName(center.getName());
         }

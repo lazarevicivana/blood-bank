@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
@@ -22,8 +23,8 @@ import java.util.List;
 public class ApplicationUserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "user with username %s not found";
     private final ApplicationUserRepository applicationUserRepository;
-    //private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
+    private PasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String username)
@@ -37,15 +38,11 @@ public class ApplicationUserService implements UserDetailsService {
                 findByUsername(applicationUser.getUsername())
                 .isPresent();
         if(userExists){
-            throw new IllegalStateException("username already taken");
+            throw new ApiBadRequestException("username already taken");
         }
-//        var encodePassword  =bCryptPasswordEncoder
-//                .encode(applicationUser.getPassword());
-//        applicationUser.setPassword(encodePassword);
         applicationUserRepository.save(applicationUser);
        return sendConfirmationToken(applicationUser);
     }
-
     private  String sendConfirmationToken(ApplicationUser applicationUser) {
         var token  = UUID.randomUUID().toString();
         var confimationToken = new ConfirmationToken(
@@ -104,7 +101,7 @@ public class ApplicationUserService implements UserDetailsService {
             currentUser.setEmail(applicationUser.getEmail());
         }
         if(applicationUser.getPassword()!=null){
-            currentUser.setPassword(applicationUser.getPassword());
+            currentUser.setPassword(hashPassword(applicationUser.getPassword()));
         }
         if(applicationUser.getPhone()!=null){
             currentUser.setPhone(applicationUser.getPhone());
@@ -128,6 +125,10 @@ public class ApplicationUserService implements UserDetailsService {
             currentUser.getAddress().setStreetNumber(applicationUser.getAddress().getStreetNumber());
         }
 
+    }
+    public String hashPassword(String userPassword){
+        var encodedPassword = encoder.encode(userPassword);
+        return encodedPassword;
     }
 
 }

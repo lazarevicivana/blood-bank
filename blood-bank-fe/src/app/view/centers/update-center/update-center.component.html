@@ -1,14 +1,62 @@
-<mat-stepper linear #stepper>
-  <mat-step>
-    <ng-template matStepLabel>Edit address</ng-template>
-    <div>
-      <input type="number" [(ngModel)]="latitude"/>
-    </div>
-    <div>
-      <input type="number" [(ngModel)]="longitude"/>
-    </div>
-    <div class="g-map" id="map"></div>
-  </mat-step>
-  <mat-step>
-  </mat-step>
-</mat-stepper>
+<div class="container">
+  <div class="container-f">
+    <mat-stepper  #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Update center</ng-template>
+        <div class="title-container">
+          <h1 class="header-b">Update Center</h1>
+          <mat-divider class="sub-color"></mat-divider>
+        </div>
+        <div>
+        <mat-form-field appearance="fill" class="input-create-center">
+          <mat-label>Center name:</mat-label>
+          <input matInput [(ngModel)]="center.name" placeholder="Name" >
+        </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill" class="input-create-center">
+          <mat-label>Center description:</mat-label>
+          <input matInput [(ngModel)]="center.description" placeholder="Description" >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input-create-center">
+          <mat-label>Center rating:</mat-label>
+          <input matInput [(ngModel)]="center.avgGrade" placeholder="Rating" >
+        </mat-form-field>
+        <div align="center" class="align-me">
+          <button class="btn-b" mat-flat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Update center address</ng-template>
+        <mat-form-field appearance="fill" class="input-create-center">
+          <mat-label>Center country:</mat-label>
+          <input matInput [(ngModel)]="center.country" placeholder="Country" >
+        </mat-form-field>
+          <mat-form-field appearance="fill" class="input-create-center">
+            <mat-label>Center city:</mat-label>
+            <input matInput [(ngModel)]="center.city" placeholder="City" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="input-create-center">
+            <mat-label>Center street:</mat-label>
+            <input matInput [(ngModel)]="center.street" placeholder="Street" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="input-create-center">
+            <mat-label>Center street number:</mat-label>
+            <input matInput [(ngModel)]="center.streetNumber" placeholder="Street number" >
+          </mat-form-field>
+        <mat-form-field appearance="fill" class="input-create-center">
+          <mat-label>Center latitude:</mat-label>
+          <input matInput type="number" [(ngModel)]="center.latitude" placeholder="Latitude" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input-create-center">
+          <mat-label>Center longitude:</mat-label>
+          <input matInput type="number" [(ngModel)]="center.longitude" placeholder="Latitude" >
+        </mat-form-field>
+        <div class="my-map" id="map"></div>
+        <div align="center" class="align-me">
+          <button mat-flat-button class="btn-b"(click)="updateCenter()" >Finish</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>

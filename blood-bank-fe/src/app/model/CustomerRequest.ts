@@ -11,7 +11,8 @@ export interface ICustomerRequest {
   email?: string,
   role?: string,
   address?: AddressRequest,
-  profession? : ProfessionRequest
+  profession? : ProfessionRequest,
+  gender? : string
 }
 export class CustomerRequest implements ICustomerRequest {
   address?: AddressRequest;
@@ -24,6 +25,7 @@ export class CustomerRequest implements ICustomerRequest {
   role?: string;
   username?: string;
   profession? : ProfessionRequest;
+  gender? : string;
   constructor(data?: ICustomerRequest){
     if (data) {
       for (const property in data) {

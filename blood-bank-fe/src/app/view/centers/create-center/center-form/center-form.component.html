@@ -1,0 +1,39 @@
+<div class="title-container">
+  <h1 class="title">Create Center</h1>
+</div>
+
+<mat-form-field appearance="fill" class="input-create-center">
+  <mat-label>Center name:</mat-label>
+  <input matInput [(ngModel)]="center.name" placeholder="Name" required>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="input-create-center">
+  <mat-label>Center description:</mat-label>
+  <input matInput [(ngModel)]="center.description" placeholder="Description" required>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="input-create-center">
+  <mat-label>Center rating:</mat-label>
+  <input matInput [(ngModel)]="center.avgGrade" placeholder="Rating" type="number" min="1" max="5" required>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="input-create-center">
+  <mat-label>Center country:</mat-label>
+  <input matInput [(ngModel)]="center.country" placeholder="Country" required  pattern="[a-zA-Z]+" type="text">
+</mat-form-field>
+
+<div class="address-container" class="input-create-center">
+  <mat-form-field appearance="fill" >
+    <mat-label>Center city:</mat-label>
+    <input matInput [(ngModel)]="center.city" placeholder="City" required pattern="[a-zA-Z]+" type="text">
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+    <mat-label>Center street:</mat-label>
+    <input matInput [(ngModel)]="center.street" placeholder="Street" required >
+  </mat-form-field>
+  <mat-form-field appearance="fill" >
+    <mat-label>Center street number:</mat-label>
+    <input matInput [(ngModel)]="center.streetNumber" placeholder="Street number" required >
+  </mat-form-field>
+</div>
+<div class="g1-map" id="map"></div>
