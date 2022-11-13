@@ -6,6 +6,8 @@ import {MatAccordion} from '@angular/material/expansion';
 import {TokenStorageService} from "../../services/token-storage.service";
 import {UserToken} from "../../model/UserToken";
 import {ToastrService} from "ngx-toastr";
+import {LoyaltyProgramService} from "../../services/loyalty-program.service";
+import {LoyaltyProgram} from "../../model/LoyaltyProgram";
 
 @Component({
   selector: 'app-account',
@@ -22,6 +24,17 @@ export class AccountComponent implements OnInit {
   phone:string=""
   password1:string =""
   password2:string =""
+
+  loyaltyProgram: LoyaltyProgram ={
+    id: "",
+    loyaltyProgram: {
+      id: "",
+      customerCategory: "",
+      numberOfPoints: "",
+      loyaltyConvenience: ""
+    },
+    currentPoints: "",
+  }
   loggedCustomer: ApplicationUser = {
     id: "",
     username: "",
@@ -31,7 +44,7 @@ export class AccountComponent implements OnInit {
     phone: "",
     jmbg: "",
     email: "",
-    userRole: "",
+    role: "",
     city: "",
     street: "",
     country: "",
@@ -47,13 +60,17 @@ export class AccountComponent implements OnInit {
   }
   userToken: UserToken;
 
-  constructor(private userService: ApplicationUserService,private tkStorage:TokenStorageService,private toast:ToastrService) {
+  constructor(private loyaltyService:LoyaltyProgramService, private userService: ApplicationUserService,private tkStorage:TokenStorageService,private toast:ToastrService) {
     this.userToken = this.tkStorage.getUser()
   }
 
   ngOnInit(): void {
     this.userService.getApplicationUserById(this.userToken.id).subscribe((user) =>
-      (this.loggedCustomer = user , console.log(this.loggedCustomer)));
+      (this.loggedCustomer = user , console.log(this.loggedCustomer),
+        this.loyaltyService.getLoyaltyProgramByCustomerId(user.id!).subscribe((program) =>
+          (console.log(program),this.loyaltyProgram=program))
+      ));
+
 
   }
 

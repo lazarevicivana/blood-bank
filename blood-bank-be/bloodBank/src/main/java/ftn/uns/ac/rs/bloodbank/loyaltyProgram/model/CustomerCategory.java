@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.loyaltyProgram;
+package ftn.uns.ac.rs.bloodbank.loyaltyProgram.model;
 
 public enum CustomerCategory {
     BRONZE,
