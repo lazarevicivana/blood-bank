@@ -3,6 +3,7 @@ package ftn.uns.ac.rs.bloodbank.registration;
 import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 import ftn.uns.ac.rs.bloodbank.applicationUser.service.ApplicationUserService;
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
+import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.registration.dto.JwtResponse;
 import ftn.uns.ac.rs.bloodbank.registration.dto.LoginRequest;
 import ftn.uns.ac.rs.bloodbank.registration.email.EmailService;
@@ -36,7 +37,7 @@ public class RegistrationService {
     public String register(Customer request) throws IOException {
         var isValidEmail = emailValidator.test(request.getEmail());
         if (!isValidEmail) {
-            throw new IllegalStateException("email not valid");
+            throw new ApiBadRequestException("Email is in incorrect format!");
         }
         var token = applicationUserService.signUpUser(hashPassword(request));
         mailService.sendEmail(request, token);
