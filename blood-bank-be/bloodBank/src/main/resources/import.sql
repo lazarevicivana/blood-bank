@@ -171,3 +171,10 @@ insert into appointment (id, date, deleted,finish_Time, start_time, center_id) v
 insert into schedule_appointment (id,status,appointment_id, customer_id) values ('a54a5052-62a8-11ed-9b6a-0242ac120002','PASSED' ,'64b37a96-62a8-11ed-9b6a-0242ac120002','34713840-ddf3-49b2-9cae-47334cb6b31b');
 insert into schedule_appointment (id,status,appointment_id, customer_id) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','PASSED' ,'64b37a96-62a8-11ed-9b6a-0242ac120002','a0e141aa-62a9-11ed-9b6a-0242ac120002');
 insert into schedule_appointment (id,status,appointment_id, customer_id) values ('57b52a02-62b6-11ed-9b6a-0242ac120002','PASSED' ,'4136b08e-62b6-11ed-9b6a-0242ac120002','0dcce2a4-62b6-11ed-9b6a-0242ac120002');
+
+insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('168067ce-6381-11ed-81ce-0242ac120002','BRONZE','You have 5% discharge in our ambulances.',10);
+insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('abc12a02-62b6-11ed-9b6a-0242ac120002','SILVER','You have 15% discharge in our ambulances.',25);
+insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('f46800de-6380-11ed-81ce-0242ac120002','GOLD','You have 25% discharge in our ambulances.',50);
+
+
+insert into loyalty_program(id,current_points,customer_id,predefined_loyalty_program_id ) values ('ae068642-6380-11ed-81ce-0242ac120002',30,'34713840-ddf3-49b2-9cae-47334cb6b31b','abc12a02-62b6-11ed-9b6a-0242ac120002')
