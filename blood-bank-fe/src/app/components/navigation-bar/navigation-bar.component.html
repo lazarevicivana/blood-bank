@@ -9,7 +9,7 @@
         <ion-icon name="person-outline"></ion-icon>
       </button>
     </div>
-    <ul *ngIf="userRole===''" class="items">
+    <ul *ngIf="userRole===undefined" class="items">
       <li *ngFor="let data of publicNavData"  class="list" >
         <b></b>
         <b></b>

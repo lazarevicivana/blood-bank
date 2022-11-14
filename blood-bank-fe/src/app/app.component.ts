@@ -24,8 +24,8 @@ export class AppComponent {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      this.username = user.username;
-      this.userRole = user.role;
+      this.username = user.user?.username;
+      this.userRole = user.user?.userRole!;
     }
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;

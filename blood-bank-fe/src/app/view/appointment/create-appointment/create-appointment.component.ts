@@ -34,7 +34,7 @@ export class CreateAppointmentComponent implements OnInit {
     this.getCenter()
   }
   private getCenter(){
-    this.adminService.getCenterForAdmin(this.userToken.id).subscribe(
+    this.adminService.getCenterForAdmin(this.userToken.user?.id!).subscribe(
       {
         next: res =>{
           this.center = res;

@@ -35,8 +35,8 @@ export class QuestionnaireComponent implements OnInit {
 
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
-   this.questionnaire.customerId = user.id;
-    this.getUserById(user.id);
+   this.questionnaire.customerId = user.user?.id;
+    this.getUserById(user.user?.id!);
   }
 
   private getUserById(id: string) {

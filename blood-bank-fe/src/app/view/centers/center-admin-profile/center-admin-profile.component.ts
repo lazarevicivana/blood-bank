@@ -51,7 +51,7 @@ export class CenterAdminProfileComponent implements OnInit {
     // await this.router.navigateByUrl('/update-center', {state:{idCenter: this.center.id}});
   }
   private getCenter():void{
-    this.adminCenterService.getCenterForAdmin(this.user.id).subscribe(
+    this.adminCenterService.getCenterForAdmin(this.user.user?.id!).subscribe(
         response => {
           this.center = response;
           new google.maps.Marker({
@@ -68,7 +68,7 @@ export class CenterAdminProfileComponent implements OnInit {
     )
   }
   private getOtherAdmins():void{
-    this.centerService.getOtherCenterAdmins(this.center.id!,this.user.id)
+    this.centerService.getOtherCenterAdmins(this.center.id!,this.user.user?.id!)
       .subscribe({
         next: response => {
           this.otherAdmins = response;

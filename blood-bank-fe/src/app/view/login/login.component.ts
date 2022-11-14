@@ -95,7 +95,6 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.reloadPage();
         this.router.navigate(['facilities'])
-
         this.onLogin.emit(response)
       },
       error: err => {
