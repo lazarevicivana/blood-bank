@@ -42,7 +42,7 @@ export class NavigationBarComponent implements OnInit {
   constructor(private readonly router:Router,private tkStorage: TokenStorageService) {
     // @ts-ignore
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
-      this.loggedUser= this.tkStorage.getUser()
+      this.loggedUser=(this.tkStorage.getUser())
       if(this.loggedUser.id==""){
         this.logedIn = false
       }

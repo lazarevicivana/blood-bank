@@ -1,9 +1,0 @@
-language: java
-jdk:
-  - openjdk19
-
-before_install:
-  - chmod +x mvnw
-
-script:
-  - ./mvnw clean install
