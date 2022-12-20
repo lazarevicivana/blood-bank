@@ -50,11 +50,7 @@ export class NavigationBarComponent implements OnInit {
         this.logedIn= true
       }
     });
-
   }
-
-
-
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     const user = this.tkStorage.getUser();
