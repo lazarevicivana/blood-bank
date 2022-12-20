@@ -27,6 +27,7 @@ export class AllCentersComponent implements OnInit {
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    console.log(this.tokenStorage.getUser())
     const loaded = this.mapLoader.googleApi.then(()=>{
       this.map =  new google.maps.Map(
         document.getElementById("map") as HTMLElement,{

@@ -43,7 +43,9 @@ export class NavigationBarComponent implements OnInit {
     // @ts-ignore
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
       this.loggedUser=(this.tkStorage.getUser())
-      if(this.loggedUser.id==""){
+
+      this.loggedUser= this.tkStorage.getUser()
+      if(this.loggedUser.user?.id==""){
         this.logedIn = false
       }
       else {
@@ -58,7 +60,8 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     const user = this.tkStorage.getUser();
-      this.userRole = user.role;
+    console.log(user.user?.userRole);
+      this.userRole = user.user?.userRole!;
   }
 
   clicked(num: number) {

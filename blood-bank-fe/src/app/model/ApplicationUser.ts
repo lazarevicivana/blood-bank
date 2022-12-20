@@ -7,7 +7,7 @@ export interface ApplicationUser {
   phone?: string,
   jmbg?: string,
   email?: string,
-  role?: string,
+  userRole?: string,
   street?: string;
   country?: string;
   city?:string;
@@ -30,7 +30,7 @@ export class ApplicationUserImp implements ApplicationUser {
   phone?: string;
   jmbg?: string;
   email?: string;
-  role?: string;
+  userRole?: string;
   street?: string;
   country?: string;
   city?:string;

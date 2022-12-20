@@ -60,10 +60,7 @@ public class RegistrationService {
 //                .map(item -> item.getAuthority())
 //                .collect(Collectors.toList());
         return new JwtResponse(jwt,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail(),
-                userDetails.getUserRole());
+                userDetails);
     }
 
     @Transactional

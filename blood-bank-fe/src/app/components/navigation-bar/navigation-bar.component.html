@@ -6,10 +6,10 @@
       </button>
       <div class="logo-text">Bloody</div>
       <button *ngIf="logedIn" class="logo" style="margin-left: 40px; border-right-radius: 15px" (click)="viewAccount()" >
-        <ion-icon name="person-outline"></ion-icon>
+        <ion-icon name="finger-print-outline"></ion-icon>
       </button>
     </div>
-    <ul *ngIf="userRole===''" class="items">
+    <ul *ngIf="userRole===undefined" class="items">
       <li *ngFor="let data of publicNavData"  class="list" >
         <b></b>
         <b></b>

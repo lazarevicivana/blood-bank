@@ -26,7 +26,7 @@ public class ApplicationUserController {
         this.mapperService = mapperService;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ApplicationUserUpdate> getApplicationUser(@NonNull @PathVariable("id") UUID id){
         var user = mapperService.AppUserToAppUserUpdate((applicationUserService.getApplicationUser(id)));
         return ResponseEntity.ok(user);

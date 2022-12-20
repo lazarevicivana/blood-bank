@@ -42,7 +42,7 @@ import { CenterDonorsComponent } from './view/customer/center-donors/center-dono
         AllUsersComponent,
         AllDonorsComponent,
         DonorCardComponent,
-        CenterDonorsComponent
+        CenterDonorsComponent,
     ],
     imports: [
         BrowserModule,

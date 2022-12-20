@@ -12,6 +12,9 @@ import {CreateAppointmentComponent} from "./view/appointment/create-appointment/
 import {QuestionnaireComponent} from "./view/questionnaire/questionnaire.component";
 import {AllDonorsComponent} from "./view/customer/all-donors/all-donors.component";
 import {CenterDonorsComponent} from "./view/customer/center-donors/center-donors.component";
+import {
+  CustomerAppointmentCreateComponent
+} from "./view/appointment/customer-appointment-create/customer-appointment-create.component";
 
 
 const routes: Routes = [
@@ -26,7 +29,9 @@ const routes: Routes = [
   { path:'add-appointment',component:CreateAppointmentComponent},
   {path:'questionnaire', component: QuestionnaireComponent},
   { path:'all-donors',component:AllDonorsComponent},
-  { path:'center-donors',component:CenterDonorsComponent}
+  { path:'center-donors',component:CenterDonorsComponent},
+  { path:'customer-appointment-create',component:CustomerAppointmentCreateComponent}
+
 ];
 
 @NgModule({

@@ -4,10 +4,17 @@ export const customerNavData=[
     icon: 'business-outline',
     label: 'Facilities',
     num:0
-  }, {
+  },
+  {
+    routeLink: 'customer-appointment-create',
+    icon: 'today-outline',
+    label: 'schedule appointment',
+    num:1
+  },
+  {
     routeLink: 'questionnaire',
     icon: 'newspaper-outline',
     label: 'Questionnaire',
-    num:1
+    num:2
   }
 ]

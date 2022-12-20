@@ -44,7 +44,7 @@ export class AccountComponent implements OnInit {
     phone: "",
     jmbg: "",
     email: "",
-    role: "",
+    userRole: "",
     city: "",
     street: "",
     country: "",
@@ -65,7 +65,7 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getApplicationUserById(this.userToken.id).subscribe((user) =>
+    this.userService.getApplicationUserById(this.userToken.user?.id!).subscribe((user) =>
       (this.loggedCustomer = user , console.log(this.loggedCustomer),
         this.loyaltyService.getLoyaltyProgramByCustomerId(user.id!).subscribe((program) =>
           (console.log(program),this.loyaltyProgram=program))

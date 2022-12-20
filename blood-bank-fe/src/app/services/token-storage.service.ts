@@ -34,6 +34,6 @@ export class TokenStorageService {
     if (user) {
       return JSON.parse(user);
     }
-    return {email: "", id: "", jwt: "", role: "", username: ""};
+    return {user: undefined, jwt: ""};
   }
 }
