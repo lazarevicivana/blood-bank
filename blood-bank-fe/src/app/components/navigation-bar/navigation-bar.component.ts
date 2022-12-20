@@ -43,6 +43,8 @@ export class NavigationBarComponent implements OnInit {
     // @ts-ignore
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
       this.loggedUser=(this.tkStorage.getUser())
+
+      this.loggedUser= this.tkStorage.getUser()
       if(this.loggedUser.user?.id==""){
         this.logedIn = false
       }
