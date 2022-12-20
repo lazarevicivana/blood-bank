@@ -38,7 +38,7 @@
         </mat-expansion-panel-header>
       </mat-expansion-panel>
 
-      <mat-expansion-panel *ngIf="loggedCustomer.role=='ROLE_CUSTOMER'"  class="component">
+      <mat-expansion-panel *ngIf="loggedCustomer.userRole=='ROLE_CUSTOMER'"  class="component">
         <mat-expansion-panel-header style="color:#333333;">
           <mat-panel-title class="text" >
             Loyalty program:
@@ -141,11 +141,11 @@
         <div>
           <mat-form-field  appearance="outline">
             <mat-label > Change password</mat-label>
-            <input [(ngModel)]="password1" matInput placeholder="username" >
+            <input type="password" [(ngModel)]="password1" matInput placeholder="username" >
           </mat-form-field>
           <mat-form-field  appearance="outline">
             <mat-label > Confirm password</mat-label>
-            <input [(ngModel)]="password2" matInput placeholder="username" >
+            <input type="password" [(ngModel)]="password2" matInput placeholder="username" >
           </mat-form-field>
           <mat-action-row>
             <button (click)="changePassword()" mat-raised-button >Confirm</button>

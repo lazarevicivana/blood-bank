@@ -1,15 +1,11 @@
+import {ApplicationUser, ApplicationUserImp} from "./ApplicationUser";
+
 export class UserToken {
   jwt:string ='';
-  id:string='';
-  email:string='';
-  role:string='';
-  username:string='';
+  user: ApplicationUserImp | undefined
 
-  constructor(jwt: string, id: string, email: string, role: string, username: string) {
+  constructor(jwt: string,us:ApplicationUserImp ) {
     this.jwt = jwt;
-    this.id = id;
-    this.email = email;
-    this.role = role;
-    this.username = username;
+    this.user = us
   }
 }
