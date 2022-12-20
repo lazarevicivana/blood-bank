@@ -1,0 +1,40 @@
+<div class="container-f">
+  <div class="header">
+    Schedule appointment
+  </div>
+  <div class="search">
+    <div class="form" >
+      <mat-form-field appearance="fill" class="input-appointment">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="pickerDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+        <mat-datepicker #pickerDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field  appearance="fill" class="input-appointment">
+        <mat-label>Choose finish time</mat-label>
+        <input type="text"
+               matInput
+               [ngxTimepicker]="pickerTime1"
+               readonly
+               [format]="24"
+               style="width: 100%"
+        />
+        <ngx-material-timepicker #pickerTime1></ngx-material-timepicker>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <button class="btn-b" mat-raised-button (click)="getAllCenters()">Search</button>
+    </div>
+    </div>
+  <div class="row ">
+  <div class="col-7 col-md-7  row parent " >
+    <div *ngFor="let center of centers"  class="col-6  col-md-6 " >
+      <app-center-card [center]="center"></app-center-card>
+    </div>
+  </div>
+    </div>
+
+</div>

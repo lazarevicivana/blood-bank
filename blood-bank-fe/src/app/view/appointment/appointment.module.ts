@@ -6,9 +6,12 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS,MatMomentDateModule} from "@angular/mate
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {CommonComponentsModule} from "../../components/common-components.module";
+import { CustomerAppointmentCreateComponent } from './customer-appointment-create/customer-appointment-create.component';
+import {CenterViewModule} from "../centers/center-view.module";
 @NgModule({
   declarations: [
-    CreateAppointmentComponent
+    CreateAppointmentComponent,
+    CustomerAppointmentCreateComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +20,8 @@ import {CommonComponentsModule} from "../../components/common-components.module"
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
     MatMomentDateModule,
-    CommonComponentsModule
+    CommonComponentsModule,
+    CenterViewModule
   ],
   exports:[
     CreateAppointmentComponent
