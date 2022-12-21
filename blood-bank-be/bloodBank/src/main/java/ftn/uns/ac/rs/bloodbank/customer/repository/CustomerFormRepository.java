@@ -11,6 +11,6 @@ import java.util.Optional;
 import java.util.UUID;
 @Repository
 public interface CustomerFormRepository extends JpaRepository<CustomerForm, UUID> {
-    @Query("SELECT cf from CustomerForm cf where cf.customer = ?1")
+    @Query("SELECT cf from CustomerForm cf where cf.customer.id = ?1")
     List<CustomerForm> findByCustomerId(UUID customerId);
 }

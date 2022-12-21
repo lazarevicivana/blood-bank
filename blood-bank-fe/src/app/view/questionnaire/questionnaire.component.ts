@@ -27,7 +27,7 @@ export class QuestionnaireComponent implements OnInit {
     '1. Have you had a blood or blood product transfusion since 1st January 1980?',
     '2. Have you ever had a cancer other than basal cell carcinoma or cervical carcinoma insitu (CIN)?',
     '3. Do you take any medication in last 7 days?',
-    '4. Do tou have any allergies on skin?',
+    '4. Do you have any allergies on skin?',
     '5. Have you been sick in the last 7 days?',
     '6. Have you any therapy in the last 7 days?',
     '7. Is your blood pressure in normal range?',
@@ -92,29 +92,25 @@ export class QuestionnaireComponent implements OnInit {
       this.questionnaire.isAllergic = this.stringToBoolean(answer);
     }
   onAnswer10(answer: string){
-    console.log(typeof(answer));
       this.questionnaire.isSick = this.stringToBoolean(answer);
     }
   onAnswer11(answer: string){
-    console.log(typeof(answer));
     this.questionnaire.isUnderTherapy = this.stringToBoolean(answer);
   }
   onAnswer12(answer: string){
-    console.log(typeof(answer));
     this.questionnaire.isBloodPressureNormal = this.stringToBoolean(answer);
   }
   onAnswer13(answer: string){
-    console.log(typeof(answer));
     this.questionnaire.isDentis = this.stringToBoolean(answer);
   }
   onAnswer14(answer: string){
-    console.log(typeof(answer));
     this.questionnaire.isPiercingTattoo = this.stringToBoolean(answer);
   }
   onSubmitQuestionnaire(){
     this.checkAllFieldstoneSubmitting();
     if(this.enableSubmit){
       this.questionnaire.submissionDate = new Date();
+      console.log(this.questionnaire)
       this.client.createQuestionnaire(this.questionnaire).subscribe({
         next: _ => {
           this.toast.success("You have successfully submitted your blood donor questionnaire!","Success");

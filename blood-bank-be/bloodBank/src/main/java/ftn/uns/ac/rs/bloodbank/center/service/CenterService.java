@@ -89,6 +89,7 @@ public class CenterService {
         if(center.getCenterAddress().getStreetNumber() != null){
             currentCenter.getCenterAddress().setStreetNumber(center.getCenterAddress().getStreetNumber());
         }
+        centerRepository.save(currentCenter);
     }
 
     public List<CenterAdministrator> getAdminsForCenter(UUID id) {

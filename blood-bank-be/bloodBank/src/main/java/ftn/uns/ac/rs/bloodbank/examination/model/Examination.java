@@ -2,10 +2,7 @@ package ftn.uns.ac.rs.bloodbank.examination.model;
 
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.blood.model.BloodDonation;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -16,6 +13,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Examination {
     @Id
     @GeneratedValue
