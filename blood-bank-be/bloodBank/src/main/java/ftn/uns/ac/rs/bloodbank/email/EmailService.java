@@ -1,19 +1,13 @@
 package ftn.uns.ac.rs.bloodbank.email;
 
 import com.sendgrid.*;
-import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
-import ftn.uns.ac.rs.bloodbank.appointment.service.QRGeneratorService;
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Base64;
 
 @Service
 @AllArgsConstructor
@@ -37,16 +31,14 @@ public class EmailService {
         logger.info(response.getBody());
         return response.getBody();
     }
-    public String sendEmailQRAppointment(String qrCodeFile) throws IOException{
-        String link = "http://localhost:8080/api/v1/registration/confirm?token=";
+    public String sendEmailQRAppointment(String base64) throws IOException{
         Email from = new Email("ivanalazarevic01@gmail.com");
         String subject = "the subject";
         Email to = new Email("ivanalazarevic01@gmail.com");
         Content content = new Content("text/plain", "Please scan the attached QR code to confirm your appointment.");
         Mail mail = new Mail(from,subject,to,content);
         Attachments attachments = new Attachments();
-        var path = Paths.get(qrCodeFile);
-        attachments.setContent(Base64.getEncoder().encodeToString(Files.readAllBytes(path)));
+        attachments.setContent(base64);
         attachments.setType("image/png");
         attachments.setFilename("qr-code.png");
         attachments.setDisposition("attachment");
