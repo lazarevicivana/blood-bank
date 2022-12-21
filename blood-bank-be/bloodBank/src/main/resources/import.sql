@@ -67,25 +67,18 @@ insert into center (id, address, name, description, avg_grade) values ('b53992af
 insert into center (id, address, name, description, avg_grade) values ('76dece30-ad72-4f66-a283-3323e5243211', 'af5b8a93-bcb3-4d29-a7b7-dd1012013f81', 'Romaguera LLC', 'Insert Intralum Dev in R Less Saphenous, Perc Endo', 2);
 insert into center (id, address, name, description, avg_grade) values ('6fc73c01-8d1f-44e6-83f5-47c01d653b12', '300d4552-ef84-46ae-a5b2-42f810ec37fe', 'Kessler, Hegmann and O''Hara', 'Excision of Left Eustachian Tube, Endo, Diagn', 1.8);
 insert into center (id, address, name, description, avg_grade) values ('025967b5-1dbd-4f55-ba78-2615830e3913', '5c971bf4-7df2-4bad-976d-a3ceaca4b6c2', 'Herman-Bernier', 'Extirpation of Matter from Right Fallopian Tube, Via Opening', 4);
-
---equipment
-insert into equipment (id, name) values ('125967b5-1dbd-4f55-ba78-2615830e3900','Gauze');
-insert into equipment (id, name) values ('125967b5-1dbd-4f55-ba78-2615830e3901','Needle');
-insert into equipment (id, name) values ('125967b5-1dbd-4f55-ba78-2615830e3902','Syringe');
-
---center_equipment
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3800','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','125967b5-1dbd-4f55-ba78-2615830e3900',1000);
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3801','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','125967b5-1dbd-4f55-ba78-2615830e3901',1000);
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3802','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
-
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3803','262bb7c8-28a8-43fe-8c24-d79a00055872','125967b5-1dbd-4f55-ba78-2615830e3900',1000);
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3804','262bb7c8-28a8-43fe-8c24-d79a00055872','125967b5-1dbd-4f55-ba78-2615830e3901',1000);
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3805','262bb7c8-28a8-43fe-8c24-d79a00055872','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
-
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3806','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3900',1000);
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3807','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3901',1000);
-insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3808','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
-
+-- insert into center (id, address, name, description, avg_grade) values ('337ea82d-d6c5-4e4c-a10b-77bce6487cee', '9516ed25-9548-496d-8869-4dc6af109b14', 'Walsh-Raynor', 'Fusion Cerv Jt w Synth Sub, Ant Appr A Col, Open', 1);
+-- insert into center (id, address, name, description, avg_grade) values ('56321b4d-df2a-499c-9f4f-0177431a450d', '4bae7f00-0290-4511-be5f-03674929ce18', 'Toy-Beatty', 'Drainage of R Ext Auditory Canal, Extern Approach, Diagn', 0);
+-- insert into center (id, address, name, description, avg_grade) values ('52b38530-099f-4119-ad95-661a1cdda5cf', '6a11f1fd-8a74-43b1-b18d-337b9ff35011', 'Breitenberg, Schumm and Turner', 'Extirpation of Matter from Thalamus, Percutaneous Approach', 1);
+-- insert into center (id, address, name, description, avg_grade) values ('6d85f319-52e5-4901-bdea-26c14d07992b', 'ae6419ce-ec78-4f59-b6b1-9a7c22f4e72d', 'Nikolaus, Steuber and Hilpert', 'Excision of Lower Tooth, Open Approach, All', 1);
+-- insert into center (id, address, name, description, avg_grade) values ('ec6590da-35c3-4e42-b31a-14495412cfca', 'a885b7b7-51e4-4376-b81f-86a8f127ae13', 'Goldner LLC', 'Fusion of L Finger Phalanx Jt with Int Fix, Perc Approach', 1);
+-- insert into center (id, address, name, description, avg_grade) values ('63378662-ba22-48d7-abbe-38ea9d63b858', 'ce1031ef-f465-45db-99e5-99c09b6b5079', 'Dietrich LLC', 'Drainage of B Epididymis with Drain Dev, Perc Approach', 1);
+-- insert into center (id, address, name, description, avg_grade) values ('09710732-2f6a-40b5-94a4-c73661cae4e9', '79face28-25d2-4519-b684-e92c9e605521', 'Wilderman, Davis and Baumbach', 'Revision of Ext Fix in R Wrist Jt, Extern Approach', 0);
+-- insert into center (id, address, name, description, avg_grade) values ('f8bdb92f-6be6-46b0-b39c-42ae5e730389', 'd720f016-d7aa-448f-bdc6-51e7d3ef5cac', 'Upton, Monahan and Schulist', 'Excision of Face Artery, Percutaneous Endoscopic Approach', 0);
+-- insert into center (id, address, name, description, avg_grade) values ('980c3f49-c892-4581-b1f9-3982f5cde064', '53d7b557-5a3c-43cc-a3e1-77fd585a0b3c', 'Von, Lakin and Spencer', 'Drainage of Left Knee Tendon, Percutaneous Approach, Diagn', 1);
+-- insert into center (id, address, name, description, avg_grade) values ('31be369e-6794-4826-99c9-52106a371a1a', '0baedc11-6e24-4efa-85bd-e8874dd3b5a8', 'Cremin, Lindgren and Schmitt', 'Reposition Cervcal Vertebra with Int Fix, Perc Endo Approach', 0);
+-- insert into center (id, address, name, description, avg_grade) values ('423144ce-4091-4a11-8c5d-347c96c94652', '859f224c-22c1-4697-84fd-a3fc1f94d697', 'Collier and Sons', 'Destruction of Right Thorax Tendon, Open Approach', 0);
+-- insert into center (id, address, name, description, avg_grade) values ('606ddf23-21d0-49c3-b10c-773239141025', '88189e49-a5f7-49b5-a5c8-1054605e27b4', 'Bahringer, Bergstrom and Murazik', 'Fusion T-lum Jt w Intbd Fus Dev, Post Appr A Col, Open', 0);
 
 --address
 insert into address (id, city,country, street, street_number) values ('a4750193-0dfe-4059-b56c-d4919ec7252e', 'Huangsha','Srbija', 'Everett', '14644');
@@ -175,9 +168,9 @@ insert into application_user (user_role,id, username, password, name, phone, sur
 
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('64b37a96-62a8-11ed-9b6a-0242ac120002','2022-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120002','2022-11-11T16:17:57.049Z',false,'15:00','14:00','d4f7ab7c-9662-4680-be9f-52584a2194d2');
-insert into schedule_appointment (id,status,appointment_id, customer_id) values ('a54a5052-62a8-11ed-9b6a-0242ac120002','PENDING' ,'64b37a96-62a8-11ed-9b6a-0242ac120002','34713840-ddf3-49b2-9cae-47334cb6b31b');
-insert into schedule_appointment (id,status,appointment_id, customer_id) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','PENDING' ,'64b37a96-62a8-11ed-9b6a-0242ac120002','a0e141aa-62a9-11ed-9b6a-0242ac120002');
-insert into schedule_appointment (id,status,appointment_id, customer_id) values ('57b52a02-62b6-11ed-9b6a-0242ac120002','PENDING' ,'4136b08e-62b6-11ed-9b6a-0242ac120002','0dcce2a4-62b6-11ed-9b6a-0242ac120002');
+insert into schedule_appointment (id,status,appointment_id, customer_id) values ('a54a5052-62a8-11ed-9b6a-0242ac120002','PASSED' ,'64b37a96-62a8-11ed-9b6a-0242ac120002','34713840-ddf3-49b2-9cae-47334cb6b31b');
+insert into schedule_appointment (id,status,appointment_id, customer_id) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','PASSED' ,'64b37a96-62a8-11ed-9b6a-0242ac120002','a0e141aa-62a9-11ed-9b6a-0242ac120002');
+insert into schedule_appointment (id,status,appointment_id, customer_id) values ('57b52a02-62b6-11ed-9b6a-0242ac120002','PASSED' ,'4136b08e-62b6-11ed-9b6a-0242ac120002','0dcce2a4-62b6-11ed-9b6a-0242ac120002');
 
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('168067ce-6381-11ed-81ce-0242ac120002','BRONZE','You have 5% discharge in our ambulances.',10);
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('abc12a02-62b6-11ed-9b6a-0242ac120002','SILVER','You have 15% discharge in our ambulances.',25);
@@ -185,3 +178,21 @@ insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,
 
 
 insert into loyalty_program(id,current_points,customer_id,predefined_loyalty_program_id ) values ('ae068642-6380-11ed-81ce-0242ac120002',30,'34713840-ddf3-49b2-9cae-47334cb6b31b','abc12a02-62b6-11ed-9b6a-0242ac120002')
+
+--equipment
+insert into equipment (id, name) values ('125967b5-1dbd-4f55-ba78-2615830e3900','Gauze');
+insert into equipment (id, name) values ('125967b5-1dbd-4f55-ba78-2615830e3901','Needle');
+insert into equipment (id, name) values ('125967b5-1dbd-4f55-ba78-2615830e3902','Syringe');
+
+--center_equipment
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3800','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','125967b5-1dbd-4f55-ba78-2615830e3900',1000);
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3801','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','125967b5-1dbd-4f55-ba78-2615830e3901',1000);
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3802','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
+
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3803','262bb7c8-28a8-43fe-8c24-d79a00055872','125967b5-1dbd-4f55-ba78-2615830e3900',1000);
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3804','262bb7c8-28a8-43fe-8c24-d79a00055872','125967b5-1dbd-4f55-ba78-2615830e3901',1000);
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3805','262bb7c8-28a8-43fe-8c24-d79a00055872','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
+
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3806','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3900',1000);
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3807','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3901',1000);
+insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3808','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
