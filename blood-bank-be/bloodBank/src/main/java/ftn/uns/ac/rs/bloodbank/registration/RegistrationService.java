@@ -6,7 +6,7 @@ import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.registration.dto.JwtResponse;
 import ftn.uns.ac.rs.bloodbank.registration.dto.LoginRequest;
-import ftn.uns.ac.rs.bloodbank.registration.email.EmailService;
+import ftn.uns.ac.rs.bloodbank.email.EmailService;
 import ftn.uns.ac.rs.bloodbank.registration.token.ConfirmationTokenService;
 import ftn.uns.ac.rs.bloodbank.security.jwt.JwtUtils;
 import lombok.AllArgsConstructor;

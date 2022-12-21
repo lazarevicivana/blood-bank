@@ -1,11 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.appointment.controller;
-
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentDto;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentResponse;
-import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.appointment.service.ScheduleAppointmentService;
-import ftn.uns.ac.rs.bloodbank.center.service.CenterService;
-import ftn.uns.ac.rs.bloodbank.mapper.AppointmentMapper;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import ftn.uns.ac.rs.bloodbank.mapper.ScheduleAppointmentMapper;
 import lombok.AllArgsConstructor;
@@ -16,27 +12,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/scheduledAppointments")
 @AllArgsConstructor
+@RequestMapping(path = "api/v1/schedule-appointments")
 public class ScheduleAppointmentController {
-    private final ScheduleAppointmentService scheduleAppointmentService;
+    private final ScheduleAppointmentService _scheduleAppointmentService;
+    private final MapperService mapperService;
     private final ScheduleAppointmentMapper appointmentMapper;
 
-
-
     @PostMapping()
-    public ResponseEntity<String> createScheduleAppointment(@RequestBody ScheduleAppointmentRequest scheduleAppointmentrequest){
-        ScheduleAppointment scheduleAppointment = appointmentMapper.ScheduleRequestDtoToSchedule(scheduleAppointmentrequest);
-        scheduleAppointmentService.createScheduleAppointment(scheduleAppointment);
+    public ResponseEntity<String> createAppointment(@RequestBody ScheduleAppointmentDto appointmentRequest){
+        _scheduleAppointmentService.createScheduleAppointment(appointmentRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping()
     public ResponseEntity<List<ScheduleAppointmentResponse>> getAllScheduleAppointments(){
-        var appointments = scheduleAppointmentService.getAll()
+        var appointments = _scheduleAppointmentService.getAll()
                 .stream()
                 .map(appointmentMapper::ScheduleToScheduleResponseDto)
                 .toList();
         return ResponseEntity.ok(appointments);
     }
+
 }
