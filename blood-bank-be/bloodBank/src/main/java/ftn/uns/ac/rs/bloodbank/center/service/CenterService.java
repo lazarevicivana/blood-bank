@@ -1,5 +1,8 @@
 package ftn.uns.ac.rs.bloodbank.center.service;
 
+import ftn.uns.ac.rs.bloodbank.blood.model.BloodBank;
+import ftn.uns.ac.rs.bloodbank.blood.model.BloodType;
+import ftn.uns.ac.rs.bloodbank.blood.repository.BloodBankRepository;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdminRepository;
@@ -13,7 +16,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -21,6 +23,7 @@ import java.util.UUID;
 public class CenterService {
     private final CenterRepository centerRepository;
     private final CenterAdminRepository centerAdminRepository;
+    private final BloodBankRepository bloodBankRepository;
     public List<Center> getAllCenters(){
 
         return centerRepository.findAll();
@@ -32,9 +35,19 @@ public class CenterService {
             throw  new ApiConflictException("This name is already taken");
         }
         Center saveCenter = centerRepository.save(center);
-        //centerRepository.delete(getCenter(UUID. fromString("baeee9d9-91c0-44fa-adbd-834e7aad2b1b")));
-        //centerRepository.delete(getCenter(UUID. fromString("e098f9c8-9704-4934-8268-383882c32216")));
+        CreateBloodBankForCenter(center);
         return saveCenter;
+    }
+    public  void CreateBloodBankForCenter(Center center) {
+        for(BloodType bloodType: BloodType.values()){
+            var bloodBank = BloodBank
+                    .builder()
+                    .bloodType(bloodType)
+                    .center(center)
+                    .bloodUnit(0)
+                    .build();
+            bloodBankRepository.save(bloodBank);
+        }
     }
     public Center getCenter(UUID id) {
         return centerRepository

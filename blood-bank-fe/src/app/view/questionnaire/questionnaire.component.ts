@@ -22,13 +22,17 @@ export class QuestionnaireComponent implements OnInit {
     '1. Are you 16 – 65 years old?',
     '2. Do you currently weigh less than 50kg (7 stone 12 pounds)?',
     '3. Have you had sexual intercourse in the last six months without protection?',
-    '4. Are you pregnant?',
-    '5. Are tou currently on your period?',
-    '1.Have you had a blood or blood product transfusion since 1st January 1980?',
-    '2.Have you ever had a cancer other than basal cell carcinoma or cervical carcinoma insitu (CIN)?',
-    '3. Do you take any medication?',
-    '4. Do tou have any allergies?',
-    '5. Have you been sick in the last 7 days?'
+    '7. Are you pregnant?',
+    '8. Are you currently on your period?',
+    '1. Have you had a blood or blood product transfusion since 1st January 1980?',
+    '2. Have you ever had a cancer other than basal cell carcinoma or cervical carcinoma insitu (CIN)?',
+    '3. Do you take any medication in last 7 days?',
+    '4. Do tou have any allergies on skin?',
+    '5. Have you been sick in the last 7 days?',
+    '6. Have you any therapy in the last 7 days?',
+    '7. Is your blood pressure in normal range?',
+    '4. Have you been to the dentist in the last 7 days?',
+    '5. Have you had a piercing or tattoo done in the past 6 months?',
   ]
     enableSubmit =  false;
   constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,private customerClient : ApplicationUserService, private client: QuestionnaireService) { }
@@ -91,6 +95,22 @@ export class QuestionnaireComponent implements OnInit {
     console.log(typeof(answer));
       this.questionnaire.isSick = this.stringToBoolean(answer);
     }
+  onAnswer11(answer: string){
+    console.log(typeof(answer));
+    this.questionnaire.isUnderTherapy = this.stringToBoolean(answer);
+  }
+  onAnswer12(answer: string){
+    console.log(typeof(answer));
+    this.questionnaire.isBloodPressureNormal = this.stringToBoolean(answer);
+  }
+  onAnswer13(answer: string){
+    console.log(typeof(answer));
+    this.questionnaire.isDentis = this.stringToBoolean(answer);
+  }
+  onAnswer14(answer: string){
+    console.log(typeof(answer));
+    this.questionnaire.isPiercingTattoo = this.stringToBoolean(answer);
+  }
   onSubmitQuestionnaire(){
     this.checkAllFieldstoneSubmitting();
     if(this.enableSubmit){

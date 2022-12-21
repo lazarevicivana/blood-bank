@@ -28,6 +28,10 @@ export class QuestionnaireRequest implements IQuestionnaireRequest {
   hadTransfusion? : boolean;
   customerId? : string;
   submissionDate? : Date;
+  isUnderTherapy? : boolean;
+  isBloodPressureNormal? : boolean;
+  isDentis? : boolean;
+  isPiercingTattoo? : boolean;
 
 
   constructor(data?: ICustomerRequest){

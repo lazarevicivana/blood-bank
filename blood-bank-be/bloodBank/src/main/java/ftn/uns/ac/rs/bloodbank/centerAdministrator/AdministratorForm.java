@@ -1,7 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.centerAdministrator;
 
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
-import ftn.uns.ac.rs.bloodbank.blood.BloodType;
+import ftn.uns.ac.rs.bloodbank.blood.model.BloodType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

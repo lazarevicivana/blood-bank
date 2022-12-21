@@ -1,6 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.customer.controller;
 
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
+import ftn.uns.ac.rs.bloodbank.customer.model.PatientValidDonor;
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerSearchDto;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 

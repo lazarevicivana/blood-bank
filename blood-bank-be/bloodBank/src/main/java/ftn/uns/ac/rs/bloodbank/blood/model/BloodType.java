@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.blood;
+package ftn.uns.ac.rs.bloodbank.blood.model;
 
 public enum BloodType {
     A_POSITIVE,

@@ -1,9 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.customer.model;
-
-import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
@@ -27,7 +24,11 @@ public class CustomerForm {
     private Boolean isSexual;
     private Boolean isAllergic;
     private Boolean useMedication;
-    private Boolean bloodPressure;
+    private Boolean isUnderTherapy;
+    private Boolean isBloodPressureNormal;
+    private Boolean isDentis;
+    private Boolean isPiercingTattoo;
+
     private Date submissionDate;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "customer", referencedColumnName = "id")

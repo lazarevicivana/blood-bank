@@ -13,7 +13,7 @@ export class CenterAdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.tokenStorageService.isLoggedIn() && this.tokenStorageService.getUser().role === "Doctor"){
+    if(this.tokenStorageService.isLoggedIn() && this.tokenStorageService.getUser().jwt === "Doctor"){
       return true
     }
     this.router.navigate(['']).then(()=>{

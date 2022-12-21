@@ -22,6 +22,10 @@ public class CustomerFormRequest {
     private boolean isSexual;
     private boolean isAllergic;
     private boolean useMedication;
+    private Boolean isUnderTherapy;
+    private Boolean isBloodPressureNormal;
+    private Boolean isDentis;
+    private Boolean isPiercingTattoo;
     private UUID customerId;
     private Date submissionDate;
 }

@@ -1,8 +1,8 @@
 package ftn.uns.ac.rs.bloodbank.customer.controller;
 
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerFormRequest;
 import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerFormResponse;
+import ftn.uns.ac.rs.bloodbank.customer.model.PatientValidDonor;
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerFormService;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
@@ -24,6 +24,11 @@ public class CustomerFormController {
             var newCustomerForm = customerFormService.createCustomerForm(customerFormRequest);
             var customerFormResponse = mapperService.CustomerFormToCustomerFormDto(newCustomerForm);
             return new ResponseEntity<>(customerFormResponse, HttpStatus.CREATED);
+    }
+    @GetMapping(value = "/searchCenterDonors/{patientId}")
+    public ResponseEntity<ArrayList<PatientValidDonor>> checkIfPatientSuitableBloodDonor(@PathVariable("patientId") UUID patientId){
+        var patientSuitabilities = customerFormService.checkIfPatientSuitableBloodDonor(patientId);
+        return new ResponseEntity<>(patientSuitabilities,HttpStatus.OK);
     }
 }
 

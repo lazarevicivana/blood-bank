@@ -37,12 +37,8 @@ public class Center {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "working_time_id",referencedColumnName = "id")
     private CenterWorkingTime centerWorkingTime;
-    @ManyToMany
-    @JoinTable(
-            name = "center_equipment",
-            joinColumns = @JoinColumn(name = "center_id"),
-            inverseJoinColumns = @JoinColumn(name = "equipment_id"))
-    private Set<Equipment> equipment;
+    @OneToMany(mappedBy = "center")
+    private Set<CenterEquipment> centerEquipments;
     public Center( String name, CenterAddress centerAddress, String description, Double avgGrade) {
         this.name = name;
         this.centerAddress = centerAddress;
