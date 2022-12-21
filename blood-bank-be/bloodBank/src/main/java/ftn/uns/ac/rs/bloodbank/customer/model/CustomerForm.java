@@ -27,9 +27,9 @@ public class CustomerForm {
     private Boolean isSexual;
     private Boolean isAllergic;
     private Boolean useMedication;
+    private Boolean bloodPressure;
     private Date submissionDate;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "customer", referencedColumnName = "id")
     private Customer customer;
-
 }
