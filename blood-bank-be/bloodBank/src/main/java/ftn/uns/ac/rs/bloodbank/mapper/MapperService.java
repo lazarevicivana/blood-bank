@@ -8,7 +8,7 @@ import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.MedicalStaffResponse;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentDto;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
@@ -84,7 +84,7 @@ public class MapperService {
     public CustomerFormResponse CustomerFormToCustomerFormDto(CustomerForm customerForm){
         return modelMapper.map(customerForm,CustomerFormResponse.class);
     }
-    public ScheduleAppointment ScheduleAppointmentDtoToScheduleAppointment(ScheduleAppointmentDto request)
+    public ScheduleAppointment ScheduleAppointmentDtoToScheduleAppointment(ScheduleAppointmentRequest request)
     {
         return modelMapper.map(request, ScheduleAppointment.class);
     }

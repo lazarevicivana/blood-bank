@@ -1,5 +1,5 @@
 package ftn.uns.ac.rs.bloodbank.appointment.controller;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentDto;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.service.ScheduleAppointmentService;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
@@ -16,11 +16,10 @@ import java.util.List;
 @RequestMapping(path = "api/v1/schedule-appointments")
 public class ScheduleAppointmentController {
     private final ScheduleAppointmentService _scheduleAppointmentService;
-    private final MapperService mapperService;
     private final ScheduleAppointmentMapper appointmentMapper;
 
     @PostMapping()
-    public ResponseEntity<String> createAppointment(@RequestBody ScheduleAppointmentDto appointmentRequest){
+    public ResponseEntity<String> createAppointment(@RequestBody ScheduleAppointmentRequest appointmentRequest){
         _scheduleAppointmentService.createScheduleAppointment(appointmentRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

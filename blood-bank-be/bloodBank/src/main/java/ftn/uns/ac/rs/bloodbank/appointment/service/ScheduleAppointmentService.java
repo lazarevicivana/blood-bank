@@ -1,6 +1,5 @@
 package ftn.uns.ac.rs.bloodbank.appointment.service;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentDto;
-import ftn.uns.ac.rs.bloodbank.appointment.model.AppointmentStatus;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.appointment.repository.ScheduleAppointmentRepository;
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
@@ -18,10 +17,10 @@ public class ScheduleAppointmentService {
     private final CustomerService customerService;
     private static final String QR_FILE_PATH = "./src/main/resources/QR/qr-code.png";
     @Transactional
-    public void createScheduleAppointment(ScheduleAppointmentDto request)
+    public void createScheduleAppointment(ScheduleAppointmentRequest request)
     {
-        var appointment = appointmentService.findByID(request.getAppointmentId());
-        var customer = customerService.getById(request.getCustomerId());
+        var appointment = appointmentService.findByID(request.getAppointment_id());
+        var customer = customerService.getById(request.getCustomer_id());
         var scheduleAppointment = ScheduleAppointment
                 .builder()
                 .appointment(appointment)
