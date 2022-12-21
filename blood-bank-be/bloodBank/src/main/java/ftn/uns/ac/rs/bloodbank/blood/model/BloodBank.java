@@ -21,6 +21,6 @@ public class BloodBank {
     private BloodType  bloodType;
     private Integer bloodUnit;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "center", referencedColumnName = "id")
+    @JoinColumn(name = "center_id", referencedColumnName = "id")
     private Center center;
 }

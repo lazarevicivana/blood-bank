@@ -24,5 +24,5 @@ public class CenterEquipment {
     @JoinColumn(name="equipment_id")
     private Equipment equipment;
     @Column(name = "quantity")
-    private String quantity;
+    private Integer quantity;
 }
