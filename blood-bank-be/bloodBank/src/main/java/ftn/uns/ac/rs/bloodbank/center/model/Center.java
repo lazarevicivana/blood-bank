@@ -1,11 +1,10 @@
 package ftn.uns.ac.rs.bloodbank.center.model;
-
 import ftn.uns.ac.rs.bloodbank.appointment.model.Appointment;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.*;
-
 import javax.persistence.*;
-import java.util.*;
+import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -24,7 +23,7 @@ public class Center {
     private UUID id;
     @Column(name = "name",nullable = false,columnDefinition = "TEXT",unique = true)
     private String name;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "address", referencedColumnName = "id")
     private CenterAddress centerAddress;
     @Column(name = "description",nullable = false,columnDefinition = "TEXT")
@@ -35,7 +34,7 @@ public class Center {
     private Set<CenterAdministrator> medicalStuff;
     @OneToMany(mappedBy="center")
     private Set<Appointment> availableAppointments;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "working_time_id",referencedColumnName = "id")
     private CenterWorkingTime centerWorkingTime;
     @ManyToMany
