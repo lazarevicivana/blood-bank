@@ -20,6 +20,7 @@ public class ScheduleAppointmentService {
     public void createScheduleAppointment(ScheduleAppointmentRequest request)
     {
         var appointment = appointmentService.findByID(request.getAppointment_id());
+       /* if( appointment.isValidDate())*/
         var customer = customerService.getById(request.getCustomer_id());
         var scheduleAppointment = ScheduleAppointment
                 .builder()
