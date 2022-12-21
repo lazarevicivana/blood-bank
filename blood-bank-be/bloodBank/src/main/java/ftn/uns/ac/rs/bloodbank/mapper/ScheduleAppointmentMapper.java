@@ -1,6 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.mapper;
 
 import ftn.uns.ac.rs.bloodbank.appointment.dto.MedicalStaffResponse;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import org.modelmapper.ModelMapper;
@@ -21,5 +22,8 @@ public class ScheduleAppointmentMapper {
 
     public ScheduleAppointmentResponse ScheduleToScheduleResponseDto(ScheduleAppointment scheduleAppointment){
         return modelMapper.map(scheduleAppointment, ScheduleAppointmentResponse.class);
+    }
+    public ScheduleAppointment ScheduleRequestDtoToSchedule(ScheduleAppointmentRequest scheduleAppointmentRequest){
+        return modelMapper.map(scheduleAppointmentRequest, ScheduleAppointment.class);
     }
 }
