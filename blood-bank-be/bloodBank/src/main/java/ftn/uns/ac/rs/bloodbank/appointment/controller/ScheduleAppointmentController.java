@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.appointment.controller;
 
+import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.appointment.service.ScheduleAppointmentService;
@@ -24,7 +25,8 @@ public class ScheduleAppointmentController {
 
 
     @PostMapping()
-    public ResponseEntity<String> createScheduleAppointment(@RequestBody ScheduleAppointment scheduleAppointment){
+    public ResponseEntity<String> createScheduleAppointment(@RequestBody ScheduleAppointmentRequest scheduleAppointmentrequest){
+        ScheduleAppointment scheduleAppointment = appointmentMapper.ScheduleRequestDtoToSchedule(scheduleAppointmentrequest);
         scheduleAppointmentService.createScheduleAppointment(scheduleAppointment);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
