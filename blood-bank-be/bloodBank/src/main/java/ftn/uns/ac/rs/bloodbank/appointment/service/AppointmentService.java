@@ -7,6 +7,7 @@ import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdminRepository;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
+import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -61,5 +62,10 @@ public class AppointmentService {
         if(!appointment.isValidDateTime()){
             throw new ApiBadRequestException("Wrong start time and end time range!");
         }
+    }
+    public Appointment findByID(UUID appointmentId){
+        var appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(() -> new ApiNotFoundException("Appointment not found"));
+        return appointment;
     }
 }

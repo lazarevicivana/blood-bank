@@ -36,20 +36,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final ApplicationUserService applicationUserService;
     private AuthEntryPointJwt unauthorizedHandler;
     private PasswordEncodeConfig passwordEncodeConfig;
+
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
     }
+
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.userDetailsService(applicationUserService).passwordEncoder(passwordEncodeConfig.passwordEncoder());
     }
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-//    @Bean
+
+    //    @Bean
 //    public PasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
 //    }
@@ -57,7 +61,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("api/v1/registration/**");
+                .antMatchers("api/v1/registration/**",
+                        "swagger-ui/index.html");
     }
 
 
@@ -67,21 +72,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/api/v1/center-admin/**").permitAll()
-                .antMatchers("/api/v*/**/**").permitAll()
+                .antMatchers("/api/v1/**/**", "/v2/api-docs",
+                        "/swagger-resources",
+                        "/swagger-resources/**",
+                        "/configuration/ui",
+                        "/configuration/security",
+                        "/swagger-ui.html",
+                        "/webjars/**",
+                        // -- Swagger UI v3 (OpenAPI)
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**").permitAll()
+                .antMatchers("swagger-ui/index.html").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
 
-
-//    @Bean
-//    public DaoAuthenticationProvider daoAuthenticationProvider(){
-//        DaoAuthenticationProvider provider =
-//                new DaoAuthenticationProvider();
-//        provider.setPasswordEncoder(bCryptPasswordEncoder);
-//        provider.setUserDetailsService(applicationUserService);
-//        return provider;
-//    }
 }

@@ -1,8 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.appointment.model;
 
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -10,6 +9,9 @@ import java.util.UUID;
 @Table(name = "schedule_appointment")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ScheduleAppointment {
     @Id
     @GeneratedValue

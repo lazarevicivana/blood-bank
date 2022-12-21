@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.bloodbank.common;
+/*package ftn.uns.ac.rs.bloodbank.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,4 +21,4 @@ public class SpringFoxConfig {
                 .paths(PathSelectors.any())
                 .build();
     }
-}
+}*/
