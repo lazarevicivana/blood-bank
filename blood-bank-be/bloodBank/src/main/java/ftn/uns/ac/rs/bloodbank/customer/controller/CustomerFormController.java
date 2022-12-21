@@ -20,7 +20,6 @@ public class CustomerFormController {
     private final CustomerFormService customerFormService;
     @PostMapping
     public ResponseEntity<CustomerFormResponse> createCustomerForm(@RequestBody CustomerFormRequest customerFormRequest){
-            //var customerForm = mapperService.CustomerFormDtoToCustomerForm(customerFormRequest);
             var newCustomerForm = customerFormService.createCustomerForm(customerFormRequest);
             var customerFormResponse = mapperService.CustomerFormToCustomerFormDto(newCustomerForm);
             return new ResponseEntity<>(customerFormResponse, HttpStatus.CREATED);

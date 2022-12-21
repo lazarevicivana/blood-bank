@@ -4,6 +4,7 @@ import ftn.uns.ac.rs.bloodbank.appointment.model.Appointment;
 import ftn.uns.ac.rs.bloodbank.appointment.model.AppointmentStatus;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.appointment.repository.ScheduleAppointmentRepository;
+import ftn.uns.ac.rs.bloodbank.customer.service.CustomerFormService;
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ public class ScheduleAppointmentService {
     private final ScheduleAppointmentRepository scheduleAppointmentRepository;
     private final QRGeneratorService qrGeneratorService;
     private final AppointmentService appointmentService;
+    private final CustomerFormService customerFormService;
     private final CustomerService customerService;
     private static final String QR_FILE_PATH = "./src/main/resources/QR/qr-code.png";
     @Transactional
@@ -29,6 +31,7 @@ public class ScheduleAppointmentService {
         var customer = customerService.getById(request.getCustomer_id());
         if(!checkIfDonatingIsPossible(customer.getId()))
             throw new ApiBadRequestException("You are have already donated blood in the last six months!");
+       customerFormService.checkQuestionnaireExistence(customer.getId());
         var scheduleAppointment = ScheduleAppointment
                 .builder()
                 .appointment(appointment)
