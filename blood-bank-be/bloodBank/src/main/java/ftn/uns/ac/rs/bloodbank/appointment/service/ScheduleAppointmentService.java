@@ -1,5 +1,4 @@
 package ftn.uns.ac.rs.bloodbank.appointment.service;
-
 import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentDto;
 import ftn.uns.ac.rs.bloodbank.appointment.model.AppointmentStatus;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
@@ -7,8 +6,8 @@ import ftn.uns.ac.rs.bloodbank.appointment.repository.ScheduleAppointmentReposit
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -19,7 +18,7 @@ public class ScheduleAppointmentService {
     private final CustomerService customerService;
     private static final String QR_FILE_PATH = "./src/main/resources/QR/qr-code.png";
     @Transactional
-    public void scheduleAppointment(ScheduleAppointmentDto request)
+    public void createScheduleAppointment(ScheduleAppointmentDto request)
     {
         var appointment = appointmentService.findByID(request.getAppointmentId());
         var customer = customerService.getById(request.getCustomerId());
@@ -27,7 +26,6 @@ public class ScheduleAppointmentService {
                 .builder()
                 .appointment(appointment)
                 .customer(customer)
-                .status(AppointmentStatus.PENDING)
                 .build();
         scheduleAppointmentRepository.save(scheduleAppointment);
         generateQRCodeAndSendEmail(scheduleAppointment);
@@ -35,9 +33,13 @@ public class ScheduleAppointmentService {
 
     private void generateQRCodeAndSendEmail(ScheduleAppointment scheduleAppointment) {
         try {
-           qrGeneratorService.generateQRCodeImage(scheduleAppointment,200,200,QR_FILE_PATH);
-       } catch (Exception e){
-           System.out.println(e.getMessage());
-       }
+            qrGeneratorService.generateQRCodeImage(scheduleAppointment, 200, 200, QR_FILE_PATH);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public List<ScheduleAppointment> getAll(){
+        return scheduleAppointmentRepository.findAll();
     }
 }
