@@ -1,6 +1,5 @@
 package ftn.uns.ac.rs.bloodbank.appointment.model;
 
-import com.fasterxml.jackson.databind.SerializationFeature;
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import lombok.*;
 
@@ -27,6 +26,6 @@ public class ScheduleAppointment {
     @JoinColumn(name = "customerId", referencedColumnName = "id")
     private Customer customer;
 
-//    @Enumerated(EnumType.STRING)
-//    private AppointmentStatus status = AppointmentStatus.PENDING;
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status = AppointmentStatus.PENDING;
 }
