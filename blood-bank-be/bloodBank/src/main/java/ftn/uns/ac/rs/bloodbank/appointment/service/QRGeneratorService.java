@@ -6,6 +6,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.common.DateTimeService;
+import ftn.uns.ac.rs.bloodbank.customer.service.CustomerQRCodeService;
 import ftn.uns.ac.rs.bloodbank.email.EmailService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,14 +15,16 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Base64;
 
 @AllArgsConstructor
 @Service
 public class QRGeneratorService {
     private final EmailService emailService;
     private final DateTimeService dateTimeService;
+    private final CustomerQRCodeService customerQRCodeService;
 
     public void generateQRCodeImage(ScheduleAppointment scheduleAppointment, int width, int height, String filePath)
             throws WriterException, IOException {
@@ -31,7 +34,13 @@ public class QRGeneratorService {
 
         BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
         ImageIO.write(image, "PNG", new File(filePath));
-        emailService.sendEmailQRAppointment(filePath);
+        var base64 = convertQRCodeToBase64(filePath);
+        customerQRCodeService.createCustomerQRCode(base64,scheduleAppointment.getCustomer());
+        emailService.sendEmailQRAppointment(base64);
+    }
+    public String convertQRCodeToBase64(String filePath)throws IOException{
+        var path = Paths.get(filePath);
+        return  Base64.getEncoder().encodeToString(Files.readAllBytes(path));
     }
     public String serializeObject(ScheduleAppointment scheduleAppointment) {
         StringBuilder sb = new StringBuilder();
