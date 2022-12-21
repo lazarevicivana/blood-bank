@@ -23,7 +23,7 @@ public class Center {
     private UUID id;
     @Column(name = "name",nullable = false,columnDefinition = "TEXT",unique = true)
     private String name;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "address", referencedColumnName = "id")
     private CenterAddress centerAddress;
     @Column(name = "description",nullable = false,columnDefinition = "TEXT")
