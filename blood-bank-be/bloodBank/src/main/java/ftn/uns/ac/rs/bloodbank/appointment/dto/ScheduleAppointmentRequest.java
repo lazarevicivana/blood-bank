@@ -17,5 +17,4 @@ import java.util.UUID;
 public class ScheduleAppointmentRequest {
     private UUID appointmentId;
     private UUID customerId;
-    private AppointmentStatus status = AppointmentStatus.PENDING;
 }

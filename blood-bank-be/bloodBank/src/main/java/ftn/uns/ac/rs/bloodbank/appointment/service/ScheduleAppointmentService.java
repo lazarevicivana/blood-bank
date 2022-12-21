@@ -19,7 +19,7 @@ public class ScheduleAppointmentService {
     private final CustomerService customerService;
     private static final String QR_FILE_PATH = "./src/main/resources/QR/qr-code.png";
     @Transactional
-    public void createScheduleAppointment(ScheduleAppointmentRequest request)
+    public void scheduleAppointment(ScheduleAppointmentRequest request)
     {
         var appointment = appointmentService.findByID(request.getAppointmentId());
         var customer = customerService.getById(request.getCustomerId());

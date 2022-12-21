@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ScheduleAppointmentController {
     private final ScheduleAppointmentService _scheduleAppointmentService;
     private final MapperService _mapperService;
-    @PostMapping()
+    @PostMapping(path = "schedule-appointment")
     public ResponseEntity<String> createAppointment(@RequestBody ScheduleAppointmentRequest appointmentRequest){
-        _scheduleAppointmentService.createScheduleAppointment(appointmentRequest);
+        _scheduleAppointmentService.scheduleAppointment(appointmentRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
