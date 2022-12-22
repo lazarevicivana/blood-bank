@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Center} from "../../model/Center";
 import {Router} from "@angular/router";
 
@@ -9,12 +9,18 @@ import {Router} from "@angular/router";
 })
 export class CenterCardComponent implements OnInit {
   @Input() center = new Center();
+  @Input() isSchedule = false;
+  @Output() onScheduleAppointment: EventEmitter<Center> = new EventEmitter<Center>();
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   centerProfile(){
     this.router.navigate(['center-profile'], { state: { centerId: this.center.id } })
+  }
+
+  scheduleAppointmentINCenter(){
+    this.onScheduleAppointment.emit(this.center)
   }
 
 }

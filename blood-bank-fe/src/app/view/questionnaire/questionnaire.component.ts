@@ -5,8 +5,9 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {ApplicationUserService} from "../../services/applicationUser.service";
 import {QuestionnaireService} from "../../services/customer-form.service";
 import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { ApplicationUserImp} from "../../model/ApplicationUser";
+import {AppointmentService} from "../../services/appointment.service";
 
 @Component({
   selector: 'app-questionnaire',
@@ -18,6 +19,8 @@ export class QuestionnaireComponent implements OnInit {
   applicationUser = new ApplicationUserImp();
   questionnaire  = new QuestionnaireRequest();
   female : boolean = false;
+  appointmentId: string | null =""
+  customerId: string | null = ""
   questions : string[] =[
     '1. Are you 16 – 65 years old?',
     '2. Do you currently weigh less than 50kg (7 stone 12 pounds)?',
@@ -35,7 +38,12 @@ export class QuestionnaireComponent implements OnInit {
     '5. Have you had a piercing or tattoo done in the past 6 months?',
   ]
     enableSubmit =  false;
-  constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,private customerClient : ApplicationUserService, private client: QuestionnaireService) { }
+  constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,
+              private customerClient : ApplicationUserService, private client: QuestionnaireService,
+              private readonly router1:ActivatedRoute, private appointmentService: AppointmentService) {
+              this.appointmentId = this.router1.snapshot.paramMap.get('param1');
+              this.customerId = this.router1.snapshot.paramMap.get('param2');
+  }
 
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
@@ -115,6 +123,9 @@ export class QuestionnaireComponent implements OnInit {
         next: _ => {
           this.toast.success("You have successfully submitted your blood donor questionnaire!","Success");
           this.router.navigateByUrl("/facilities");
+          if(this.appointmentId!= ""){
+
+          }
         }
       })
     }else {

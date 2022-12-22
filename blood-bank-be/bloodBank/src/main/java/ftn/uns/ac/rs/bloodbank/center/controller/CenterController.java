@@ -46,6 +46,8 @@ public class CenterController {
                 .toList();
         return ResponseEntity.ok(centers);
     }
+
+
     @PostMapping()
     public ResponseEntity<CenterDtoResponse> createCenter(@RequestBody CenterDto centerDto){
         var center = mapperService.CenterDtoToCenter(centerDto);
