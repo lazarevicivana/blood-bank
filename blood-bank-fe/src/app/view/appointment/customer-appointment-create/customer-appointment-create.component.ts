@@ -16,6 +16,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
 
   centers : Center[]= []
   centersFiltered : Center[]= []
+  sortedByGrade = false;
   selectedDate: Date | undefined
   selectedTime:any
   selectedTimeDate:any
@@ -36,6 +37,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
     this.setTime()
     this.centerService.getCentersWithAppointment(this.selectedTimeDate).subscribe(response => {
       this.centers = response;
+      this.centersFiltered = response;
       console.log(response)
       this.visable = true;
     })
@@ -58,5 +60,17 @@ export class CustomerAppointmentCreateComponent implements OnInit {
           this.router.navigate(['/questionnaire'],{state:{data:this.selectedAppointmentId}})
         }
       )
+  }
+
+  sortByGrade() {
+    if(!this.sortedByGrade){
+      this.sortedByGrade = true
+      this.centersFiltered.sort((a, b) => (a.avgGrade! > b.avgGrade! ? -1 : 1));
+    }
+    else{
+      this.sortedByGrade = false
+      this.centersFiltered.sort((a, b) => (a.name?.toLowerCase()! > b.name?.toLowerCase()! ? 1 : -1));
+
+    }
   }
 }
