@@ -20,6 +20,7 @@ import {
 } from "./view/system-administrator/create-system-admin/create-system-admin.component";
 import {ExaminationComponent} from "./view/examination/examination.component";
 import {FirstLoginComponent} from "./components/first-login/first-login.component";
+import {CalendarViewComponent} from "./view/calendar/calendar-view/calendar-view.component";
 
 
 const routes: Routes = [
@@ -38,8 +39,8 @@ const routes: Routes = [
   { path:'customer-appointment-create',component:CustomerAppointmentCreateComponent},
   { path:'system-admin-create',component:CreateSystemAdminComponent},
   { path:'examination',component:ExaminationComponent},
-  { path:'first-login',component:FirstLoginComponent}
-
+  { path:'first-login',component:FirstLoginComponent},
+  {path:'calendar-view',component:CalendarViewComponent}
 ];
 
 @NgModule({
