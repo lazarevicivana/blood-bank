@@ -44,17 +44,13 @@ export class NavigationBarComponent implements OnInit {
   constructor(private readonly router:Router,private tkStorage: TokenStorageService,private userService: ApplicationUserService) {
     // @ts-ignore
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
-      this.loggedUser=(this.tkStorage.getUser())
-
       this.loggedUser= this.tkStorage.getUser()
+      this.userService.getApplicationUserById(this.loggedUser.id).subscribe((u) => (this.user1.firstLogIn = u.firstLogIn));
+      console.log('uuseer',this.user1)
+
+
       if(this.loggedUser.id==""){
-
-        // @ts-ignore
-        this.userService.getApplicationUserById(this.loggedUser.id).subscribe((u) => (this.user.firstLogIn = u.firstLogIn));
-        console.log('uuseer',this.user)
-
         this.logedIn = false
-
       }
       else {
         this.logedIn= true
@@ -64,6 +60,7 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     const user = this.tkStorage.getUser();
+    console.log(user)
     console.log(user.role);
     this.userRole = user.role!;
   }
@@ -113,10 +110,10 @@ export class NavigationBarComponent implements OnInit {
 
   firstLogIn()
   {
-    return this.user.firstLogIn && this.loggedUser?.role=="ROLE_SYSTEM_ADMIN"
+    return this.user1.firstLogIn && this.loggedUser?.role=="ROLE_SYSTEM_ADMIN"
   }
 
-  user: ApplicationUser = {
+  user1: ApplicationUser = {
     id: "",
     username: "",
     password: "",
