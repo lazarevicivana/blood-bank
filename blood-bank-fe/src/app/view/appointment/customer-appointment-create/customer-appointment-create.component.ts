@@ -37,16 +37,23 @@ export class CustomerAppointmentCreateComponent implements OnInit {
     console.log(this.selectedDate)
     console.log(this.selectedTime)
     this.setTime()
-    this.centerService.getCentersWithAppointment(this.selectedTimeDate).subscribe(response => {
-      this.centers = response;
-      this.centersFiltered = response;
-      console.log(response)
-      this.visable = true;
-    },
-      error => {
-      this.centersFiltered = []
-        this.toast.error(error.error.message,"Error")
-      })
+    
+    if(this.selectedDate! < new Date()){
+      this.toast.error("Select upcoming date.","Error")
+    }
+    else{
+      this.centerService.getCentersWithAppointment(this.selectedTimeDate).subscribe(response => {
+          this.centers = response;
+          this.centersFiltered = response;
+          console.log(response)
+          this.visable = true;
+        },
+        error => {
+          this.centersFiltered = []
+          this.toast.error(error.error.message,"Error")
+        })
+    }
+
   }
   private setTime(){
     this.selectedTimeDate = moment(this.selectedDate)
