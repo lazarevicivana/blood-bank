@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="container-f">
+    <div class="title-container">
+      <h1 class="title">Change password</h1>
+    </div>
+    <div class="input-create-center">
+      <p>You have successfuly logged in. Please change password.</p>
+    </div>
+
+    <mat-form-field appearance="fill" class="input-create-center">
+      <mat-label>Password:</mat-label>
+      <input matInput [(ngModel)]="password1" placeholder="Password" type="password" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-create-center">
+      <mat-label>Password repeat:</mat-label>
+      <input matInput [(ngModel)]="password2" placeholder="Password repeat"  type="password" required>
+    </mat-form-field>
+    <lib-ng-toast></lib-ng-toast>
+
+    <div align="center">
+      <button mat-flat-button color="primary" (click)="changePassword()" >Submit</button>
+    </div>
+
+  </div>
+</div>
+
+

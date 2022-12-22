@@ -36,6 +36,8 @@ public class ApplicationUser implements UserDetails {
     private String jmbg;
     private String email;
     private Boolean locked = false;
+    @Column(name = "firstLogIn")
+    private Boolean firstLogIn;
     @Enumerated(EnumType.STRING)
     private GenderType gender ;
     @Enumerated(EnumType.STRING)
