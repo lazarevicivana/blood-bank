@@ -57,10 +57,10 @@ public class ScheduleAppointmentService {
     }
 
     private static void validateAppointmentDateTime(Appointment appointment) {
-        if( appointment.isValidDate()){
+        if( !appointment.isValidDate()){
             throw new ApiBadRequestException("Date is invalid");
         }
-        if(appointment.isValidDateTime())
+        if(!appointment.isValidDateTime())
         {
             throw new ApiBadRequestException("Time is invalid");
         }
