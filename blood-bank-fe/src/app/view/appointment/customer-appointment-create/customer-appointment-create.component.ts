@@ -47,7 +47,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
     this.selectedTimeDate = moment(this.selectedDate)
     let selectedHours:number = Number(this.selectedTime.slice(0,2))
     let selectedMinute:number = Number(this.selectedTime.slice(3,5))
-    this.selectedTimeDate.set({hour:selectedHours-1,minute:selectedMinute})
+    this.selectedTimeDate.set({hour:selectedHours,minute:selectedMinute})
     console.log(this.selectedTimeDate)
 
   }
