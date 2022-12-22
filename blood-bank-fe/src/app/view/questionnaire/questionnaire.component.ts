@@ -8,6 +8,7 @@ import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute, Router} from "@angular/router";
 import { ApplicationUserImp} from "../../model/ApplicationUser";
 import {AppointmentService} from "../../services/appointment.service";
+import {UserToken} from "../../model/UserToken";
 
 @Component({
   selector: 'app-questionnaire',
@@ -38,11 +39,12 @@ export class QuestionnaireComponent implements OnInit {
     '5. Have you had a piercing or tattoo done in the past 6 months?',
   ]
     enableSubmit =  false;
+  private userToken: UserToken;
   constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,
               private customerClient : ApplicationUserService, private client: QuestionnaireService,
-              private readonly router1:ActivatedRoute, private appointmentService: AppointmentService) {
-              this.appointmentId = this.router1.snapshot.paramMap.get('param1');
-              this.customerId = this.router1.snapshot.paramMap.get('param2');
+              private readonly router1:Router, private appointmentService: AppointmentService) {
+              this.appointmentId = this.router1.getCurrentNavigation()?.extras?.state?.['data']!
+              this.userToken = this.tokenStorage.getUser()
   }
 
   ngOnInit(): void {
@@ -124,7 +126,9 @@ export class QuestionnaireComponent implements OnInit {
           this.toast.success("You have successfully submitted your blood donor questionnaire!","Success");
           this.router.navigateByUrl("/facilities");
           if(this.appointmentId!= ""){
-
+              var id = this.userToken.user?.id
+              console.log(this.appointmentId)
+              console.log(id)
           }
         }
       })
