@@ -13,6 +13,7 @@ import {BloodDonation} from "../../model/examination/BloodDonation";
 import {CenterEquipment} from "../../model/examination/CenterEquipment";
 import {Examination} from "../../model/examination/Examination";
 import {ExaminationService} from "../../services/examination.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-examination',
@@ -20,7 +21,7 @@ import {ExaminationService} from "../../services/examination.service";
   styleUrls: ['./examination.component.css']
 })
 export class ExaminationComponent implements OnInit {
-  private scheduledAppointmentId = 'a54a5052-62a8-11ed-9b6a-0242ac120002'
+  private scheduledAppointmentId = 'cb8d11b8-62a9-11ed-9b6a-0242ac120002'
   formControlAppeared =  new FormControl<string>('',Validators.required);
   formControlValidDonor =  new FormControl<string>('',Validators.required);
   formControlEquipments =  new FormControl<string[]>([],Validators.required);
@@ -34,11 +35,13 @@ export class ExaminationComponent implements OnInit {
   stepper: MatStepper | undefined;
   validDonor:boolean = false
   isAppeared:boolean = false;
-  selectedStep:number = 0;
+  isSuitable:boolean = false;
+  centerEquipments:CenterEquipment[] = []
+  bloodDonation:BloodDonation = new BloodDonation("","",0)
   constructor(private readonly scheduleAppointmentService:ScheduleAppointmentService
               ,private readonly questionnaireService:QuestionnaireService
               ,private toast: ToastrService,private readonly centerEquipmentService:CenterEquipmentService
-              ,private fb: FormBuilder,private readonly examinationService:ExaminationService)
+              ,private fb: FormBuilder,private readonly examinationService:ExaminationService,private router:Router)
   {
     this.formEquipmentQuantity = this.fb.group(
       {inputs: this.fb.array([],Validators.required)
@@ -57,10 +60,6 @@ export class ExaminationComponent implements OnInit {
   }
   get inputs(): FormArray {
     return this.formEquipmentQuantity.get('inputs') as FormArray;
-  }
-  submit() {
-    const values = this.inputs.controls.map(control => control.value);
-    console.log(values);
   }
   private GetAppointmentAndPatientForm(){
     this.scheduleAppointmentService
@@ -85,6 +84,9 @@ export class ExaminationComponent implements OnInit {
         this.validDonor = false
       }
     })
+    if(Array.isArray(this.formAnswers) && this.formAnswers.length === 0){
+      message = "Patient doesnt have questionnaire"
+    }
     return message
   }
   private GetCenterEquipment(centerId:string){
@@ -118,10 +120,26 @@ export class ExaminationComponent implements OnInit {
       inputs.push(this.fb.control(''));
     })
   }
+  submitEquipment() {
+    let eqQuantity= this.inputs.controls.map(control => control.value);
+    console.log(eqQuantity);
+    eqQuantity.forEach((val,index)=>{
+      let eq = new CenterEquipment(this.selectedEquipments[index],val)
+      this.centerEquipments.push(eq)
+    })
+  }
+  nextBloodDonation(stepper:MatStepper) {
+    this.stepper = stepper
+    let bloodType = this.formBloodDonation.controls['bloodType'].value!
+    let noteForDoctor = this.formBloodDonation.controls['noteForDoctor'].value!
+    let bloodUnit = this.formBloodDonation.controls['bloodUnit'].value!
+    this.bloodDonation = new BloodDonation(bloodType,noteForDoctor,bloodUnit)
+    this.stepper.next()
+  }
   nextEquipmentQuantity(stepper:MatStepper){
     this.stepper = stepper;
     this.stepper.next();
-    this.submit()
+    this.submitEquipment()
   }
   deleteInputs(event:any) {
     event.preventDefault()
@@ -133,38 +151,41 @@ export class ExaminationComponent implements OnInit {
   stringToBoolean(answer : string){
     return answer === 'yes';
   }
-  goToStep(step: number) {
-    this.selectedStep = step;
-  }
   appearedNext(stepper:MatStepper) {
     this.stepper = stepper;
     this.isAppeared = this.stringToBoolean(this.formControlAppeared.value!)
     this.stepper.next()
   }
-
+  isSuitableNext(stepper:MatStepper){
+    this.stepper = stepper;
+    this.isSuitable = this.stringToBoolean(this.formControlValidDonor.value!)
+    this.stepper.next()
+  }
+  private validateBooleans(){
+    if(this.formControlAppeared.value!){
+      return true
+    }
+    return !!(this.formControlValidDonor.value!);
+  }
   finishExamination() {
-    let bloodType = this.formBloodDonation.controls['bloodType'].value!
-    let noteForDoctor = this.formBloodDonation.controls['noteForDoctor'].value!
-    let bloodUnit = this.formBloodDonation.controls['bloodUnit'].value!
-    let bloodDonation = new BloodDonation(bloodType,noteForDoctor,bloodUnit)
-    let isSuitable = this.stringToBoolean(this.formControlValidDonor.value!)
-    const values = this.inputs.controls.map(control => control.value);
-    let equipments:CenterEquipment[] = []
-    values.forEach((val,index)=>{
-      let eq = new CenterEquipment(this.selectedEquipments[index],val)
-      equipments.push(eq)
-    })
-    const ex = new Examination(bloodDonation,equipments,isSuitable,this.isAppeared,this.scheduledAppointmentId)
+    if(!this.validateBooleans()){
+      this.toast.error("Please fullyfill fields","Error")
+      return
+    }
+    const ex = new Examination(this.bloodDonation,this.centerEquipments,this.isSuitable,this.isAppeared,this.scheduledAppointmentId)
     console.log(ex);
     this.examinationService.createExamination(ex).subscribe({
-      next: res =>{
-        console.log(res)
+      next: () =>{
+        console.log("Success")
+        this.router.navigate(['admin-center-profile']).then(()=>{
+          this.toast.success("You successfully examined appointment","Success")
+        })
       },
       error: err => {
         this.toast.error(err.error.message,"Error")
       }
     })
-    console.log(equipments)
+    console.log(this.centerEquipments)
 
   }
 }
