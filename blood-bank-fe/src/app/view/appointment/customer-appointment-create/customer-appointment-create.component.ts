@@ -55,7 +55,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
           this.selectedAppointmentId = res.id
           console.log(this.selectedAppointmentId)
           var id = this.userToken.user?.id
-          this.router.navigate(['/questionnaire'], { queryParams: { appointment: this.selectedAppointmentId, param2: id, param3: true } });
+          this.router.navigate(['/questionnaire'],{state:{data:this.selectedAppointmentId}})
         }
       )
   }
