@@ -16,6 +16,7 @@ export interface ICenterAdministrator {
   role?: string;
   gender?: string;
   center?:string;
+  firstLogIn?:boolean;
 }
 export class CenterAdministrator implements ICenterAdministrator {
   id?: string;
@@ -35,6 +36,7 @@ export class CenterAdministrator implements ICenterAdministrator {
   role?: string = "ROLE_CENTER_ADMIN";
   center?:string;
   password?:string;
+  firstLogIn?:boolean;
   constructor(data?: ICenterAdministrator){
     if (data) {
       for (const property in data) {

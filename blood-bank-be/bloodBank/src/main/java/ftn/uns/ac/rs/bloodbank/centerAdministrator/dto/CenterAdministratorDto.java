@@ -38,4 +38,5 @@ public class CenterAdministratorDto {
     private boolean deleted;
     private UserRole role;
     private UUID center;
+    private boolean firstLogIn;
 }
