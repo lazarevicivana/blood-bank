@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserResponse} from "../../../model/UserResponse";
+import {UserResponse} from "../../../model/Responses/UserResponse";
 
 @Component({
   selector: 'app-donor-card',

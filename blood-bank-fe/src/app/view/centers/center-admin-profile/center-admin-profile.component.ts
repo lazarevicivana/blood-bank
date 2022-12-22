@@ -5,10 +5,10 @@ import {GoogleMapApiService} from "../../../services/googleMapApi.service";
 import {Router} from "@angular/router";
 import {CenterAdminService} from "../../../services/center-admin.service";
 import {TokenStorageService} from "../../../services/token-storage.service";
-import {UserToken} from "../../../model/UserToken";
-import {UserResponse} from "../../../model/UserResponse";
+import {UserResponse} from "../../../model/Responses/UserResponse";
 import {AppointmentService} from "../../../services/appointment.service";
 import {Appointment} from "../../../model/Appointment";
+import {User} from "../../../model/User";
 
 @Component({
   selector: 'app-center-admin-profile',
@@ -19,7 +19,7 @@ export class CenterAdminProfileComponent implements OnInit {
 
   public center: Center;
   private map!: google.maps.Map;
-  private readonly user: UserToken;
+  private readonly user: User;
   public otherAdmins: UserResponse[] = [];
   public appointments: Appointment[] = [];
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,
@@ -51,7 +51,7 @@ export class CenterAdminProfileComponent implements OnInit {
     // await this.router.navigateByUrl('/update-center', {state:{idCenter: this.center.id}});
   }
   private getCenter():void{
-    this.adminCenterService.getCenterForAdmin(this.user.user?.id!).subscribe(
+    this.adminCenterService.getCenterForAdmin(this.user.id!).subscribe(
         response => {
           this.center = response;
           new google.maps.Marker({
@@ -68,7 +68,7 @@ export class CenterAdminProfileComponent implements OnInit {
     )
   }
   private getOtherAdmins():void{
-    this.centerService.getOtherCenterAdmins(this.center.id!,this.user.user?.id!)
+    this.centerService.getOtherCenterAdmins(this.center.id!,this.user.id!)
       .subscribe({
         next: response => {
           this.otherAdmins = response;

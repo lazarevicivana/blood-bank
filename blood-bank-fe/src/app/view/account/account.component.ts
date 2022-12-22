@@ -8,6 +8,7 @@ import {UserToken} from "../../model/UserToken";
 import {ToastrService} from "ngx-toastr";
 import {LoyaltyProgramService} from "../../services/loyalty-program.service";
 import {LoyaltyProgram} from "../../model/LoyaltyProgram";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-account',
@@ -58,14 +59,14 @@ export class AccountComponent implements OnInit {
     },
     gender: ""
   }
-  userToken: UserToken;
+  userToken: User;
 
   constructor(private loyaltyService:LoyaltyProgramService, private userService: ApplicationUserService,private tkStorage:TokenStorageService,private toast:ToastrService) {
     this.userToken = this.tkStorage.getUser()
   }
 
   ngOnInit(): void {
-    this.userService.getApplicationUserById(this.userToken.user?.id!).subscribe((user) =>
+    this.userService.getApplicationUserById(this.userToken.id!).subscribe((user) =>
       (this.loggedCustomer = user , console.log(this.loggedCustomer),
         this.loyaltyService.getLoyaltyProgramByCustomerId(user.id!).subscribe((program) =>
           (console.log(program),this.loyaltyProgram=program))

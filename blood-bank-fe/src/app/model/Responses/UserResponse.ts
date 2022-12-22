@@ -1,4 +1,4 @@
-import {ICenter} from "./Center";
+import {ICenter} from "../Center";
 
 export interface IUserResponse{
   id?: string,

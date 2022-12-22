@@ -1,4 +1,4 @@
-import {ICustomerRequest} from "./CustomerRequest";
+import {ICustomerRequest} from "./Requests/CustomerRequest";
 import {ApplicationUser} from "./ApplicationUser";
 
 export interface IQuestionnaireRequest{

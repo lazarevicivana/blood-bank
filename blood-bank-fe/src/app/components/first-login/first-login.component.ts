@@ -5,6 +5,7 @@ import {ApplicationUserService} from "../../services/applicationUser.service";
 import {ApplicationUser} from "../../model/ApplicationUser";
 import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-first-login',
@@ -12,7 +13,7 @@ import {NgToastService} from "ng-angular-popup";
   styleUrls: ['./first-login.component.css']
 })
 export class FirstLoginComponent implements OnInit {
-  userToken: UserToken | undefined
+  userToken: User | undefined
   password1:string = ""
   password2:string = ""
 
@@ -21,8 +22,7 @@ export class FirstLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.userService.getApplicationUserById(this.userToken.user?.id!).subscribe((user) =>
+    this.userService.getApplicationUserById(this.userToken?.id!).subscribe((user) =>
       (this.loggedUser = user , console.log(this.loggedUser)
     ));
   }
@@ -64,7 +64,7 @@ export class FirstLoginComponent implements OnInit {
       this.userService.updateApplicationUser(this.loggedUser).subscribe(
         next =>{
           this.userToken = this.tokenService.getUser()
-          this.userService.getApplicationUserById(this.userToken.user?.id!).subscribe((user) =>
+          this.userService.getApplicationUserById(this.userToken.id!).subscribe((user) =>
             ( console.log('proooba',user,this.userToken)
             ));
 
