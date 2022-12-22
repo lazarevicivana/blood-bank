@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Center} from "../../../model/Center";
 import {CenterService} from "../../../services/center.service";
 import * as moment from "moment/moment";
+import {AppointmentService} from "../../../services/appointment.service";
+import {Router} from "@angular/router";
+import {TokenStorageService} from "../../../services/token-storage.service";
+import {UserToken} from "../../../model/UserToken";
 
 @Component({
   selector: 'app-customer-appointment-create',
@@ -15,8 +19,13 @@ export class CustomerAppointmentCreateComponent implements OnInit {
   selectedDate: Date | undefined
   selectedTime:any
   selectedTimeDate:any
+  selectedAppointmentId: string | undefined = ""
   public visable = false;
-  constructor(private centerService:CenterService) { }
+  private userToken: UserToken;
+  constructor(private centerService:CenterService, private appointmentService:AppointmentService,
+              private router:Router,private tkStorage:TokenStorageService) {
+    this.userToken = this.tkStorage.getUser()
+  }
 
   ngOnInit(): void {
   }
@@ -38,5 +47,16 @@ export class CustomerAppointmentCreateComponent implements OnInit {
     this.selectedTimeDate.set({hour:selectedHours-1,minute:selectedMinute})
     console.log(this.selectedTimeDate)
 
+  }
+
+  schedule(selectedCenter: Center) {
+      this.appointmentService.getWantedAppoontmentinCenter(this.selectedTimeDate,selectedCenter.id).subscribe(
+        res => {
+          this.selectedAppointmentId = res.id
+          console.log(this.selectedAppointmentId)
+          var id = this.userToken.user?.id
+          this.router.navigate(['/questionnaire'], { queryParams: { appointment: this.selectedAppointmentId, param2: id, param3: true } });
+        }
+      )
   }
 }

@@ -34,7 +34,7 @@
 
     <div class="col-7 col-md-7  row parent " >
       <div *ngFor="let center of centers"  class="col-6  col-md-6 " >
-        <app-center-card [center]="center" ></app-center-card>
+        <app-center-card (onScheduleAppointment)="schedule($event)" [isSchedule]=true [center]="center" ></app-center-card>
       </div>
     </div>
   </div>

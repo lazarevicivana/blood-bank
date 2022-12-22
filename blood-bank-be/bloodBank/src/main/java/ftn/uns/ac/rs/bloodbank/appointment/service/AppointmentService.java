@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -53,6 +54,26 @@ public class AppointmentService {
         return appointmentRepository.getAllAppointmentsForCenter(centerId);
     }
 
+    public Appointment getAppointmentOfCenter(LocalDateTime selectedTime, UUID id){
+        var center = centerRepository.findById(id);
+        var appointments = appointmentRepository.getAllAppointmentsForCenter(id);
+        for (var appointment: appointments) {
+            if(checkAppointmentTime(appointment,selectedTime)){
+                return appointment;
+
+            }
+        }
+
+        throw new ApiNotFoundException("Center doesnt have selected appointment");
+    }
+    public boolean checkAppointmentTime(Appointment appointment, LocalDateTime selectedTime){
+        if(appointment.getDate().getYear() == selectedTime.getYear() && appointment.getDate().getDayOfMonth() == selectedTime.getDayOfMonth()
+                && appointment.getDate().getMonth() == selectedTime.getMonth()
+                && appointment.getStartTime().isBefore(selectedTime.toLocalTime()) && appointment.getFinishTime().isAfter(selectedTime.toLocalTime()) ){
+            return true;
+        }
+        return false;
+    }
 
     public List<CenterAdministrator> getMedicalStaffsForAppointment(UUID appointmentId){
         return appointmentRepository.getMedicalStaffsForAppointment(appointmentId);
