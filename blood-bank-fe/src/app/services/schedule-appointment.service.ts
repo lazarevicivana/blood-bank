@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Appointment} from "../model/Appointment";
+import {AppointmentRequest} from "../model/Requests/AppointmentRequest";
+import {ScheduleAppointmentRequest} from "../model/Requests/ScheduleAppointmentRequest";
+@Injectable({
+  providedIn: 'root'
+})
+export class ScheduleAppointmentService {
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
+  private apiHost = 'http://localhost:8080/api/v1/schedule-appointments'
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  constructor(private http:HttpClient) { }
+  createAppointment(appointment: ScheduleAppointmentRequest){
+    return this.http.post(this.apiHost,appointment,{headers: this.headers})
+  }
+}

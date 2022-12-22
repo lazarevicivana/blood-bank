@@ -7,6 +7,8 @@ import { AllAdminsCenterComponent } from './all-admins-center/all-admins-center.
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BloodDonorQuestionComponent } from './blood-donor-question/blood-donor-question.component';
 import {MatRadioModule} from "@angular/material/radio";
+import { ScheduleAppointmentCardComponent } from './schedule-appointment-card/schedule-appointment-card.component';
+import { AppointmentFilterBarComponent } from './appointment-filter-bar/appointment-filter-bar.component';
 
 
 
@@ -15,14 +17,16 @@ import {MatRadioModule} from "@angular/material/radio";
     UserCardComponent,
     AppointmentCardComponent,
     AllAdminsCenterComponent,
-    BloodDonorQuestionComponent
+    BloodDonorQuestionComponent,
+    ScheduleAppointmentCardComponent,
+    AppointmentFilterBarComponent
   ],
   imports: [
     CommonModule, MaterialModule, ReactiveFormsModule, MatRadioModule, FormsModule
   ],
-  exports: [
-    UserCardComponent, AppointmentCardComponent, AllAdminsCenterComponent, BloodDonorQuestionComponent
-  ]
+    exports: [
+        UserCardComponent, AppointmentCardComponent, AllAdminsCenterComponent, BloodDonorQuestionComponent, ScheduleAppointmentCardComponent, AppointmentFilterBarComponent
+    ]
 
 })
 export class CommonComponentsModule { }

@@ -24,7 +24,7 @@
   position: absolute;
   width: 150px;
   height: 100%;
-  background: linear-gradient(#dE685E, #EE786E);
+  background: linear-gradient(#3b4d79, #3C779BFF);
   transition: width 0.4s;
   overflow: hidden;
   z-index: 2;
@@ -92,6 +92,7 @@
 .card .additional .more-info h1 {
   color: #fff;
   margin-bottom: 5px;
+  font-size: larger;
 }
 .right-a{
   text-align: right;
@@ -151,11 +152,11 @@
   font-size: 2.5rem;
 }
 .button{
-  margin-top: 8rem;
+  margin-top: 2.5rem;
   margin-left: 4rem;
   border-radius: 10px;
   border:none;
-  background-color: #A6544D;
+  background-color: #3b4d79;
   color: #FFFFFF;
   font-size: 12px;
   font-weight: bold;
@@ -166,7 +167,7 @@
   cursor: pointer;
 }
 button:hover{
-  background: #8E4842;
+  background: #232E48;
 }
 .card .general {
   width: 300px;
@@ -187,6 +188,12 @@ button:hover{
 }
 .right-t{
   margin-left: 10px;
+}
+.noteDiv {
+  margin-left: 15px;
+  font-size: small;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 .color-t{
   color: #211111;

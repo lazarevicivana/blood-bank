@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Center} from "../model/Center";
 import {CenterAdministrator} from "../model/CenterAdministrator";
-import {UserResponse} from "../model/UserResponse";
-import {MedicalStaffResponse} from "../model/MedicalStaffResponse";
+import {UserResponse} from "../model/Responses/UserResponse";
+import {MedicalStaffResponse} from "../model/Responses/MedicalStaffResponse";
 
 @Injectable({
   providedIn: 'root'

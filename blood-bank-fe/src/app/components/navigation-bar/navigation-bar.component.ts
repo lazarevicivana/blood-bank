@@ -8,6 +8,7 @@ import {adminSystemNavData} from "./nav-data/admin-system-nav-data";
 import {customerNavData} from "./nav-data/customer-nav-data";
 import {filter} from "rxjs";
 import {UserToken} from "../../model/UserToken";
+import {User} from "../../model/User";
 
 interface SideNavToggle{
   screenWidth: number;
@@ -25,7 +26,7 @@ export class NavigationBarComponent implements OnInit {
   publicNavData = publicNavData;
   stuffNavData = stuffNavData;
   adminNavData = adminSystemNavData;
-  loggedUser: UserToken | undefined
+  loggedUser: User | undefined
   customerNavData = customerNavData;
   @Input() userRole : string='';
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
@@ -45,7 +46,7 @@ export class NavigationBarComponent implements OnInit {
       this.loggedUser=(this.tkStorage.getUser())
 
       this.loggedUser= this.tkStorage.getUser()
-      if(this.loggedUser.user?.id==""){
+      if(this.loggedUser.id==""){
         this.logedIn = false
       }
       else {
@@ -56,8 +57,8 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     const user = this.tkStorage.getUser();
-    console.log(user.user?.userRole);
-      this.userRole = user.user?.userRole!;
+    console.log(user.role);
+      this.userRole = user.role!;
   }
 
   clicked(num: number) {

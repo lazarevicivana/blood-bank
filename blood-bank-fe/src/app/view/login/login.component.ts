@@ -1,11 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {CustomerRequest} from "../../model/CustomerRequest";
+import {CustomerRequest} from "../../model/Requests/CustomerRequest";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AddressRequest} from "../../model/AddressRequest";
-import {ProfessionRequest} from "../../model/ProfessionRequest";
+import {AddressRequest} from "../../model/Requests/AddressRequest";
+import {ProfessionRequest} from "../../model/Requests/ProfessionRequest";
 import {AuthService} from "../../services/auth.service";
 import {TokenStorageService} from "../../services/token-storage.service";
-import {LoginRequest} from "../../model/LoginRequest";
+import {LoginRequest} from "../../model/Requests/LoginRequest";
 import {ToastrService} from "ngx-toastr";
 import {CustomValidators} from "../../validators/CustomValidators";
 import {Router} from "@angular/router";
@@ -56,12 +56,9 @@ export class LoginComponent implements OnInit {
     [CustomValidators.MatchValidator('password', 'confirmPassword')]);
 
   rightActive:boolean = false
-  userId:string = "";
   isSuccessful = false;
   isSignUpFailed = false;
-  errorMessage = '';
   isLoggedIn = false;
-  isLoginFailed = false;
   loginForm = new FormGroup({
   username: new FormControl<string | undefined>(undefined),
   password: new FormControl<string | undefined>(undefined)
@@ -91,10 +88,10 @@ export class LoginComponent implements OnInit {
     this.client.login(user).subscribe({
       next: response => {
         this.tokenStorage.saveToken(response.jwt);
-        this.tokenStorage.saveUser(response);
+        this.tokenStorage.saveUser(response.jwt);
         this.isLoggedIn = true;
         this.reloadPage();
-        this.router.navigate(['facilities'])
+        this.router.navigate(['facilities']).then();
         this.onLogin.emit(response)
       },
       error: err => {
@@ -109,10 +106,10 @@ export class LoginComponent implements OnInit {
       this.submitted = true;
       const customer = this.createCustomer();
       this.client.register(customer).subscribe({
-        next: response => {
+        next: _ => {
           this.isSuccessful = true;
           this.isSignUpFailed = false;
-          this.toast.success("You have successfully registered, please verify your account!",'Succes');
+          this.toast.success("You have successfully registered, please verify your account!",'Success');
         },
         error: err => {
           this.toast.error(err.error.message,"Error")

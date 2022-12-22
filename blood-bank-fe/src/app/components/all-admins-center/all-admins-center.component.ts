@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CenterAdministrator} from "../../model/CenterAdministrator";
 import {CenterService} from "../../services/center.service";
 import {FormControl, Validators} from "@angular/forms";
-import {MedicalStaffResponse} from "../../model/MedicalStaffResponse";
+import {MedicalStaffResponse} from "../../model/Responses/MedicalStaffResponse";
 
 @Component({
   selector: 'app-all-admins-center',

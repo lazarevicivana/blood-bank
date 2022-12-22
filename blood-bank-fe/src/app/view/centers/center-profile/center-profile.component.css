@@ -31,3 +31,17 @@
 .map{
   /*width: 50%;*/
 }
+.h1{
+  background-image: linear-gradient(to left,#3b4d79, #3C779BFF);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  /*
+  margin-left: 2rem;
+  */
+  font-size: xx-large;
+  font-weight: bold;
+}
+.filter-bar{
+  float: right;
+}

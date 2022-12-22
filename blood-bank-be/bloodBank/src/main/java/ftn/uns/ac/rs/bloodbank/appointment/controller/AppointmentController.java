@@ -38,4 +38,17 @@ public class AppointmentController {
                 })
                 .toList();
     }
+    @GetMapping("/future/{centerId}")
+    List<AppointmentResponse> getFutureAppointments(@NotNull @PathVariable("centerId") UUID centerId){
+        return appointmentService.getFutureAppointments(centerId).stream()
+                .map(appointment -> {
+                    var staffs = appointmentService.getMedicalStaffsForAppointment(appointment.getId()).stream()
+                            .map(appointmentMapper::MedicalStaffToAppUserDto)
+                            .toList();
+                    var app=  appointmentMapper.AppointmentToAppointmentDto(appointment);
+                    app.setMedicalStaffs(staffs);
+                    return app;
+                })
+                .toList();
+    }
 }

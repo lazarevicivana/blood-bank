@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -52,6 +53,11 @@ public class AppointmentService {
     public List<Appointment> getAllAppointmentsForCenter(UUID centerId){
         return appointmentRepository.getAllAppointmentsForCenter(centerId);
     }
+    public List<Appointment> getFutureAppointments(UUID centerId){
+        var currentDate = LocalDateTime.now();
+        return appointmentRepository.getAllAppointmentsForCenter(centerId)
+                .stream().filter(a -> a.getDate().isAfter(currentDate) && a.getDeleted()!= true).toList();
+    }
     public List<CenterAdministrator> getMedicalStaffsForAppointment(UUID appointmentId){
         return appointmentRepository.getMedicalStaffsForAppointment(appointmentId);
     }
@@ -67,5 +73,12 @@ public class AppointmentService {
         var appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new ApiNotFoundException("Appointment not found"));
         return appointment;
+    }
+
+    public void UpdateAppointmentDelete(UUID id) {
+        var appointment = appointmentRepository.findById(id)
+                .orElseThrow(() -> new ApiNotFoundException("Appointment not found!"));
+        appointment.setDeleted(true);
+        appointmentRepository.save(appointment);
     }
 }

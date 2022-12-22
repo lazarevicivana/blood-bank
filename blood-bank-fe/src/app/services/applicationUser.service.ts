@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
 import {ApplicationUser, ApplicationUserImp} from "../model/ApplicationUser";
-import {UserResponse} from "../model/UserResponse";
+import {UserResponse} from "../model/Responses/UserResponse";
 
 const httpOptions ={
   headers: new HttpHeaders({
