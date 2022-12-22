@@ -31,47 +31,49 @@ import { AllDonorsComponent } from './view/customer/all-donors/all-donors.compon
 import {MatDividerModule} from "@angular/material/divider";
 import { DonorCardComponent } from './view/customer/donor-card/donor-card.component';
 import { CenterDonorsComponent } from './view/customer/center-donors/center-donors.component';
+import { CreateSystemAdminComponent } from './view/system-administrator/create-system-admin/create-system-admin.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavigationBarComponent,
-        BodyComponent,
-        AccountComponent,
-        LoginComponent,
-        AllUsersComponent,
-        AllDonorsComponent,
-        DonorCardComponent,
-        CenterDonorsComponent,
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        IonicModule.forRoot(),
-        AppRoutingModule,
-        HttpClientModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatButtonModule,
-        CenterViewModule,
-        MatButtonToggleModule,
-        CommonComponentsModule,
-        MatDialogModule,
-        MatSelectModule,
-        BrowserAnimationsModule, // required animations module
-        ToastrModule.forRoot(),
-        AppointmentModule,
-        MatDialogModule,
-        NgToastModule,
-        MatDividerModule,
-        QuestionnaireModule
-    ],
-    providers: [authInterceptorProviders],
-    exports: [],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    NavigationBarComponent,
+    BodyComponent,
+    AccountComponent,
+    LoginComponent,
+    AllUsersComponent,
+    AllDonorsComponent,
+    DonorCardComponent,
+    CenterDonorsComponent,
+    CreateSystemAdminComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatButtonModule,
+    CenterViewModule,
+    MatButtonToggleModule,
+    CommonComponentsModule,
+    MatDialogModule,
+    MatSelectModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+    AppointmentModule,
+    MatDialogModule,
+    NgToastModule,
+    MatDividerModule,
+    QuestionnaireModule
+  ],
+  providers: [authInterceptorProviders],
+  exports: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

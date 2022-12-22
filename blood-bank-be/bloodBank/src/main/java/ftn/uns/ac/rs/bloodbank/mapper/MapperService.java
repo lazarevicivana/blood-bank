@@ -26,6 +26,8 @@ import ftn.uns.ac.rs.bloodbank.registration.dto.ProfessionRequest;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
+import ftn.uns.ac.rs.bloodbank.systemAdministrator.SystemAdministrator;
+import ftn.uns.ac.rs.bloodbank.systemAdministrator.dto.SystemAdministratorDto;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
@@ -88,4 +90,5 @@ public class MapperService {
     {
         return modelMapper.map(request, ScheduleAppointment.class);
     }
+    public SystemAdministrator SystemAdministratorDtoToSystemAdministrator(SystemAdministratorDto dto) {return  modelMapper.map(dto, SystemAdministrator.class);}
 }
