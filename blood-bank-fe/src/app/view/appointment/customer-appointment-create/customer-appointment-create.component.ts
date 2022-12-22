@@ -6,6 +6,7 @@ import {AppointmentService} from "../../../services/appointment.service";
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {UserToken} from "../../../model/UserToken";
+import {User} from "../../../model/User";
 
 @Component({
   selector: 'app-customer-appointment-create',

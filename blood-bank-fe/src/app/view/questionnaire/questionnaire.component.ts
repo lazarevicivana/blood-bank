@@ -8,6 +8,8 @@ import {ToastrService} from "ngx-toastr";
 import { Router} from "@angular/router";
 import { ApplicationUserImp} from "../../model/ApplicationUser";
 import {User} from "../../model/User";
+import {ScheduleAppointmentService} from "../../services/schedule-appointment.service";
+import {ScheduleAppointmentRequest} from "../../model/Requests/ScheduleAppointmentRequest";
 
 @Component({
   selector: 'app-questionnaire',
@@ -24,8 +26,8 @@ export class QuestionnaireComponent implements OnInit {
     '1. Are you 16 – 65 years old?',
     '2. Do you currently weigh less than 50kg (7 stone 12 pounds)?',
     '3. Have you had sexual intercourse in the last six months without protection?',
-    '7. Are you pregnant?',
-    '8. Are you currently on your period?',
+    '6. Are you pregnant?',
+    '7. Are you currently on your period?',
     '1. Have you had a blood or blood product transfusion since 1st January 1980?',
     '2. Have you ever had a cancer other than basal cell carcinoma or cervical carcinoma insitu (CIN)?',
     '3. Do you take any medication in last 7 days?',
@@ -40,7 +42,7 @@ export class QuestionnaireComponent implements OnInit {
   private userToken: User;
   constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,
               private customerClient : ApplicationUserService, private client: QuestionnaireService,
-              private readonly router1:Router) {
+              private readonly router1:Router, private scheduleClient:ScheduleAppointmentService) {
               this.appointmentId = this.router1.getCurrentNavigation()?.extras?.state?.['data']!
               this.userToken = this.tokenStorage.getUser()
   }
@@ -122,12 +124,19 @@ export class QuestionnaireComponent implements OnInit {
       this.client.createQuestionnaire(this.questionnaire).subscribe({
         next: _ => {
           this.toast.success("You have successfully submitted your blood donor questionnaire!","Success");
-          this.router.navigateByUrl("/facilities").then();
           if(this.appointmentId!= ""){
               const id = this.userToken.id
-              console.log(this.appointmentId)
-              console.log(id)
+              var sc = new ScheduleAppointmentRequest();
+              sc.customer_id = id
+              sc.appointment_id = this.appointmentId!
+              this.scheduleClient.createAppointment(sc).subscribe({
+                next: res=>{
+
+                  this.toast.success("You have successfully scheduled appointment!","Success");
+            }
+              })
           }
+          this.router.navigate(['/facilities'])
         }
       })
     }else {

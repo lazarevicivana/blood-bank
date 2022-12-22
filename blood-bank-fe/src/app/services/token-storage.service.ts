@@ -11,9 +11,9 @@ export class TokenStorageService {
   constructor() { }
 
   signOut(): void {
-    window.localStorage.clear();
-    window.localStorage.removeItem(USER_KEY);
-    window.localStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.clear();
+    window.sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.removeItem(TOKEN_KEY);
   }
   public isLoggedIn():boolean{
     return !!window.sessionStorage.getItem(TOKEN_KEY);

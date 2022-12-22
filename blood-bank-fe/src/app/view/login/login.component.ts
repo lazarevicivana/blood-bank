@@ -10,6 +10,7 @@ import {ToastrService} from "ngx-toastr";
 import {CustomValidators} from "../../validators/CustomValidators";
 import {Router} from "@angular/router";
 import {ApplicationUser} from "../../model/ApplicationUser";
+import {ApplicationUserService} from "../../services/applicationUser.service";
 
 @Component({
   selector: 'app-login',
@@ -64,7 +65,7 @@ export class LoginComponent implements OnInit {
   password: new FormControl<string | undefined>(undefined)
 })
 
-  constructor(private router: Router,private client: AuthService, private tokenStorage: TokenStorageService, private fb: FormBuilder,private toast:ToastrService) {}
+  constructor(private router: Router,private client: AuthService, private tokenStorage: TokenStorageService, private fb: FormBuilder,private toast:ToastrService,private userService: ApplicationUserService) {}
   ngOnInit(): void {
       if (this.tokenStorage.getToken()){
         this.isLoggedIn = true;
@@ -91,6 +92,9 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(response.jwt);
         this.isLoggedIn = true;
         this.reloadPage();
+        //console.log('lasjfasl',this.tokenStorage.getUser().firstLogIn)
+        //this.userService.getApplicationUserById(this.tokenStorage.).subscribe((u) => (this.user1.firstLogIn = u.firstLogIn));
+
         if(this.tokenStorage.getUser().firstLogIn)
           this.router.navigate(['first-login']).then();
         else

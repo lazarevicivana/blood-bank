@@ -1,9 +1,11 @@
 package ftn.uns.ac.rs.bloodbank.customer.controller;
 
+import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import ftn.uns.ac.rs.bloodbank.customer.model.PatientValidDonor;
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerSearchDto;
+import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,7 @@ import java.util.UUID;
 @RequestMapping(path="api/v1/customer")
 public class CustomerController {
     private final CustomerService customerService;
+    private final MapperService mapperService;
 
     @GetMapping(path = "/all")
     public List<Customer> getAllCustomers(){
@@ -30,9 +33,13 @@ public class CustomerController {
 
     }
     @GetMapping(value = "/getCenterDonors/{centerId}" )
-    public List<Customer> getCenterDonors(@PathVariable("centerId") UUID centerId)
+    public List<ApplicationUserDtoResponse> getCenterDonors(@PathVariable("centerId") UUID centerId)
     {
-        return customerService.getCenterDonors(centerId);
+        var mappedCustomers = customerService
+                .getCenterDonors(centerId)
+                .stream()
+                .map(mapperService::CustomerToAppUserDto).toList();
+        return mappedCustomers;
     }
 
     @PostMapping(value = "/searchCenterDonors/{centerId}")
