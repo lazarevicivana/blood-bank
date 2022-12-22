@@ -18,11 +18,11 @@ public class ScheduleAppointment {
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
     private UUID id;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "appointmentId", referencedColumnName = "id")
     private Appointment appointment;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerId", referencedColumnName = "id")
     private Customer customer;
 

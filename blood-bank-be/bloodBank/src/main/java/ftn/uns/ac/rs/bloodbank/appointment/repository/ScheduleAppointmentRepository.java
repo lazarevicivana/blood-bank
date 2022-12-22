@@ -24,4 +24,5 @@ public interface ScheduleAppointmentRepository extends JpaRepository<ScheduleApp
     List<Customer> SearchDonors(LocalDateTime date, String name, String surname);
     @Query("SELECT sa from ScheduleAppointment sa where sa.customer.id = ?1")
     List<ScheduleAppointment> findScheduleAppointmentsCustomerId(UUID id);
+
 }
