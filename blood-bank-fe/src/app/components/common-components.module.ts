@@ -9,6 +9,8 @@ import { BloodDonorQuestionComponent } from './blood-donor-question/blood-donor-
 import {MatRadioModule} from "@angular/material/radio";
 import { FirstLoginComponent } from './first-login/first-login.component';
 import {NgToastModule} from "ng-angular-popup";
+import {SignOutComponent} from "./sign-out/sign-out.component";
+import {DialogSignComponent} from "./dialog-sign/dialog-sign.component";
 
 
 
@@ -18,13 +20,16 @@ import {NgToastModule} from "ng-angular-popup";
     AppointmentCardComponent,
     AllAdminsCenterComponent,
     BloodDonorQuestionComponent,
-    FirstLoginComponent
+    FirstLoginComponent,
+    SignOutComponent,
+    DialogSignComponent
   ],
   imports: [
     CommonModule, MaterialModule, ReactiveFormsModule, MatRadioModule, FormsModule, NgToastModule
   ],
   exports: [
     UserCardComponent, AppointmentCardComponent, AllAdminsCenterComponent, BloodDonorQuestionComponent
+    ,SignOutComponent,DialogSignComponent
   ]
 
 })

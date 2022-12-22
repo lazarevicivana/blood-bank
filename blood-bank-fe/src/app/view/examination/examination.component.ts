@@ -173,6 +173,9 @@ export class ExaminationComponent implements OnInit {
       return
     }
     const ex = new Examination(this.bloodDonation,this.centerEquipments,this.isSuitable,this.isAppeared,this.scheduledAppointmentId)
+    if(!this.isSuitable || !this.isAppeared){
+      this.bloodDonation.bloodType = 'A_POSITIVE'
+    }
     console.log(ex);
     this.examinationService.createExamination(ex).subscribe({
       next: () =>{

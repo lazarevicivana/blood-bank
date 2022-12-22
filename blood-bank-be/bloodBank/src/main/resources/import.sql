@@ -210,7 +210,7 @@ insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1d
 insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3701','A_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3702','B_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','B_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3700','O_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','O_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3700','AB_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','AB_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3704','O_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3705','O_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
