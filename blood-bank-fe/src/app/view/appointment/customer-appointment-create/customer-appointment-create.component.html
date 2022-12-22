@@ -29,11 +29,14 @@
     <div class="form">
       <button class="btn-b" mat-raised-button (click)="getAllCenters()">Search</button>
     </div>
+    <div class="form" style="padding-top: 15px">
+      <mat-checkbox class="example-margin" (change)="sortByGrade()"> Best rated first</mat-checkbox>
+    </div>
     </div>
   <div class="row "  >
 
     <div class="col-7 col-md-7  row parent " >
-      <div *ngFor="let center of centers"  class="col-6  col-md-6 " >
+      <div *ngFor="let center of centersFiltered"  class="col-6  col-md-6 " >
         <app-center-card (onScheduleAppointment)="schedule($event)" [isSchedule]=true [center]="center" ></app-center-card>
       </div>
     </div>
