@@ -22,10 +22,10 @@ export class CustomerAppointmentCreateComponent implements OnInit {
   selectedTimeDate:any
   selectedAppointmentId: string | undefined = ""
   public visable = false;
-  private userToken: UserToken;
+  private userId= "";
   constructor(private centerService:CenterService, private appointmentService:AppointmentService,
               private router:Router,private tkStorage:TokenStorageService) {
-    this.userToken = this.tkStorage.getUser()
+    this.userId = this.tkStorage.getUser().id
   }
 
   ngOnInit(): void {
@@ -56,7 +56,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
         res => {
           this.selectedAppointmentId = res.id
           console.log(this.selectedAppointmentId)
-          var id = this.userToken.user?.id
+
           this.router.navigate(['/questionnaire'],{state:{data:this.selectedAppointmentId}})
         }
       )
