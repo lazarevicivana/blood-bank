@@ -12,5 +12,4 @@ import java.util.UUID;
 @NoArgsConstructor
 public class JwtResponse {
     private String jwt;
-    private ApplicationUser user;
 }

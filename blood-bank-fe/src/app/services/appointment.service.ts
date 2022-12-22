@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Appointment} from "../model/Appointment";
-import {AppointmentRequest} from "../model/AppointmentRequest";
+import {AppointmentRequest} from "../model/Requests/AppointmentRequest";
 import {Moment} from "moment/moment";
 
 @Injectable({
@@ -16,6 +16,9 @@ export class AppointmentService {
 
   getAppointmentsForCenter(centerId: string): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(this.apiHost + `/center/${centerId}`, {headers: this.headers});
+  }
+  getFutureAppointmentForCenter(centerId: string): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(this.apiHost + `/future/${centerId}`, {headers: this.headers});
   }
   getWantedAppoontmentinCenter(selectedTime:Moment,centerId:any): Observable<Appointment>{
     return this.http.post<Appointment>(this.apiHost + `/appointment-of-center/${centerId}`,selectedTime,{headers: this.headers} );

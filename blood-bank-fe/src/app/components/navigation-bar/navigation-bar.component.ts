@@ -8,6 +8,7 @@ import {adminSystemNavData} from "./nav-data/admin-system-nav-data";
 import {customerNavData} from "./nav-data/customer-nav-data";
 import {filter} from "rxjs";
 import {UserToken} from "../../model/UserToken";
+import {User} from "../../model/User";
 import {ApplicationUser, ApplicationUserImp} from "../../model/ApplicationUser";
 import {ApplicationUserService} from "../../services/applicationUser.service";
 
@@ -27,7 +28,7 @@ export class NavigationBarComponent implements OnInit {
   publicNavData = publicNavData;
   stuffNavData = stuffNavData;
   adminNavData = adminSystemNavData;
-  loggedUser: UserToken | undefined
+  loggedUser: User | undefined
   customerNavData = customerNavData;
   @Input() userRole : string='';
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
@@ -46,11 +47,12 @@ export class NavigationBarComponent implements OnInit {
       this.loggedUser=(this.tkStorage.getUser())
 
       this.loggedUser= this.tkStorage.getUser()
-      // @ts-ignore
-      this.userService.getApplicationUserById(this.loggedUser.user?.id).subscribe((u) => (this.user.firstLogIn = u.firstLogIn));
-      console.log('uuseer',this.user)
+      if(this.loggedUser.id==""){
 
-      if(this.loggedUser.user?.id==""){
+        // @ts-ignore
+        this.userService.getApplicationUserById(this.loggedUser.id).subscribe((u) => (this.user.firstLogIn = u.firstLogIn));
+        console.log('uuseer',this.user)
+
         this.logedIn = false
 
       }
@@ -62,8 +64,8 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     const user = this.tkStorage.getUser();
-    console.log(user.user?.userRole);
-      this.userRole = user.user?.userRole!;
+    console.log(user.role);
+    this.userRole = user.role!;
   }
 
   clicked(num: number) {
@@ -104,14 +106,14 @@ export class NavigationBarComponent implements OnInit {
   onSignOut() {
     this.tkStorage.signOut();
     this.router.navigateByUrl("").then(value => {
-      window.location.reload();
+        window.location.reload();
       }
     )
   }
 
   firstLogIn()
   {
-    return this.user.firstLogIn && this.loggedUser?.user?.userRole=="ROLE_SYSTEM_ADMIN"
+    return this.user.firstLogIn && this.loggedUser?.role=="ROLE_SYSTEM_ADMIN"
   }
 
   user: ApplicationUser = {

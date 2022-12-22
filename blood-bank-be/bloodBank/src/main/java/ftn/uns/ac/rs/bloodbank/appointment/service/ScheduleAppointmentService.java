@@ -32,7 +32,8 @@ public class ScheduleAppointmentService {
         var customer = customerService.getById(request.getCustomer_id());
         if(!checkIfDonatingIsPossible(customer.getId()))
             throw new ApiBadRequestException("You are have already donated blood in the last six months!");
-       customerFormService.checkQuestionnaireExistence(customer.getId());
+       customerFormService.checkIfQuestionnaireIsFilledNow(customer.getId());
+       appointmentService.UpdateAppointmentDelete(appointment.getId());
         var scheduleAppointment = ScheduleAppointment
                 .builder()
                 .appointment(appointment)

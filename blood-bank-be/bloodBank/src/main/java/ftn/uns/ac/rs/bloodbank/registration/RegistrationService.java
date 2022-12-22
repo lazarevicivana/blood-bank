@@ -59,8 +59,7 @@ public class RegistrationService {
 //        List<String> roles = userDetails.getAuthorities().stream()
 //                .map(item -> item.getAuthority())
 //                .collect(Collectors.toList());
-        return new JwtResponse(jwt,
-                userDetails);
+        return new JwtResponse(jwt);
     }
 
     @Transactional

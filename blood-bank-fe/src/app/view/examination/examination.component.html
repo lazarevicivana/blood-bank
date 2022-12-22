@@ -56,7 +56,7 @@
             <button class="btn-cols" mat-flat-button matStepperPrevious>Back</button>
           </div>
           <div class="col-6 align-elems">
-            <button class="btn-cols" mat-flat-button matStepperNext>Next</button>
+            <button class="btn-cols" mat-flat-button (click)="isSuitableNext(stepper)">Next</button>
           </div>
         </div>
       </mat-step>
@@ -94,7 +94,7 @@
             <button class="btn-cols" mat-flat-button matStepperPrevious>Back</button>
           </div>
           <div class="col-6 align-elems">
-            <button class="btn-cols" mat-flat-button matStepperNext>Next</button>
+            <button class="btn-cols" mat-flat-button (click)="nextBloodDonation(stepper)">Next</button>
           </div>
         </div>
       </mat-step>
@@ -151,6 +151,65 @@
         <div class="steeper-title margin-t-30">
           <h1 class="header-ex">Finish</h1>
           <mat-divider class="sub-color"></mat-divider>
+          <div class="row">
+            <div class="col-6">
+              <div class="text-l inline-d">
+                <h2 class="header-finish">Is patient appeared:&nbsp;{{formControlAppeared.value!}}</h2>
+                <mat-divider class="sub-color"></mat-divider>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="inline-d">
+                <h2 class="header-finish text-c">Is patient suitable blood donor:&nbsp;{{formControlValidDonor.value!}}</h2>
+                <mat-divider class="sub-color"></mat-divider>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="steeper-title">
+                <h2 class="header-finish">Blood donation</h2>
+                <mat-divider class="sub-color"></mat-divider>
+                <mat-list>
+                  <div class="in-block">
+                    <mat-list-item>
+                      <div class="list-text">
+                        <span class="finish-text">Blood type:</span>&nbsp; {{formBloodDonation.controls['bloodType'].value!}}
+                      </div>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <div class="list-text">
+                        <span class="finish-text">Blood unit:</span>&nbsp; {{bloodDonation.bloodUnit}}
+                      </div>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <div class="list-text">
+                        <span class="finish-text">Note for doctor:</span>&nbsp; {{bloodDonation.noteForDoctor}}
+                      </div>
+                    </mat-list-item>
+                  </div>
+                </mat-list>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="steeper-title">
+                <h2 class="header-finish">Equipment</h2>
+                <mat-divider class="sub-color"></mat-divider>
+              </div>
+              <mat-list #equipment>
+                <div class="row">
+                  <mat-list-item *ngFor="let s of centerEquipments" class="col-6 col-md-6">
+                    <div class="list-text col-6">
+                      <span class="finish-text">Equipment name:</span>&nbsp;{{s.equipmentName}}
+                    </div>
+                    <div class="list-text-r col-6">
+                      <span class="finish-text">Quantity:</span>&nbsp;{{s.quantity}}
+                    </div>
+                  </mat-list-item>
+                </div>
+              </mat-list>
+            </div>
+          </div>
           <div align="center" class="align-me margin-t-40">
             <button class="btn-b" mat-flat-button (click)="finishExamination()">Finish</button>
           </div>

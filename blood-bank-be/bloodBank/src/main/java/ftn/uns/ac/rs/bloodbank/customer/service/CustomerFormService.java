@@ -44,6 +44,18 @@ public class CustomerFormService {
         var patientForm = sortByDate(patientForms).stream().findFirst().orElseThrow(()-> new ApiNotFoundException("Questionnaire for this customer not found"));
         return patientForm;
     }
+    public CustomerForm checkIfQuestionnaireIsFilledNow(UUID patientId){
+        var patientForms = customerFromRepository.findByCustomerId(patientId);
+        var patientForm = sortByDate(patientForms).stream().findFirst().orElseThrow(()-> new ApiNotFoundException("Questionnaire for this customer not found"));
+        var today = Calendar.getInstance();
+        var calendarForm = Calendar.getInstance();
+        calendarForm.setTime(patientForm.getSubmissionDate());
+        if(!(today.get(Calendar.YEAR) == calendarForm.get(Calendar.YEAR)
+                && today.get(Calendar.MONTH) == calendarForm.get(Calendar.MONTH)
+                && today.get(Calendar.DAY_OF_MONTH) ==  calendarForm.get(Calendar.DAY_OF_MONTH)))
+            throw new ApiNotFoundException("You must fill out a questionnaire!");
+        return patientForm;
+    }
     public ArrayList<PatientValidDonor> checkIfPatientSuitableBloodDonor(UUID patientId){
 
        var patient = customerRepository.findById(patientId).orElseThrow(()-> new ApiNotFoundException("Patient doesnt exist"));
@@ -165,7 +177,7 @@ public class CustomerFormService {
         if(patientValidity.isEmpty()){
             var patientValid = PatientValidDonor
                     .builder()
-                    .reason("Patient is valid blood donor")
+                    .reason("Patient is suitable for donating blood")
                     .isValidDonor(true)
                     .build();
             patientValidity.add(patientValid);
