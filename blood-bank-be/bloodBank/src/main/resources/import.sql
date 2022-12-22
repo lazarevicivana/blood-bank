@@ -168,6 +168,12 @@ insert into application_user (user_role,id, username, password, name, phone, sur
 
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('64b37a96-62a8-11ed-9b6a-0242ac120002','2023-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120002','2023-11-11T16:17:57.049Z',false,'15:00','14:00','d4f7ab7c-9662-4680-be9f-52584a2194d2');
+
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('f3b688f6-59c9-4d44-8c14-ab8391da8f11','2023-02-11T16:17:57.049Z',false,'15:00','14:00','262bb7c8-28a8-43fe-8c24-d79a00055872');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('f38af8e7-8517-4430-95dd-949b5efecca9','2023-02-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53a3');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('b50ec3d5-a935-4fea-96bb-7c4b61a0e2ca','2023-02-11T16:17:57.049Z',false,'15:00','14:00','d4f7ab7c-9662-4680-be9f-52584a2194d4');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('9bd7ce10-a0c3-44e3-bf2a-ed200473fc35','2023-02-11T16:17:57.049Z',false,'15:00','14:00','262bb7c8-28a8-43fe-8c24-d79a00011875');
+
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('11122233-62b6-11ed-9b6a-0242ac120002','2020-11-11T16:17:57.049Z',false,'15:00','14:00','d4f7ab7c-9662-4680-be9f-52584a2194d2');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('33322233-62b6-11ed-9b6a-0242ac120002','2021-11-11T16:17:57.049Z',false,'15:00','14:00','d4f7ab7c-9662-4680-be9f-52584a2194d2');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('a54a5052-62a8-11ed-9b6a-0242ac120002','11122233-62b6-11ed-9b6a-0242ac120002','34713840-ddf3-49b2-9cae-47334cb6b31b','ACCEPTED');

@@ -5,6 +5,7 @@ import {Center} from "../model/Center";
 import {CenterAdministrator} from "../model/CenterAdministrator";
 import {UserResponse} from "../model/UserResponse";
 import {MedicalStaffResponse} from "../model/MedicalStaffResponse";
+import {Moment} from "moment";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,9 @@ export class CenterService {
   }
   updateCenter(center:Center): Observable<Center>{
     return this.http.put<Center>(this.apiHost + 'api/v1/center/',center,{headers: this.headers})
+  }
+  getCentersWithAppointment(selectedTime:Moment): Observable<Center[]>{
+    return this.http.post<Center[]>(this.apiHost + 'api/v1/center/with-appointment',selectedTime, {headers: this.headers});
   }
   getAllAdminsForCenter(centerId:string): Observable<MedicalStaffResponse[]>{
     return this.http.get<MedicalStaffResponse[]>(this.apiHost + `api/v1/center/admins/${centerId}`,{headers: this.headers});
