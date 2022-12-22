@@ -6,6 +6,7 @@ import {AppointmentService} from "../../../services/appointment.service";
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {UserToken} from "../../../model/UserToken";
+import {User} from "../../../model/User";
 
 @Component({
   selector: 'app-customer-appointment-create',
@@ -21,7 +22,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
   selectedTimeDate:any
   selectedAppointmentId: string | undefined = ""
   public visable = false;
-  private userToken: UserToken;
+  private userToken: User;
   constructor(private centerService:CenterService, private appointmentService:AppointmentService,
               private router:Router,private tkStorage:TokenStorageService) {
     this.userToken = this.tkStorage.getUser()
@@ -54,7 +55,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
         res => {
           this.selectedAppointmentId = res.id
           console.log(this.selectedAppointmentId)
-          var id = this.userToken.user?.id
+          var id = this.userToken.id
           this.router.navigate(['/questionnaire'],{state:{data:this.selectedAppointmentId}})
         }
       )
