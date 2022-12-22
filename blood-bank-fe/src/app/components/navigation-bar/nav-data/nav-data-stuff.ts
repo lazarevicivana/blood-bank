@@ -16,5 +16,11 @@ export const stuffNavData=[
     icon: 'accessibility-outline',
     label: 'Center donors',
     num:2
+  },
+  {
+    routeLink: 'examination',
+    icon: 'book',
+    label: 'Examination',
+    num:3
   }
 ];

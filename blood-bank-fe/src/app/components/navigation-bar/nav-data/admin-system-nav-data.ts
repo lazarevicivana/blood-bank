@@ -16,5 +16,12 @@ export const adminSystemNavData =[
     icon: 'accessibility-outline',
     label: 'Donors',
     num:2
+  },
+  {
+    routeLink: 'system-admin-create',
+    icon: 'person-add-outline',
+    label: 'Create System Administrator',
+    num:3
   }
+
 ]

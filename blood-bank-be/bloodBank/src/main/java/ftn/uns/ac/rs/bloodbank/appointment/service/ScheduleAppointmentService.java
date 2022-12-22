@@ -7,6 +7,7 @@ import ftn.uns.ac.rs.bloodbank.appointment.repository.ScheduleAppointmentReposit
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerFormService;
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
+import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -71,6 +72,11 @@ public class ScheduleAppointmentService {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+    public ScheduleAppointment getScheduledAppointment(UUID id){
+        var app = scheduleAppointmentRepository.findById(id)
+                .orElseThrow(()-> new ApiNotFoundException("Appointment not found"));
+        return app;
     }
 
     public List<ScheduleAppointment> getAll(){

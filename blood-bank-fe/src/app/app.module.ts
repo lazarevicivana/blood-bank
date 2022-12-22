@@ -31,6 +31,10 @@ import { AllDonorsComponent } from './view/customer/all-donors/all-donors.compon
 import {MatDividerModule} from "@angular/material/divider";
 import { DonorCardComponent } from './view/customer/donor-card/donor-card.component';
 import { CenterDonorsComponent } from './view/customer/center-donors/center-donors.component';
+import { ExaminationComponent } from './view/examination/examination.component';
+import {MaterialModule} from "./material/material.module";
+import { CreateSystemAdminComponent } from './view/system-administrator/create-system-admin/create-system-admin.component';
+
 
 @NgModule({
     declarations: [
@@ -43,6 +47,8 @@ import { CenterDonorsComponent } from './view/customer/center-donors/center-dono
         AllDonorsComponent,
         DonorCardComponent,
         CenterDonorsComponent,
+        ExaminationComponent,
+        CreateSystemAdminComponent
     ],
     imports: [
         BrowserModule,
@@ -68,7 +74,8 @@ import { CenterDonorsComponent } from './view/customer/center-donors/center-dono
         MatDialogModule,
         NgToastModule,
         MatDividerModule,
-        QuestionnaireModule
+        QuestionnaireModule,
+        MaterialModule
     ],
     providers: [authInterceptorProviders],
     exports: [],

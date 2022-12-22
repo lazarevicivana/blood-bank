@@ -34,9 +34,7 @@ export class NavigationBarComponent implements OnInit {
   @HostListener('window:resize',['$event'])
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
-
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
-
   }
 
   constructor(private readonly router:Router,private tkStorage: TokenStorageService) {
