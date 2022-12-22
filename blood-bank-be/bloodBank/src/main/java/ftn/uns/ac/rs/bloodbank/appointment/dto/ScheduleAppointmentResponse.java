@@ -24,7 +24,7 @@ public class ScheduleAppointmentResponse implements Serializable {
     private LocalTime finishTime;
     private List<MedicalStaffResponse> medicalStaffs;
     private UUID appointmentId;
-    private UUID patientId;
+    private UUID customerId;
 
 
 }
