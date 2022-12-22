@@ -11,6 +11,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
 
   centers : Center[]= []
   centersFiltered : Center[]= []
+  public visable = false;
   constructor(private centerService:CenterService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
   public getAllCenters(){
     this.centerService.getAllCenters().subscribe(response => {
       this.centers = response;
+      this.visable = true;
     })
   }
 

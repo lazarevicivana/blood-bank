@@ -3,6 +3,7 @@
   padding-left: 5px;
   margin-right: auto;
   margin-left: auto;
+  transition:  height 1.5s;
 }
 .container-f {
   background-color: #fff;
@@ -10,15 +11,15 @@
   box-shadow: 0 14px 28px rgba(0,0,0,0.25),
   0 10px 10px rgba(0,0,0,0.22);
   position: relative;
-  overflow: hidden;
+
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3%;
-  transition:  height 2.5s;
-}
-.inside{
-  overflow: auto;
+  transition:  height 1.5s;
+  height: 22%;
+  max-height: 90%;
+
 }
 
 /*.row {*/
@@ -33,17 +34,28 @@
 /*}*/
 .row{
   margin-left: 5%;
+
+}
+.hiddden{
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+  margin-bottom: 100px;
 }
 .header{
   padding-top: 2.5%;
   font-size: 25px;
   color: #fff;
   background-color: #3b4d79;
+
+  padding-bottom: 2.5%;
+  text-align: center;
+}
+.visableHeader{
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-top-color: #3b4d79;
-  padding-bottom: 2.5%;
-  text-align: center;
 }
 .form{
   margin-left: auto;
@@ -61,9 +73,9 @@
 .search{
   display: flex;
   justify-content: space-between;
-  border-bottom-color: #3b4d79;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  /*border-bottom-color: #3b4d79;*/
+  /*border-bottom-width: 1px;*/
+  /*border-bottom-style: solid;*/
   padding-bottom: 2%;
 }
 .parent{
@@ -74,7 +86,6 @@
 
 .scroll{
   height: 87vh;
-  overflow: auto;
 }
 
 .col-6 {

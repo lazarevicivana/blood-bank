@@ -1,8 +1,8 @@
-<div class="container-f">
+<div class="container-f" [ngClass]="{'hiddden': visable}">
   <div class="header">
     Schedule appointment
   </div>
-  <div class="search">
+  <div class="search"  [ngClass]="{'visableHeader': visable}">
     <div class="form" >
       <mat-form-field appearance="fill" class="input-appointment">
         <mat-label>Choose a date</mat-label>
@@ -29,12 +29,13 @@
       <button class="btn-b" mat-raised-button (click)="getAllCenters()">Search</button>
     </div>
     </div>
-  <div class="row ">
-  <div class="col-7 col-md-7  row parent " >
-    <div *ngFor="let center of centers"  class="col-6  col-md-6 " >
-      <app-center-card [center]="center" ></app-center-card>
+  <div class="row "  >
+
+    <div class="col-7 col-md-7  row parent " >
+      <div *ngFor="let center of centers"  class="col-6  col-md-6 " >
+        <app-center-card [center]="center" ></app-center-card>
+      </div>
     </div>
   </div>
-    </div>
 
 </div>
