@@ -1,5 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.center.service;
 
+import ftn.uns.ac.rs.bloodbank.appointment.model.Appointment;
+import ftn.uns.ac.rs.bloodbank.appointment.service.AppointmentService;
 import ftn.uns.ac.rs.bloodbank.blood.model.BloodBank;
 import ftn.uns.ac.rs.bloodbank.blood.model.BloodType;
 import ftn.uns.ac.rs.bloodbank.blood.repository.BloodBankRepository;
@@ -14,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -23,11 +27,37 @@ import java.util.UUID;
 public class CenterService {
     private final CenterRepository centerRepository;
     private final CenterAdminRepository centerAdminRepository;
+
+    private final AppointmentService appointmentService;
     private final BloodBankRepository bloodBankRepository;
     public List<Center> getAllCenters(){
 
         return centerRepository.findAll();
     }
+
+    public List<Center> getAllCentersWithAppointment(LocalDateTime selectedTime){
+        var allCenters = centerRepository.findAll();
+        List<Center> filterdCenters = new ArrayList<>();
+        for (var center: allCenters) {
+            var appointments = appointmentService.getAllAppointmentsForCenter(center.getId());
+            for (var appointment: appointments) {
+                if(checkAppointmentTime(appointment,selectedTime)){
+                    filterdCenters.add(center);
+                    break;
+                }
+            }
+        }
+        return filterdCenters;
+    }
+    public boolean checkAppointmentTime(Appointment appointment, LocalDateTime selectedTime){
+        if(appointment.getDate().getYear() == selectedTime.getYear() && appointment.getDate().getDayOfMonth() == selectedTime.getDayOfMonth()
+                && appointment.getDate().getMonth() == selectedTime.getMonth()
+                && appointment.getStartTime().isBefore(selectedTime.toLocalTime()) && appointment.getFinishTime().isAfter(selectedTime.toLocalTime()) ){
+            return true;
+        }
+        return false;
+    }
+
 
     public Center createCenter(Center center) {
         var centerExist = centerRepository.GetByName(center.getName());

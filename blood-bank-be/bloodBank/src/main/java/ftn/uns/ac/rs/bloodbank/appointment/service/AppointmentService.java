@@ -52,6 +52,8 @@ public class AppointmentService {
     public List<Appointment> getAllAppointmentsForCenter(UUID centerId){
         return appointmentRepository.getAllAppointmentsForCenter(centerId);
     }
+
+
     public List<CenterAdministrator> getMedicalStaffsForAppointment(UUID appointmentId){
         return appointmentRepository.getMedicalStaffsForAppointment(appointmentId);
     }

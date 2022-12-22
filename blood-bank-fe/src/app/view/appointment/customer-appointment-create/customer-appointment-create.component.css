@@ -17,7 +17,7 @@
   margin-right: auto;
   margin-top: 3%;
   transition:  height 1.5s;
-  height: 22%;
+  height: 24%;
   max-height: 90%;
 
 }
@@ -62,6 +62,7 @@
   margin-right: auto;
   text-align: center;
   margin-top: 2%;
+  margin-bottom: 2%;
 }
 .input-appointment{
   width: 100%;
