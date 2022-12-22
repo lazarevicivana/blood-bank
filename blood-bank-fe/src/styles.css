@@ -335,6 +335,29 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; }
     transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
     opacity: 1;
   }
+  .btn-cols{
+    align-content: center;
+    text-align: center;
+    padding: 10px 20px;
+    margin: auto;
+    letter-spacing: 1px;
+    color: #fff;
+    font-family: 'Roboto',sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 60%;
+    background-color: #3b4d79;
+    transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
+    opacity: 1;
+  }
+  .mg-auto{
+    margin: auto;
+  }
+  .steeper-title{
+    margin-top: 15px;
+    text-align: center;
+  }
 
 
 }

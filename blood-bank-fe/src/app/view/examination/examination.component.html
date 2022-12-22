@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="container-examination">
+    <mat-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="formControlAppeared">
+        <ng-template matStepLabel>Appeared</ng-template>
+        <div class="steeper-title">
+          <h1 class="header-ex">Is patient appear on scheduled appointment?</h1>
+          <mat-divider class="sub-color"></mat-divider>
+        </div>
+        <mat-radio-group  [formControl]="formControlAppeared"
+                          aria-labelledby="example-radio-group-label"
+                          class="example-radio-group">
+          <mat-radio-button  value="yes" class="example-radio-button" > Yes
+          </mat-radio-button>
+          <mat-radio-button  value="no" class="example-radio-button-second" > No
+          </mat-radio-button>
+        </mat-radio-group>
+        <div align="center" class="align-me margin-t-40">
+          <button class="btn-b" mat-flat-button (click)="appearedNext(stepper)">Next</button>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="formControlValidDonor">
+        <ng-template matStepLabel>Valid donor</ng-template>
+        <div class="steeper-title margin-t-30">
+          <h1 class="header-ex">Is patient valid donor?</h1>
+          <mat-divider class="sub-color"></mat-divider>
+        </div>
+        <div class="steeper-title header-donation">
+          {{IsValidDonor()}}
+        </div>
+        <div *ngIf="!validDonor" class="margin-t-30">
+        <div *ngFor="let x of formAnswers; let i=index" class="row">
+          <div class="col-4">
+            <h3 class="rs-p">Reason{{i}}:</h3>
+          </div>
+          <div class="col-8">
+            <p class="reason-p">{{x.reason}}</p>
+          </div>
+          <mat-divider class="sub-color"></mat-divider>
+        </div>
+        </div>
+        <div class="steeper-title">
+          <h2 class="valid-h">Is patient able to donate blood?</h2>
+          <mat-divider class="sub-color"></mat-divider>
+        </div>
+        <mat-radio-group  [formControl]="formControlValidDonor"
+                          aria-labelledby="example-radio-group-label"
+                          class="example-radio-group">
+          <mat-radio-button  value="yes" class="example-radio-button" > Yes
+          </mat-radio-button>
+          <mat-radio-button  value="no" class="example-radio-button-second" > No
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="row margin-t-30">
+          <div  class="col-6 align-elems">
+            <button class="btn-cols" mat-flat-button matStepperPrevious>Back</button>
+          </div>
+          <div class="col-6 align-elems">
+            <button class="btn-cols" mat-flat-button matStepperNext>Next</button>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Examine</ng-template>
+        <div class="steeper-title margin-t-30">
+          <h1 class="header-ex">Submit examination details</h1>
+          <mat-divider class="sub-color"></mat-divider>
+        </div>
+        <form [formGroup]="formBloodDonation">
+        <mat-form-field class="input-examination" appearance="fill">
+          <mat-label>Select blood type</mat-label>
+          <mat-select formControlName="bloodType">
+            <mat-option value="A_POSITIVE">A+</mat-option>
+            <mat-option value="A_NEGATIVE">A-</mat-option>
+            <mat-option value="B_POSITIVE">B+</mat-option>
+            <mat-option value="B_NEGATIVE">B-</mat-option>
+            <mat-option value="O_POSITIVE">O+</mat-option>
+            <mat-option value="O_NEGATIVE">O+</mat-option>
+            <mat-option value="AB_POSITIVE">AB+</mat-option>
+            <mat-option value="AB_NEGATIVE">AB</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-examination" appearance="fill">
+          <mat-label>Taken blood units</mat-label>
+          <input formControlName="bloodUnit" matInput>
+        </mat-form-field>
+        <mat-form-field class="text-area-an" appearance="fill">
+          <mat-label>Write note for doctor</mat-label>
+          <textarea formControlName="noteForDoctor" class="an-area" matInput placeholder="Write note for doctor..."></textarea>
+        </mat-form-field>
+        </form>
+        <div class="row margin-t-30">
+          <div  class="col-6 align-elems">
+            <button class="btn-cols" mat-flat-button matStepperPrevious>Back</button>
+          </div>
+          <div class="col-6 align-elems">
+            <button class="btn-cols" mat-flat-button matStepperNext>Next</button>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step>
+        <div *ngIf="!submitedEquipment">
+        <ng-template matStepLabel>Equipment</ng-template>
+        <div class="steeper-title margin-t-30">
+          <h1 class="header-ex">Submit which equipment you used</h1>
+          <mat-divider class="sub-color"></mat-divider>
+        </div>
+        <mat-form-field appearance="fill" class="input-examination">
+          <mat-label>Equipments</mat-label>
+          <mat-select [formControl]="formControlEquipments" multiple>
+            <mat-option *ngFor="let eq of equipments" [value]="eq.name">{{eq.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+          <div class="row margin-t-30">
+          <div  class="col-6 align-elems">
+            <button class="btn-cols" mat-flat-button matStepperPrevious>Back</button>
+          </div>
+          <div class="col-6 align-elems">
+            <button class="btn-cols" mat-flat-button (click)="showQuantity()">Next</button>
+          </div>
+          </div>
+        </div>
+        <div *ngIf="submitedEquipment">
+          <ng-template matStepLabel>Equipment quantity</ng-template>
+          <div class="steeper-title margin-t-30">
+            <h1 class="header-ex">Submit quantity for each equipment you used</h1>
+            <mat-divider class="sub-color"></mat-divider>
+          </div>
+          <form [formGroup]="formEquipmentQuantity">
+            <div formArrayName="inputs">
+              <div *ngFor="let input of inputs.controls; let i = index">
+                <mat-form-field appearance="fill" class="input-examination">
+                  <mat-label>{{this.selectedEquipments[i]}} quantity</mat-label>
+                  <input matInput [formControlName]="i" type="number">
+                </mat-form-field>
+              </div>
+              <div class="row margin-t-30">
+                <div  class="col-6 align-elems">
+                  <button class="btn-cols" mat-flat-button (click)="deleteInputs($event)">Back</button>
+                </div>
+                <div class="col-6 align-elems">
+                  <button class="btn-cols" mat-flat-button (click)="nextEquipmentQuantity(stepper)">Next</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Finish</ng-template>
+        <div class="steeper-title margin-t-30">
+          <h1 class="header-ex">Finish</h1>
+          <mat-divider class="sub-color"></mat-divider>
+          <div align="center" class="align-me margin-t-40">
+            <button class="btn-b" mat-flat-button (click)="finishExamination()">Finish</button>
+          </div>
+        </div>
+      </mat-step>
+     </mat-stepper>
+  </div>
+</div>

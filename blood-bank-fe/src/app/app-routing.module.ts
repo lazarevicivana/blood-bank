@@ -15,6 +15,7 @@ import {CenterDonorsComponent} from "./view/customer/center-donors/center-donors
 import {
   CustomerAppointmentCreateComponent
 } from "./view/appointment/customer-appointment-create/customer-appointment-create.component";
+import {ExaminationComponent} from "./view/examination/examination.component";
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path:'questionnaire', component: QuestionnaireComponent},
   { path:'all-donors',component:AllDonorsComponent},
   { path:'center-donors',component:CenterDonorsComponent},
-  { path:'customer-appointment-create',component:CustomerAppointmentCreateComponent}
+  { path:'customer-appointment-create',component:CustomerAppointmentCreateComponent},
+  { path:'examination',component:ExaminationComponent}
 
 ];
 
