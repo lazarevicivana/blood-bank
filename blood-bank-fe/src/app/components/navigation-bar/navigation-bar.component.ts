@@ -8,6 +8,8 @@ import {adminSystemNavData} from "./nav-data/admin-system-nav-data";
 import {customerNavData} from "./nav-data/customer-nav-data";
 import {filter} from "rxjs";
 import {UserToken} from "../../model/UserToken";
+import {ApplicationUser, ApplicationUserImp} from "../../model/ApplicationUser";
+import {ApplicationUserService} from "../../services/applicationUser.service";
 
 interface SideNavToggle{
   screenWidth: number;
@@ -37,14 +39,20 @@ export class NavigationBarComponent implements OnInit {
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
   }
 
-  constructor(private readonly router:Router,private tkStorage: TokenStorageService) {
+
+  constructor(private readonly router:Router,private tkStorage: TokenStorageService,private userService: ApplicationUserService) {
     // @ts-ignore
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
       this.loggedUser=(this.tkStorage.getUser())
 
       this.loggedUser= this.tkStorage.getUser()
+      // @ts-ignore
+      this.userService.getApplicationUserById(this.loggedUser.user?.id).subscribe((u) => (this.user.firstLogIn = u.firstLogIn));
+      console.log('uuseer',this.user)
+
       if(this.loggedUser.user?.id==""){
         this.logedIn = false
+
       }
       else {
         this.logedIn= true
@@ -100,4 +108,35 @@ export class NavigationBarComponent implements OnInit {
       }
     )
   }
+
+  firstLogIn()
+  {
+    return this.user.firstLogIn && this.loggedUser?.user?.userRole=="ROLE_SYSTEM_ADMIN"
+  }
+
+  user: ApplicationUser = {
+    id: "",
+    username: "",
+    password: "",
+    name: "",
+    surname: "",
+    phone: "",
+    jmbg: "",
+    email: "",
+    userRole: "",
+    city: "",
+    street: "",
+    country: "",
+    streetNumber: "",
+    enabled: false,
+    deleted: false,
+    profession: {
+      id: "",
+      professionStatus: "",
+      professionDescription: ""
+    },
+    gender: "",
+    firstLogIn:true
+  }
+
 }

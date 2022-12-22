@@ -19,6 +19,7 @@ export class CreateSystemAdminComponent implements OnInit {
 
   constructor(private service:SystemAdministratorService,private readonly router:Router,private alert: NgToastService) {
     this.admin = new SystemAdministrator();
+    this.admin.firstLogIn = true;
   }
 
   ngOnInit(): void {

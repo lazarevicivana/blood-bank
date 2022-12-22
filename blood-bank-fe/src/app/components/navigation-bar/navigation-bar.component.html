@@ -22,7 +22,7 @@
       </li>
     </ul>
     <ul *ngIf="userRole==='ROLE_SYSTEM_ADMIN'" class="items">
-      <li *ngFor="let data of adminNavData" class="list" >
+      <li *ngFor="let data of adminNavData" class="list" [hidden]="firstLogIn()">
         <b></b>
         <b></b>
         <a (click)="clicked(data.num)" [routerLink]="[data.routeLink]">

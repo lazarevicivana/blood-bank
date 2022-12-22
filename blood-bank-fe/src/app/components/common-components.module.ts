@@ -7,6 +7,8 @@ import { AllAdminsCenterComponent } from './all-admins-center/all-admins-center.
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BloodDonorQuestionComponent } from './blood-donor-question/blood-donor-question.component';
 import {MatRadioModule} from "@angular/material/radio";
+import { FirstLoginComponent } from './first-login/first-login.component';
+import {NgToastModule} from "ng-angular-popup";
 
 
 
@@ -15,10 +17,11 @@ import {MatRadioModule} from "@angular/material/radio";
     UserCardComponent,
     AppointmentCardComponent,
     AllAdminsCenterComponent,
-    BloodDonorQuestionComponent
+    BloodDonorQuestionComponent,
+    FirstLoginComponent
   ],
   imports: [
-    CommonModule, MaterialModule, ReactiveFormsModule, MatRadioModule, FormsModule
+    CommonModule, MaterialModule, ReactiveFormsModule, MatRadioModule, FormsModule, NgToastModule
   ],
   exports: [
     UserCardComponent, AppointmentCardComponent, AllAdminsCenterComponent, BloodDonorQuestionComponent

@@ -15,6 +15,7 @@ export interface ISystemAdministrator {
   deleted?: boolean;
   role?: string;
   gender?: string;
+  firstLogIn?:boolean;
 }
 export class SystemAdministrator implements ISystemAdministrator {
   id?: string;
@@ -33,6 +34,7 @@ export class SystemAdministrator implements ISystemAdministrator {
   deleted?: boolean = false;
   role?: string = "ROLE_SYSTEM_ADMIN";
   password?:string;
+  firstLogIn?:boolean;
   constructor(data?: ISystemAdministrator){
     if (data) {
       for (const property in data) {

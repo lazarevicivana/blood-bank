@@ -124,6 +124,9 @@ public class ApplicationUserService implements UserDetailsService {
         if(applicationUser.getAddress().getStreetNumber()!=null) {
             currentUser.getAddress().setStreetNumber(applicationUser.getAddress().getStreetNumber());
         }
+        if(applicationUser.getFirstLogIn()!=null) {
+            currentUser.setFirstLogIn(false);
+        }
 
     }
     public String hashPassword(String userPassword){
