@@ -34,4 +34,5 @@ public class SystemAdministratorDto {
     private Boolean enabled;
     private boolean deleted;
     private UserRole role;
+    private boolean firstLogIn;
 }

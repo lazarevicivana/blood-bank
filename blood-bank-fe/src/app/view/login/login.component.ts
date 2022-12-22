@@ -9,7 +9,7 @@ import {LoginRequest} from "../../model/LoginRequest";
 import {ToastrService} from "ngx-toastr";
 import {CustomValidators} from "../../validators/CustomValidators";
 import {Router} from "@angular/router";
-import {ApplicationUser} from "../../model/ApplicationUser";
+import {ApplicationUser, ApplicationUserImp} from "../../model/ApplicationUser";
 
 @Component({
   selector: 'app-login',
@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
   username: new FormControl<string | undefined>(undefined),
   password: new FormControl<string | undefined>(undefined)
 })
+  user:ApplicationUser = new ApplicationUserImp();
 
   constructor(private router: Router,private client: AuthService, private tokenStorage: TokenStorageService, private fb: FormBuilder,private toast:ToastrService) {}
   ngOnInit(): void {
@@ -94,7 +95,10 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(response);
         this.isLoggedIn = true;
         this.reloadPage();
-        this.router.navigate(['facilities'])
+        if(this.tokenStorage.getUser().user?.firstLogIn)
+          this.router.navigate(['first-login'])
+        else
+          this.router.navigate(['facilities'])
         this.onLogin.emit(response)
       },
       error: err => {
