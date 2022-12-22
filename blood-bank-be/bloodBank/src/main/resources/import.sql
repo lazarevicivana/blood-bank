@@ -182,10 +182,10 @@ insert into appointment (id, date, deleted,finish_Time, start_time, center_id) v
 
 
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('11122233-62b6-11ed-9b6a-0242ac120002','2020-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('33322233-62b6-11ed-9b6a-0242ac120002','2021-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('33322233-62b6-11ed-9b6a-0242ac120002','2022-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('a54a5052-62a8-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120002','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','11122233-62b6-11ed-9b6a-0242ac120002','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
-insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120002','33322233-62b6-11ed-9b6a-0242ac120002','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120002','33322233-62b6-11ed-9b6a-0242ac120002','0dcce2a4-62b6-11ed-9b6a-0242ac120002','ACCEPTED');
 
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('168067ce-6381-11ed-81ce-0242ac120002','BRONZE','You have 5% discharge in our ambulances.',10);
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('abc12a02-62b6-11ed-9b6a-0242ac120002','SILVER','You have 15% discharge in our ambulances.',25);
