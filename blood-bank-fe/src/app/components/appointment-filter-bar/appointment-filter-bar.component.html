@@ -1,0 +1,18 @@
+<div>
+  <mat-form-field class="example-form-field filter-item" appearance="fill">
+    <mat-label>Sort</mat-label>
+    <mat-select [(ngModel)] = "selectedSort" (selectionChange)="selectSort(selectedSort)">
+      <mat-option [value]="sort[4]">Sort</mat-option>
+      <mat-option [value]="sort[0]">DateAsc</mat-option>
+      <mat-option [value]="sort[1]">DateDesc</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-form-field filter-item" appearance="fill">
+    <mat-label>Sort</mat-label>
+    <mat-select [(ngModel)] = "selectedSortTime" (selectionChange)="selectSortTime(selectedSortTime)">
+      <mat-option [value]="sort[4]">Sort</mat-option>
+      <mat-option [value]="sort[2]">TimeAsc</mat-option>
+      <mat-option [value]="sort[3]">TimeDesc</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

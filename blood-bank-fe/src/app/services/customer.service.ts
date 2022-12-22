@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {UserResponse} from "../model/UserResponse";
-import {DonorSearchRequest} from "../model/DonorSerachRequest";
+import {UserResponse} from "../model/Responses/UserResponse";
+import {DonorSearchRequest} from "../model/Requests/DonorSerachRequest";
 
 @Injectable({
   providedIn: 'root'

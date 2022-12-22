@@ -5,8 +5,9 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {ApplicationUserService} from "../../services/applicationUser.service";
 import {QuestionnaireService} from "../../services/customer-form.service";
 import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
+import { Router} from "@angular/router";
 import { ApplicationUserImp} from "../../model/ApplicationUser";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-questionnaire',
@@ -18,6 +19,7 @@ export class QuestionnaireComponent implements OnInit {
   applicationUser = new ApplicationUserImp();
   questionnaire  = new QuestionnaireRequest();
   female : boolean = false;
+  appointmentId: string | null =""
   questions : string[] =[
     '1. Are you 16 – 65 years old?',
     '2. Do you currently weigh less than 50kg (7 stone 12 pounds)?',
@@ -35,12 +37,18 @@ export class QuestionnaireComponent implements OnInit {
     '5. Have you had a piercing or tattoo done in the past 6 months?',
   ]
     enableSubmit =  false;
-  constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,private customerClient : ApplicationUserService, private client: QuestionnaireService) { }
+  private userToken: User;
+  constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,
+              private customerClient : ApplicationUserService, private client: QuestionnaireService,
+              private readonly router1:Router) {
+              this.appointmentId = this.router1.getCurrentNavigation()?.extras?.state?.['data']!
+              this.userToken = this.tokenStorage.getUser()
+  }
 
   ngOnInit(): void {
     const user = this.tokenStorage.getUser();
-   this.questionnaire.customerId = user.user?.id;
-    this.getUserById(user.user?.id!);
+   this.questionnaire.customerId = user.id;
+    this.getUserById(user.id!);
   }
 
   private getUserById(id: string) {
@@ -114,7 +122,12 @@ export class QuestionnaireComponent implements OnInit {
       this.client.createQuestionnaire(this.questionnaire).subscribe({
         next: _ => {
           this.toast.success("You have successfully submitted your blood donor questionnaire!","Success");
-          this.router.navigateByUrl("/facilities");
+          this.router.navigateByUrl("/facilities").then();
+          if(this.appointmentId!= ""){
+              const id = this.userToken.id
+              console.log(this.appointmentId)
+              console.log(id)
+          }
         }
       })
     }else {

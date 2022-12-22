@@ -49,6 +49,8 @@ public class CenterService {
         }
         return filterdCenters;
     }
+
+
     public boolean checkAppointmentTime(Appointment appointment, LocalDateTime selectedTime){
         if(appointment.getDate().getYear() == selectedTime.getYear() && appointment.getDate().getDayOfMonth() == selectedTime.getDayOfMonth()
                 && appointment.getDate().getMonth() == selectedTime.getMonth()

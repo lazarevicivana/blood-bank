@@ -1,4 +1,4 @@
-import {MedicalStaffResponse} from "./MedicalStaffResponse";
+import {MedicalStaffResponse} from "./Responses/MedicalStaffResponse";
 export class Appointment {
   id?: string;
   date?: Date;

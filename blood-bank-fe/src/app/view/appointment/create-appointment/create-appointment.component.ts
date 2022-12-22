@@ -8,15 +8,16 @@ import {Center} from "../../../model/Center";
 import * as moment from "moment/moment";
 import {AppointmentService} from "../../../services/appointment.service";
 import {Appointment} from "../../../model/Appointment";
-import {AppointmentRequest} from "../../../model/AppointmentRequest";
+import {AppointmentRequest} from "../../../model/Requests/AppointmentRequest";
 import {Router} from "@angular/router";
+import {User} from "../../../model/User";
 @Component({
   selector: 'app-create-appointment',
   templateUrl: './create-appointment.component.html',
   styleUrls: ['./create-appointment.component.css']
 })
 export class CreateAppointmentComponent implements OnInit {
-  private userToken:UserToken;
+  private userToken:User;
   formGroup = new FormGroup({
     date: new FormControl<Date | undefined>(new Date(),[Validators.required]),
     startTime:new FormControl<string | undefined>(undefined,Validators.required),
@@ -34,7 +35,7 @@ export class CreateAppointmentComponent implements OnInit {
     this.getCenter()
   }
   private getCenter(){
-    this.adminService.getCenterForAdmin(this.userToken.user?.id!).subscribe(
+    this.adminService.getCenterForAdmin(this.userToken.id!).subscribe(
       {
         next: res =>{
           this.center = res;
