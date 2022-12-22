@@ -47,6 +47,9 @@ public class CenterService {
                 }
             }
         }
+        if (filterdCenters.size()==0){
+            throw new ApiNotFoundException("No centers found with appointments in this time.");
+        }
         return filterdCenters;
     }
 
