@@ -6,6 +6,8 @@ import {AppointmentService} from "../../../services/appointment.service";
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {UserToken} from "../../../model/UserToken";
+import {User} from "../../../model/User";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-customer-appointment-create',
@@ -24,7 +26,7 @@ export class CustomerAppointmentCreateComponent implements OnInit {
   public visable = false;
   private userId= "";
   constructor(private centerService:CenterService, private appointmentService:AppointmentService,
-              private router:Router,private tkStorage:TokenStorageService) {
+              private router:Router,private tkStorage:TokenStorageService, private toast: ToastrService) {
     this.userId = this.tkStorage.getUser().id
   }
 
@@ -35,18 +37,29 @@ export class CustomerAppointmentCreateComponent implements OnInit {
     console.log(this.selectedDate)
     console.log(this.selectedTime)
     this.setTime()
-    this.centerService.getCentersWithAppointment(this.selectedTimeDate).subscribe(response => {
-      this.centers = response;
-      this.centersFiltered = response;
-      console.log(response)
-      this.visable = true;
-    })
+    
+    if(this.selectedDate! < new Date()){
+      this.toast.error("Select upcoming date.","Error")
+    }
+    else{
+      this.centerService.getCentersWithAppointment(this.selectedTimeDate).subscribe(response => {
+          this.centers = response;
+          this.centersFiltered = response;
+          console.log(response)
+          this.visable = true;
+        },
+        error => {
+          this.centersFiltered = []
+          this.toast.error(error.error.message,"Error")
+        })
+    }
+
   }
   private setTime(){
     this.selectedTimeDate = moment(this.selectedDate)
     let selectedHours:number = Number(this.selectedTime.slice(0,2))
     let selectedMinute:number = Number(this.selectedTime.slice(3,5))
-    this.selectedTimeDate.set({hour:selectedHours-1,minute:selectedMinute})
+    this.selectedTimeDate.set({hour:selectedHours,minute:selectedMinute})
     console.log(this.selectedTimeDate)
 
   }

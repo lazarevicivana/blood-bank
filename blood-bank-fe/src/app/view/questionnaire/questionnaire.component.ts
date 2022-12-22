@@ -8,6 +8,8 @@ import {ToastrService} from "ngx-toastr";
 import { Router} from "@angular/router";
 import { ApplicationUserImp} from "../../model/ApplicationUser";
 import {User} from "../../model/User";
+import {ScheduleAppointmentService} from "../../services/schedule-appointment.service";
+import {ScheduleAppointmentRequest} from "../../model/Requests/ScheduleAppointmentRequest";
 
 @Component({
   selector: 'app-questionnaire',
@@ -40,7 +42,7 @@ export class QuestionnaireComponent implements OnInit {
   private userToken: User;
   constructor(private router: Router,private toast: ToastrService,private tokenStorage : TokenStorageService,
               private customerClient : ApplicationUserService, private client: QuestionnaireService,
-              private readonly router1:Router) {
+              private readonly router1:Router, private scheduleClient:ScheduleAppointmentService) {
               this.appointmentId = this.router1.getCurrentNavigation()?.extras?.state?.['data']!
               this.userToken = this.tokenStorage.getUser()
   }
@@ -122,12 +124,22 @@ export class QuestionnaireComponent implements OnInit {
       this.client.createQuestionnaire(this.questionnaire).subscribe({
         next: _ => {
           this.toast.success("You have successfully submitted your blood donor questionnaire!","Success");
-          this.router.navigateByUrl("/facilities").then();
           if(this.appointmentId!= ""){
               const id = this.userToken.id
-              console.log(this.appointmentId)
-              console.log(id)
+              var sc = new ScheduleAppointmentRequest();
+              sc.customer_id = id
+              sc.appointment_id = this.appointmentId!
+              this.scheduleClient.createAppointment(sc).subscribe({
+                next: res=>{
+
+                  this.toast.success("You have successfully scheduled appointment!","Success");
+                },
+                error: err => {
+                  this.toast.error(err.error.message,"Error")
+                }
+              })
           }
+          this.router.navigate(['/facilities'])
         }
       })
     }else {

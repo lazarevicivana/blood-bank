@@ -34,6 +34,7 @@ import { CenterDonorsComponent } from './view/customer/center-donors/center-dono
 import { ExaminationComponent } from './view/examination/examination.component';
 import {MaterialModule} from "./material/material.module";
 import { CreateSystemAdminComponent } from './view/system-administrator/create-system-admin/create-system-admin.component';
+import {CalendarViewModule} from "./view/calendar/calendar-view.module";
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { CreateSystemAdminComponent } from './view/system-administrator/create-s
         NgToastModule,
         MatDividerModule,
         QuestionnaireModule,
-        MaterialModule
+        MaterialModule,
+        CalendarViewModule
     ],
     providers: [authInterceptorProviders],
     exports: [],

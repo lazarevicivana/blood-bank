@@ -74,7 +74,7 @@ public class AppointmentService {
     public boolean checkAppointmentTime(Appointment appointment, LocalDateTime selectedTime){
         if(appointment.getDate().getYear() == selectedTime.getYear() && appointment.getDate().getDayOfMonth() == selectedTime.getDayOfMonth()
                 && appointment.getDate().getMonth() == selectedTime.getMonth()
-                && appointment.getStartTime().isBefore(selectedTime.toLocalTime()) && appointment.getFinishTime().isAfter(selectedTime.toLocalTime()) ){
+                && (appointment.getStartTime().isBefore(selectedTime.toLocalTime()) || appointment.getStartTime().equals(selectedTime.toLocalTime())) && (appointment.getFinishTime().isAfter(selectedTime.toLocalTime()) || appointment.getFinishTime().equals(selectedTime.toLocalTime())) ){
             return true;
         }
         return false;
