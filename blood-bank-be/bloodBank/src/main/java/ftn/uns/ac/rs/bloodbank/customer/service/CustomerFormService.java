@@ -165,7 +165,7 @@ public class CustomerFormService {
         if(patientValidity.isEmpty()){
             var patientValid = PatientValidDonor
                     .builder()
-                    .reason("Patient is valid blood donor")
+                    .reason("Patient is suitable for donating blood")
                     .isValidDonor(true)
                     .build();
             patientValidity.add(patientValid);
