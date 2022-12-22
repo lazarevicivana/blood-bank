@@ -60,7 +60,6 @@ public class AppointmentService {
     }
 
     public Appointment getAppointmentOfCenter(LocalDateTime selectedTime, UUID id){
-        var center = centerRepository.findById(id);
         var appointments = appointmentRepository.getAllAppointmentsForCenter(id);
         for (var appointment: appointments) {
             if(checkAppointmentTime(appointment,selectedTime)){
@@ -92,9 +91,8 @@ public class AppointmentService {
         }
     }
     public Appointment findByID(UUID appointmentId){
-        var appointment = appointmentRepository.findById(appointmentId)
+        return appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new ApiNotFoundException("Appointment not found"));
-        return appointment;
     }
 
     public void UpdateAppointmentDelete(UUID id) {
