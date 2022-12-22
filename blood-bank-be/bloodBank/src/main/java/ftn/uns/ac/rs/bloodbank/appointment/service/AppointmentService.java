@@ -100,7 +100,10 @@ public class AppointmentService {
     public void UpdateAppointmentDelete(UUID id) {
         var appointment = appointmentRepository.findById(id)
                 .orElseThrow(() -> new ApiNotFoundException("Appointment not found!"));
-        appointment.setDeleted(true);
+        if(appointment.getDeleted())
+            appointment.setDeleted(false);
+        else
+            appointment.setDeleted(true);
         appointmentRepository.save(appointment);
     }
 }

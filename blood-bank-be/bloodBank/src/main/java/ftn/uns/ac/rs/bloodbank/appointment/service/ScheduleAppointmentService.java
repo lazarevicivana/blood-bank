@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -83,4 +84,21 @@ public class ScheduleAppointmentService {
     public List<ScheduleAppointment> getAll(){
         return scheduleAppointmentRepository.findAll();
     }
+
+    public void cancelScheduledAppointment(UUID id) {
+        var scheduledAppointment = scheduleAppointmentRepository.findById(id)
+                .orElseThrow(()->new ApiNotFoundException("Scheduled appointment doesn't exists!"));
+        var today = Calendar.getInstance();
+        var year = today.get(Calendar.YEAR) == scheduledAppointment.getAppointment().getDate().getYear();
+        var month = today.get(Calendar.MONTH) == scheduledAppointment.getAppointment().getDate().getMonthValue();
+        var day = today.get(Calendar.DAY_OF_MONTH) ==  scheduledAppointment.getAppointment().getDate().getDayOfMonth() - 1;
+        var now = LocalDateTime.now();
+        var tomorrow = now.plusDays(1);
+        var date = scheduledAppointment.getAppointment().getDate();
+        if(!date.isAfter(tomorrow))
+            throw new ApiBadRequestException("You can' reschedule an appointment if it's within 24h!");
+        appointmentService.UpdateAppointmentDelete(scheduledAppointment.getAppointment().getId());
+        scheduleAppointmentRepository.deleteById(id);
+    }
+
 }

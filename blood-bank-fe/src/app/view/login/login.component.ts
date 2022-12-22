@@ -90,7 +90,8 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(response.jwt);
         this.tokenStorage.saveUser(response.jwt);
         this.isLoggedIn = true;
-        this.reloadPage();
+        //this.reloadPage();
+        console.log(this.tokenStorage.getUser())
         if(this.tokenStorage.getUser().firstLogIn)
           this.router.navigate(['first-login']).then();
         else
