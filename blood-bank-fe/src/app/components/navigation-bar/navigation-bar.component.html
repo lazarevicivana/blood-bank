@@ -44,7 +44,7 @@
       </li>
     </ul>
     <ul *ngIf="userRole==='ROLE_CENTER_ADMIN'" class="items">
-      <li *ngFor="let data of stuffNavData"  class="list" >
+      <li *ngFor="let data of stuffNavData"  class="list" [hidden]="firstLogIn()">
         <b></b>
         <b></b>
         <a (click)="clicked(data.num)" [routerLink]="[data.routeLink]">

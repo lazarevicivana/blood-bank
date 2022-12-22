@@ -110,7 +110,7 @@ export class NavigationBarComponent implements OnInit {
 
   firstLogIn()
   {
-    return this.user1.firstLogIn && this.loggedUser?.role=="ROLE_SYSTEM_ADMIN"
+    return this.user1.firstLogIn && this.loggedUser?.role!="ROLE_CUSTOMER"
   }
 
   user1: ApplicationUser = {
