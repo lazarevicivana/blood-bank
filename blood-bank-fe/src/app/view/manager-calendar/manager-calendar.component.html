@@ -19,7 +19,7 @@
       NEXT WEEK
     </button>
     <button class="button-group__button" (click)="monthShow()">
-      MONTH
+      {{viewButton}}
     </button>
   </div>
   <div class="date-range">
@@ -58,6 +58,7 @@
   </mwl-calendar-week-view>
   <mwl-calendar-month-view *ngIf="monthView"
     [viewDate]="viewDate"
-    [events]="appointments">
+    [events]="appointments"
+    [weekStartsOn]="dayStartHour">
   </mwl-calendar-month-view>
 </div>

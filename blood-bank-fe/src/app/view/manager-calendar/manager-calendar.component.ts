@@ -51,6 +51,7 @@ export class ManagerCalendarComponent implements OnInit {
   private readonly user: User;
   private center: Center = new Center();
   monthView: boolean = false
+  viewButton:string = "MONTH VIEW"
   selectedEvent: CalendarEvent<{ appointment: ScheduleAppStaff }> = {
     title: null as any,
     start: null as any,
@@ -200,5 +201,13 @@ export class ManagerCalendarComponent implements OnInit {
 
   monthShow() {
     this.monthView  = !this.monthView;
+    switch (this.viewButton){
+      case 'MONTH VIEW':
+        this.viewButton = 'WEEK VIEW'
+        break
+      case 'WEEK VIEW':
+        this.viewButton = 'MONTH VIEW'
+        break
+    }
   }
 }
