@@ -22,9 +22,11 @@ export class DialogSignComponent implements OnInit {
     })
   }
   cancelSignOut() {
-    // if(this.tokenStorageService.getUser().role ==='Doctor')
-    //   this.router.navigate(['dashboard'])
-    // if(this.tokenStorageService.getUser().role ==='Manager')
-    //   this.router.navigate(['rooms'])
+    if(this.tokenStorageService.getUser().role ==='ROLE_CUSTOMER')
+      this.router.navigate(['facilities'])
+    if(this.tokenStorageService.getUser().role ==='ROLE_SYSTEM_ADMIN')
+      this.router.navigate(['facilities'])
+    if(this.tokenStorageService.getUser().role ==='ROLE_CENTER_ADMIN')
+      this.router.navigate(['center-profile'])
   }
 }

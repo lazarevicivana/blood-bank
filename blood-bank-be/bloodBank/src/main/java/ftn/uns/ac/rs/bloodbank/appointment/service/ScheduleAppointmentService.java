@@ -93,6 +93,12 @@ public class ScheduleAppointmentService {
                 .orElseThrow(()-> new ApiNotFoundException("Appointment not found"));
         return app;
     }
+    public List<ScheduleAppointment> findScheduleAppointmentsCenterId(UUID centerId){
+        return scheduleAppointmentRepository.findScheduleAppointmentsCenterId(centerId);
+    }
+    public List<ScheduleAppointment> findScheduleAppointmentsCustomerId(UUID customerId){
+        return scheduleAppointmentRepository.findScheduleAppointmentsCustomerId(customerId);
+    }
 
     public List<ScheduleAppointment> getAll(){
         return scheduleAppointmentRepository.findAll();

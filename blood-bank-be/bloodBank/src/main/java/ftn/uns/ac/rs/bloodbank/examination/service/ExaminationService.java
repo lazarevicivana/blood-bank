@@ -1,4 +1,5 @@
 package ftn.uns.ac.rs.bloodbank.examination.service;
+import ftn.uns.ac.rs.bloodbank.appointment.model.AppointmentStatus;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.appointment.repository.ScheduleAppointmentRepository;
 import ftn.uns.ac.rs.bloodbank.blood.model.BloodDonation;
@@ -51,6 +52,8 @@ public class ExaminationService {
        var center = appointment.getAppointment().getCenter();
        updateBloodBank(center, newBloodDonation);
        updateEquipmentQuantity(examinationDto, center);
+       appointment.setStatus(AppointmentStatus.ACCEPTED);
+       scheduleAppointmentRepository.save(appointment);
        var examination = Examination
                .builder()
                .appointment(appointment)
@@ -90,6 +93,8 @@ public class ExaminationService {
                 .isAppeared(examinationDto.getIsAppeared())
                 .isSuitableBloodDonor(examinationDto.getIsSuitableBloodDonor())
                 .build();
+        appointment.setStatus(AppointmentStatus.DECLINED);
+        scheduleAppointmentRepository.save(appointment);
         examinationRepository.save(examination);
     }
 

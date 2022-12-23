@@ -5,6 +5,8 @@ import {Appointment} from "../model/Appointment";
 import {ScheduleAppointmentEx} from "../model/examination/ScheduleAppointmentEx";
 import {AppointmentRequest} from "../model/Requests/AppointmentRequest";
 import {ScheduleAppointmentRequest} from "../model/Requests/ScheduleAppointmentRequest";
+import {ScheduleAppStaff} from "../model/ScheduleAppStaff";
+import {ScheduleAppCustomer} from "../model/ScheduleAppCustomer";
 @Injectable({
   providedIn: 'root'
 })
@@ -18,5 +20,11 @@ export class ScheduleAppointmentService {
 
   getAppointmentForExamination(appointmentId: string): Observable<ScheduleAppointmentEx> {
     return this.http.get<ScheduleAppointmentEx>(this.apiHost + `/examination/${appointmentId}`, {headers: this.headers});
+  }
+  getScheduledAppointmentForStaff(centerId: string): Observable<ScheduleAppStaff[]> {
+    return this.http.get<ScheduleAppStaff[]>(this.apiHost + `/center/${centerId}`, {headers: this.headers});
+  }
+  getScheduledAppointmentForCustomer(customerId: string): Observable<ScheduleAppCustomer[]> {
+    return this.http.get<ScheduleAppCustomer[]>(this.apiHost + `/customer/${customerId}`, {headers: this.headers});
   }
 }

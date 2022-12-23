@@ -13,7 +13,7 @@ import { FirstLoginComponent } from './first-login/first-login.component';
 import {NgToastModule} from "ng-angular-popup";
 import {SignOutComponent} from "./sign-out/sign-out.component";
 import {DialogSignComponent} from "./dialog-sign/dialog-sign.component";
-
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -28,9 +28,9 @@ import {DialogSignComponent} from "./dialog-sign/dialog-sign.component";
     DialogSignComponent,
     SignOutComponent
   ],
-  imports: [
-    CommonModule, MaterialModule, ReactiveFormsModule, MatRadioModule, FormsModule, NgToastModule
-  ],
+    imports: [
+        CommonModule, MaterialModule, ReactiveFormsModule, MatRadioModule, FormsModule, NgToastModule, MatDialogModule
+    ],
   exports: [
     UserCardComponent,
     AppointmentCardComponent,

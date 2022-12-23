@@ -9,9 +9,16 @@ import {Examination} from "../model/examination/Examination";
 })
 export class ExaminationService {
   private apiHost = 'http://localhost:8080/api/v1/examination'
+  private idNavigate:string = ""
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http:HttpClient) { }
   createExamination(examination:Examination){
     return this.http.post(this.apiHost,examination,{headers: this.headers})
+  }
+  saveCurrentId(idNavigate:string){
+    this.idNavigate = idNavigate
+  }
+  getCurrentId(){
+    return this.idNavigate
   }
 }
