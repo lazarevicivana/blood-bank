@@ -1,5 +1,10 @@
 package ftn.uns.ac.rs.bloodbank.center.service;
 
+import ftn.uns.ac.rs.bloodbank.appointment.model.Appointment;
+import ftn.uns.ac.rs.bloodbank.appointment.service.AppointmentService;
+import ftn.uns.ac.rs.bloodbank.blood.model.BloodBank;
+import ftn.uns.ac.rs.bloodbank.blood.model.BloodType;
+import ftn.uns.ac.rs.bloodbank.blood.repository.BloodBankRepository;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdminRepository;
@@ -11,9 +16,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -21,10 +27,42 @@ import java.util.UUID;
 public class CenterService {
     private final CenterRepository centerRepository;
     private final CenterAdminRepository centerAdminRepository;
+
+    private final AppointmentService appointmentService;
+    private final BloodBankRepository bloodBankRepository;
     public List<Center> getAllCenters(){
 
         return centerRepository.findAll();
     }
+
+    public List<Center> getAllCentersWithAppointment(LocalDateTime selectedTime){
+        var allCenters = centerRepository.findAll();
+        List<Center> filterdCenters = new ArrayList<>();
+        for (var center: allCenters) {
+            var appointments = appointmentService.getAllAppointmentsForCenter(center.getId());
+            for (var appointment: appointments) {
+                if(checkAppointmentTime(appointment,selectedTime)){
+                    filterdCenters.add(center);
+                    break;
+                }
+            }
+        }
+        if (filterdCenters.size()==0){
+            throw new ApiNotFoundException("No centers found with appointments in this time.");
+        }
+        return filterdCenters;
+    }
+
+
+    public boolean checkAppointmentTime(Appointment appointment, LocalDateTime selectedTime){
+        if(appointment.getDate().getYear() == selectedTime.getYear() && appointment.getDate().getDayOfMonth() == selectedTime.getDayOfMonth()
+                && appointment.getDate().getMonth() == selectedTime.getMonth()
+                && (appointment.getStartTime().isBefore(selectedTime.toLocalTime()) || appointment.getStartTime().equals(selectedTime.toLocalTime())) && (appointment.getFinishTime().isAfter(selectedTime.toLocalTime()) || appointment.getFinishTime().equals(selectedTime.toLocalTime())) ){
+            return true;
+        }
+        return false;
+    }
+
 
     public Center createCenter(Center center) {
         var centerExist = centerRepository.GetByName(center.getName());
@@ -32,9 +70,19 @@ public class CenterService {
             throw  new ApiConflictException("This name is already taken");
         }
         Center saveCenter = centerRepository.save(center);
-        //centerRepository.delete(getCenter(UUID. fromString("baeee9d9-91c0-44fa-adbd-834e7aad2b1b")));
-        //centerRepository.delete(getCenter(UUID. fromString("e098f9c8-9704-4934-8268-383882c32216")));
+        CreateBloodBankForCenter(center);
         return saveCenter;
+    }
+    public  void CreateBloodBankForCenter(Center center) {
+        for(BloodType bloodType: BloodType.values()){
+            var bloodBank = BloodBank
+                    .builder()
+                    .bloodType(bloodType)
+                    .center(center)
+                    .bloodUnit(0)
+                    .build();
+            bloodBankRepository.save(bloodBank);
+        }
     }
     public Center getCenter(UUID id) {
         return centerRepository
@@ -76,6 +124,7 @@ public class CenterService {
         if(center.getCenterAddress().getStreetNumber() != null){
             currentCenter.getCenterAddress().setStreetNumber(center.getCenterAddress().getStreetNumber());
         }
+        centerRepository.save(currentCenter);
     }
 
     public List<CenterAdministrator> getAdminsForCenter(UUID id) {

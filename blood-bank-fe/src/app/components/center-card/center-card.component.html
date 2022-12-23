@@ -6,7 +6,8 @@
     <h3 class="date">Working time: <span class="working-h">8 AM - 8 PM</span></h3>
     <h3 class="seats">Average grade: {{center.avgGrade}}</h3>
     <p class="txt">Description: {{center.description}}</p>
-    <button class="details" (click)="centerProfile()">Center profile</button>
+    <button *ngIf="!isSchedule" class="details" (click)="centerProfile()">Center profile</button>
+    <button *ngIf="isSchedule" class="details" (click)="scheduleAppointmentINCenter()">Schedule here</button>
   </div>
 </article>
 </div>

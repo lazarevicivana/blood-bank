@@ -8,6 +8,9 @@ import ftn.uns.ac.rs.bloodbank.applicationUser.model.ApplicationUser;
 
 import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.MedicalStaffResponse;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
+import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
+import ftn.uns.ac.rs.bloodbank.blood.dto.BloodBankDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDto;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoUpdate;
@@ -24,6 +27,8 @@ import ftn.uns.ac.rs.bloodbank.registration.dto.ProfessionRequest;
 import ftn.uns.ac.rs.bloodbank.sharedModel.Address;
 import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
+import ftn.uns.ac.rs.bloodbank.systemAdministrator.SystemAdministrator;
+import ftn.uns.ac.rs.bloodbank.systemAdministrator.dto.SystemAdministratorDto;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
@@ -40,6 +45,9 @@ public class MapperService {
 
     public ApplicationUserDtoResponse AppUserToAppUserDto(ApplicationUser applicationUser){
         return modelMapper.map(applicationUser,ApplicationUserDtoResponse.class);
+    }
+    public ApplicationUserDtoResponse CustomerToAppUserDto(Customer customer){
+        return modelMapper.map(customer,ApplicationUserDtoResponse.class);
     }
 //    public ApplicationUserDtoResponse MedicalStaffToAppUserDto(CenterAdministrator applicationUser){
 //        return modelMapper.map(applicationUser,ApplicationUserDtoResponse.class);
@@ -82,4 +90,9 @@ public class MapperService {
     public CustomerFormResponse CustomerFormToCustomerFormDto(CustomerForm customerForm){
         return modelMapper.map(customerForm,CustomerFormResponse.class);
     }
+    public ScheduleAppointment ScheduleAppointmentDtoToScheduleAppointment(ScheduleAppointmentRequest request)
+    {
+        return modelMapper.map(request, ScheduleAppointment.class);
+    }
+    public SystemAdministrator SystemAdministratorDtoToSystemAdministrator(SystemAdministratorDto dto) {return  modelMapper.map(dto, SystemAdministrator.class);}
 }

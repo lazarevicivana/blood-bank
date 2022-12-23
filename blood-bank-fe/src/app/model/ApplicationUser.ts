@@ -20,6 +20,7 @@ export interface ApplicationUser {
     professionDescription?: string
   },
   gender?: string
+  firstLogIn?:boolean
 }
 export class ApplicationUserImp implements ApplicationUser {
   id?: string;
@@ -43,6 +44,7 @@ export class ApplicationUserImp implements ApplicationUser {
     professionDescription: string;
   };
   gender?: string;
+  firstLogIn?:boolean;
 
   constructor(data?: ApplicationUser){
     if (data) {

@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,6 +37,17 @@ public class CenterController {
                 .toList();
         return ResponseEntity.ok(centers);
     }
+
+    @PostMapping(path = "/with-appointment")
+    public ResponseEntity<List<CenterDtoResponse>> getCentersWithAppointment(@RequestBody LocalDateTime selectedTime){
+        var centers = centerService.getAllCentersWithAppointment(selectedTime)
+                .stream()
+                .map(mapperService::CenterToCenterDto)
+                .toList();
+        return ResponseEntity.ok(centers);
+    }
+
+
     @PostMapping()
     public ResponseEntity<CenterDtoResponse> createCenter(@RequestBody CenterDto centerDto){
         var center = mapperService.CenterDtoToCenter(centerDto);

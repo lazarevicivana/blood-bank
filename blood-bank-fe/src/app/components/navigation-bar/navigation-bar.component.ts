@@ -8,6 +8,9 @@ import {adminSystemNavData} from "./nav-data/admin-system-nav-data";
 import {customerNavData} from "./nav-data/customer-nav-data";
 import {filter} from "rxjs";
 import {UserToken} from "../../model/UserToken";
+import {User} from "../../model/User";
+import {ApplicationUser, ApplicationUserImp} from "../../model/ApplicationUser";
+import {ApplicationUserService} from "../../services/applicationUser.service";
 
 interface SideNavToggle{
   screenWidth: number;
@@ -25,7 +28,7 @@ export class NavigationBarComponent implements OnInit {
   publicNavData = publicNavData;
   stuffNavData = stuffNavData;
   adminNavData = adminSystemNavData;
-  loggedUser: UserToken | undefined
+  loggedUser: User | undefined
   customerNavData = customerNavData;
   @Input() userRole : string='';
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
@@ -34,32 +37,32 @@ export class NavigationBarComponent implements OnInit {
   @HostListener('window:resize',['$event'])
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
-
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
-
   }
 
-  constructor(private readonly router:Router,private tkStorage: TokenStorageService) {
+
+  constructor(private readonly router:Router,private tkStorage: TokenStorageService,private userService: ApplicationUserService) {
     // @ts-ignore
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
-      this.loggedUser=(this.tkStorage.getUser())
-      if(this.loggedUser.user?.id==""){
+      this.loggedUser= this.tkStorage.getUser()
+      this.userService.getApplicationUserById(this.loggedUser.id).subscribe((u) => (this.user1.firstLogIn = u.firstLogIn));
+      console.log('user',this.user1)
+
+
+      if(this.loggedUser.id==""){
         this.logedIn = false
       }
       else {
         this.logedIn= true
       }
     });
-
   }
-
-
-
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     const user = this.tkStorage.getUser();
-    console.log(user.user?.userRole);
-      this.userRole = user.user?.userRole!;
+    console.log(user)
+    console.log(user.role);
+    this.userRole = user.role!;
   }
 
   clicked(num: number) {
@@ -98,10 +101,37 @@ export class NavigationBarComponent implements OnInit {
   }
 
   onSignOut() {
-    this.tkStorage.signOut();
-    this.router.navigateByUrl("").then(value => {
-      window.location.reload();
-      }
-    )
+    this.router.navigate(['sign-out'])
   }
+
+  firstLogIn()
+  {
+    return this.user1.firstLogIn && this.loggedUser?.role!="ROLE_CUSTOMER"
+  }
+
+  user1: ApplicationUser = {
+    id: "",
+    username: "",
+    password: "",
+    name: "",
+    surname: "",
+    phone: "",
+    jmbg: "",
+    email: "",
+    userRole: "",
+    city: "",
+    street: "",
+    country: "",
+    streetNumber: "",
+    enabled: false,
+    deleted: false,
+    profession: {
+      id: "",
+      professionStatus: "",
+      professionDescription: ""
+    },
+    gender: "",
+    firstLogIn:true
+  }
+
 }

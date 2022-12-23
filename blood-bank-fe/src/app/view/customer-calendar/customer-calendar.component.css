@@ -1,0 +1,65 @@
+.calendar-wrapper {
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  overflow-y: scroll;
+  height: 90%;
+  color: transparent;
+}
+.event__title {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+.event__title:hover {
+  color: #3b4d79;
+}
+.date-range {
+  margin-left: 1.5rem;
+  font-size: 3rem;
+  color: #3b4d79;
+}
+.calendar-header {
+  margin-left: 20px;
+  margin-right: 20px;
+  color: transparent;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.calendar-header .button-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.calendar-header .button-group__button, .calendar-header .button-group__button-app {
+  margin-right: 1rem;
+  padding: 0.7rem 0.7rem;
+  width: 9rem;
+  background-color: white;
+  border: 1px solid #3b4d79;
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.20) 0px 1px 4px;
+  border-radius: 0.5rem;
+  color: blue;
+  transition: 0.2s;
+}
+.calendar-header .button-group__button-app {
+  width: 10rem;
+}
+.calendar-header .button-group__button:hover, .calendar-header .button-group__button-app:hover {
+  transform: scale(1.07);
+  transition: 0.2s;
+  cursor: pointer;
+  background-color: #3b4d79;
+  color: white;
+}
+.calendar-header .button-group__button-app:disabled {
+  opacity: 0.3;
+  cursor: default;
+  transform: none;
+  background-color: white;
+  border: 1px solid #3b4d79;
+  color: #3b4d79;
+}

@@ -27,6 +27,7 @@ export class CreateCenterComponent implements OnInit {
   constructor(private centerService:CenterService, private centerAdminService:CenterAdministratorService,public dialog: MatDialog,private readonly router:Router,private alert: NgToastService) {
     this.center = new Center();
     this.admin = new CenterAdministrator()
+    this.admin.firstLogIn = true
   }
 
   ngOnInit(): void {

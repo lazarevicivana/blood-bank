@@ -12,16 +12,20 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerFormRequest {
-    private boolean isAge;
-    private boolean isWeight;
-    private boolean hadTransfusion;
-    private boolean hadCancer;
-    private boolean isSick;
-    private boolean isPregnant;
-    private boolean onPeriod;
-    private boolean isSexual;
-    private boolean isAllergic;
-    private boolean useMedication;
+    private Boolean isAge;
+    private Boolean isWeight;
+    private Boolean hadTransfusion;
+    private Boolean hadCancer;
+    private Boolean isSick;
+    private Boolean isPregnant;
+    private Boolean onPeriod;
+    private Boolean isSexual;
+    private Boolean isAllergic;
+    private Boolean useMedication;
+    private Boolean isUnderTherapy;
+    private Boolean isBloodPressureNormal;
+    private Boolean isDentis;
+    private Boolean isPiercingTattoo;
     private UUID customerId;
     private Date submissionDate;
 }

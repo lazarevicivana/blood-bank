@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserResponse} from "../../../model/UserResponse";
+import {UserResponse} from "../../../model/Responses/UserResponse";
 import {CustomerService} from "../../../services/customer.service";
-import {DonorSearchRequest} from "../../../model/DonorSerachRequest";
+import {DonorSearchRequest} from "../../../model/Requests/DonorSerachRequest";
 
 @Component({
   selector: 'app-all-donors',

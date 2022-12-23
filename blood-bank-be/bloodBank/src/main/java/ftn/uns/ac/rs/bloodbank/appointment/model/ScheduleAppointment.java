@@ -1,8 +1,7 @@
 package ftn.uns.ac.rs.bloodbank.appointment.model;
 
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -10,15 +9,23 @@ import java.util.UUID;
 @Table(name = "schedule_appointment")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ScheduleAppointment {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
     private UUID id;
-    @OneToOne
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "appointmentId", referencedColumnName = "id")
     private Appointment appointment;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customerId", referencedColumnName = "id")
     private Customer customer;
+
     @Enumerated(EnumType.STRING)
     private AppointmentStatus status = AppointmentStatus.PENDING;
 }

@@ -1,0 +1,141 @@
+.container-examination {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+  0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  max-height: 1200px;
+  width: 90%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.example-radio-group {
+  display: inline-block;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+.margin-t-40{
+ margin-top: 40px;
+}
+.margin-t-30{
+  margin-top: 30px;
+}
+.align-elems{
+  display: flex;
+  justify-content: center;
+}
+.header-ex {
+  font-size: 30px;
+  font-weight: 600;
+  background-image: linear-gradient(to left,#3b4d79, #3C779BFF);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+}
+.header-donation {
+  font-size: 30px;
+  font-weight: 600;
+  background-image: linear-gradient(to left,#3b4d79, #3C779BFF);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-align: left;
+}
+.example-radio-button {
+  margin-left: 10px;
+}
+.example-radio-button-second {
+  margin-left: 50px;
+}
+.header-small {
+  font-size: 15px;
+  font-weight: 300;
+  background-image: linear-gradient(to left, #02115c, #000fff);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+}
+.header-finish {
+  font-size: 20px;
+  font-weight: 300;
+  background-image: linear-gradient(to left, #02115c, #000fff);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.text-l{
+  text-align: left;
+}
+.text-c{
+  text-align: center;
+}
+.rs-p{
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  background-image: linear-gradient(to left,#3b4d79, #02115c);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.finish-text{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  background-image: linear-gradient(to left,#3b4d79, #02115c);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.inline-d{
+  display: inline-block;
+}
+.reason-p {
+  text-align: left;
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: 300;
+  background-image: linear-gradient(to left,#3b4d79, #02115c);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.valid-h{
+  font-size: 22px;
+  font-weight: 600;
+  background-image: linear-gradient(to left,#3b4d79, #3C779BFF);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-align: left;
+}
+.input-examination {
+  margin-top: 20px;
+  width: 60%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  height: 60px;
+}
+.an-area{
+  height: 200px;
+  font-size: 20px;
+}
+.text-area-an {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  display: block;
+  width: 60%;
+}
+.list-text{
+  text-align: left;
+  margin-left: 3px;
+  font-size: 15px;
+}
+.list-text-r{
+  text-align: left;
+  margin-right: 15px;
+  font-size: 15px;
+}
+.in-block{
+  display: block;
+}

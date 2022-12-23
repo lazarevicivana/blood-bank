@@ -7,6 +7,7 @@ import ftn.uns.ac.rs.bloodbank.applicationUser.service.ApplicationUserService;
 import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.NonNull;
+import org.springframework.context.annotation.Role;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class ApplicationUserController {
         this.mapperService = mapperService;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ApplicationUserUpdate> getApplicationUser(@NonNull @PathVariable("id") UUID id){
         var user = mapperService.AppUserToAppUserUpdate((applicationUserService.getApplicationUser(id)));
         return ResponseEntity.ok(user);

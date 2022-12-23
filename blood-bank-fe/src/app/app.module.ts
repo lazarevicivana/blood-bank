@@ -31,6 +31,15 @@ import { AllDonorsComponent } from './view/customer/all-donors/all-donors.compon
 import {MatDividerModule} from "@angular/material/divider";
 import { DonorCardComponent } from './view/customer/donor-card/donor-card.component';
 import { CenterDonorsComponent } from './view/customer/center-donors/center-donors.component';
+import { ExaminationComponent } from './view/examination/examination.component';
+import {MaterialModule} from "./material/material.module";
+import { CreateSystemAdminComponent } from './view/system-administrator/create-system-admin/create-system-admin.component';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
+import { ManagerCalendarComponent } from './view/manager-calendar/manager-calendar.component';
+import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
+import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dialog/cancel-appointment-dialog.component';
+
 
 @NgModule({
     declarations: [
@@ -42,7 +51,12 @@ import { CenterDonorsComponent } from './view/customer/center-donors/center-dono
         AllUsersComponent,
         AllDonorsComponent,
         DonorCardComponent,
-        CenterDonorsComponent
+        CenterDonorsComponent,
+        ExaminationComponent,
+        CreateSystemAdminComponent,
+        ManagerCalendarComponent,
+        CustomerCalendarComponent,
+        CancelAppointmentDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -68,7 +82,12 @@ import { CenterDonorsComponent } from './view/customer/center-donors/center-dono
         MatDialogModule,
         NgToastModule,
         MatDividerModule,
-        QuestionnaireModule
+        QuestionnaireModule,
+        MaterialModule,
+        CalendarModule.forRoot({
+          provide: DateAdapter,
+          useFactory: adapterFactory,
+        }),
     ],
     providers: [authInterceptorProviders],
     exports: [],

@@ -28,7 +28,7 @@ public class RegistrationController {
         registrationService.register(customer);
      return  new ResponseEntity<Customer>(customer, HttpStatus.CREATED);
     }
-    @PostMapping(path = "login")
+   @PostMapping(path = "login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
         return ResponseEntity.ok(registrationService.login(loginRequest));
     }

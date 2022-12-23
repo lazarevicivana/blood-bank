@@ -85,5 +85,27 @@
       </div>
     </div>
   </div>
+  <div class="header-margin-top">
+    <h3 class="header">Blood supply</h3>
+  </div>
+  <mat-divider class="sub-color"></mat-divider>
+  <div class="container">
+    <div class="row col col-md">
+      <div *ngFor="let bank of banks" class="col-6 col-md-6">
+        <mat-list class="v-align">
+        <mat-list-item>
+        <div>
+          Blood type:&nbsp;{{bank.bloodType}}
+        </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div>
+            Blood unit:&nbsp;{{bank.bloodUnit}}
+          </div>
+        </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
 </div>
 

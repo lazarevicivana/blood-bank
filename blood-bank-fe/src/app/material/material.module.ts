@@ -16,6 +16,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [],
@@ -36,6 +37,7 @@ import {MatDividerModule} from "@angular/material/divider";
     MatExpansionModule,
     MatGridListModule,
     MatDividerModule,
+    MatRadioModule
   ],
   exports: [
     CommonModule,
@@ -53,7 +55,8 @@ import {MatDividerModule} from "@angular/material/divider";
     MatExpansionModule,
     MatGridListModule,
     MatDividerModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule {}

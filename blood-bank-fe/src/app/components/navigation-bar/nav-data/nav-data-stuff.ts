@@ -16,5 +16,11 @@ export const stuffNavData=[
     icon: 'accessibility-outline',
     label: 'Center donors',
     num:2
+  },
+  {
+    routeLink: 'calendar',
+    icon: 'calendar',
+    label: 'Calendar',
+    num:3
   }
 ];

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {CustomerRequest} from "../model/CustomerRequest";
-import {LoginRequest} from "../model/LoginRequest";
+import {CustomerRequest} from "../model/Requests/CustomerRequest";
+import {LoginRequest} from "../model/Requests/LoginRequest";
 
 const AUTH_API = 'http://localhost:8080/api/v1/registration';
 // const httpOptions = {

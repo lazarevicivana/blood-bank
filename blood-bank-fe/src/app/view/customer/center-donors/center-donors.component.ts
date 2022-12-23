@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {UserResponse} from "../../../model/UserResponse";
+import {UserResponse} from "../../../model/Responses/UserResponse";
 import {CustomerService} from "../../../services/customer.service";
-import {DonorSearchRequest} from "../../../model/DonorSerachRequest";
+import {DonorSearchRequest} from "../../../model/Requests/DonorSerachRequest";
 import {Center} from "../../../model/Center";
 import {UserToken} from "../../../model/UserToken";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {CenterAdministratorService} from "../../../services/center-administrator.service";
+import {User} from "../../../model/User";
 
 @Component({
   selector: 'app-center-donors',
@@ -17,7 +18,7 @@ export class CenterDonorsComponent implements OnInit {
   donors:UserResponse[]=[]
   public isLoaded:boolean = false;
   public center: Center;
-  private userToken:UserToken;
+  private userToken:User;
 
   constructor(private customerService: CustomerService,private tokenService:TokenStorageService,private adminService: CenterAdministratorService) {
     this.searchDonor = new DonorSearchRequest();
@@ -42,7 +43,7 @@ export class CenterDonorsComponent implements OnInit {
   }
 
   private getCenter(){
-    this.adminService.getCenterForAdmin(this.userToken.user?.id!).subscribe(
+    this.adminService.getCenterForAdmin(this.userToken.id!).subscribe(
       {
         next: res =>{
           this.center = res;

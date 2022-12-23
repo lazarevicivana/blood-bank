@@ -7,10 +7,12 @@ import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdminRepository;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
+import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -51,6 +53,32 @@ public class AppointmentService {
     public List<Appointment> getAllAppointmentsForCenter(UUID centerId){
         return appointmentRepository.getAllAppointmentsForCenter(centerId);
     }
+    public List<Appointment> getFutureAppointments(UUID centerId){
+        var currentDate = LocalDateTime.now();
+        return appointmentRepository.getAllAppointmentsForCenter(centerId)
+                .stream().filter(a -> a.getDate().isAfter(currentDate) && a.getDeleted()!= true).toList();
+    }
+
+    public Appointment getAppointmentOfCenter(LocalDateTime selectedTime, UUID id){
+        var appointments = appointmentRepository.getAllAppointmentsForCenter(id);
+        for (var appointment: appointments) {
+            if(checkAppointmentTime(appointment,selectedTime)){
+                return appointment;
+
+            }
+        }
+
+        throw new ApiNotFoundException("Center doesnt have selected appointment");
+    }
+    public boolean checkAppointmentTime(Appointment appointment, LocalDateTime selectedTime){
+        if(appointment.getDate().getYear() == selectedTime.getYear() && appointment.getDate().getDayOfMonth() == selectedTime.getDayOfMonth()
+                && appointment.getDate().getMonth() == selectedTime.getMonth()
+                && (appointment.getStartTime().isBefore(selectedTime.toLocalTime()) || appointment.getStartTime().equals(selectedTime.toLocalTime())) && (appointment.getFinishTime().isAfter(selectedTime.toLocalTime()) || appointment.getFinishTime().equals(selectedTime.toLocalTime())) ){
+            return true;
+        }
+        return false;
+    }
+
     public List<CenterAdministrator> getMedicalStaffsForAppointment(UUID appointmentId){
         return appointmentRepository.getMedicalStaffsForAppointment(appointmentId);
     }
@@ -61,5 +89,19 @@ public class AppointmentService {
         if(!appointment.isValidDateTime()){
             throw new ApiBadRequestException("Wrong start time and end time range!");
         }
+    }
+    public Appointment findByID(UUID appointmentId){
+        return appointmentRepository.findById(appointmentId)
+                .orElseThrow(() -> new ApiNotFoundException("Appointment not found"));
+    }
+
+    public void UpdateAppointmentDelete(UUID id) {
+        var appointment = appointmentRepository.findById(id)
+                .orElseThrow(() -> new ApiNotFoundException("Appointment not found!"));
+        if(appointment.getDeleted())
+            appointment.setDeleted(false);
+        else
+            appointment.setDeleted(true);
+        appointmentRepository.save(appointment);
     }
 }

@@ -37,3 +37,9 @@
   display: flex;
   flex-wrap: wrap;
 }
+.v-align{
+  background-color: grey;
+  text-align: center;
+  /*display: flex;*/
+  margin-top: 20px;
+}

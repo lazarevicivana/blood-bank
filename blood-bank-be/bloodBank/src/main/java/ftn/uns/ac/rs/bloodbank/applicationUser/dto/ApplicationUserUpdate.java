@@ -50,4 +50,5 @@ public class ApplicationUserUpdate {
     private  String country;
     @NonNull
     private  String streetNumber;
+    private Boolean firstLogIn;
 }

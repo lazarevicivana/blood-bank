@@ -1,0 +1,51 @@
+<ng-template #customTemplate let-event="event" let-view="view">
+<span
+  class="event__title"
+  [innerHTML]="event.title | calendarEventTitle : view : event"
+  [attr.aria-hidden]="{} | calendarA11y : 'hideEventTitle'"
+>
+  </span>
+</ng-template>
+
+<div class="calendar-header">
+  <div class="button-group">
+    <button class="button-group__button" (click)="handlePrevious()">
+      PREVIOUS WEEK
+    </button>
+    <button class="button-group__button" (click)="handleCurrent()">
+      CURRENT DATE
+    </button>
+    <button class="button-group__button" (click)="handleNext()">
+      NEXT WEEK
+    </button>
+  </div>
+  <div class="date-range">
+    <span
+    >{{ viewDate | date : "dd.MM.yyyy." }} -
+      {{ viewDateEnd | date : "dd.MM.yyyy." }}</span
+    >
+  </div>
+  <div class="button-group">
+    <button
+      id="cancel"
+      [disabled]="!canClickCancel"
+      class="button-group__button-app"
+    (click)="openDialogCancel()">
+      CANCEL
+    </button>
+  </div>
+</div>
+
+<div class="calendar-wrapper">
+  <mwl-calendar-week-view
+    [viewDate]="viewDate"
+    [daysInWeek]="daysInWeek"
+    [dayStartHour]="dayStartHour"
+    [dayEndHour]="dayEndHour"
+    [hourSegmentHeight]="hourSegmentHeight"
+    [events]="appointments"
+    [eventTitleTemplate]="customTemplate"
+    (eventClicked)="onEventClick($event)"
+  >
+  </mwl-calendar-week-view>
+</div>
