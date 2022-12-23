@@ -8,6 +8,7 @@ import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerSearchDto;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -43,18 +44,21 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/searchCenterDonors/{centerId}")
+    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN')")
     public List<Customer> searchCenterDonors(@PathVariable("centerId") UUID centerId, @RequestBody CustomerSearchDto dto)
     {
         return customerService.searchCenterDonors(centerId,dto);
     }
 
     @GetMapping(path = "/getDonors" )
+    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN')")
     public List<Customer> getDonors()
     {
         return customerService.getDonors();
     }
 
     @PostMapping(path = "/searchDonors")
+    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN')")
     public List<Customer> searchDonors(@RequestBody CustomerSearchDto dto)
     {
         return customerService.searchDonors(dto);

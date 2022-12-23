@@ -30,7 +30,7 @@
       id="cancel"
       [disabled]="!canClickCancel"
       class="button-group__button-app"
-    >
+    (click)="openDialogCancel()">
       CANCEL
     </button>
   </div>

@@ -27,4 +27,7 @@ export class ScheduleAppointmentService {
   getScheduledAppointmentForCustomer(customerId: string): Observable<ScheduleAppCustomer[]> {
     return this.http.get<ScheduleAppCustomer[]>(this.apiHost + `/customer/${customerId}`, {headers: this.headers});
   }
+ cancelScheduledAppointment(appointmentId: string): Observable<void> {
+    return this.http.delete<void>(this.apiHost + `/${appointmentId}`, {headers: this.headers});
+  }
 }

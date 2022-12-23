@@ -107,6 +107,8 @@ public class ScheduleAppointmentService {
     public void cancelScheduledAppointment(UUID id) {
         var scheduledAppointment = scheduleAppointmentRepository.findById(id)
                 .orElseThrow(()->new ApiNotFoundException("Scheduled appointment doesn't exists!"));
+        if(scheduledAppointment.getStatus() != AppointmentStatus.PENDING)
+            throw new ApiBadRequestException("You can only cancel pending appointments!");
         var today = Calendar.getInstance();
         var now = LocalDateTime.now();
         var tomorrow = now.plusDays(1);

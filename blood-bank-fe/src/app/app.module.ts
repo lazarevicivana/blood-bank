@@ -38,6 +38,7 @@ import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
 import { ManagerCalendarComponent } from './view/manager-calendar/manager-calendar.component';
 import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
+import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dialog/cancel-appointment-dialog.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calen
         ExaminationComponent,
         CreateSystemAdminComponent,
         ManagerCalendarComponent,
-        CustomerCalendarComponent
+        CustomerCalendarComponent,
+        CancelAppointmentDialogComponent
     ],
     imports: [
         BrowserModule,

@@ -26,7 +26,25 @@ public class CustomerFormService {
     public CustomerForm createCustomerForm(CustomerFormRequest customerForm){
         var customer = customerRepository.findById(customerForm.getCustomerId()).orElseThrow(() ->
                 new ApiBadRequestException("Customer doesnt exists"));
-        var form = mapperService.CustomerFormDtoToCustomerForm(customerForm);
+        var form = CustomerForm
+                .builder()
+                .isAge(customerForm.getIsAge())
+                .isAllergic(customerForm.getIsAllergic())
+                .isSick(customerForm.getIsSick())
+                .isSexual(customerForm.getIsSexual())
+                .isWeight(customerForm.getIsWeight())
+                .isDentis(customerForm.getIsDentis())
+                .isPiercingTattoo(customerForm.getIsPiercingTattoo())
+                .hadCancer(customerForm.getHadCancer())
+                .hadTransfusion(customerForm.getHadTransfusion())
+                .useMedication(customerForm.getUseMedication())
+                .isUnderTherapy(customerForm.getIsUnderTherapy())
+                .onPeriod(customerForm.getOnPeriod())
+                .isPregnant(customerForm.getIsPregnant())
+                .isBloodPressureNormal(customerForm.getIsBloodPressureNormal())
+                .submissionDate(customerForm.getSubmissionDate())
+                .customer(customer)
+                        .build();
         form.setCustomer(customer);
         if(customer.getGender() == GenderType.MALE){
             form.setIsPregnant(false);
