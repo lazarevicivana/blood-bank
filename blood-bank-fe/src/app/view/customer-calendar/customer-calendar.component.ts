@@ -15,6 +15,9 @@ import {ScheduleAppointmentService} from "../../services/schedule-appointment.se
 import {ExaminationService} from "../../services/examination.service";
 import {Router} from "@angular/router";
 import {ScheduleAppCustomer} from "../../model/ScheduleAppCustomer";
+import {DialogSignComponent} from "../../components/dialog-sign/dialog-sign.component";
+import {MatDialog} from "@angular/material/dialog";
+import {CancelAppointmentDialogComponent} from "../cancel-appointment-dialog/cancel-appointment-dialog.component";
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -56,7 +59,7 @@ export class CustomerCalendarComponent implements OnInit {
     meta: null as any,
   };
 
-  constructor(private tokenStorageService: TokenStorageService,private adminCenterService:CenterAdminService
+  constructor(public dialog: MatDialog,private tokenStorageService: TokenStorageService,private adminCenterService:CenterAdminService
     ,private appService:AppointmentService,
               private readonly scheduleAppointmentService:ScheduleAppointmentService,
               private router:Router) {
@@ -169,5 +172,12 @@ export class CustomerCalendarComponent implements OnInit {
       const element = times[i] as HTMLElement
       element.style.color = '#3b4d79';
     }
+  }
+  openDialogCancel(): void {
+    this.dialog.open(CancelAppointmentDialogComponent, {
+      width: '500px',
+      height:'200px',
+      data: { appointmentId: this.selectedEvent.meta?.appointment.id! }
+    });
   }
 }

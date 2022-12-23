@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.customer.model;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
@@ -9,6 +9,9 @@ import java.util.UUID;
 @Table(name = "customer_form")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CustomerForm {
     @Id
     @GeneratedValue
@@ -33,4 +36,6 @@ public class CustomerForm {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "customer", referencedColumnName = "id")
     private Customer customer;
+
+
 }

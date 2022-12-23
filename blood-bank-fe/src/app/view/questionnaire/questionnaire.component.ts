@@ -124,11 +124,12 @@ export class QuestionnaireComponent implements OnInit {
       this.client.createQuestionnaire(this.questionnaire).subscribe({
         next: _ => {
           this.toast.success("You have successfully submitted your blood donor questionnaire!","Success");
-          if(this.appointmentId!= ""){
+          if(this.appointmentId!= undefined && this.appointmentId!=null && this.appointmentId!=''){
               const id = this.userToken.id
               var sc = new ScheduleAppointmentRequest();
               sc.customer_id = id
               sc.appointment_id = this.appointmentId!
+              console.log(this.appointmentId)
               this.scheduleClient.createAppointment(sc).subscribe({
                 next: res=>{
 
