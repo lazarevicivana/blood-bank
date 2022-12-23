@@ -43,6 +43,8 @@ export class ExaminationComponent implements OnInit {
               ,private toast: ToastrService,private readonly centerEquipmentService:CenterEquipmentService
               ,private fb: FormBuilder,private readonly examinationService:ExaminationService,private router:Router)
   {
+    this.scheduledAppointmentId = this.examinationService.getCurrentId()
+    console.log(this.scheduledAppointmentId)
     this.formEquipmentQuantity = this.fb.group(
       {inputs: this.fb.array([],Validators.required)
     });

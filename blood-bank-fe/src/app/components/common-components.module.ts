@@ -16,7 +16,6 @@ import {DialogSignComponent} from "./dialog-sign/dialog-sign.component";
 import {MatDialogModule} from "@angular/material/dialog";
 
 
-
 @NgModule({
   declarations: [
     UserCardComponent,

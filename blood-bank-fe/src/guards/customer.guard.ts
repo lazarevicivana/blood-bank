@@ -7,13 +7,13 @@ import {TokenStorageService} from "../app/services/token-storage.service";
 @Injectable({
   providedIn: 'root'
 })
-export class CenterAdminGuard implements CanActivate {
+export class CustomerGuard implements CanActivate {
   constructor(private toast: ToastrService,private tokenStorageService:TokenStorageService,private router:Router) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.tokenStorageService.isLoggedIn() && this.tokenStorageService.getUser().role === "ROLE_CENTER_ADMIN"){
+    if(this.tokenStorageService.isLoggedIn() && this.tokenStorageService.getUser().role === "ROLE_CUSTOMER"){
       return true
     }
     this.router.navigate(['']).then(()=>{

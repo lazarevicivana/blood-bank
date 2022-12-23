@@ -37,8 +37,7 @@ import { CreateSystemAdminComponent } from './view/system-administrator/create-s
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
 import { ManagerCalendarComponent } from './view/manager-calendar/manager-calendar.component';
-
-
+import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
 
 
 @NgModule({
@@ -54,7 +53,8 @@ import { ManagerCalendarComponent } from './view/manager-calendar/manager-calend
         CenterDonorsComponent,
         ExaminationComponent,
         CreateSystemAdminComponent,
-        ManagerCalendarComponent
+        ManagerCalendarComponent,
+        CustomerCalendarComponent
     ],
     imports: [
         BrowserModule,

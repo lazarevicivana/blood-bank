@@ -12,9 +12,9 @@ import * as moment from "moment/moment";
 import { HttpErrorResponse } from '@angular/common/http';
 import { addDays, subDays } from 'date-fns';
 import {ScheduleAppointmentService} from "../../services/schedule-appointment.service";
-import {ScheduleAppStaff} from "../../model/ScheduleAppStaff";
 import {ExaminationService} from "../../services/examination.service";
 import {Router} from "@angular/router";
+import {ScheduleAppCustomer} from "../../model/ScheduleAppCustomer";
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -31,25 +31,24 @@ const colors: Record<string, EventColor> = {
   },
 };
 @Component({
-  selector: 'app-manager-calendar',
-  templateUrl: './manager-calendar.component.html',
-  styleUrls: ['./manager-calendar.component.css']
+  selector: 'app-customer-calendar',
+  templateUrl: './customer-calendar.component.html',
+  styleUrls: ['./customer-calendar.component.css']
 })
-export class ManagerCalendarComponent implements OnInit {
+export class CustomerCalendarComponent implements OnInit {
   viewDate: Date;
   appointments: CalendarEvent<{}>[] = [];
   appointmentsResponse: Appointment[] = [];
   dayStartHour = 6;
   dayEndHour = 24;
-  hourSegmentHeight = 130;
+  hourSegmentHeight = 110;
   daysInWeek = 7;
   view: CalendarView = CalendarView.Week;
   viewDateEnd: Date;
-  canClick:boolean = false
+  canClickCancel:boolean = false
   canClickExamination:boolean = false
   private readonly user: User;
-  private center: Center = new Center();
-  selectedEvent: CalendarEvent<{ appointment: ScheduleAppStaff }> = {
+  selectedEvent: CalendarEvent<{ appointment: ScheduleAppCustomer }> = {
     title: null as any,
     start: null as any,
     color: { ...colors['blue'] },
@@ -58,9 +57,9 @@ export class ManagerCalendarComponent implements OnInit {
   };
 
   constructor(private tokenStorageService: TokenStorageService,private adminCenterService:CenterAdminService
-              ,private appService:AppointmentService,
+    ,private appService:AppointmentService,
               private readonly scheduleAppointmentService:ScheduleAppointmentService,
-              private readonly examinationService:ExaminationService,private router:Router) {
+              private router:Router) {
     this.viewDate = new Date();
     this.viewDateEnd = addDays(this.viewDate, 6);
     this.user = this.tokenStorageService.getUser();
@@ -83,22 +82,21 @@ export class ManagerCalendarComponent implements OnInit {
   }
 
   async handleNext(): Promise<void> {
-      this.viewDate = addDays(this.viewDate, 7);
-      this.viewDateEnd = addDays(this.viewDate, 6);
-      await new Promise(resolve => setTimeout(resolve, 100));
-      this.paint()
+    this.viewDate = addDays(this.viewDate, 7);
+    this.viewDateEnd = addDays(this.viewDate, 6);
+    await new Promise(resolve => setTimeout(resolve, 100));
+    this.paint()
   }
   onEventClick(event: any): void {
-      this.canClick = true;
-      this.selectedEvent.color = colors['blue'];
-      this.selectedEvent = event.event;
-      if(this.selectedEvent.meta?.appointment.status === 'PENDING'){
-        this.canClickExamination = true
-      }
-      console.log(event)
-      this.selectedEvent.color = colors['green'];
+    this.selectedEvent.color = colors['blue'];
+    this.selectedEvent = event.event;
+    if(this.selectedEvent.meta?.appointment.status === 'PENDING'){
+      this.canClickCancel = true;
+    }
+    console.log(event)
+    this.selectedEvent.color = colors['green'];
   }
-  createTitle(appointment: ScheduleAppStaff): string {
+  createTitle(appointment: ScheduleAppCustomer): string {
     return (
       'Appointment:'+ '\n'+
       'Status: '+
@@ -111,30 +109,19 @@ export class ManagerCalendarComponent implements OnInit {
       '\n' +
       'Finish time: '+
       appointment.finishTime+
-      '\n' +'Customer:'+ '\n'+
-      'Username: '+
-      appointment.customerUsername+
-      '\n' +
+      '\n' +'Center:'+ '\n'+
       'Name: '+
-      appointment.customerName+
-      '\n' +
-      'Surname: '+
-      appointment.customerSurname
+      appointment.centerName
     );
   }
   private fetchData():void{
-    this.adminCenterService.getCenterForAdmin(this.user.id!).subscribe(
-      response => {
-        this.center = response;
-        this.getAppointmentsForCenter()
-      }
-    )
+    this.getCenterAppointments()
   }
-  private getAppointmentsForCenter(){
-    this.scheduleAppointmentService.getScheduledAppointmentForStaff(this.center.id!)
+  private getCenterAppointments(){
+    this.scheduleAppointmentService.getScheduledAppointmentForCustomer(this.user.id!)
       .pipe(
-        map((results: ScheduleAppStaff[]) => {
-          return results.map((appointment: ScheduleAppStaff) => {
+        map((results: ScheduleAppCustomer[]) => {
+          return results.map((appointment: ScheduleAppCustomer) => {
             return {
               title: this.createTitle(appointment),
               start: this.setTime(appointment.date!,appointment.startTime!),
@@ -149,7 +136,7 @@ export class ManagerCalendarComponent implements OnInit {
       )
       .subscribe(
         //@ts-ignore
-        (response: CalendarEvent<{ appointment: ScheduleAppStaff }>[]) => {
+        (response: CalendarEvent<{ appointment: Appointment }>[]) => {
           this.appointments = response;
           this.paint()
         },
@@ -182,11 +169,5 @@ export class ManagerCalendarComponent implements OnInit {
       const element = times[i] as HTMLElement
       element.style.color = '#3b4d79';
     }
-  }
-
-
-  goToExaminate() {
-    this.examinationService.saveCurrentId(this.selectedEvent.meta?.appointment.id!)
-    this.router.navigate(['examination'])
   }
 }

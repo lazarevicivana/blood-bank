@@ -46,7 +46,7 @@ export class NavigationBarComponent implements OnInit {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
       this.loggedUser= this.tkStorage.getUser()
       this.userService.getApplicationUserById(this.loggedUser.id).subscribe((u) => (this.user1.firstLogIn = u.firstLogIn));
-      console.log('uuseer',this.user1)
+      console.log('user',this.user1)
 
 
       if(this.loggedUser.id==""){

@@ -16,5 +16,11 @@ export const customerNavData=[
     icon: 'newspaper-outline',
     label: 'Questionnaire',
     num:2
+  },
+  {
+    routeLink: 'customer-calendar',
+    icon: 'calendar',
+    label: 'Calendar',
+    num:3
   }
 ]
