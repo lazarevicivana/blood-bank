@@ -9,6 +9,8 @@ import {UserResponse} from "../../../model/Responses/UserResponse";
 import {AppointmentService} from "../../../services/appointment.service";
 import {Appointment} from "../../../model/Appointment";
 import {User} from "../../../model/User";
+import {BloodBankService} from "../../../services/blood-bank.service";
+import {BloodBank} from "../../../model/BloodBank";
 
 @Component({
   selector: 'app-center-admin-profile',
@@ -22,9 +24,11 @@ export class CenterAdminProfileComponent implements OnInit {
   private readonly user: User;
   public otherAdmins: UserResponse[] = [];
   public appointments: Appointment[] = [];
+  public banks:BloodBank[] =[];
   constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,
               private readonly router:Router,private adminCenterService: CenterAdminService
-              ,private appService:AppointmentService, private tokenStorageService: TokenStorageService ) {
+              ,private appService:AppointmentService, private tokenStorageService: TokenStorageService
+              ,private readonly bankService:BloodBankService) {
     this.center = new Center();
     this.user = this.tokenStorageService.getUser();
     console.log(this.user)
@@ -48,7 +52,6 @@ export class CenterAdminProfileComponent implements OnInit {
   public async updateCenter(): Promise<void>{
     console.log(this.center.id)
     await this.router.navigate(['update-center'], { state: { centerId: this.center.id } })
-    // await this.router.navigateByUrl('/update-center', {state:{idCenter: this.center.id}});
   }
   private getCenter():void{
     this.adminCenterService.getCenterForAdmin(this.user.id!).subscribe(
@@ -64,6 +67,7 @@ export class CenterAdminProfileComponent implements OnInit {
           });
           this.getOtherAdmins()
           this.getAppointmentsForCenter()
+          this.getBanks()
         }
     )
   }
@@ -72,22 +76,22 @@ export class CenterAdminProfileComponent implements OnInit {
       .subscribe({
         next: response => {
           this.otherAdmins = response;
-          console.log(this.otherAdmins)
+          //console.log(this.otherAdmins)
         }
       })
+  }
+  private getBanks():void{
+    this.bankService.getBanksForCenter(this.center.id!).subscribe({
+      next: res =>{
+        this.banks = res;
+      }
+    })
   }
   private getAppointmentsForCenter(){
     this.appService.getAppointmentsForCenter(this.center.id!).subscribe(
       {
         next: response =>{
           this.appointments = response;
-          console.log(this.appointments)
-          // this.appointments.forEach( app =>{
-          //   console.log(app.medicalStaffs?.forEach(st =>{
-          //     console.log(st.name)
-          //     console.log(st.surname)
-          //   }))
-          // })
         }
       }
     )
