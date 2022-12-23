@@ -18,9 +18,15 @@ export const stuffNavData=[
     num:2
   },
   {
+    routeLink: 'calendar',
+    icon: 'calendar',
+    label: 'Calendar',
+    num:3
+  },
+  {
     routeLink: 'examination',
     icon: 'book',
     label: 'Examination',
-    num:3
+    num:4
   }
 ];
