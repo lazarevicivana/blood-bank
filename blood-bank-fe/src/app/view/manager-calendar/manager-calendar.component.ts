@@ -15,6 +15,7 @@ import {ScheduleAppointmentService} from "../../services/schedule-appointment.se
 import {ScheduleAppStaff} from "../../model/ScheduleAppStaff";
 import {ExaminationService} from "../../services/examination.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -49,6 +50,7 @@ export class ManagerCalendarComponent implements OnInit {
   canClickExamination:boolean = false
   private readonly user: User;
   private center: Center = new Center();
+  monthView: boolean = false
   selectedEvent: CalendarEvent<{ appointment: ScheduleAppStaff }> = {
     title: null as any,
     start: null as any,
@@ -60,7 +62,7 @@ export class ManagerCalendarComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService,private adminCenterService:CenterAdminService
               ,private appService:AppointmentService,
               private readonly scheduleAppointmentService:ScheduleAppointmentService,
-              private readonly examinationService:ExaminationService,private router:Router) {
+              private readonly examinationService:ExaminationService,private router:Router,private ts:ToastrService) {
     this.viewDate = new Date();
     this.viewDateEnd = addDays(this.viewDate, 6);
     this.user = this.tokenStorageService.getUser();
@@ -186,7 +188,17 @@ export class ManagerCalendarComponent implements OnInit {
 
 
   goToExaminate() {
+    // console.log("date",this.selectedEvent.meta?.appointment.date! > new Date())
+    // if(this.selectedEvent.meta?.appointment.date! > new Date()){
+    //   this.ts.error("You cannot examine appointment before start","Error")
+    //   this.canClickExamination = false
+    //   return
+    // }
     this.examinationService.saveCurrentId(this.selectedEvent.meta?.appointment.id!)
     this.router.navigate(['examination'])
+  }
+
+  monthShow() {
+    this.monthView  = !this.monthView;
   }
 }

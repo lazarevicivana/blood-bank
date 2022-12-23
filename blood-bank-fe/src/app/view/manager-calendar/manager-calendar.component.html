@@ -18,6 +18,9 @@
     <button class="button-group__button" (click)="handleNext()">
       NEXT WEEK
     </button>
+    <button class="button-group__button" (click)="monthShow()">
+      MONTH
+    </button>
   </div>
   <div class="date-range">
     <span
@@ -27,7 +30,7 @@
   </div>
   <div class="button-group">
     <button class="button-group__button-app"
-            id="examinate"
+            id="examine"
             [disabled]="!canClickExamination"
             (click)="goToExaminate()"
     >EXAMINE</button>
@@ -42,7 +45,7 @@
 </div>
 
 <div class="calendar-wrapper">
-  <mwl-calendar-week-view
+  <mwl-calendar-week-view *ngIf="!monthView"
     [viewDate]="viewDate"
     [daysInWeek]="daysInWeek"
     [dayStartHour]="dayStartHour"
@@ -53,4 +56,8 @@
     (eventClicked)="onEventClick($event)"
   >
   </mwl-calendar-week-view>
+  <mwl-calendar-month-view *ngIf="monthView"
+    [viewDate]="viewDate"
+    [events]="appointments">
+  </mwl-calendar-month-view>
 </div>
