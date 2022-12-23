@@ -51,6 +51,8 @@ export class CustomerCalendarComponent implements OnInit {
   canClickCancel:boolean = false
   canClickExamination:boolean = false
   private readonly user: User;
+  monthView: boolean = false
+  viewButton:string = "MONTH VIEW"
   selectedEvent: CalendarEvent<{ appointment: ScheduleAppCustomer }> = {
     title: null as any,
     start: null as any,
@@ -154,6 +156,17 @@ export class CustomerCalendarComponent implements OnInit {
     let selectedMinute:number = Number(selectedTime.slice(3,5))
     selectedTimeDate.set({hour:selectedHours,minute:selectedMinute})
     return selectedTimeDate.toDate()
+  }
+  monthShow() {
+    this.monthView = !this.monthView;
+    switch (this.viewButton) {
+      case 'MONTH VIEW':
+        this.viewButton = 'WEEK VIEW'
+        break
+      case 'WEEK VIEW':
+        this.viewButton = 'MONTH VIEW'
+        break
+    }
   }
   private paint(){
     let elems = document.querySelectorAll('div.cal-header span')

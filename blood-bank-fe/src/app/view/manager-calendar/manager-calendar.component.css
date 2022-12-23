@@ -4,7 +4,6 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
   overflow-y: scroll;
   height: 90%;
-  color: transparent;
 }
 .event__title {
   white-space: pre-wrap;
