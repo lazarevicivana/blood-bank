@@ -9,6 +9,7 @@ import ftn.uns.ac.rs.bloodbank.mapper.ScheduleAppointmentMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
@@ -23,12 +24,14 @@ public class ScheduleAppointmentController {
     private final ScheduleAppointmentMapper appointmentMapper;
 
     @PostMapping()
+     @PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
     public ResponseEntity<String> createAppointment(@RequestBody ScheduleAppointmentRequest appointmentRequest){
         _scheduleAppointmentService.createScheduleAppointment(appointmentRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping()
+    @PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
     public ResponseEntity<List<ScheduleAppointmentResponse>> getAllScheduleAppointments(){
         var appointments = _scheduleAppointmentService.getAll()
                 .stream()
@@ -37,6 +40,7 @@ public class ScheduleAppointmentController {
         return ResponseEntity.ok(appointments);
     }
     @GetMapping(path = "/examination/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN')")
     public ResponseEntity<ScheduleAppointmentExaminationDto> getScheduledAppointmentForExamination(@PathVariable("id") @NotNull UUID id){
         var app = _scheduleAppointmentService.getScheduledAppointment(id);
         var mappedAppointment = appointmentMapper.ScheduleToScheduleExaminationDto(app);
@@ -44,6 +48,7 @@ public class ScheduleAppointmentController {
     }
 
     @DeleteMapping(path = "/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
     public ResponseEntity<?> cancelScheduledAppointment(@PathVariable("id") @NotNull UUID id){
         _scheduleAppointmentService.cancelScheduledAppointment(id);
         return ResponseEntity.noContent().build();
