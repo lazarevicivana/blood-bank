@@ -101,11 +101,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   onSignOut() {
-    this.tkStorage.signOut();
-    this.router.navigateByUrl("").then(value => {
-        window.location.reload();
-      }
-    )
+    this.router.navigate(['sign-out'])
   }
 
   firstLogIn()

@@ -1,7 +1,5 @@
 package ftn.uns.ac.rs.bloodbank.appointment.controller;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentExaminationDto;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentResponse;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.*;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.appointment.service.ScheduleAppointmentService;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
@@ -41,6 +39,24 @@ public class ScheduleAppointmentController {
         var app = _scheduleAppointmentService.getScheduledAppointment(id);
         var mappedAppointment = appointmentMapper.ScheduleToScheduleExaminationDto(app);
         return ResponseEntity.ok(mappedAppointment);
+    }
+    @GetMapping(path = "/center/{id}")
+    public ResponseEntity<List<ScheduleAppResponse>> findScheduleAppointmentsCenterId(@PathVariable("id") @NotNull UUID id){
+        var app = _scheduleAppointmentService.findScheduleAppointmentsCenterId(id);
+        var appointments = app
+                .stream()
+                .map(appointmentMapper::ScheduleToScheduleAppResponse)
+                .toList();
+        return ResponseEntity.ok(appointments);
+    }
+    @GetMapping(path = "/customer/{id}")
+    public ResponseEntity<List<ScheduleAppCustomer>> findScheduleAppointmentsCustomerId(@PathVariable("id") @NotNull UUID id){
+        var app = _scheduleAppointmentService.findScheduleAppointmentsCustomerId(id);
+        var appointments = app
+                .stream()
+                .map(appointmentMapper::ScheduleToScheduleCustomerAppResponse)
+                .toList();
+        return ResponseEntity.ok(appointments);
     }
 
 }

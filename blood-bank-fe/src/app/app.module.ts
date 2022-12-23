@@ -34,7 +34,11 @@ import { CenterDonorsComponent } from './view/customer/center-donors/center-dono
 import { ExaminationComponent } from './view/examination/examination.component';
 import {MaterialModule} from "./material/material.module";
 import { CreateSystemAdminComponent } from './view/system-administrator/create-system-admin/create-system-admin.component';
-import {CalendarViewModule} from "./view/calendar/calendar-view.module";
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
+import { ManagerCalendarComponent } from './view/manager-calendar/manager-calendar.component';
+
+
 
 
 @NgModule({
@@ -49,7 +53,8 @@ import {CalendarViewModule} from "./view/calendar/calendar-view.module";
         DonorCardComponent,
         CenterDonorsComponent,
         ExaminationComponent,
-        CreateSystemAdminComponent
+        CreateSystemAdminComponent,
+        ManagerCalendarComponent
     ],
     imports: [
         BrowserModule,
@@ -77,7 +82,10 @@ import {CalendarViewModule} from "./view/calendar/calendar-view.module";
         MatDividerModule,
         QuestionnaireModule,
         MaterialModule,
-        CalendarViewModule
+        CalendarModule.forRoot({
+          provide: DateAdapter,
+          useFactory: adapterFactory,
+        }),
     ],
     providers: [authInterceptorProviders],
     exports: [],

@@ -1,9 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.mapper;
 
-import ftn.uns.ac.rs.bloodbank.appointment.dto.MedicalStaffResponse;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentExaminationDto;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentRequest;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.ScheduleAppointmentResponse;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.*;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -23,6 +20,12 @@ public class ScheduleAppointmentMapper {
 
     public ScheduleAppointmentResponse ScheduleToScheduleResponseDto(ScheduleAppointment scheduleAppointment){
         return modelMapper.map(scheduleAppointment, ScheduleAppointmentResponse.class);
+    }
+    public ScheduleAppResponse ScheduleToScheduleAppResponse(ScheduleAppointment scheduleAppointment){
+        return modelMapper.map(scheduleAppointment, ScheduleAppResponse.class);
+    }
+    public ScheduleAppCustomer ScheduleToScheduleCustomerAppResponse(ScheduleAppointment scheduleAppointment){
+        return modelMapper.map(scheduleAppointment, ScheduleAppCustomer.class);
     }
     public ScheduleAppointmentExaminationDto ScheduleToScheduleExaminationDto(ScheduleAppointment scheduleAppointment){
         return modelMapper.map(scheduleAppointment, ScheduleAppointmentExaminationDto.class);

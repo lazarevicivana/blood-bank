@@ -20,7 +20,8 @@ import {
 } from "./view/system-administrator/create-system-admin/create-system-admin.component";
 import {ExaminationComponent} from "./view/examination/examination.component";
 import {FirstLoginComponent} from "./components/first-login/first-login.component";
-import {CalendarViewComponent} from "./view/calendar/calendar-view/calendar-view.component";
+import {ManagerCalendarComponent} from "./view/manager-calendar/manager-calendar.component";
+import {SignOutComponent} from "./components/sign-out/sign-out.component";
 
 
 const routes: Routes = [
@@ -33,14 +34,15 @@ const routes: Routes = [
   { path:'',component:LoginComponent},
   { path:'admin-center-profile',component:CenterAdminProfileComponent},
   { path:'add-appointment',component:CreateAppointmentComponent},
-  {path:'questionnaire', component: QuestionnaireComponent},
+  { path:'questionnaire', component: QuestionnaireComponent},
   { path:'all-donors',component:AllDonorsComponent},
   { path:'center-donors',component:CenterDonorsComponent},
   { path:'customer-appointment-create',component:CustomerAppointmentCreateComponent},
   { path:'system-admin-create',component:CreateSystemAdminComponent},
   { path:'examination',component:ExaminationComponent},
   { path:'first-login',component:FirstLoginComponent},
-  {path:'calendar-view',component:CalendarViewComponent}
+  { path:'calendar',component:ManagerCalendarComponent},
+  { path:'sign-out',component:SignOutComponent}
 ];
 
 @NgModule({
