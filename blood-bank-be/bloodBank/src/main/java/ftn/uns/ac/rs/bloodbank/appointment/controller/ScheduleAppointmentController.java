@@ -59,4 +59,10 @@ public class ScheduleAppointmentController {
         return ResponseEntity.ok(appointments);
     }
 
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<?> cancelScheduledAppointment(@PathVariable("id") @NotNull UUID id){
+        _scheduleAppointmentService.cancelScheduledAppointment(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

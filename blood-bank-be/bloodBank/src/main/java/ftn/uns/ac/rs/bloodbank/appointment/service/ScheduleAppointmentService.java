@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,15 +34,26 @@ public class ScheduleAppointmentService {
         if(!checkIfDonatingIsPossible(customer.getId()))
             throw new ApiBadRequestException("You are have already donated blood in the last six months!");
        customerFormService.checkIfQuestionnaireIsFilledNow(customer.getId());
-       appointmentService.UpdateAppointmentDelete(appointment.getId());
         var scheduleAppointment = ScheduleAppointment
                 .builder()
                 .appointment(appointment)
                 .customer(customer)
                 .status(AppointmentStatus.PENDING)
                 .build();
+        if (!checkIfCustomerAlreadyHasThatAppointment(scheduleAppointment))
+            throw new ApiBadRequestException("You already have an appointment in selected center in the same time!");
+        appointmentService.UpdateAppointmentDelete(appointment.getId());
         scheduleAppointmentRepository.save(scheduleAppointment);
         generateQRCodeAndSendEmail(scheduleAppointment);
+    }
+
+    private boolean checkIfCustomerAlreadyHasThatAppointment(ScheduleAppointment request) {
+    var scheduledAppointments = scheduleAppointmentRepository.findScheduleAppointmentsCustomerId(request.getCustomer().getId());
+    var filteredList = scheduledAppointments.stream().filter( x -> (
+            x.getAppointment().getDate().isEqual(request.getAppointment().getDate()) &&
+                    x.getAppointment().getStartTime().equals(request.getAppointment().getStartTime())
+                    && x.getAppointment().getCenter().getId() == request.getAppointment().getCenter().getId())).toList();
+    return filteredList.isEmpty();
     }
 
     private boolean checkIfDonatingIsPossible(UUID id) {
@@ -52,8 +64,10 @@ public class ScheduleAppointmentService {
             return true;
        var lastAppointments =  appointments.stream()
                 .filter(x -> x.getStatus() == AppointmentStatus.ACCEPTED
+                        && (x.getAppointment().getDate()
+                                            .isAfter(currentDateMinus6Months)
                         && x.getAppointment().getDate()
-                                            .isAfter(currentDateMinus6Months)).toList();
+                        .isBefore(currentDate))).toList();
         return lastAppointments.isEmpty();
     }
 
@@ -89,4 +103,18 @@ public class ScheduleAppointmentService {
     public List<ScheduleAppointment> getAll(){
         return scheduleAppointmentRepository.findAll();
     }
+
+    public void cancelScheduledAppointment(UUID id) {
+        var scheduledAppointment = scheduleAppointmentRepository.findById(id)
+                .orElseThrow(()->new ApiNotFoundException("Scheduled appointment doesn't exists!"));
+        var today = Calendar.getInstance();
+        var now = LocalDateTime.now();
+        var tomorrow = now.plusDays(1);
+        var date = scheduledAppointment.getAppointment().getDate();
+        if(!date.isAfter(tomorrow))
+            throw new ApiBadRequestException("You can' reschedule an appointment if it's within 24h!");
+        scheduleAppointmentRepository.deleteById(id);
+        appointmentService.UpdateAppointmentDelete(scheduledAppointment.getAppointment().getId());
+    }
+
 }

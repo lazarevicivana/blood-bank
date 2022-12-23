@@ -60,7 +60,6 @@ public class AppointmentService {
     }
 
     public Appointment getAppointmentOfCenter(LocalDateTime selectedTime, UUID id){
-        var center = centerRepository.findById(id);
         var appointments = appointmentRepository.getAllAppointmentsForCenter(id);
         for (var appointment: appointments) {
             if(checkAppointmentTime(appointment,selectedTime)){
@@ -74,7 +73,7 @@ public class AppointmentService {
     public boolean checkAppointmentTime(Appointment appointment, LocalDateTime selectedTime){
         if(appointment.getDate().getYear() == selectedTime.getYear() && appointment.getDate().getDayOfMonth() == selectedTime.getDayOfMonth()
                 && appointment.getDate().getMonth() == selectedTime.getMonth()
-                && appointment.getStartTime().isBefore(selectedTime.toLocalTime()) && appointment.getFinishTime().isAfter(selectedTime.toLocalTime()) ){
+                && (appointment.getStartTime().isBefore(selectedTime.toLocalTime()) || appointment.getStartTime().equals(selectedTime.toLocalTime())) && (appointment.getFinishTime().isAfter(selectedTime.toLocalTime()) || appointment.getFinishTime().equals(selectedTime.toLocalTime())) ){
             return true;
         }
         return false;
@@ -92,15 +91,17 @@ public class AppointmentService {
         }
     }
     public Appointment findByID(UUID appointmentId){
-        var appointment = appointmentRepository.findById(appointmentId)
+        return appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new ApiNotFoundException("Appointment not found"));
-        return appointment;
     }
 
     public void UpdateAppointmentDelete(UUID id) {
         var appointment = appointmentRepository.findById(id)
                 .orElseThrow(() -> new ApiNotFoundException("Appointment not found!"));
-        appointment.setDeleted(true);
+        if(appointment.getDeleted())
+            appointment.setDeleted(false);
+        else
+            appointment.setDeleted(true);
         appointmentRepository.save(appointment);
     }
 }

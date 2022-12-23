@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from "../../../services/token-storage.service";
-import {UserToken} from "../../../model/UserToken";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {CenterAdministratorService} from "../../../services/center-administrator.service";
 import {Center} from "../../../model/Center";
-import * as moment from "moment/moment";
 import {AppointmentService} from "../../../services/appointment.service";
-import {Appointment} from "../../../model/Appointment";
 import {AppointmentRequest} from "../../../model/Requests/AppointmentRequest";
 import {Router} from "@angular/router";
 import {User} from "../../../model/User";

@@ -30,6 +30,7 @@ export class TokenStorageService {
     let user:string = atob(token.split('.')[1]);
     let userObject = JSON.parse(user)
     let userTk:User = new User(userObject.id,userObject.role,userObject.firstLogIn);
+    console.log(userObject)
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(userTk));
   }

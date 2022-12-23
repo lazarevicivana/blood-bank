@@ -133,7 +133,10 @@ export class QuestionnaireComponent implements OnInit {
                 next: res=>{
 
                   this.toast.success("You have successfully scheduled appointment!","Success");
-            }
+                },
+                error: err => {
+                  this.toast.error(err.error.message,"Error")
+                }
               })
           }
           this.router.navigate(['/facilities'])
