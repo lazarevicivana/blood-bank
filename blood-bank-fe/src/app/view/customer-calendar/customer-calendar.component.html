@@ -18,6 +18,9 @@
     <button class="button-group__button" (click)="handleNext()">
       NEXT WEEK
     </button>
+    <button class="button-group__button" (click)="monthShow()">
+      {{viewButton}}
+    </button>
   </div>
   <div class="date-range">
     <span
@@ -37,15 +40,20 @@
 </div>
 
 <div class="calendar-wrapper">
-  <mwl-calendar-week-view
-    [viewDate]="viewDate"
-    [daysInWeek]="daysInWeek"
-    [dayStartHour]="dayStartHour"
-    [dayEndHour]="dayEndHour"
-    [hourSegmentHeight]="hourSegmentHeight"
-    [events]="appointments"
-    [eventTitleTemplate]="customTemplate"
-    (eventClicked)="onEventClick($event)"
+  <mwl-calendar-week-view *ngIf="!monthView"
+                          [viewDate]="viewDate"
+                          [daysInWeek]="daysInWeek"
+                          [dayStartHour]="dayStartHour"
+                          [dayEndHour]="dayEndHour"
+                          [hourSegmentHeight]="hourSegmentHeight"
+                          [events]="appointments"
+                          [eventTitleTemplate]="customTemplate"
+                          (eventClicked)="onEventClick($event)"
   >
   </mwl-calendar-week-view>
+  <mwl-calendar-month-view *ngIf="monthView"
+                           [viewDate]="viewDate"
+                           [events]="appointments"
+                           [weekStartsOn]="dayStartHour">
+  </mwl-calendar-month-view>
 </div>
