@@ -3,7 +3,6 @@ package ftn.uns.ac.rs.bloodbank.appointment.controller;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentRequest;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.service.AppointmentService;
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.mapper.AppointmentMapper;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.AllArgsConstructor;
