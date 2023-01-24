@@ -120,7 +120,7 @@ public class ScheduleAppointmentService {
         var tomorrow = now.plusDays(1);
         var date = scheduledAppointment.getAppointment().getDate();
         if(!date.isAfter(tomorrow))
-            throw new ApiBadRequestException("You can' reschedule an appointment if it's within 24h!");
+            throw new ApiBadRequestException("You can't reschedule an appointment if it's within 24h!");
         scheduleAppointmentRepository.deleteById(id);
         appointmentService.UpdateAppointmentDelete(scheduledAppointment.getAppointment().getId());
     }
