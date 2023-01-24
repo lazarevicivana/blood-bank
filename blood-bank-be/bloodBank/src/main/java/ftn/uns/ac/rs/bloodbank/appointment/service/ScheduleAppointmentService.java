@@ -9,6 +9,7 @@ import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -93,6 +94,7 @@ public class ScheduleAppointmentService {
                 .orElseThrow(()-> new ApiNotFoundException("Appointment not found"));
         return app;
     }
+    @Cacheable("schedule-appointments-for-center")
     public List<ScheduleAppointment> findScheduleAppointmentsCenterId(UUID centerId){
         return scheduleAppointmentRepository.findScheduleAppointmentsCenterId(centerId);
     }

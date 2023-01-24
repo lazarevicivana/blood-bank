@@ -8,6 +8,7 @@ import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,8 @@ public class CenterAdminService {
     private final CenterRepository centerRepository;
     private final MapperService mapperService;
     private PasswordEncoder encoder;
+    @Cacheable("center-for-admin")
     public Center GetAdminCenter(UUID adminID){
-
         return centerAdminRepository.GetAdminCenter(adminID);
     }
 
