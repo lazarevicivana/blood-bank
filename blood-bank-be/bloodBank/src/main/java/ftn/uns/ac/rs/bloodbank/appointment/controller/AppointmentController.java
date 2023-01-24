@@ -4,7 +4,6 @@ import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentRequest;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.service.AppointmentService;
 import ftn.uns.ac.rs.bloodbank.mapper.AppointmentMapper;
-import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,7 +58,7 @@ public class AppointmentController {
     @PostMapping(path = "/appointment-of-center/{id}")
     @PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
     public ResponseEntity<AppointmentResponse> getAppointmentOfCenter(@RequestBody LocalDateTime selectedTime, @NotNull @PathVariable("id") UUID id){
-        var center = appointmentMapper.AppointmentToAppointmentDto(appointmentService.getAppointmentOfCenter(selectedTime,id));
+        var center = appointmentMapper.AppointmentToAppointmentDto(appointmentService.getAppointmentsForCenter(selectedTime,id));
         return ResponseEntity.ok(center);
     }
 }

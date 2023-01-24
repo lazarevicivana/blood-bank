@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
+
 import javax.persistence.LockModeType;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -72,7 +72,7 @@ public class AppointmentService {
                         && !a.getDeleted()).toList();
     }
 
-    public Appointment getAppointmentOfCenter(LocalDateTime selectedTime, UUID id){
+    public Appointment getAppointmentsForCenter(LocalDateTime selectedTime, UUID id){
         var appointments = appointmentRepository.getAllAppointmentsForCenter(id);
         for (var appointment: appointments) {
             if(checkAppointmentTime(appointment,selectedTime)){

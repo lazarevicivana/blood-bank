@@ -36,9 +36,6 @@ public class Appointment {
     private LocalTime startTime;
     private LocalTime finishTime;
     private Boolean deleted = false;
-    @Version
-    @Column(name = "version", nullable = false)
-    private Long version = 1L;
     public boolean isOverlappingDate(@NonNull Appointment other) {
         if (!other.getDate().toLocalDate().isEqual(date.toLocalDate())) {
             return false;
