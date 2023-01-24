@@ -200,7 +200,7 @@ insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('f46800de-6380-11ed-81ce-0242ac120002','GOLD','You have 25% discharge in our ambulances.',50);
 
 
-insert into loyalty_program(id,current_points,customer_id,predefined_loyalty_program_id ) values ('ae068642-6380-11ed-81ce-0242ac120002',30,'34713840-ddf3-49b2-9cae-47334cb6b31b','abc12a02-62b6-11ed-9b6a-0242ac120002')
+insert into loyalty_program(id,current_points,customer_id,predefined_loyalty_program_id ) values ('ae068642-6380-11ed-81ce-0242ac120002',30,'34713840-ddf3-49b2-9cae-47334cb6b31b','abc12a02-62b6-11ed-9b6a-0242ac120002');
 
 --equipment
 insert into equipment (id, name) values ('125967b5-1dbd-4f55-ba78-2615830e3900','Gauze');

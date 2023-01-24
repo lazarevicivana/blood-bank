@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Inject, ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
 import {TokenStorageService} from "../../services/token-storage.service";
@@ -17,6 +17,7 @@ import {Router} from "@angular/router";
 import {ScheduleAppCustomer} from "../../model/ScheduleAppCustomer";
 import {DialogSignComponent} from "../../components/dialog-sign/dialog-sign.component";
 import {MatDialog} from "@angular/material/dialog";
+import { DOCUMENT } from '@angular/common';
 import {CancelAppointmentDialogComponent} from "../cancel-appointment-dialog/cancel-appointment-dialog.component";
 
 const colors: Record<string, EventColor> = {
@@ -24,8 +25,9 @@ const colors: Record<string, EventColor> = {
     primary: '#ad2121',
     secondary: '#FAE3E3',
   },
+
   blue: {
-    primary: '#0E4C92',
+    primary: '#3c73b9',
     secondary: '#cbcbd226',
   },
   green: {
@@ -33,10 +35,14 @@ const colors: Record<string, EventColor> = {
     secondary: '#e8fde7',
   },
 };
+
 @Component({
   selector: 'app-customer-calendar',
   templateUrl: './customer-calendar.component.html',
-  styleUrls: ['./customer-calendar.component.css']
+  //put calendar.scss for dark
+  styleUrls: ['./customer-calendar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class CustomerCalendarComponent implements OnInit {
   viewDate: Date;
@@ -60,8 +66,10 @@ export class CustomerCalendarComponent implements OnInit {
     end: null as any,
     meta: null as any,
   };
+  private readonly darkThemeClass = 'dark-theme';
 
-  constructor(public dialog: MatDialog,private tokenStorageService: TokenStorageService,private adminCenterService:CenterAdminService
+  // @ts-ignore
+  constructor(@Inject(DOCUMENT)private document,public dialog: MatDialog,private tokenStorageService: TokenStorageService,private adminCenterService:CenterAdminService
     ,private appService:AppointmentService,
               private readonly scheduleAppointmentService:ScheduleAppointmentService,
               private router:Router) {
@@ -71,26 +79,32 @@ export class CustomerCalendarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.fetchData()
+    //for dark
+    // this.document.body.classList.add(this.darkThemeClass);
+  }
+  ngOnDestroy(): void {
+    //for dark
+    // this.document.body.classList.remove(this.darkThemeClass);
   }
   async handleCurrent(): Promise<void> {
     this.viewDate = new Date();
     this.viewDateEnd = addDays(this.viewDate, 6);
     await new Promise(resolve => setTimeout(resolve, 100));
-    this.paint()
+    // this.paint()
   }
 
   async handlePrevious(): Promise<void> {
     this.viewDate = subDays(this.viewDate, 7);
     this.viewDateEnd = addDays(this.viewDate, 6);
     await new Promise(resolve => setTimeout(resolve, 100));
-    this.paint()
+    // this.paint()
   }
 
   async handleNext(): Promise<void> {
     this.viewDate = addDays(this.viewDate, 7);
     this.viewDateEnd = addDays(this.viewDate, 6);
     await new Promise(resolve => setTimeout(resolve, 100));
-    this.paint()
+    // this.paint()
   }
   onEventClick(event: any): void {
     this.selectedEvent.color = colors['blue'];
@@ -143,7 +157,7 @@ export class CustomerCalendarComponent implements OnInit {
         //@ts-ignore
         (response: CalendarEvent<{ appointment: Appointment }>[]) => {
           this.appointments = response;
-          this.paint()
+          // this.paint()
         },
         (error: HttpErrorResponse) => {
           console.log(error.message);
