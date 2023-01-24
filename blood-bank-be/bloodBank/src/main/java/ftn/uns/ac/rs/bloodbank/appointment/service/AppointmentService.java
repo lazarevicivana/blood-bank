@@ -10,8 +10,10 @@ import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 
 import javax.transaction.Transactional;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -24,8 +26,11 @@ public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final CenterAdminRepository centerAdminRepository;
     private final CenterRepository centerRepository;
-    @Transactional
+    @Transactional()
     public void createAppointment(AppointmentRequest appointmentRequest){
+        if(appointmentRequest == null){
+            throw new ApiBadRequestException("Bad request appointment is null!");
+        }
         var appointment = Appointment
                 .builder()
                 .startTime(appointmentRequest.getStartTime())
@@ -33,11 +38,12 @@ public class AppointmentService {
                 .date(appointmentRequest.getDate())
                 .deleted(false)
                 .build();
-        validateDate(appointment);
         Set<CenterAdministrator> staff = getCenterAdministrators(appointmentRequest);
         appointment.setMedicalStaffs(staff);
         var center =centerRepository.findById(appointmentRequest.getCenterId()).orElseThrow(() -> new ApiBadRequestException("Center doesnt exist!"));
         center.addAppointment(appointment);
+        validateDate(appointment);
+        isOverlappingDate(appointment);
         appointmentRepository.save(appointment);
     }
     private Set<CenterAdministrator> getCenterAdministrators(AppointmentRequest appointmentRequest) {
@@ -56,7 +62,8 @@ public class AppointmentService {
     public List<Appointment> getFutureAppointments(UUID centerId){
         var currentDate = LocalDateTime.now();
         return appointmentRepository.getAllAppointmentsForCenter(centerId)
-                .stream().filter(a -> a.getDate().isAfter(currentDate) && a.getDeleted()!= true).toList();
+                .stream().filter(a -> a.getDate().isAfter(currentDate)
+                        && !a.getDeleted()).toList();
     }
 
     public Appointment getAppointmentOfCenter(LocalDateTime selectedTime, UUID id){
@@ -64,7 +71,6 @@ public class AppointmentService {
         for (var appointment: appointments) {
             if(checkAppointmentTime(appointment,selectedTime)){
                 return appointment;
-
             }
         }
 
@@ -83,11 +89,19 @@ public class AppointmentService {
         return appointmentRepository.getMedicalStaffsForAppointment(appointmentId);
     }
     private void validateDate(Appointment appointment){
-        if(!appointment.isValidDate()){
+        if(appointment.isValidDate()){
             throw new ApiBadRequestException("Please select upcoming date!");
         }
-        if(!appointment.isValidDateTime()){
+        if(appointment.isValidDateTime()){
             throw new ApiBadRequestException("Wrong start time and end time range!");
+        }
+    }
+    private void isOverlappingDate(Appointment appointment){
+        var appointments = this.appointmentRepository
+                .getAllAppointmentsForCenter(appointment.getCenter().getId());
+        var isOverlapping = appointments.stream().anyMatch(appointment::isOverlappingDate);
+        if(isOverlapping){
+            throw new ApiBadRequestException("Appointment date overlaps with other appointments date!");
         }
     }
     public Appointment findByID(UUID appointmentId){

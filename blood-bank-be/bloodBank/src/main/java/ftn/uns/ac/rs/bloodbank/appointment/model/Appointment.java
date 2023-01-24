@@ -36,15 +36,16 @@ public class Appointment {
     private LocalTime startTime;
     private LocalTime finishTime;
     private Boolean deleted = false;
-    public boolean isValidDate(){
-        return !date.isBefore(LocalDateTime.now());
+    public boolean isOverlappingDate(@NonNull Appointment other) {
+        if (!other.getDate().toLocalDate().isEqual(date.toLocalDate())) {
+            return false;
+        }
+        return !(other.getFinishTime().isBefore(startTime) || other.getStartTime().isAfter(finishTime));
     }
-    public boolean isValidDateInput(@NonNull LocalDateTime localDateTime){
-        return date.getYear() == localDateTime.getYear()
-                && date.getMonth() == localDateTime.getMonth()
-                && date.getDayOfMonth() == localDateTime.getDayOfMonth();
+    public boolean isValidDate(){
+        return date.isBefore(LocalDateTime.now());
     }
     public boolean isValidDateTime(){
-        return startTime.isBefore(finishTime);
+        return !startTime.isBefore(finishTime);
     }
 }
