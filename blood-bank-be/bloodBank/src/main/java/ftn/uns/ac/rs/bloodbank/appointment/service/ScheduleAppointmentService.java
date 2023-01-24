@@ -11,6 +11,7 @@ import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
 import javax.persistence.LockModeType;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -27,7 +28,8 @@ public class ScheduleAppointmentService {
     private final CustomerFormService customerFormService;
     private final CustomerService customerService;
     private static final String QR_FILE_PATH = "./src/main/resources/QR/qr-code.png";
-    @Transactional
+    @Transactional()
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public void createScheduleAppointment(ScheduleAppointmentRequest request)
     {
         var appointment = appointmentService.findByID(request.getAppointment_id());
@@ -96,6 +98,7 @@ public class ScheduleAppointmentService {
                 .orElseThrow(()-> new ApiNotFoundException("Appointment not found"));
         return app;
     }
+    @Cacheable("schedule-appointments-for-center")
     public List<ScheduleAppointment> findScheduleAppointmentsCenterId(UUID centerId){
         return scheduleAppointmentRepository.findScheduleAppointmentsCenterId(centerId);
     }
