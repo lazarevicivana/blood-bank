@@ -13,6 +13,7 @@ import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiConflictException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -30,11 +31,11 @@ public class CenterService {
 
     private final AppointmentService appointmentService;
     private final BloodBankRepository bloodBankRepository;
+    @Cacheable("all-centers")
     public List<Center> getAllCenters(){
-
         return centerRepository.findAll();
     }
-
+    @Cacheable("centers-with-appointment")
     public List<Center> getAllCentersWithAppointment(LocalDateTime selectedTime){
         var allCenters = centerRepository.findAll();
         List<Center> filterdCenters = new ArrayList<>();
@@ -132,12 +133,9 @@ public class CenterService {
         return centerRepository.GetAdmins(id);
     }
     public List<CenterAdministrator> getOtherCenterAdmins(UUID centerId,UUID adminId){
-            var admin = centerAdminRepository.findById(adminId)
-                    .orElseThrow(() -> new ApiNotFoundException());
-            var otherAdmins = getAdminsForCenter(centerId)
-                    .stream()
-                    .filter((x) -> x.getId() != adminId)
-                    .toList();
-            return otherAdmins;
+        return getAdminsForCenter(centerId)
+                .stream()
+                .filter((x) -> x.getId() != adminId)
+                .toList();
     }
 }

@@ -9,6 +9,8 @@ import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final CenterAdminRepository centerAdminRepository;
@@ -61,10 +63,11 @@ public class AppointmentService {
                                 new ApiBadRequestException("Wrong staff id provided!")))
                         .collect(Collectors.toSet());
     }
-
+    @Cacheable("appointments-for-center")
     public List<Appointment> getAllAppointmentsForCenter(UUID centerId){
         return appointmentRepository.getAllAppointmentsForCenter(centerId);
     }
+    @Cacheable("future-appointments")
     public List<Appointment> getFutureAppointments(UUID centerId){
         var currentDate = LocalDateTime.now();
         return appointmentRepository.getAllAppointmentsForCenter(centerId)
