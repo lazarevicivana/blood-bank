@@ -28,7 +28,7 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/center/{centerId}")
-    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN','ROLE_CUSTOMER')")
     List<AppointmentResponse> getAllAppointmentsForCenter(@NotNull @PathVariable("centerId") UUID centerId){
         return appointmentService.getAllAppointmentsForCenter(centerId).stream()
                 .map(appointment -> {
