@@ -5,7 +5,7 @@
             https://www.ehcache.org/schema/ehcache-core-3.7.xsd">
 
     <!-- Persistent cache directory -->
-    <persistence directory="cache-example/cache"/>
+    <persistence directory="cache"/>
 
     <!-- Default cache template -->
     <cache-template name="default">
@@ -47,6 +47,7 @@
         <value-type>java.util.ArrayList</value-type>
         <resources>
             <heap>10</heap>
+            <disk persistent="true" unit="MB">20</disk>
         </resources>
     </cache>
     <cache alias="centers-with-appointment" uses-template="default">
@@ -54,6 +55,7 @@
         <value-type>java.util.ArrayList</value-type>
         <resources>
             <heap>10</heap>
+            <disk persistent="true" unit="MB">20</disk>
         </resources>
     </cache>
     <cache alias="appointments-for-center" uses-template="default">
@@ -68,6 +70,7 @@
         <value-type>java.util.ArrayList</value-type>
         <resources>
             <heap>20</heap>
+            <disk persistent="true" unit="MB">20</disk>
         </resources>
     </cache>
     <cache alias="center-for-admin" uses-template="default">
@@ -75,6 +78,7 @@
         <value-type>ftn.uns.ac.rs.bloodbank.center.model.Center</value-type>
         <resources>
             <heap>2</heap>
+            <disk persistent="true" unit="MB">20</disk>
         </resources>
     </cache>
 

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.UUID;
 @Entity(name = "CenterAddress")
 @Table(name = "center_address")
@@ -13,7 +14,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CenterAddress {
+public class CenterAddress implements Serializable {
     @Id
     @GeneratedValue
     private UUID id;

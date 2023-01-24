@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.UUID;
@@ -23,7 +24,7 @@ import java.util.UUID;
 @Setter
 @Builder
 @DiscriminatorColumn(name="user_role", discriminatorType = DiscriminatorType.INTEGER)
-public class ApplicationUser implements UserDetails {
+public class ApplicationUser implements UserDetails, Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
