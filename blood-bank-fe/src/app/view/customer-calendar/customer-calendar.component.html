@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div class="calendar-wrapper">
+<div class="calendar-wrapper" >
   <mwl-calendar-week-view *ngIf="!monthView"
                           [viewDate]="viewDate"
                           [daysInWeek]="daysInWeek"
@@ -49,6 +49,7 @@
                           [events]="appointments"
                           [eventTitleTemplate]="customTemplate"
                           (eventClicked)="onEventClick($event)"
+                          
   >
   </mwl-calendar-week-view>
   <mwl-calendar-month-view *ngIf="monthView"

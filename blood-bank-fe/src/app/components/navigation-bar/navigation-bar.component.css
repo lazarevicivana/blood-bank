@@ -7,7 +7,7 @@
 }
 body{
   min-height: 100vh;
-  background: #fff;
+  background: #394046;
 }
 .toggle{
   font-size: 	25px;
@@ -33,8 +33,9 @@ body{
   top: -20px;
   height: 20px;
   width: 100%;
-  background: #fff;
+  /*background: #394046;*/
   display: none;
+  background: #fff;
 }
 .navigation ul li b:nth-child(1):before
 {
@@ -54,7 +55,8 @@ body{
   bottom: -20px;
   height: 20px;
   width: 100%;
-  background: #fff;
+  /*background: #394046;*/
+  background:#fff;
   display: none;
 
 }
@@ -178,11 +180,13 @@ body{
 
 .navigation ul li.active
 {
-  background: #fff;
+  /*background: #394046;*/
+  background:#fff
 }
 
 .navigation ul li.active a{
-  color: #333;
+  /*color: #fff;*/
+  color: #333333;
 }
 
 /*.toggle{*/
