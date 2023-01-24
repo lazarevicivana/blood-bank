@@ -44,6 +44,8 @@ public class Appointment {
     }
     public boolean isValidDate(){
         return date.isBefore(LocalDateTime.now());
+    } public boolean isDeleted(){
+        return deleted;
     }
     public boolean isValidDateTime(){
         return !startTime.isBefore(finishTime);

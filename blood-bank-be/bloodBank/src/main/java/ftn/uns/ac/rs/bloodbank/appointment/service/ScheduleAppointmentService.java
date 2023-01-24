@@ -9,6 +9,7 @@ import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
+import javax.persistence.LockModeType;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -30,7 +31,7 @@ public class ScheduleAppointmentService {
     public void createScheduleAppointment(ScheduleAppointmentRequest request)
     {
         var appointment = appointmentService.findByID(request.getAppointment_id());
-        validateAppointmentDateTime(appointment);
+        validateAppointment(appointment);
         var customer = customerService.getById(request.getCustomer_id());
         if(!checkIfDonatingIsPossible(customer.getId()))
             throw new ApiBadRequestException("You are have already donated blood in the last six months!");
@@ -72,14 +73,15 @@ public class ScheduleAppointmentService {
         return lastAppointments.isEmpty();
     }
 
-    private static void validateAppointmentDateTime(Appointment appointment) {
+    private static void validateAppointment(Appointment appointment) {
         if(appointment.isValidDate()){
             throw new ApiBadRequestException("Date is invalid");
         }
         if(appointment.isValidDateTime())
         {
             throw new ApiBadRequestException("Time is invalid");
-        }
+        }if(appointment.isDeleted())
+            throw new ApiBadRequestException("Appointment has already been scheduled");
     }
 
     private void generateQRCodeAndSendEmail(ScheduleAppointment scheduleAppointment) {
@@ -94,7 +96,6 @@ public class ScheduleAppointmentService {
                 .orElseThrow(()-> new ApiNotFoundException("Appointment not found"));
         return app;
     }
-    @Cacheable("schedule-appointments-for-center")
     public List<ScheduleAppointment> findScheduleAppointmentsCenterId(UUID centerId){
         return scheduleAppointmentRepository.findScheduleAppointmentsCenterId(centerId);
     }
