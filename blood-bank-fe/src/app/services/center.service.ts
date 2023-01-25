@@ -13,6 +13,7 @@ import {Moment} from "moment";
 export class CenterService {
   apiHost: string = 'http://localhost:8080/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private centerId:string =  "";
   constructor(private http: HttpClient) { }
   getCenter(id: string): Observable<Center> {
     return this.http.get<Center>(this.apiHost + 'api/v1/center/' + id, {headers: this.headers});
@@ -35,4 +36,11 @@ export class CenterService {
   getAllAdminsForCenter(centerId:string): Observable<MedicalStaffResponse[]>{
     return this.http.get<MedicalStaffResponse[]>(this.apiHost + `api/v1/center/admins/${centerId}`,{headers: this.headers});
   }
+  public setCenterId(id:string){
+    this.centerId = id;
+  }
+  public getCenterId(){
+    return this.centerId
+  }
+
 }

@@ -146,6 +146,12 @@
   font-weight: bold;
   line-height: 1.5rem;
 }
+.card .additional .stats div.date {
+  padding-top: 0.2rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  line-height: 0.7rem;
+}
 
 .card .additional .stats div.value.infinity {
   font-size: 2.5rem;

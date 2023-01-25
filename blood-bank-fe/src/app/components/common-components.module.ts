@@ -14,6 +14,7 @@ import {NgToastModule} from "ng-angular-popup";
 import {SignOutComponent} from "./sign-out/sign-out.component";
 import {DialogSignComponent} from "./dialog-sign/dialog-sign.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import { BloodCardComponent } from './blood-card/blood-card.component';
 
 
 @NgModule({
@@ -26,21 +27,23 @@ import {MatDialogModule} from "@angular/material/dialog";
     AppointmentFilterBarComponent,
     FirstLoginComponent,
     DialogSignComponent,
-    SignOutComponent
+    SignOutComponent,
+    BloodCardComponent
   ],
     imports: [
         CommonModule, MaterialModule, ReactiveFormsModule, MatRadioModule, FormsModule, NgToastModule, MatDialogModule
     ],
-  exports: [
-    UserCardComponent,
-    AppointmentCardComponent,
-    AllAdminsCenterComponent,
-    BloodDonorQuestionComponent,
-    ScheduleAppointmentCardComponent,
-    AppointmentFilterBarComponent,
-    SignOutComponent,
-    DialogSignComponent
-  ]
+    exports: [
+        UserCardComponent,
+        AppointmentCardComponent,
+        AllAdminsCenterComponent,
+        BloodDonorQuestionComponent,
+        ScheduleAppointmentCardComponent,
+        AppointmentFilterBarComponent,
+        SignOutComponent,
+        DialogSignComponent,
+        BloodCardComponent
+    ]
 
 })
 export class CommonComponentsModule { }

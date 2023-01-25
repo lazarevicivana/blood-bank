@@ -26,15 +26,16 @@ import {CenterAdminGuard} from "../guards/center-admin.guard";
 import {CustomerGuard} from "../guards/customer.guard";
 import {AdminGuard} from "../guards/admin.guard";
 import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
+import {LoginGuard} from "../guards/login.guard";
 
 
 const routes: Routes = [
   { path: 'facilities', component: AllCentersComponent},
-  { path: 'account', component: AccountComponent},
-  { path: 'center-profile', component: CenterProfileComponent},
+  { path: 'account', component: AccountComponent,canActivate:[LoginGuard]},
+  { path: 'center-profile', component: CenterProfileComponent,canActivate:[LoginGuard]},
   { path: 'update-center', component: UpdateCenterComponent,canActivate:[CenterAdminGuard]},
   { path: 'create-center', component: CreateCenterComponent,canActivate:[AdminGuard]},
-  { path: 'all-users', component: AllUsersComponent},
+  { path: 'all-users', component: AllUsersComponent,canActivate:[LoginGuard]},
   { path:'',component:LoginComponent},
   { path:'admin-center-profile',component:CenterAdminProfileComponent,canActivate:[CenterAdminGuard]},
   { path:'add-appointment',component:CreateAppointmentComponent,canActivate:[CenterAdminGuard]},
@@ -44,10 +45,10 @@ const routes: Routes = [
   { path:'customer-appointment-create',component:CustomerAppointmentCreateComponent},
   { path:'system-admin-create',component:CreateSystemAdminComponent,canActivate:[AdminGuard]},
   { path:'examination',component:ExaminationComponent,canActivate:[CenterAdminGuard]},
-  { path:'first-login',component:FirstLoginComponent},
+  { path:'first-login',component:FirstLoginComponent,canActivate:[LoginGuard]},
   { path:'calendar',component:ManagerCalendarComponent,canActivate:[CenterAdminGuard]},
   { path:'customer-calendar',component:CustomerCalendarComponent,canActivate:[CustomerGuard]},
-  { path:'sign-out',component:SignOutComponent}
+  { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]}
 ];
 
 @NgModule({
