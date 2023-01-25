@@ -81,5 +81,13 @@
             <disk persistent="true" unit="MB">20</disk>
         </resources>
     </cache>
+    <cache alias="available-admins" uses-template="default">
+        <key-type>java.util.UUID</key-type>
+        <value-type>java.util.ArrayList</value-type>
+        <resources>
+            <heap>2</heap>
+            <disk persistent="true" unit="MB">20</disk>
+        </resources>
+    </cache>
 
 </config>
