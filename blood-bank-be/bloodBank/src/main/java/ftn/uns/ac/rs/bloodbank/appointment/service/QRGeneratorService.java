@@ -46,6 +46,9 @@ public class QRGeneratorService {
         StringBuilder sb = new StringBuilder();
         sb.append("Scheduled appointment").append("\n");
         sb.append("\n");
+        sb.append("Id : ").append(scheduleAppointment
+                .getId());
+        sb.append("\n");
         sb.append("Donor : ").append(scheduleAppointment
                         .getCustomer()
                         .getName() + " " + scheduleAppointment

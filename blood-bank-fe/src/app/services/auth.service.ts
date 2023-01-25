@@ -20,6 +20,6 @@ export class AuthService {
     return this.http.post(AUTH_API +"/login", user,{headers: this.headers});
   }
   register(customer: CustomerRequest): Observable<any> {
-    return this.http.post(AUTH_API , customer,{headers: this.headers});
+    return this.http.post(AUTH_API, customer,{headers: this.headers});
   }
 }

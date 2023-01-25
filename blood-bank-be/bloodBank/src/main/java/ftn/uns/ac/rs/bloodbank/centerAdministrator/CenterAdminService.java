@@ -56,7 +56,7 @@ public class CenterAdminService {
         var admin = getCenterAdministrator(adminId);
         admin.setCenter(center);
     }
-
+    @Cacheable("available-admins")
     public List<CenterAdministrator> getAvailableAdmins(){
         return centerAdminRepository.GetAvailableAdmins();
     }
