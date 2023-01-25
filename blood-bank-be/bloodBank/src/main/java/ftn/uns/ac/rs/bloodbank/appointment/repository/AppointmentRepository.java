@@ -15,7 +15,7 @@ import java.util.UUID;
 public interface AppointmentRepository extends JpaRepository<Appointment, UUID> {
     @Query("SELECT c.availableAppointments from Center c where c.id = ?1")
     List<Appointment> getAllAppointmentsForCenter(UUID centerId);
-    @Query("SELECT app.medicalStaffs from Appointment app where app.id = ?1")
+    @Query("SELECT app.medicalStaffs from Appointment app where app.id = ?1 and app.deleted = false")
     List<CenterAdministrator> getMedicalStaffsForAppointment(UUID appointmentId);
 
     @QueryHints({ @QueryHint(name = "javax.persistence.lock.timeout", value ="0") })

@@ -59,6 +59,7 @@
   <mwl-calendar-month-view *ngIf="monthView"
     [viewDate]="viewDate"
     [events]="appointments"
-    [weekStartsOn]="dayStartHour">
+    [weekStartsOn]="dayStartHour" (eventClicked)="onEventClick($event)"
+  >
   </mwl-calendar-month-view>
 </div>
