@@ -48,6 +48,7 @@ public class AppointmentService {
                     .deleted(false)
                     .build();
             Set<CenterAdministrator> staff = getCenterAdministrators(appointmentRequest);
+            checkStaffAvailability(appointmentRequest);
             appointment.setMedicalStaffs(staff);
             center.addAppointment(appointment);
             validateDate(appointment);
@@ -56,6 +57,27 @@ public class AppointmentService {
         } catch (PessimisticLockingFailureException ex) {
         throw new PessimisticLockingFailureException("The record is locked by another user.");
     }
+    }
+
+    private void checkStaffAvailability(AppointmentRequest appointmentRequest){
+        Set<CenterAdministrator> staff = getCenterAdministrators(appointmentRequest);
+        var appointments = appointmentRepository.getAllAppointmentsForCenter(appointmentRequest.getCenterId());
+        for (CenterAdministrator admin:staff ) {
+            for (Appointment appointment:appointments) {
+                if(!checkAppointmentTime(appointmentRequest,appointment)){
+                    for (CenterAdministrator administrator: appointment.getMedicalStaffs()) {
+                        if(admin.getId() == administrator.getId()){
+                            throw new ApiBadRequestException("Doctor "+admin.getName()+ " "+ admin.getSurname() + " is not available in selected time.");
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    private boolean checkAppointmentTime(AppointmentRequest appointmentRequest,Appointment appointment){
+        return appointmentRequest.getStartTime().isAfter(appointment.getFinishTime()) || appointmentRequest.getFinishTime().isBefore(appointment.getStartTime());
     }
     private Set<CenterAdministrator> getCenterAdministrators(AppointmentRequest appointmentRequest) {
         return appointmentRequest.getMedicalStaffs().stream()
