@@ -21,4 +21,5 @@ public class Equipment implements Serializable {
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")
     private UUID id;
     private String name;
+
 }

@@ -63,6 +63,7 @@
         <value-type>java.util.ArrayList</value-type>
         <resources>
             <heap>20</heap>
+            <disk persistent="true" unit="MB">20</disk>
         </resources>
     </cache>
     <cache alias="schedule-appointments-for-center" uses-template="default">

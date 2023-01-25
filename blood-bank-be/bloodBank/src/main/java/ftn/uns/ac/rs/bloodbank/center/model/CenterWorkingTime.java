@@ -22,6 +22,4 @@ public class CenterWorkingTime implements Serializable {
     private UUID id;
     private LocalDateTime workingStartTime;
     private LocalDateTime workingFinishTime;
-
-
 }
