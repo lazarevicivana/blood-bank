@@ -63,12 +63,19 @@
         <value-type>java.util.ArrayList</value-type>
         <resources>
             <heap>20</heap>
-            <disk persistent="true" unit="MB">20</disk>
         </resources>
     </cache>
     <cache alias="schedule-appointments-for-center" uses-template="default">
         <key-type>java.util.UUID</key-type>
         <value-type>java.util.ArrayList</value-type>
+        <resources>
+            <heap>20</heap>
+            <disk persistent="true" unit="MB">20</disk>
+        </resources>
+    </cache>
+    <cache alias="future-appointments" uses-template="default">
+        <key-type>java.util.UUID</key-type>
+        <value-type>java.util.ImmutableCollections$ListN</value-type>
         <resources>
             <heap>20</heap>
             <disk persistent="true" unit="MB">20</disk>
