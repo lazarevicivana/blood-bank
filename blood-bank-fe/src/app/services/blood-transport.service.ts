@@ -14,4 +14,7 @@ export class BloodTransportService {
   getCoordinates(): Observable<Coordinate> {
     return this.httpClient.get<Coordinate>(this.apiHost , {headers: this.headers});
   }
+  startTransport(): Observable<boolean> {
+    return this.httpClient.get<boolean>(this.apiHost +"transport" , {headers: this.headers});
+  }
 }

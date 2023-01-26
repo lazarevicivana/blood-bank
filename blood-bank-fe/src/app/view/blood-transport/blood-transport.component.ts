@@ -27,7 +27,12 @@ marker = new google.maps.Marker();
       console.log("Something goes wrong",e)
     });
     loaded.then(()=>{
-      this.recursiveFunction()
+      this.client.startTransport().subscribe({
+        next: response => {
+          console.log(response)
+          this.recursiveFunction()
+        }
+      })
     })
 
   }
