@@ -1,6 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.taskRunners;
 
-import ftn.uns.ac.rs.bloodbank.blood.model.BloodContractRepository;
+import ftn.uns.ac.rs.bloodbank.blood.repository.BloodContractRepository;
 import ftn.uns.ac.rs.bloodbank.blood.service.BloodTransportService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

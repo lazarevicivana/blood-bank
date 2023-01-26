@@ -32,4 +32,5 @@ public interface ScheduleAppointmentRepository extends JpaRepository<ScheduleApp
 
     @Query("SELECT sa from ScheduleAppointment sa where sa.id = ?1")
     ScheduleAppointment findScheduleAppointmentById(UUID scheduleAppointmentId);
+
 }

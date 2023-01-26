@@ -132,4 +132,10 @@ public class ScheduleAppointmentService {
     public ScheduleAppointment getById(UUID id) {
         return scheduleAppointmentRepository.findScheduleAppointmentById(id);
     }
+    public List<ScheduleAppointment> findPassedScheduleAppointmentsByCustomerId(UUID customerId){
+        var scheduleAppointments = scheduleAppointmentRepository.findScheduleAppointmentsCustomerId(customerId);
+        return scheduleAppointments.stream()
+                .filter(a -> a.getStatus() == AppointmentStatus.ACCEPTED)
+                .toList();
+    }
 }
