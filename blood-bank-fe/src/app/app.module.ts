@@ -40,8 +40,12 @@ import { ManagerCalendarComponent } from './view/manager-calendar/manager-calend
 import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
 import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dialog/cancel-appointment-dialog.component';
 import {FileUploadModule} from "ng2-file-upload";
+
+import { BloodTransportComponent } from './view/blood-transport/blood-transport.component';
+
 import { BloodRequestsComponent } from './view/blood/blood-requests/blood-requests.component';
 import { MakeOfferPreviewComponent } from './view/blood/make-offer-preview/make-offer-preview.component';
+import { CenterVisitationHistoryComponent } from './view/customer/center-visitation-history/center-visitation-history.component';
 
 
 @NgModule({
@@ -60,8 +64,10 @@ import { MakeOfferPreviewComponent } from './view/blood/make-offer-preview/make-
         ManagerCalendarComponent,
         CustomerCalendarComponent,
         CancelAppointmentDialogComponent,
+        BloodTransportComponent,
         BloodRequestsComponent,
-        MakeOfferPreviewComponent
+        MakeOfferPreviewComponent,
+        CenterVisitationHistoryComponent
     ],
     imports: [
         BrowserModule,

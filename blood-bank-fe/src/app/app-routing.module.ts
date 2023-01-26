@@ -27,7 +27,11 @@ import {CustomerGuard} from "../guards/customer.guard";
 import {AdminGuard} from "../guards/admin.guard";
 import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
 import {LoginGuard} from "../guards/login.guard";
+import {BloodTransportComponent} from "./view/blood-transport/blood-transport.component";
 import {BloodRequestsComponent} from "./view/blood/blood-requests/blood-requests.component";
+import {
+  CenterVisitationHistoryComponent
+} from "./view/customer/center-visitation-history/center-visitation-history.component";
 
 
 const routes: Routes = [
@@ -50,7 +54,11 @@ const routes: Routes = [
   { path:'calendar',component:ManagerCalendarComponent,canActivate:[CenterAdminGuard]},
   { path:'customer-calendar',component:CustomerCalendarComponent,canActivate:[CustomerGuard]},
   { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
-  { path:'blood-requests',component:BloodRequestsComponent,canActivate:[CenterAdminGuard]}
+  { path:'blood-requests',component:BloodRequestsComponent,canActivate:[CenterAdminGuard]},
+  { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
+  { path:'blood-transport',component:BloodTransportComponent},
+  { path:'passed-appointments',component:CenterVisitationHistoryComponent}
+
 ];
 
 @NgModule({

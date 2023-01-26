@@ -78,6 +78,15 @@ public class ScheduleAppointmentController {
                 .toList();
         return ResponseEntity.ok(appointments);
     }
+    @GetMapping(path = "/accepted/{id}")
+    public ResponseEntity<List<ScheduleAppCustomer>> findPassedScheduleAppointmentsCustomerId(@PathVariable("id") @NotNull UUID id){
+        var app = _scheduleAppointmentService.findPassedScheduleAppointmentsByCustomerId(id);
+        var appointments = app
+                .stream()
+                .map(appointmentMapper::ScheduleToScheduleCustomerAppResponse)
+                .toList();
+        return ResponseEntity.ok(appointments);
+    }
 
     @DeleteMapping(path = "/{id}")
     @PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
