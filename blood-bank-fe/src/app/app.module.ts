@@ -41,11 +41,13 @@ import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calen
 import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dialog/cancel-appointment-dialog.component';
 import {FileUploadModule} from "ng2-file-upload";
 
-import { BloodTransportComponent } from './view/blood-transport/blood-transport.component';
+
 
 import { BloodRequestsComponent } from './view/blood/blood-requests/blood-requests.component';
 import { MakeOfferPreviewComponent } from './view/blood/make-offer-preview/make-offer-preview.component';
+import { BloodTransportComponent } from './view/blood-transport/blood-transport.component';
 import { CenterVisitationHistoryComponent } from './view/customer/center-visitation-history/center-visitation-history.component';
+
 
 
 @NgModule({

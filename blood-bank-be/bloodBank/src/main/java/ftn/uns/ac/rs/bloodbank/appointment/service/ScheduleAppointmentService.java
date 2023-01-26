@@ -129,6 +129,9 @@ public class ScheduleAppointmentService {
         return scheduleAppointmentRepository.findScheduleAppointmentsByAppointmentId(appointmentId);
     }
 
+    public ScheduleAppointment getById(UUID id) {
+        return scheduleAppointmentRepository.findScheduleAppointmentById(id);
+    }
     public List<ScheduleAppointment> findPassedScheduleAppointmentsByCustomerId(UUID customerId){
         var scheduleAppointments = scheduleAppointmentRepository.findScheduleAppointmentsCustomerId(customerId);
         return scheduleAppointments.stream()
