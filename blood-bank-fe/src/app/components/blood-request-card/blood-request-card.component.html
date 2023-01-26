@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="header">
+    {{bloodReqest.hospitalName}}
+  </div>
+  <div class="point">
+    {{ bloodReqest.dateOfDelivery | date: 'EEE, MMM d, y' }}
+  </div>
+  <div *ngFor=" let unit of bloodReqest.bloodUnits" class="point">
+    {{unit.bloodType}} - {{unit.bloodAmount}}
+  </div>
+  <div  >
+    <button class="button" (click)="makeOffer()" mat-raised-button>Make offer</button>
+  </div>
+</div>
