@@ -45,6 +45,8 @@ import {FileUploadModule} from "ng2-file-upload";
 
 import { BloodRequestsComponent } from './view/blood/blood-requests/blood-requests.component';
 import { MakeOfferPreviewComponent } from './view/blood/make-offer-preview/make-offer-preview.component';
+import { BloodTransportComponent } from './view/blood-transport/blood-transport.component';
+import { CenterVisitationHistoryComponent } from './view/customer/center-visitation-history/center-visitation-history.component';
 
 
 
