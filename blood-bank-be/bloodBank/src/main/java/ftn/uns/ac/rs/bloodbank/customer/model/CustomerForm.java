@@ -2,6 +2,7 @@ package ftn.uns.ac.rs.bloodbank.customer.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerForm {
+public class CustomerForm implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")

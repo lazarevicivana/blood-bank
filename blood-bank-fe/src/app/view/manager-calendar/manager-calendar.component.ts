@@ -9,7 +9,7 @@ import {AppointmentService} from "../../services/appointment.service";
 import {Appointment} from "../../model/Appointment";
 import {map} from "rxjs";
 import * as moment from "moment/moment";
-import { HttpErrorResponse } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { addDays, subDays } from 'date-fns';
 import {ScheduleAppointmentService} from "../../services/schedule-appointment.service";
 import {ScheduleAppStaff} from "../../model/ScheduleAppStaff";
@@ -59,17 +59,21 @@ export class ManagerCalendarComponent implements OnInit {
     end: null as any,
     meta: null as any,
   };
+  public files: any[];
+
 
   constructor(private tokenStorageService: TokenStorageService,private adminCenterService:CenterAdminService
               ,private appService:AppointmentService,
               private readonly scheduleAppointmentService:ScheduleAppointmentService,
-              private readonly examinationService:ExaminationService,private router:Router,private ts:ToastrService) {
+              private readonly examinationService:ExaminationService,private router:Router,private ts:ToastrService,private http:HttpClient) {
     this.viewDate = new Date();
     this.viewDateEnd = addDays(this.viewDate, 6);
     this.user = this.tokenStorageService.getUser();
+    this.files = [];
   }
   ngOnInit(): void {
     this.fetchData()
+    console.log('files',this.files)
   }
   async handleCurrent(): Promise<void> {
     this.viewDate = new Date();
@@ -209,5 +213,52 @@ export class ManagerCalendarComponent implements OnInit {
         this.viewButton = 'MONTH VIEW'
         break
     }
+  }
+
+  onFileChanged(event: any) {
+    this.files = event.target.files;
+    console.log('files',this.files)
+    if (this.files.length !=0)
+      this.onUpload()
+  }
+
+  onUpload() {
+    const formData = new FormData();
+    for (const file of this.files) {
+      formData.append('file', file, file.name);
+    }
+    this.http.post('http://localhost:8080/api/v1/schedule-appointments/uploadAppointmentQR', formData).subscribe(
+      {
+        next: response => {
+          console.log(response)
+          // @ts-ignore
+          var id = response.id
+
+
+          this.http.get('http://localhost:8080/api/v1/schedule-appointments/getQRdtoById/'+id).subscribe(
+            {
+              next: r => {
+                console.log('Schedule app:',r)
+
+                // @ts-ignore
+                if(r.status=='PENDING')
+                {
+
+                  this.goToExaminate2(id)
+                }else {
+                  this.ts.error("Can't examine appointment","Error")
+                }
+              }});
+
+        },
+
+        error: err => {
+        this.ts.error("Schedule appointment doesn't exist!","Error")
+      }});
+  }
+
+  goToExaminate2(appointmentId:string) {
+    this.examinationService.saveCurrentId(appointmentId)
+    this.router.navigate(['examination'])
   }
 }

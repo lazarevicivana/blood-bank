@@ -3,6 +3,7 @@ import ftn.uns.ac.rs.bloodbank.appointment.model.Appointment;
 import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import lombok.*;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Center {
+public class Center implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")

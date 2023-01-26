@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Setter
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Entity(name = "Profession")
 @Table(name="profession")
 @NoArgsConstructor
-public class Profession {
+public class Profession implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")

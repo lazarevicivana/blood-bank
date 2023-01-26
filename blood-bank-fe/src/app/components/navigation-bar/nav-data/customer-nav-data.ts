@@ -22,5 +22,17 @@ export const customerNavData=[
     icon: 'calendar',
     label: 'Calendar',
     num:3
+  },
+  {
+    routeLink: 'passed-appointments',
+    icon: 'calendar',
+    label: 'Calendar',
+    num:4
+  },
+  {
+    routeLink: 'customer-qr-codes',
+    icon: 'calendar',
+    label: 'QR codes',
+    num:5
   }
 ]

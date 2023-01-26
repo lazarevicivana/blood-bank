@@ -5,6 +5,9 @@
   overflow-y: scroll;
   height: 90%;
 }
+
+
+
 .event__title {
   white-space: pre-wrap;
   font-size: 1rem;
@@ -41,7 +44,7 @@
   font-weight: 600;
   box-shadow: rgba(0, 0, 0, 0.20) 0px 1px 4px;
   border-radius: 0.5rem;
-  color: blue;
+  color: #5656dc;
   transition: 0.2s;
 }
 .calendar-header .button-group__button-app {
@@ -62,3 +65,9 @@
   border: 1px solid #3b4d79;
   color: #3b4d79;
 }
+.cal-hour{
+  /*background-color: #333333;*/
+  backface-visibility: visible;
+}
+
+

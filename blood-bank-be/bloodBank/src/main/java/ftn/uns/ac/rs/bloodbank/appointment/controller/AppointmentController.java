@@ -3,9 +3,7 @@ package ftn.uns.ac.rs.bloodbank.appointment.controller;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentRequest;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.service.AppointmentService;
-import ftn.uns.ac.rs.bloodbank.center.dto.CenterDtoResponse;
 import ftn.uns.ac.rs.bloodbank.mapper.AppointmentMapper;
-import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +28,7 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/center/{centerId}")
-    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_CENTER_ADMIN','ROLE_CUSTOMER')")
     List<AppointmentResponse> getAllAppointmentsForCenter(@NotNull @PathVariable("centerId") UUID centerId){
         return appointmentService.getAllAppointmentsForCenter(centerId).stream()
                 .map(appointment -> {
@@ -60,7 +58,7 @@ public class AppointmentController {
     @PostMapping(path = "/appointment-of-center/{id}")
     @PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
     public ResponseEntity<AppointmentResponse> getAppointmentOfCenter(@RequestBody LocalDateTime selectedTime, @NotNull @PathVariable("id") UUID id){
-        var center = appointmentMapper.AppointmentToAppointmentDto(appointmentService.getAppointmentOfCenter(selectedTime,id));
+        var center = appointmentMapper.AppointmentToAppointmentDto(appointmentService.getAppointmentsForCenter(selectedTime,id));
         return ResponseEntity.ok(center);
     }
 }

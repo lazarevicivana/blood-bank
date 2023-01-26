@@ -49,12 +49,7 @@ export class NavigationBarComponent implements OnInit {
       console.log('user',this.user1)
 
 
-      if(this.loggedUser.id==""){
-        this.logedIn = false
-      }
-      else {
-        this.logedIn= true
-      }
+      this.logedIn = this.loggedUser.id != "";
     });
   }
   ngOnInit(): void {
@@ -78,7 +73,7 @@ export class NavigationBarComponent implements OnInit {
   menuToggle() {
     let navigation = document.querySelector('.navigation');
 
-    if(this.collapsed == false){
+    if(!this.collapsed){
       this.collapsed = true;
       this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
       navigation!.className='navigation active'
@@ -91,7 +86,6 @@ export class NavigationBarComponent implements OnInit {
   }
 
   viewAccount() {
-    console.log("acccc")
     this.router.navigateByUrl('/account')
     let list = document.querySelectorAll('.list');
     let j = 0

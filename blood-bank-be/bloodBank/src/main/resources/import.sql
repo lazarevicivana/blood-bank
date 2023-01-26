@@ -25,7 +25,7 @@ insert into center_address (city, street, country, street_number, longitude, lat
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Kamuli', '5 Truax Way', 'Uganda', '2259', 33.126717, 0.944785, '4d80d678-af49-4558-89f7-55559d01c691');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Changgucheng', '00547 Homewood Point', 'China', '05012', 114.982, 38.702541, '8f48c7c1-1ecc-482a-aecb-27ba0679ca4e');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Yantan', '7 Coleman Center', 'China', '7', 104.874073, 29.272581, '44e85e6f-71a9-4275-a66a-97e809621788');
-insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Miaoxi', '31 Bultman Street', 'China', '845', 120.00922, 30.779444, 'fc166af8-6683-4f18-9dd9-9c26ee7e16ea');
+insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Miaoxi', '31 Bultman Street', 'China', '845', 120.00922, 30.779444, 'a885b7b7-51e4-4376-b81f-86a8f127ae13');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Dubna', '26 5th Alley', 'Russia', '0', 37.1660882, 56.7375175, '453c8a2c-5aa4-48c4-a6db-5273bfc2a780');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Babakanloa', '308 Evergreen Hill', 'Indonesia', '6600', 108.0050384, -7.1691828, '9d473513-ff91-4369-9767-7ca9dc015190');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Tylicz', '669 Petterle Park', 'Poland', '1607', 21.0533447, 49.3883764, '5c971bf4-7df2-4bad-976d-a3ceaca4b6c2');
@@ -67,18 +67,19 @@ insert into center (id, address, name, description, avg_grade) values ('b53992af
 insert into center (id, address, name, description, avg_grade) values ('76dece30-ad72-4f66-a283-3323e5243211', 'af5b8a93-bcb3-4d29-a7b7-dd1012013f81', 'Romaguera LLC', 'Insert Intralum Dev in R Less Saphenous, Perc Endo', 2);
 insert into center (id, address, name, description, avg_grade) values ('6fc73c01-8d1f-44e6-83f5-47c01d653b12', '300d4552-ef84-46ae-a5b2-42f810ec37fe', 'Kessler, Hegmann and O''Hara', 'Excision of Left Eustachian Tube, Endo, Diagn', 1.8);
 insert into center (id, address, name, description, avg_grade) values ('025967b5-1dbd-4f55-ba78-2615830e3913', '5c971bf4-7df2-4bad-976d-a3ceaca4b6c2', 'Herman-Bernier', 'Extirpation of Matter from Right Fallopian Tube, Via Opening', 4);
--- insert into center (id, address, name, description, avg_grade) values ('337ea82d-d6c5-4e4c-a10b-77bce6487cee', '9516ed25-9548-496d-8869-4dc6af109b14', 'Walsh-Raynor', 'Fusion Cerv Jt w Synth Sub, Ant Appr A Col, Open', 1);
--- insert into center (id, address, name, description, avg_grade) values ('56321b4d-df2a-499c-9f4f-0177431a450d', '4bae7f00-0290-4511-be5f-03674929ce18', 'Toy-Beatty', 'Drainage of R Ext Auditory Canal, Extern Approach, Diagn', 0);
--- insert into center (id, address, name, description, avg_grade) values ('52b38530-099f-4119-ad95-661a1cdda5cf', '6a11f1fd-8a74-43b1-b18d-337b9ff35011', 'Breitenberg, Schumm and Turner', 'Extirpation of Matter from Thalamus, Percutaneous Approach', 1);
--- insert into center (id, address, name, description, avg_grade) values ('6d85f319-52e5-4901-bdea-26c14d07992b', 'ae6419ce-ec78-4f59-b6b1-9a7c22f4e72d', 'Nikolaus, Steuber and Hilpert', 'Excision of Lower Tooth, Open Approach, All', 1);
--- insert into center (id, address, name, description, avg_grade) values ('ec6590da-35c3-4e42-b31a-14495412cfca', 'a885b7b7-51e4-4376-b81f-86a8f127ae13', 'Goldner LLC', 'Fusion of L Finger Phalanx Jt with Int Fix, Perc Approach', 1);
+insert into center (id, address, name, description, avg_grade) values ('337ea82d-d6c5-4e4c-a10b-77bce6487cee', '44e85e6f-71a9-4275-a66a-97e809621788', 'Walsh-Raynor', 'Fusion Cerv Jt w Synth Sub, Ant Appr A Col, Open', 1);
+insert into center (id, address, name, description, avg_grade) values ('56321b4d-df2a-499c-9f4f-0177431a450d', '852000ba-696a-4a61-ad13-e07fef5a1bad', 'Toy-Beatty', 'Drainage of R Ext Auditory Canal, Extern Approach, Diagn', 0);
+insert into center (id, address, name, description, avg_grade) values ('52b38530-099f-4119-ad95-661a1cdda5cf', '9ed73183-6a37-49af-87e1-b6e5b960a2c3', 'Breitenberg, Schumm and Turner', 'Extirpation of Matter from Thalamus, Percutaneous Approach', 1);
+insert into center (id, address, name, description, avg_grade) values ('6d85f319-52e5-4901-bdea-26c14d07992b', 'cbe5e192-873e-4246-8078-8c0a5f92203a', 'Nikolaus, Steuber and Hilpert', 'Excision of Lower Tooth, Open Approach, All', 1);
+insert into center (id, address, name, description, avg_grade) values ('ec6590da-35c3-4e42-b31a-14495412cfca', 'a885b7b7-51e4-4376-b81f-86a8f127ae13', 'Goldner LLC', 'Fusion of L Finger Phalanx Jt with Int Fix, Perc Approach', 1);
+insert into center (id, address, name, description, avg_grade) values ('606ddf23-21d0-49c3-b10c-773239141025', '17d4d9eb-b58a-4499-af10-ef06505e56c5', 'Bahringer, Bergstrom and Murazik', 'Fusion T-lum Jt w Intbd Fus Dev, Post Appr A Col, Open', 0);
+
 -- insert into center (id, address, name, description, avg_grade) values ('63378662-ba22-48d7-abbe-38ea9d63b858', 'ce1031ef-f465-45db-99e5-99c09b6b5079', 'Dietrich LLC', 'Drainage of B Epididymis with Drain Dev, Perc Approach', 1);
 -- insert into center (id, address, name, description, avg_grade) values ('09710732-2f6a-40b5-94a4-c73661cae4e9', '79face28-25d2-4519-b684-e92c9e605521', 'Wilderman, Davis and Baumbach', 'Revision of Ext Fix in R Wrist Jt, Extern Approach', 0);
 -- insert into center (id, address, name, description, avg_grade) values ('f8bdb92f-6be6-46b0-b39c-42ae5e730389', 'd720f016-d7aa-448f-bdc6-51e7d3ef5cac', 'Upton, Monahan and Schulist', 'Excision of Face Artery, Percutaneous Endoscopic Approach', 0);
 -- insert into center (id, address, name, description, avg_grade) values ('980c3f49-c892-4581-b1f9-3982f5cde064', '53d7b557-5a3c-43cc-a3e1-77fd585a0b3c', 'Von, Lakin and Spencer', 'Drainage of Left Knee Tendon, Percutaneous Approach, Diagn', 1);
 -- insert into center (id, address, name, description, avg_grade) values ('31be369e-6794-4826-99c9-52106a371a1a', '0baedc11-6e24-4efa-85bd-e8874dd3b5a8', 'Cremin, Lindgren and Schmitt', 'Reposition Cervcal Vertebra with Int Fix, Perc Endo Approach', 0);
 -- insert into center (id, address, name, description, avg_grade) values ('423144ce-4091-4a11-8c5d-347c96c94652', '859f224c-22c1-4697-84fd-a3fc1f94d697', 'Collier and Sons', 'Destruction of Right Thorax Tendon, Open Approach', 0);
--- insert into center (id, address, name, description, avg_grade) values ('606ddf23-21d0-49c3-b10c-773239141025', '88189e49-a5f7-49b5-a5c8-1054605e27b4', 'Bahringer, Bergstrom and Murazik', 'Fusion T-lum Jt w Intbd Fus Dev, Post Appr A Col, Open', 0);
 
 --address
 insert into address (id, city,country, street, street_number) values ('a4750193-0dfe-4059-b56c-d4919ec7252e', 'Huangsha','Srbija', 'Everett', '14644');
@@ -150,14 +151,15 @@ insert into profession (id, profession_status, profession_description) values ('
 insert into profession (id, profession_status, profession_description) values ('e88c1678-6745-49ba-9cea-d3612e3b0bdd', 2, 'Skidoo');
 insert into profession (id, profession_status, profession_description) values ('d2dd3fcf-f157-43e6-a4ae-d18306d98837', 0, 'Meevee');
 
---customer--
-
+--center admins--
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b30a', 'stuff', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Mogli', '283-314-3046', 'Izdzungle', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','MALE',false);
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b31d', 'ivi', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Ivana', '283-314-3046', 'Lazarevic', '4525567465', 'ivanalazarevic@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','FEMALE',false);
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b32d', 'miki', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Milan', '283-314-3046', 'Milankovic', '4525567465', 'miki@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','MALE',false);
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b33d', 'zalons', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Aleksa', '283-314-3046', 'Zakic', '4525567465', 'miki@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','MALE',true);
+--customers--
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,profession,penalty,gender,first_log_in) values (3,'34713840-ddf3-49b2-9cae-47334cb6b31b', 'customer', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CUSTOMER',true,false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','3efbe2a3-645a-4d69-974a-3dfdb06913eb',0,'MALE',false);
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,gender,first_log_in) values (2,'8a05df51-6c71-433c-802d-96a916273d7c', 'admin', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_SYSTEM_ADMIN', true, false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','MALE',false);
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b30d', 'kshwalbe1', '2iF0ZQ4IDswj', 'Kristian', '283-314-3046', 'Shwalbe', '4525567465', 'krshwalbe0@arizona.edu', 'ROLE_CENTER_ADMIN', true, false,false, 'd3be3049-1dd6-4df3-92ac-6dd9150f79f7',null,'MALE',false);
-insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b31d', 'ivi', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Ivana', '283-314-3046', 'Lazarevic', '4525567465', 'ivanalazarevic@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','FEMALE',false);
-insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b32d', 'miki', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Milan', '283-314-3046', 'Milankovic', '4525567465', 'miki@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','MALE',false);
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,profession,penalty,gender,first_log_in) values (3,'a0e141aa-62a9-11ed-9b6a-0242ac120002', 'barbara', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Barbara', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CUSTOMER',true,false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','3efbe2a3-645a-4d69-974a-3dfdb06913eb',0,'FEMALE',false);
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,profession,penalty,gender,first_log_in) values (3,'0dcce2a4-62b6-11ed-9b6a-0242ac120002', 'perapan', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Petar', '283-314-3046', 'Pan', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CUSTOMER',true,false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','3efbe2a3-645a-4d69-974a-3dfdb06913eb',0,'MALE',false);
 -- insert into application_user (id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted, address) values ('8a05df51-6c71-433c-802d-96a916273d6e', 'mdrakes1', 'YrSgvFFK', 'Miller', '260-183-6752', 'Drakes', '4571221398', 'mdrakes1@dyndns.org', 3, false, false, '5f7cf62b-e6d0-418c-91d8-0355511ca528');
@@ -166,16 +168,16 @@ insert into application_user (user_role,id, username, password, name, phone, sur
 -- insert into center_administrator (id,center_id) values ('34713840-ddf3-49b2-9cae-47334cb6b31b','ef81c6fc-bd01-4148-b460-b9f2eb7c53c3')
 -- insert into center_administrator (id,center_id) values ('8a05df51-6c71-433c-802d-96a916273d7c','d4f7ab7c-9662-4680-be9f-52584a2194db')
 
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120002','2022-12-25T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120003','2022-12-12T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120004','2022-12-23T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120005','2022-12-23T16:17:57.049Z',false,'10:00','9:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120006','2022-12-24T16:17:57.049Z',false,'10:00','9:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120002','2023-01-28T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120003','2022-01-27T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120004','2022-01-23T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120005','2023-01-23T16:17:57.049Z',false,'10:00','9:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120006','2023-01-24T16:17:57.049Z',false,'10:00','9:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120007','2022-03-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120008','2022-03-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53a3');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120009','2022-04-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac1200010','2023-05-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120007','2023-01-30T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120008','2023-01-31T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53a3');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('4136b08e-62b6-11ed-9b6a-0242ac120009','2023-01-28T16:17:57.049Z',false,'16:00','17:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('2ad9c1cd-80a1-4d0a-97ec-858067e93ee8','2023-01-28T16:17:57.049Z',false,'11:00','12:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('3aaf2288-4eb0-4dfa-93ef-2efc94348d6a','2023-02-11T16:17:57.049Z',false,'15:00','14:00','025967b5-1dbd-4f55-ba78-2615830e3913');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('75b3388c-3d1d-4a1d-b1d6-c1c86298d932','2023-02-11T16:17:57.049Z',false,'15:00','14:00','6fc73c01-8d1f-44e6-83f5-47c01d653b12');
@@ -186,21 +188,42 @@ insert into appointment (id, date, deleted,finish_Time, start_time, center_id) v
 
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('11122233-62b6-11ed-9b6a-0242ac120002','2020-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('33322233-62b6-11ed-9b6a-0242ac120002','2021-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into schedule_appointment (id,appointment_id, customer_id,status) values ('64b37a96-62a8-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120005','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
-insert into schedule_appointment (id,appointment_id, customer_id,status) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120003','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('5b5fae11-a0a3-4401-9b6b-3e0d660c97a7','2023-01-28T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('3133ae9b-b868-4d40-a7e3-24adbb937107','2024-08-29T16:17:57.049Z',false,'09:00','08:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('112b9c20-72a8-499f-98ec-1d11efd655f9','2023-01-30T16:17:57.049Z',false,'09:00','08:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('caaba08d-7d89-4b02-93f6-d6a9435b85e9','2023-01-30T16:17:57.049Z',false,'10:00','09:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('86c52eff-278c-46de-a123-0945a4f368e4','2023-01-30T16:17:57.049Z',false,'11:00','10:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('26b2c089-2b6e-460e-87cb-1ce00836bef6','2023-01-30T16:17:57.049Z',false,'12:00','11:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('7dc46cbc-593d-4096-9fb4-6dd6b01d2e1c','2023-01-30T16:17:57.049Z',false,'13:00','12:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('e521c4de-1c31-4d8a-9a48-9518aa9c8442','2023-01-30T16:17:57.049Z',false,'14:00','13:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('d586b449-42d3-4c6d-9ac0-19d3c83f3c4d','2023-01-30T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('2ee83168-924f-4c5b-a455-6fa3e9a80ced','2023-01-30T16:17:57.049Z',false,'16:00','15:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('64b37a96-62a8-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120005','a0e141aa-62a9-11ed-9b6a-0242ac120002','ACCEPTED');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120003','a0e141aa-62a9-11ed-9b6a-0242ac120002','ACCEPTED');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120004','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120003','4136b08e-62b6-11ed-9b6a-0242ac120002','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120004','4136b08e-62b6-11ed-9b6a-0242ac120006','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120005','4136b08e-62b6-11ed-9b6a-0242ac120007','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120006','4136b08e-62b6-11ed-9b6a-0242ac120008','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120007','4136b08e-62b6-11ed-9b6a-0242ac120009','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('11fd9cac-6d9b-475a-bfd9-9108751307c9','5b5fae11-a0a3-4401-9b6b-3e0d660c97a7','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('23f78eed-3464-4134-ac2a-e10f5b2176b9','3133ae9b-b868-4d40-a7e3-24adbb937107','a0e141aa-62a9-11ed-9b6a-0242ac120002','ACCEPTED');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('a6a95bee-f57d-48e2-bf68-7a09240a45ea','112b9c20-72a8-499f-98ec-1d11efd655f9','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('445cbd73-34e8-4b98-b4cd-2f7b7357ea14','caaba08d-7d89-4b02-93f6-d6a9435b85e9','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('7b0be5a1-16e5-4b3d-bace-b4bc4d8a8ef7','86c52eff-278c-46de-a123-0945a4f368e4','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('5e2d01dd-4ff3-4231-bc3a-7f1f2a578afb','26b2c089-2b6e-460e-87cb-1ce00836bef6','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('6d0c6872-1c8f-492f-ad26-84b3eb0e0ff5','7dc46cbc-593d-4096-9fb4-6dd6b01d2e1c','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('d5279ddb-d483-4eb8-8471-2f8f745e675b','e521c4de-1c31-4d8a-9a48-9518aa9c8442','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('5d9808fa-224d-43bd-abf8-cd49be64da70','d586b449-42d3-4c6d-9ac0-19d3c83f3c4d','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('1a92e5dd-4480-49a5-a80d-1b7c3b3904f3','2ee83168-924f-4c5b-a455-6fa3e9a80ced','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
 
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('168067ce-6381-11ed-81ce-0242ac120002','BRONZE','You have 5% discharge in our ambulances.',10);
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('abc12a02-62b6-11ed-9b6a-0242ac120002','SILVER','You have 15% discharge in our ambulances.',25);
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('f46800de-6380-11ed-81ce-0242ac120002','GOLD','You have 25% discharge in our ambulances.',50);
 
 
-insert into loyalty_program(id,current_points,customer_id,predefined_loyalty_program_id ) values ('ae068642-6380-11ed-81ce-0242ac120002',30,'34713840-ddf3-49b2-9cae-47334cb6b31b','abc12a02-62b6-11ed-9b6a-0242ac120002')
+insert into loyalty_program(id,current_points,customer_id,predefined_loyalty_program_id ) values ('ae068642-6380-11ed-81ce-0242ac120002',30,'34713840-ddf3-49b2-9cae-47334cb6b31b','abc12a02-62b6-11ed-9b6a-0242ac120002');
 
 --equipment
 insert into equipment (id, name) values ('125967b5-1dbd-4f55-ba78-2615830e3900','Gauze');
@@ -221,11 +244,53 @@ insert into center_equipment (id,center_id,equipment_id,quantity) values ('12596
 insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3808','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
 
 --blood bank for centers
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3700','A_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3701','A_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3702','B_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','B_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3704','O_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3705','O_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3700','A_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3701','A_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3702','B_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','B_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3704','O_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3705','O_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+
+--customer form
+insert into customer_form (id, had_cancer, had_transfusion, is_age, is_allergic, is_blood_pressure_normal, is_dentis, is_piercing_tattoo, is_pregnant, is_sexual, is_sick, is_under_therapy, is_weight, on_period, submission_date, use_medication, customer) values ('17aaffa1-0875-48a0-bd4d-bf6910c658fc',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,'2023-01-29T16:17:57.049Z',FALSE,'a0e141aa-62a9-11ed-9b6a-0242ac120002');
+
+
+insert into customer_qr_code (id, qrcode , customer_id) values ('f10e1485-8b9a-4e5b-980e-69299121944a','iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAAC4klEQVR4Xu2XQY6jMBBFC3nhHVzAkq/hHVdKLgDkAnAl73wNS74A2XlhUfMro4ae0cwitjSaRayWOuJFMfz6/lUQ/23R7xfO9SEfIutfEk9dtseY8HFxzIFIN5DATx9nLgPb1dldW1xpIHTPdmPeciFShzZdI/E0jfYg9eAyjc2E4xDsQmrRZeZGAg3Srs2daXL41q/qvEtQn2Du198vlXubYGX7xG4MMaTmr1VLPN00r4RlD1cGn9axgQSa5F/iUO65QIb5a58aktOi00Jpk5obcnx8aVBDOE6u3EbcvrkR7+O1Tw2BlpkfOXYhPSBqgB8biIcN0zGqXacnS622FsJRfM34eXU4mvR3Dd4nGfVBnRXnCA02r05f15F7ViuZzkPOMulLgzoyQ8icniHh8B3OzNc+7xPG2YWi5u5Nrw3p0p/qVBCP546DRzCXHt6hODWR2GU+JPDgHYia9rGBcFrliKDUvIxxyEocVE18wXNPWnL0IDP7bylWQXKZvRlC7JjmgEAt/dhAkJ0+9mQfAaJGROmV8RVEfh7ug5x2d7h9NI0GIhogD1Bn7EOdp9OJNSTgoZVUGDnqX5HQQjw/xD4IP7QL04/2yqoKgmbIuF8cYvlK7+zlqhoSiZBVaGhxzub2iqt6gguBkVWbR9ktHuLqZjWkdBBVm0GqjU3K/dL6fYJQ92jaaLaGiDH1nCe4iqgHwi+gK6LU+Gy3c58aEtFgB2gpM516NZ8G4k2XDSC8c0jG03nmakigwaM4aiG7ODlw61ntCpIZ11aNuy5Q4ubMlVU1RMHUGwY6xF6WQ3PtU0E8LGNlIsNuLk5EMq1UEyyEH0ZFzMIezQcjdgPBDOvljeQZlEx5+uq0NeQ1Pe0IP371ilDaiLxJSFaResJE9N07dQROVMvPlPJ4eWokGFJgRkLsIUTPya6KQEuM1aXzMl/f3HWCa4i8l0jHxmsTJlmMUfvpxAry5/UhHyLrfyY/AJKIZCIJVDEjAAAAAElFTkSuQmCC','a0e141aa-62a9-11ed-9b6a-0242ac120002');
+insert into customer_qr_code (id, qrcode , customer_id) values ('23f78eed-3464-4134-ac2a-e10f5b2176b9','iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAAC4ElEQVR4Xu2XTY7bMAyFaWjhnXMBAbqGd7qSfYE4voB9Je10DQG6gL3TwjD7mGKUtGgXQwNFFyEGk4y+wNTw55Eh/pvR7wfVPuRDxP4lCdSUdPcZbx89cyRqL5DIe8TLcWO39G5rHcufakJj4ZV5LcdA5mxtc5HEfHp3Uga8+8sEfqJ7EA0SiYuE92C21o7s1kL4/R6dbxPkJ9rx9fNL5r5NxHDAO9MYJOdP05JAA/FCMHf2xxTy4i+QSBOniTOHY0R+erpfISHvIT+Q6ogzSz2fNToKUlLXus3L9anNm6f7FcJuZjOX1EhQjzGa+SvbGhKp61HOKJ+8i1snn9YTO7R5hSs2Zy9XrjHQkJK54MwwJ6QdNV7rWkPC0QSzEFrNbbh+C4dXCFyZveQ9StrP3k7Vj4bkOfDp7Rhs11pqj+4rBiqS7kS34E4vZxulWjsqkndEVAQvzxLULFWpJowHw4/hwg8PKTVypiYF/zdKBjpqTrIT5KHWjoJADIJbY2qYJhHUo/MXSEGfpY7cHBHUBCmtGq8hAY/nmRHOn5V4TOJcTRIUdC7IM/xQgw9WPxpiFn8MHq2M64skvDRRQZhFqDC0fZ4Lwulqz6mIW1Ha3iyt3B1rhSiWmsQ0hoT1BHsK2nfo3UvFNMTeMCt6swY0seP3aaYh0BVRgptkGwWOuF4gBQ9OI2PYWiI+ydQO1hCRgYy7NxA/GUTomAsEb9msBXMDvWuw4j1NS+AnyEKHYlwZXUKvXUxDqPNIjnnI8JGGW2q2FaQwNH5pcWsUNWrH1l1MRQzaDusJQfYKWvDNj4IEtwfRmIGwrcv0kG5WE4F2LGg126D52qPuYhqCHTY4fCPZI+Y/6vpt0iqILE34OgIplfUTinWNYBEm0SrCHLOIwVvt6IjsYo9etAoLy40vEmzEUoznU0SfjaImiCXW6oN62a+hfK/eVhDJT8bE7kSV01jyVitRQf5sH/IhYv8z+QHgwH8WmJ9apgAAAABJRU5ErkJggg==','a0e141aa-62a9-11ed-9b6a-0242ac120002');
+
+
+--offers
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-10-28 18:17:57.049000', 'ivi', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-10-28 18:17:57.049000', 'private', false, 1000);
+--
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
+--
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
+--
+-- INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:05:00.295000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+-- INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:10:43.429000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+--bloods
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-01-28 17:17:57.049000', 'private', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-01-28 17:17:57.049000', 'pro', false, 1000);
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (7, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (8, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (10, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (11, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (1, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (2, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (4, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (5, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id, is_sended) VALUES (7, '2023-01-26 20:47:41.674000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1',false);
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id,is_sended) VALUES (8, '2023-01-26 20:47:59.071000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1',false);

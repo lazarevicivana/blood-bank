@@ -9,6 +9,9 @@ import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
+import javax.persistence.LockModeType;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -25,11 +28,12 @@ public class ScheduleAppointmentService {
     private final CustomerFormService customerFormService;
     private final CustomerService customerService;
     private static final String QR_FILE_PATH = "./src/main/resources/QR/qr-code.png";
-    @Transactional
+    @Transactional()
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public void createScheduleAppointment(ScheduleAppointmentRequest request)
     {
         var appointment = appointmentService.findByID(request.getAppointment_id());
-        validateAppointmentDateTime(appointment);
+        validateAppointment(appointment);
         var customer = customerService.getById(request.getCustomer_id());
         if(!checkIfDonatingIsPossible(customer.getId()))
             throw new ApiBadRequestException("You are have already donated blood in the last six months!");
@@ -71,14 +75,15 @@ public class ScheduleAppointmentService {
         return lastAppointments.isEmpty();
     }
 
-    private static void validateAppointmentDateTime(Appointment appointment) {
-        if( !appointment.isValidDate()){
+    private static void validateAppointment(Appointment appointment) {
+        if(appointment.isValidDate()){
             throw new ApiBadRequestException("Date is invalid");
         }
-        if(!appointment.isValidDateTime())
+        if(appointment.isValidDateTime())
         {
             throw new ApiBadRequestException("Time is invalid");
-        }
+        }if(appointment.isDeleted())
+            throw new ApiBadRequestException("Appointment has already been scheduled");
     }
 
     private void generateQRCodeAndSendEmail(ScheduleAppointment scheduleAppointment) {
@@ -93,6 +98,7 @@ public class ScheduleAppointmentService {
                 .orElseThrow(()-> new ApiNotFoundException("Appointment not found"));
         return app;
     }
+    @Cacheable("schedule-appointments-for-center")
     public List<ScheduleAppointment> findScheduleAppointmentsCenterId(UUID centerId){
         return scheduleAppointmentRepository.findScheduleAppointmentsCenterId(centerId);
     }
@@ -114,9 +120,22 @@ public class ScheduleAppointmentService {
         var tomorrow = now.plusDays(1);
         var date = scheduledAppointment.getAppointment().getDate();
         if(!date.isAfter(tomorrow))
-            throw new ApiBadRequestException("You can' reschedule an appointment if it's within 24h!");
+            throw new ApiBadRequestException("You can't reschedule an appointment if it's within 24h!");
         scheduleAppointmentRepository.deleteById(id);
         appointmentService.UpdateAppointmentDelete(scheduledAppointment.getAppointment().getId());
     }
 
+    public ScheduleAppointment findScheduleAppointmentsByAppointmentId(UUID appointmentId){
+        return scheduleAppointmentRepository.findScheduleAppointmentsByAppointmentId(appointmentId);
+    }
+
+    public ScheduleAppointment getById(UUID id) {
+        return scheduleAppointmentRepository.findScheduleAppointmentById(id);
+    }
+    public List<ScheduleAppointment> findPassedScheduleAppointmentsByCustomerId(UUID customerId){
+        var scheduleAppointments = scheduleAppointmentRepository.findScheduleAppointmentsCustomerId(customerId);
+        return scheduleAppointments.stream()
+                .filter(a -> a.getStatus() == AppointmentStatus.ACCEPTED)
+                .toList();
+    }
 }

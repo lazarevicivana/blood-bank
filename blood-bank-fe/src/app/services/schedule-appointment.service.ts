@@ -7,6 +7,7 @@ import {AppointmentRequest} from "../model/Requests/AppointmentRequest";
 import {ScheduleAppointmentRequest} from "../model/Requests/ScheduleAppointmentRequest";
 import {ScheduleAppStaff} from "../model/ScheduleAppStaff";
 import {ScheduleAppCustomer} from "../model/ScheduleAppCustomer";
+import {AppointmentIdResponse} from "../model/Responses/AppointmentIdResponse";
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +28,18 @@ export class ScheduleAppointmentService {
   getScheduledAppointmentForCustomer(customerId: string): Observable<ScheduleAppCustomer[]> {
     return this.http.get<ScheduleAppCustomer[]>(this.apiHost + `/customer/${customerId}`, {headers: this.headers});
   }
+  getPassedScheduledAppointmentForCustomer(customerId: string): Observable<ScheduleAppCustomer[]> {
+    return this.http.get<ScheduleAppCustomer[]>(this.apiHost + `/accepted/${customerId}`, {headers: this.headers});
+  }
  cancelScheduledAppointment(appointmentId: string): Observable<void> {
     return this.http.delete<void>(this.apiHost + `/${appointmentId}`, {headers: this.headers});
+  }
+
+  getScheduleAppIdByAppointmentId(appointmentId: string): Observable<AppointmentIdResponse> {
+    return this.http.get<AppointmentIdResponse>(this.apiHost + `/appointment/${appointmentId}`, {headers: this.headers});
+  }
+
+  getScheduleAppById(scheduleAppointmentId: string): any {
+    return this.http.get(this.apiHost + `/scheduleAppointment/${scheduleAppointmentId}`, {headers: this.headers});
   }
 }

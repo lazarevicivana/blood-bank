@@ -75,35 +75,24 @@
     </div>
   </div>
   <div class="header-margin-top">
-    <h3 class="header">Appointments</h3>
-  </div>
-  <mat-divider class="sub-color"></mat-divider>
-  <div class="container">
-    <div class="row col col-md">
-      <div *ngFor="let appointment of appointments" class="col-6 col-md-6">
-        <app-appointment-card [appointment]="appointment"></app-appointment-card>
-      </div>
-    </div>
-  </div>
-  <div class="header-margin-top">
     <h3 class="header">Blood supply</h3>
   </div>
   <mat-divider class="sub-color"></mat-divider>
   <div class="container">
     <div class="row col col-md">
       <div *ngFor="let bank of banks" class="col-6 col-md-6">
-        <mat-list class="v-align">
-        <mat-list-item>
-        <div>
-          Blood type:&nbsp;{{bank.bloodType}}
-        </div>
-        </mat-list-item>
-        <mat-list-item>
-          <div>
-            Blood unit:&nbsp;{{bank.bloodUnit}}
-          </div>
-        </mat-list-item>
-        </mat-list>
+        <app-blood-card [bloodType] = "bank!.bloodType!" [bloodAmount]="bank!.bloodUnit!" ></app-blood-card>
+      </div>
+    </div>
+  </div>
+  <div class="header-margin-top">
+    <h3 class="header">Free appointments</h3>
+  </div>
+  <mat-divider class="sub-color"></mat-divider>
+  <div class="container">
+    <div class="row col col-md">
+      <div *ngFor="let appointment of appointments" class="col-6 col-md-6">
+        <app-appointment-card [appointment]="appointment"></app-appointment-card>
       </div>
     </div>
   </div>

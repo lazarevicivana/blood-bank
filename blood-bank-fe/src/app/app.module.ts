@@ -39,6 +39,16 @@ import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
 import { ManagerCalendarComponent } from './view/manager-calendar/manager-calendar.component';
 import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
 import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dialog/cancel-appointment-dialog.component';
+import {FileUploadModule} from "ng2-file-upload";
+
+
+
+import { BloodRequestsComponent } from './view/blood/blood-requests/blood-requests.component';
+import { MakeOfferPreviewComponent } from './view/blood/make-offer-preview/make-offer-preview.component';
+import { BloodTransportComponent } from './view/blood-transport/blood-transport.component';
+import { CenterVisitationHistoryComponent } from './view/customer/center-visitation-history/center-visitation-history.component';
+import { CustomerQrListComponent } from './view/customer-qr-list/customer-qr-list.component';
+
 
 
 @NgModule({
@@ -56,7 +66,12 @@ import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dial
         CreateSystemAdminComponent,
         ManagerCalendarComponent,
         CustomerCalendarComponent,
-        CancelAppointmentDialogComponent
+        CancelAppointmentDialogComponent,
+        BloodTransportComponent,
+        BloodRequestsComponent,
+        MakeOfferPreviewComponent,
+        CenterVisitationHistoryComponent,
+        CustomerQrListComponent
     ],
     imports: [
         BrowserModule,
@@ -85,9 +100,10 @@ import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dial
         QuestionnaireModule,
         MaterialModule,
         CalendarModule.forRoot({
-          provide: DateAdapter,
-          useFactory: adapterFactory,
+            provide: DateAdapter,
+            useFactory: adapterFactory,
         }),
+        FileUploadModule,
     ],
     providers: [authInterceptorProviders],
     exports: [],

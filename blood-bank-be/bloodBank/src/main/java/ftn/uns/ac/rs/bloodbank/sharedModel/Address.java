@@ -3,6 +3,7 @@ package ftn.uns.ac.rs.bloodbank.sharedModel;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Setter
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 @Entity(name = "Address")
 @Table(name="address")
-public class Address {
+public class Address implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")

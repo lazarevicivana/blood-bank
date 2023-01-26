@@ -1,8 +1,14 @@
 package ftn.uns.ac.rs.bloodbank.customer.controller;
 
+import com.google.zxing.ChecksumException;
+import com.google.zxing.FormatException;
+import com.google.zxing.NotFoundException;
 import ftn.uns.ac.rs.bloodbank.applicationUser.dto.ApplicationUserDtoResponse;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentQRCodeDto;
+import ftn.uns.ac.rs.bloodbank.appointment.service.QRGeneratorService;
 import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import ftn.uns.ac.rs.bloodbank.customer.model.PatientValidDonor;
+import ftn.uns.ac.rs.bloodbank.customer.service.CustomerQRCodeService;
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerService;
 import ftn.uns.ac.rs.bloodbank.customer.dto.CustomerSearchDto;
 import ftn.uns.ac.rs.bloodbank.mapper.MapperService;
@@ -11,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +28,7 @@ import java.util.UUID;
 @RequestMapping(path="api/v1/customer")
 public class CustomerController {
     private final CustomerService customerService;
+    private final QRGeneratorService qrGeneratorService;
     private final MapperService mapperService;
 
     @GetMapping(path = "/all")
@@ -62,5 +70,13 @@ public class CustomerController {
     public List<Customer> searchDonors(@RequestBody CustomerSearchDto dto)
     {
         return customerService.searchDonors(dto);
+    }
+
+    @GetMapping(path = "/getCustomersQrCodes/{customerId}")
+    @PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
+    public ArrayList<AppointmentQRCodeDto> getCustomersQrCodes(@PathVariable("customerId") UUID customerId) throws ChecksumException, NotFoundException, IOException, FormatException {
+        var response = qrGeneratorService.getCustomerCodes(customerId);
+        System.out.println(response);
+        return  response;
     }
 }

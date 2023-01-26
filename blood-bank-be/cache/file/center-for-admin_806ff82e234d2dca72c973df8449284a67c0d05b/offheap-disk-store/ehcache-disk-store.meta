@@ -1,0 +1,4 @@
+#Key and value types
+#Thu Jan 26 20:25:04 CET 2023
+keyType=java.util.UUID
+valueType=ftn.uns.ac.rs.bloodbank.center.model.Center

@@ -1,0 +1,29 @@
+.card{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border-style: none;
+  background-color: #c9d1ef;
+  padding: 2%;
+  text-align: center;
+}
+.card:hover{
+  transform: scale(1.12);
+  transition: 0.2s;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+}
+.header{
+  font-size: 20px;
+  font-family: 'Grotesque', sans-serif;
+}
+.point{
+  margin-top: 1%;
+}
+.button{
+  margin-top: 1%;
+}
+.button:hover{
+  background-color: #333333;
+  color: #fff;
+  transform: scale(1.12);
+}

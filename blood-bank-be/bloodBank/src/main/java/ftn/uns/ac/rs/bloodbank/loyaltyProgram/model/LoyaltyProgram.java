@@ -5,6 +5,7 @@ import ftn.uns.ac.rs.bloodbank.customer.model.Customer;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity(name = "LoyaltyProgram")
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoyaltyProgram {
+public class LoyaltyProgram implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false,updatable = false,columnDefinition = "uuid")

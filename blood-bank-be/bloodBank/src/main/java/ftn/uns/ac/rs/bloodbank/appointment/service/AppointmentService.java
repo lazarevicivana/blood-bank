@@ -9,8 +9,13 @@ import ftn.uns.ac.rs.bloodbank.centerAdministrator.CenterAdministrator;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.dao.PessimisticLockingFailureException;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.LockModeType;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,52 +24,84 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final CenterAdminRepository centerAdminRepository;
     private final CenterRepository centerRepository;
-    @Transactional
+    @Transactional()
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public void createAppointment(AppointmentRequest appointmentRequest){
-        var appointment = Appointment
-                .builder()
-                .startTime(appointmentRequest.getStartTime())
-                .finishTime(appointmentRequest.getFinishTime())
-                .date(appointmentRequest.getDate())
-                .deleted(false)
-                .build();
-        validateDate(appointment);
+        if (appointmentRequest == null) {
+                throw new ApiBadRequestException("Bad request appointment is null!");
+            }
+        try {
+            var center = centerRepository.performLock(appointmentRequest.getCenterId());
+            if (center == null) {
+                throw new PessimisticLockingFailureException("The record is locked by another user.");
+            }
+            var appointment = Appointment
+                    .builder()
+                    .startTime(appointmentRequest.getStartTime())
+                    .finishTime(appointmentRequest.getFinishTime())
+                    .date(appointmentRequest.getDate())
+                    .deleted(false)
+                    .build();
+            Set<CenterAdministrator> staff = getCenterAdministrators(appointmentRequest);
+            checkStaffAvailability(appointmentRequest);
+            appointment.setMedicalStaffs(staff);
+            center.addAppointment(appointment);
+            validateDate(appointment);
+            isOverlappingDate(appointment);
+            appointmentRepository.save(appointment);
+        } catch (PessimisticLockingFailureException ex) {
+        throw new PessimisticLockingFailureException("The record is locked by another user.");
+    }
+    }
+
+    private void checkStaffAvailability(AppointmentRequest appointmentRequest){
         Set<CenterAdministrator> staff = getCenterAdministrators(appointmentRequest);
-        appointment.setMedicalStaffs(staff);
-        var center =centerRepository.findById(appointmentRequest.getCenterId()).orElseThrow(() -> new ApiBadRequestException("Center doesnt exist!"));
-        center.addAppointment(appointment);
-        appointmentRepository.save(appointment);
+        var appointments = appointmentRepository.getAllAppointmentsForCenter(appointmentRequest.getCenterId());
+        for (CenterAdministrator admin:staff ) {
+            for (Appointment appointment:appointments) {
+                if(!checkAppointmentTime(appointmentRequest,appointment)){
+                    for (CenterAdministrator administrator: appointment.getMedicalStaffs()) {
+                        if(admin.getId() == administrator.getId()){
+                            throw new ApiBadRequestException("Doctor "+admin.getName()+ " "+ admin.getSurname() + " is not available in selected time.");
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    private boolean checkAppointmentTime(AppointmentRequest appointmentRequest,Appointment appointment){
+        return appointmentRequest.getStartTime().isAfter(appointment.getFinishTime()) || appointmentRequest.getFinishTime().isBefore(appointment.getStartTime());
     }
     private Set<CenterAdministrator> getCenterAdministrators(AppointmentRequest appointmentRequest) {
         return appointmentRequest.getMedicalStaffs().stream()
-                        .map(uuid -> {
-                            var admin =centerAdminRepository.findById(uuid).orElseThrow(() -> new ApiBadRequestException("Wrong staff id provided!"));
-                            System.out.println(admin.getUsername());
-                            return admin;
-                        })
+                        .map(uuid -> centerAdminRepository.findById(uuid).orElseThrow(() ->
+                                new ApiBadRequestException("Wrong staff id provided!")))
                         .collect(Collectors.toSet());
     }
-
+    @Cacheable("appointments-for-center")
     public List<Appointment> getAllAppointmentsForCenter(UUID centerId){
         return appointmentRepository.getAllAppointmentsForCenter(centerId);
     }
+    @Cacheable("future-appointments")
     public List<Appointment> getFutureAppointments(UUID centerId){
         var currentDate = LocalDateTime.now();
         return appointmentRepository.getAllAppointmentsForCenter(centerId)
-                .stream().filter(a -> a.getDate().isAfter(currentDate) && a.getDeleted()!= true).toList();
+                .stream().filter(a -> a.getDate().isAfter(currentDate)
+                        && !a.getDeleted()).toList();
     }
 
-    public Appointment getAppointmentOfCenter(LocalDateTime selectedTime, UUID id){
+    public Appointment getAppointmentsForCenter(LocalDateTime selectedTime, UUID id){
         var appointments = appointmentRepository.getAllAppointmentsForCenter(id);
         for (var appointment: appointments) {
             if(checkAppointmentTime(appointment,selectedTime)){
                 return appointment;
-
             }
         }
 
@@ -83,11 +120,19 @@ public class AppointmentService {
         return appointmentRepository.getMedicalStaffsForAppointment(appointmentId);
     }
     private void validateDate(Appointment appointment){
-        if(!appointment.isValidDate()){
+        if(appointment.isValidDate()){
             throw new ApiBadRequestException("Please select upcoming date!");
         }
-        if(!appointment.isValidDateTime()){
+        if(appointment.isValidDateTime()){
             throw new ApiBadRequestException("Wrong start time and end time range!");
+        }
+    }
+    private void isOverlappingDate(Appointment appointment){
+        var appointments = this.appointmentRepository
+                .getAllAppointmentsForCenter(appointment.getCenter().getId());
+        var isOverlapping = appointments.stream().anyMatch(appointment::isOverlappingDate);
+        if(isOverlapping){
+            throw new ApiBadRequestException("Appointment date overlaps with other appointments date!");
         }
     }
     public Appointment findByID(UUID appointmentId){

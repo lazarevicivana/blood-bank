@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Setter
 @Getter
@@ -17,6 +18,4 @@ public class CenterAdministrator extends ApplicationUser {
     @JsonIgnore
     @JoinColumn(name = "center_id", referencedColumnName = "id")
     private Center center;
-//    @ManyToMany(mappedBy = "centerAdministrators",cascade=CascadeType.ALL)
-//    private Set<Appointment> appointments;
 }

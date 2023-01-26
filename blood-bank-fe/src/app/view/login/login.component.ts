@@ -92,19 +92,25 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(response.jwt);
         this.isLoggedIn = true;
         this.reloadPage();
-        //console.log('lasjfasl',this.tokenStorage.getUser().firstLogIn)
-        //this.userService.getApplicationUserById(this.tokenStorage.).subscribe((u) => (this.user1.firstLogIn = u.firstLogIn));
-
-        if(this.tokenStorage.getUser().firstLogIn)
+        if(this.tokenStorage.getUser().firstLogIn){
           this.router.navigate(['first-login']).then();
-        else
-          this.router.navigate(['facilities']).then();
-        this.onLogin.emit(response)
+          return
+        }
+        this.determinateRole(response)
       },
       error: err => {
         this.toast.error(err.error.message,"Error")
       }
     })
+  }
+  determinateRole(response: any){
+    if(this.tokenStorage.getUser().role === 'ROLE_CENTER_ADMIN'){
+      this.router.navigate(['admin-center-profile']).then();
+    }
+    else{
+      this.router.navigate(['facilities']).then();
+    }
+    this.onLogin.emit(response)
   }
   reloadPage(){
     window.location.reload();

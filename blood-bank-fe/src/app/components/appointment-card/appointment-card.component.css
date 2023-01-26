@@ -15,7 +15,10 @@
   position: relative;
   margin: 1.5rem;
 }
-
+.card:hover{
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+  transform: scale(1.02);
+}
 .card h1 {
   text-align: center;
 }
@@ -145,6 +148,12 @@
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.5rem;
+}
+.card .additional .stats div.date {
+  padding-top: 0.2rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  line-height: 0.7rem;
 }
 
 .card .additional .stats div.value.infinity {

@@ -34,6 +34,12 @@ export class CenterAdminProfileComponent implements OnInit {
     console.log(this.user)
   }
   ngOnInit(): void {
+    this.initMap()
+    location.reload = () => {
+      this.initMap()
+    }
+  }
+  initMap(){
     const loaded = this.mapLoader.googleApi.then(()=>{
       this.map =  new google.maps.Map(
         document.getElementById("map") as HTMLElement,{
@@ -57,6 +63,7 @@ export class CenterAdminProfileComponent implements OnInit {
     this.adminCenterService.getCenterForAdmin(this.user.id!).subscribe(
         response => {
           this.center = response;
+          this.centerService.setCenterId(this.center.id!)
           new google.maps.Marker({
             position: {
               lat: this.center.latitude,
@@ -100,19 +107,19 @@ export class CenterAdminProfileComponent implements OnInit {
     {
       image: 'assets/bank1-1.jpg',
       thumbImage: 'assets/bank1-1.jpg',
-      alt: 'Image 1',
-      title: 'Image 1'
+      alt: 'Image rooms',
+      title: 'Image rooms'
     }, {
       image: 'assets/bank1-1.jpg',
       thumbImage: 'assets/bank1.jpg',
-      title: 'Image 2',
-      alt: 'Image 2'
+      title: 'Image center',
+      alt: 'Image center'
     },
     {
       image: 'assets/bank1-2.jpg',
       thumbImage: 'assets/bank1-2.jpg',
-      title: 'Image 3',
-      alt: 'Image 3'
+      title: 'Image blood donation',
+      alt: 'Image blood donation'
     }
   ];
 

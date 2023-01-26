@@ -24,10 +24,9 @@ export class AllCentersComponent implements OnInit {
   centersFilterdByGrade : Center[]= []
   centersFilterdByRange : Center[]= []
   private map!: google.maps.Map;
-  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService,private tokenStorage: TokenStorageService) { }
+  constructor(private centerService:CenterService,private mapLoader:GoogleMapApiService) { }
 
   ngOnInit(): void {
-    console.log(this.tokenStorage.getUser())
     const loaded = this.mapLoader.googleApi.then(()=>{
       this.map =  new google.maps.Map(
         document.getElementById("map") as HTMLElement,{
@@ -145,7 +144,6 @@ export class AllCentersComponent implements OnInit {
       this.centersFilterdByCity = this.centers
     }
     this.filterCentersByAllFilters();
-    console.log(this.tokenStorage.getUser())
   }
 
 
