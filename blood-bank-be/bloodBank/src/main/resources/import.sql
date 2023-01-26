@@ -240,19 +240,27 @@ insert into customer_form (id, had_cancer, had_transfusion, is_age, is_allergic,
 
 insert into customer_qr_code (id, qrcode , customer_id) values ('f10e1485-8b9a-4e5b-980e-69299121944a','iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAAC4klEQVR4Xu2XQY6jMBBFC3nhHVzAkq/hHVdKLgDkAnAl73wNS74A2XlhUfMro4ae0cwitjSaRayWOuJFMfz6/lUQ/23R7xfO9SEfIutfEk9dtseY8HFxzIFIN5DATx9nLgPb1dldW1xpIHTPdmPeciFShzZdI/E0jfYg9eAyjc2E4xDsQmrRZeZGAg3Srs2daXL41q/qvEtQn2Du198vlXubYGX7xG4MMaTmr1VLPN00r4RlD1cGn9axgQSa5F/iUO65QIb5a58aktOi00Jpk5obcnx8aVBDOE6u3EbcvrkR7+O1Tw2BlpkfOXYhPSBqgB8biIcN0zGqXacnS622FsJRfM34eXU4mvR3Dd4nGfVBnRXnCA02r05f15F7ViuZzkPOMulLgzoyQ8icniHh8B3OzNc+7xPG2YWi5u5Nrw3p0p/qVBCP546DRzCXHt6hODWR2GU+JPDgHYia9rGBcFrliKDUvIxxyEocVE18wXNPWnL0IDP7bylWQXKZvRlC7JjmgEAt/dhAkJ0+9mQfAaJGROmV8RVEfh7ug5x2d7h9NI0GIhogD1Bn7EOdp9OJNSTgoZVUGDnqX5HQQjw/xD4IP7QL04/2yqoKgmbIuF8cYvlK7+zlqhoSiZBVaGhxzub2iqt6gguBkVWbR9ktHuLqZjWkdBBVm0GqjU3K/dL6fYJQ92jaaLaGiDH1nCe4iqgHwi+gK6LU+Gy3c58aEtFgB2gpM516NZ8G4k2XDSC8c0jG03nmakigwaM4aiG7ODlw61ntCpIZ11aNuy5Q4ubMlVU1RMHUGwY6xF6WQ3PtU0E8LGNlIsNuLk5EMq1UEyyEH0ZFzMIezQcjdgPBDOvljeQZlEx5+uq0NeQ1Pe0IP371ilDaiLxJSFaResJE9N07dQROVMvPlPJ4eWokGFJgRkLsIUTPya6KQEuM1aXzMl/f3HWCa4i8l0jHxmsTJlmMUfvpxAry5/UhHyLrfyY/AJKIZCIJVDEjAAAAAElFTkSuQmCC','0dcce2a4-62b6-11ed-9b6a-0242ac120002');
 
---offers
-INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-10-28 18:17:57.049000', 'ivi', false, 1000);
-INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-10-28 18:17:57.049000', 'private', false, 1000);
+--bloods
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-01-28 17:17:57.049000', 'private', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-01-28 17:17:57.049000', 'pro', false, 1000);
+--
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (7, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (8, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (10, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (11, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (1, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (2, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (4, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (5, 70, 'A_NEGATIVE');
 --
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
 --
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
---
-INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:05:00.295000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:10:43.429000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:47:41.674000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:47:59.071000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+
+
+
+
