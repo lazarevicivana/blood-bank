@@ -34,6 +34,10 @@
             [disabled]="!canClickExamination"
             (click)="goToExaminate()"
     >EXAMINE</button>
+    <label class="button-group__button-app"
+            id="examineByQRCode"
+    ><input type="file"  name="file" id="file" (change)="onFileChanged($event)" [hidden]="true"/>SCAN QR</label>
+
     <button
       id="cancel"
       [disabled]="!canClick"

@@ -125,4 +125,8 @@ public class ScheduleAppointmentService {
         appointmentService.UpdateAppointmentDelete(scheduledAppointment.getAppointment().getId());
     }
 
+    public ScheduleAppointment findScheduleAppointmentsByAppointmentId(UUID appointmentId){
+        return scheduleAppointmentRepository.findScheduleAppointmentsByAppointmentId(appointmentId);
+    }
+
 }

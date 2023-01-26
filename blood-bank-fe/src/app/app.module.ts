@@ -39,6 +39,7 @@ import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
 import { ManagerCalendarComponent } from './view/manager-calendar/manager-calendar.component';
 import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
 import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dialog/cancel-appointment-dialog.component';
+import {FileUploadModule} from "ng2-file-upload";
 
 
 @NgModule({
@@ -85,9 +86,10 @@ import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dial
         QuestionnaireModule,
         MaterialModule,
         CalendarModule.forRoot({
-          provide: DateAdapter,
-          useFactory: adapterFactory,
+            provide: DateAdapter,
+            useFactory: adapterFactory,
         }),
+        FileUploadModule,
     ],
     providers: [authInterceptorProviders],
     exports: [],
