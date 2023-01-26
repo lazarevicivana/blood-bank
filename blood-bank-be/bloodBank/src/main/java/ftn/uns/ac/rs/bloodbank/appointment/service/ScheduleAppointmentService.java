@@ -129,4 +129,7 @@ public class ScheduleAppointmentService {
         return scheduleAppointmentRepository.findScheduleAppointmentsByAppointmentId(appointmentId);
     }
 
+    public ScheduleAppointment getById(UUID id) {
+        return scheduleAppointmentRepository.findScheduleAppointmentById(id);
+    }
 }

@@ -35,4 +35,8 @@ export class ScheduleAppointmentService {
   getScheduleAppIdByAppointmentId(appointmentId: string): Observable<AppointmentIdResponse> {
     return this.http.get<AppointmentIdResponse>(this.apiHost + `/appointment/${appointmentId}`, {headers: this.headers});
   }
+
+  getScheduleAppById(scheduleAppointmentId: string): any {
+    return this.http.get(this.apiHost + `/scheduleAppointment/${scheduleAppointmentId}`, {headers: this.headers});
+  }
 }

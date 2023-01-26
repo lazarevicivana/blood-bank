@@ -231,18 +231,30 @@ export class ManagerCalendarComponent implements OnInit {
       {
         next: response => {
           console.log(response)
-          //this.readQR = response
-          //console.log(this.readQR.id)
           // @ts-ignore
-          //this.scheduleAppService.getScheduleAppIdByAppointmentId(this.readQR.id).subscribe({
-          //  next:response=>{
-          //    console.log('Schedule app:',response)
-          // @ts-ignore
-          //    this.goToExaminate(response.id)
-          //  }
-          //})
-          this.goToExaminate2(response.id)
-        }});
+          var id = response.id
+
+
+          this.http.get('http://localhost:8080/api/v1/schedule-appointments/getQRdtoById/'+id).subscribe(
+            {
+              next: r => {
+                console.log('Schedule app:',r)
+
+                // @ts-ignore
+                if(r.status=='PENDING')
+                {
+
+                  this.goToExaminate2(id)
+                }else {
+                  this.ts.error("Can't examine appointment","Error")
+                }
+              }});
+
+        },
+
+        error: err => {
+        this.ts.error("Schedule appointment doesn't exist!","Error")
+      }});
   }
 
   goToExaminate2(appointmentId:string) {

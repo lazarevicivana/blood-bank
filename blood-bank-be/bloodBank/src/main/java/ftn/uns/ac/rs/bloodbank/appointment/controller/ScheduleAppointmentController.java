@@ -5,6 +5,7 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import ftn.uns.ac.rs.bloodbank.applicationUser.repository.ApplicationUserRepository;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.*;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.appointment.service.QRGeneratorService;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -36,6 +38,7 @@ public class ScheduleAppointmentController {
     private final ScheduleAppointmentMapper appointmentMapper;
 
     private final QRGeneratorService qrGeneratorService;
+    private final ApplicationUserRepository applicationUserRepository;
 
     @PostMapping()
      @PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
@@ -105,5 +108,12 @@ public class ScheduleAppointmentController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping(path ="/getQRdtoById/{id}")
+    public ResponseEntity<AppointmentQRCodeDto> getScheduleAppointmentQRDto(@PathVariable("id") @NotNull UUID id){
+        var app = _scheduleAppointmentService.getById(id);
+        System.out.println("###################################################");
+        var t =new AppointmentQRCodeDto(app.getId(), app.getCustomer().getId(), app.getAppointment().getDate(), app.getStatus(),"");
+        return ResponseEntity.ok(t);
+    }
 
 }
