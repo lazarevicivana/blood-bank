@@ -47,6 +47,7 @@ import { BloodRequestsComponent } from './view/blood/blood-requests/blood-reques
 import { MakeOfferPreviewComponent } from './view/blood/make-offer-preview/make-offer-preview.component';
 import { BloodTransportComponent } from './view/blood-transport/blood-transport.component';
 import { CenterVisitationHistoryComponent } from './view/customer/center-visitation-history/center-visitation-history.component';
+import { CustomerQrListComponent } from './view/customer-qr-list/customer-qr-list.component';
 
 
 
@@ -69,7 +70,8 @@ import { CenterVisitationHistoryComponent } from './view/customer/center-visitat
         BloodTransportComponent,
         BloodRequestsComponent,
         MakeOfferPreviewComponent,
-        CenterVisitationHistoryComponent
+        CenterVisitationHistoryComponent,
+        CustomerQrListComponent
     ],
     imports: [
         BrowserModule,

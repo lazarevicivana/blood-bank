@@ -32,6 +32,7 @@ import {BloodRequestsComponent} from "./view/blood/blood-requests/blood-requests
 import {
   CenterVisitationHistoryComponent
 } from "./view/customer/center-visitation-history/center-visitation-history.component";
+import {CustomerQrListComponent} from "./view/customer-qr-list/customer-qr-list.component";
 
 
 const routes: Routes = [
@@ -57,7 +58,8 @@ const routes: Routes = [
   { path:'blood-requests',component:BloodRequestsComponent,canActivate:[AdminGuard]},
   { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
   { path:'blood-transport',component:BloodTransportComponent},
-  { path:'passed-appointments',component:CenterVisitationHistoryComponent}
+  { path:'passed-appointments',component:CenterVisitationHistoryComponent},
+  { path:'customer-qr-codes',component:CustomerQrListComponent}
 
 ];
 
