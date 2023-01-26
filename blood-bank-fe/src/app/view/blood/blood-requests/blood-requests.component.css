@@ -1,0 +1,16 @@
+.window{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+
+}
+.card{
+  margin-left: 2%;
+  grid-column: auto;
+  margin-top: 2%;
+}
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
