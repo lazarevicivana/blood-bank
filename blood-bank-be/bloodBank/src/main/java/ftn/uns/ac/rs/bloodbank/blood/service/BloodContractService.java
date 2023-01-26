@@ -1,5 +1,4 @@
 package ftn.uns.ac.rs.bloodbank.blood.service;
-
 import ftn.uns.ac.rs.bloodbank.blood.dto.BloodContractDto;
 import ftn.uns.ac.rs.bloodbank.blood.dto.OfferDto;
 import ftn.uns.ac.rs.bloodbank.blood.model.BloodContract;
