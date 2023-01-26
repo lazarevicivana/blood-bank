@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BloodRequest} from "../../model/Responses/BloodRequest";
 import {BloodType} from "../../model/BloodType";
 import {UserResponse} from "../../model/Responses/UserResponse";
@@ -10,10 +10,13 @@ import {UserResponse} from "../../model/Responses/UserResponse";
 })
 export class BloodRequestCardComponent implements OnInit {
   @Input() bloodReqest =  new BloodRequest();
-
+  @Output() onMakeOffer: EventEmitter<BloodRequest> = new EventEmitter<BloodRequest>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  makeOffer() {
+    this.onMakeOffer.emit(this.bloodReqest)
+  }
 }
