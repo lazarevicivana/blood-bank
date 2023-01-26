@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Appointment} from "../model/Appointment";
 import {AppointmentRequest} from "../model/Requests/AppointmentRequest";
 import {Moment} from "moment/moment";
+import {AppointmentIdResponse} from "../model/Responses/AppointmentIdResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +27,9 @@ export class AppointmentService {
   createAppointment(appointment: AppointmentRequest){
     return this.http.post(this.apiHost,appointment,{headers: this.headers})
   }
+
+  readAppointmentFromQR(formData:any){
+    return this.http.post<AppointmentIdResponse>(this.apiHost+'/uploadAppointmentQR', formData)
+  }
+
 }
