@@ -228,14 +228,14 @@ insert into center_equipment (id,center_id,equipment_id,quantity) values ('12596
 insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3808','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
 
 --blood bank for centers
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3700','A_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3701','A_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3702','B_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','B_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3704','O_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3705','O_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3700','A_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3701','A_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3702','B_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','B_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3704','O_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3705','O_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 
 --customer form
 insert into customer_form (id, had_cancer, had_transfusion, is_age, is_allergic, is_blood_pressure_normal, is_dentis, is_piercing_tattoo, is_pregnant, is_sexual, is_sick, is_under_therapy, is_weight, on_period, submission_date, use_medication, customer) values ('17aaffa1-0875-48a0-bd4d-bf6910c658fc',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,'2023-01-29T16:17:57.049Z',FALSE,'0dcce2a4-62b6-11ed-9b6a-0242ac120002');
@@ -243,3 +243,22 @@ insert into customer_form (id, had_cancer, had_transfusion, is_age, is_allergic,
 
 insert into customer_qr_code (id, qrcode , customer_id) values ('f10e1485-8b9a-4e5b-980e-69299121944a','iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAAC4klEQVR4Xu2XQY6jMBBFC3nhHVzAkq/hHVdKLgDkAnAl73wNS74A2XlhUfMro4ae0cwitjSaRayWOuJFMfz6/lUQ/23R7xfO9SEfIutfEk9dtseY8HFxzIFIN5DATx9nLgPb1dldW1xpIHTPdmPeciFShzZdI/E0jfYg9eAyjc2E4xDsQmrRZeZGAg3Srs2daXL41q/qvEtQn2Du198vlXubYGX7xG4MMaTmr1VLPN00r4RlD1cGn9axgQSa5F/iUO65QIb5a58aktOi00Jpk5obcnx8aVBDOE6u3EbcvrkR7+O1Tw2BlpkfOXYhPSBqgB8biIcN0zGqXacnS622FsJRfM34eXU4mvR3Dd4nGfVBnRXnCA02r05f15F7ViuZzkPOMulLgzoyQ8icniHh8B3OzNc+7xPG2YWi5u5Nrw3p0p/qVBCP546DRzCXHt6hODWR2GU+JPDgHYia9rGBcFrliKDUvIxxyEocVE18wXNPWnL0IDP7bylWQXKZvRlC7JjmgEAt/dhAkJ0+9mQfAaJGROmV8RVEfh7ug5x2d7h9NI0GIhogD1Bn7EOdp9OJNSTgoZVUGDnqX5HQQjw/xD4IP7QL04/2yqoKgmbIuF8cYvlK7+zlqhoSiZBVaGhxzub2iqt6gguBkVWbR9ktHuLqZjWkdBBVm0GqjU3K/dL6fYJQ92jaaLaGiDH1nCe4iqgHwi+gK6LU+Gy3c58aEtFgB2gpM516NZ8G4k2XDSC8c0jG03nmakigwaM4aiG7ODlw61ntCpIZ11aNuy5Q4ubMlVU1RMHUGwY6xF6WQ3PtU0E8LGNlIsNuLk5EMq1UEyyEH0ZFzMIezQcjdgPBDOvljeQZlEx5+uq0NeQ1Pe0IP371ilDaiLxJSFaResJE9N07dQROVMvPlPJ4eWokGFJgRkLsIUTPya6KQEuM1aXzMl/f3HWCa4i8l0jHxmsTJlmMUfvpxAry5/UhHyLrfyY/AJKIZCIJVDEjAAAAAElFTkSuQmCC','0dcce2a4-62b6-11ed-9b6a-0242ac120002');
 insert into customer_qr_code (id, qrcode , customer_id) values ('23f78eed-3464-4134-ac2a-e10f5b2176b9','iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAAC4ElEQVR4Xu2XTY7bMAyFaWjhnXMBAbqGd7qSfYE4voB9Je10DQG6gL3TwjD7mGKUtGgXQwNFFyEGk4y+wNTw55Eh/pvR7wfVPuRDxP4lCdSUdPcZbx89cyRqL5DIe8TLcWO39G5rHcufakJj4ZV5LcdA5mxtc5HEfHp3Uga8+8sEfqJ7EA0SiYuE92C21o7s1kL4/R6dbxPkJ9rx9fNL5r5NxHDAO9MYJOdP05JAA/FCMHf2xxTy4i+QSBOniTOHY0R+erpfISHvIT+Q6ogzSz2fNToKUlLXus3L9anNm6f7FcJuZjOX1EhQjzGa+SvbGhKp61HOKJ+8i1snn9YTO7R5hSs2Zy9XrjHQkJK54MwwJ6QdNV7rWkPC0QSzEFrNbbh+C4dXCFyZveQ9StrP3k7Vj4bkOfDp7Rhs11pqj+4rBiqS7kS34E4vZxulWjsqkndEVAQvzxLULFWpJowHw4/hwg8PKTVypiYF/zdKBjpqTrIT5KHWjoJADIJbY2qYJhHUo/MXSEGfpY7cHBHUBCmtGq8hAY/nmRHOn5V4TOJcTRIUdC7IM/xQgw9WPxpiFn8MHq2M64skvDRRQZhFqDC0fZ4Lwulqz6mIW1Ha3iyt3B1rhSiWmsQ0hoT1BHsK2nfo3UvFNMTeMCt6swY0seP3aaYh0BVRgptkGwWOuF4gBQ9OI2PYWiI+ydQO1hCRgYy7NxA/GUTomAsEb9msBXMDvWuw4j1NS+AnyEKHYlwZXUKvXUxDqPNIjnnI8JGGW2q2FaQwNH5pcWsUNWrH1l1MRQzaDusJQfYKWvDNj4IEtwfRmIGwrcv0kG5WE4F2LGg126D52qPuYhqCHTY4fCPZI+Y/6vpt0iqILE34OgIplfUTinWNYBEm0SrCHLOIwVvt6IjsYo9etAoLy40vEmzEUoznU0SfjaImiCXW6oN62a+hfK/eVhDJT8bE7kSV01jyVitRQf5sH/IhYv8z+QHgwH8WmJ9apgAAAABJRU5ErkJggg==','0dcce2a4-62b6-11ed-9b6a-0242ac120002');
+
+
+--offers
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-10-28 18:17:57.049000', 'ivi', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-10-28 18:17:57.049000', 'private', false, 1000);
+--
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
+--
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
+--
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:05:00.295000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:10:43.429000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+
