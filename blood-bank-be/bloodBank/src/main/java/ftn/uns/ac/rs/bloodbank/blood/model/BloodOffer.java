@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.bloodbank.blood.model;
 
+import ftn.uns.ac.rs.bloodbank.center.model.Center;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,8 +19,8 @@ public class BloodOffer {
     @Column(name = "id", nullable = false)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "blood_bank_id")
-    private BloodBank bloodBank;
+    @JoinColumn(name = "center_id")
+    private Center center;
     @ManyToOne
     @JoinColumn(name = "blood_contract_id")
     private BloodContract bloodContract;

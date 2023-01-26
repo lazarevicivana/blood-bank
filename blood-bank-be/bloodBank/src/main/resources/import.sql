@@ -225,14 +225,14 @@ insert into center_equipment (id,center_id,equipment_id,quantity) values ('12596
 insert into center_equipment (id,center_id,equipment_id,quantity) values ('125967b5-1dbd-4f55-ba78-2615830e3808','d4f7ab7c-9662-4680-be9f-52584a2194d2','125967b5-1dbd-4f55-ba78-2615830e3902',1000);
 
 --blood bank for centers
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3700','A_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3701','A_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3702','B_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','B_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3704','O_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3705','O_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3700','A_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3701','A_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3702','B_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3703','B_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3704','O_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3705','O_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 
 --customer form
 insert into customer_form (id, had_cancer, had_transfusion, is_age, is_allergic, is_blood_pressure_normal, is_dentis, is_piercing_tattoo, is_pregnant, is_sexual, is_sick, is_under_therapy, is_weight, on_period, submission_date, use_medication, customer) values ('17aaffa1-0875-48a0-bd4d-bf6910c658fc',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,'2023-01-29T16:17:57.049Z',FALSE,'0dcce2a4-62b6-11ed-9b6a-0242ac120002');
