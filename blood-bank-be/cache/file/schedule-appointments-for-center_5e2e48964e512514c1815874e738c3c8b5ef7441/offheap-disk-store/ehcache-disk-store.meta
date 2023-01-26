@@ -1,4 +1,4 @@
 #Key and value types
-#Thu Jan 26 19:35:11 CET 2023
+#Thu Jan 26 20:25:04 CET 2023
 keyType=java.util.UUID
 valueType=java.util.ArrayList

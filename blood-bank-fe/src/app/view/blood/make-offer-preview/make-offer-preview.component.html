@@ -1,3 +1,48 @@
 <div class="fade-element">
-  blablala
+  <div class="info">
+    <div class="label">
+      <div class="text">
+        Hospital
+      </div>
+    </div>
+    <div class="text"> {{bloodReqest.hospitalName}}</div>
+  </div>
+  <div class="info">
+    <div class="label">
+      <div class="text">
+        Delivery date
+      </div>
+    </div>
+    <div class="text">{{ bloodReqest.deliveryDate | date: 'EEE, MMM d, y' }}</div>
+  </div>
+  <div class="info" *ngFor="let type of bloodReqest.bloodUnits">
+    <div class="label">
+      <div class="text">
+        {{type.bloodType}}
+      </div>
+    </div>
+    <div class="text">
+      {{type.bloodAmount}}
+    </div>
+  </div>
+  <div class="input">
+    <div >
+      <mat-form-field class="centers" appearance="fill">
+        <mat-label>Select center:</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let center of centers" [value]="center" (onSelectionChange)="changeCenter(center)">
+            {{center.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div >
+      <mat-form-field class="example-full-width centers">
+        <mat-label>Insert price:</mat-label>
+        <input type="number" matInput placeholder="Ex. Pizza" value="Sushi" [ngModel]="price">
+      </mat-form-field>
+    </div>
+    <button style="margin-left:40%; width: 20%; margin-top: 5%" mat-raised-button (click)="makeOffer()">Confirm</button>
+  </div>
+
 </div>

@@ -55,7 +55,7 @@ const routes: Routes = [
   { path:'calendar',component:ManagerCalendarComponent,canActivate:[CenterAdminGuard]},
   { path:'customer-calendar',component:CustomerCalendarComponent,canActivate:[CustomerGuard]},
   { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
-  { path:'blood-requests',component:BloodRequestsComponent,canActivate:[CenterAdminGuard]},
+  { path:'blood-requests',component:BloodRequestsComponent,canActivate:[AdminGuard]},
   { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
   { path:'blood-transport',component:BloodTransportComponent},
   { path:'passed-appointments',component:CenterVisitationHistoryComponent},
