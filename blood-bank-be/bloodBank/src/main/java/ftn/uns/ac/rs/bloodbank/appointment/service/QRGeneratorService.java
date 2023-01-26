@@ -7,12 +7,17 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
 import com.google.zxing.qrcode.QRCodeWriter;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentIdResponse;
+import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentQRCodeDto;
+import ftn.uns.ac.rs.bloodbank.appointment.model.AppointmentStatus;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
+import ftn.uns.ac.rs.bloodbank.appointment.repository.ScheduleAppointmentRepository;
 import ftn.uns.ac.rs.bloodbank.common.DateTimeService;
 import ftn.uns.ac.rs.bloodbank.customer.service.CustomerQRCodeService;
 import ftn.uns.ac.rs.bloodbank.email.EmailService;
 import lombok.AllArgsConstructor;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,7 +29,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -32,6 +40,7 @@ public class QRGeneratorService {
     private final EmailService emailService;
     private final DateTimeService dateTimeService;
     private final CustomerQRCodeService customerQRCodeService;
+    private final ScheduleAppointmentRepository scheduleAppointmentRepository;
 
     public void generateQRCodeImage(ScheduleAppointment scheduleAppointment, int width, int height, String filePath)
             throws WriterException, IOException {
@@ -114,4 +123,30 @@ public class QRGeneratorService {
         fos.close();
         return convFile;
     }
+
+    public ArrayList<AppointmentQRCodeDto> getCustomerCodes(UUID customerId) throws IOException, ChecksumException, NotFoundException, FormatException {
+        var customerCodes = customerQRCodeService.getCustomerCodes(customerId);
+        ArrayList<AppointmentQRCodeDto> p = new ArrayList<>();
+        for(int i=0; i!=customerCodes.size();i++){
+            var code = customerCodes.get(i);
+            var scheduleId = handleFileUpload(Base64ToMultipartFile(code.getQRCode()));
+            var scheduleApp =scheduleAppointmentRepository.findById(UUID.fromString(scheduleId));
+            p.add(new AppointmentQRCodeDto(UUID.fromString(scheduleId), code.getCustomer().getId(), scheduleApp.get().getAppointment().getDate(), scheduleApp.get().getStatus(),code.getQRCode()));
+        }
+
+        return p;
+    }
+
+    private MultipartFile Base64ToMultipartFile(String base64) throws IOException {
+        byte[] byteArray = Base64.getDecoder().decode(base64);
+        ByteArrayResource byteArrayResource = new ByteArrayResource(byteArray){
+            @Override
+            public String getFilename(){
+                return "qqrr";
+            }
+        };
+        MultipartFile multipartFile = new MockMultipartFile("qqrr", byteArrayResource.getFilename(), "application/octet-stream", byteArrayResource.getInputStream());
+        return multipartFile;
+    }
+
 }
