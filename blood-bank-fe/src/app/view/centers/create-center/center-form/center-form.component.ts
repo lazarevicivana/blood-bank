@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Center} from "../../../../model/Center";
 import {GoogleMapApiService} from "../../../../services/googleMapApi.service";
+import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-center-form',
@@ -11,7 +13,11 @@ export class CenterFormComponent implements OnInit {
   @Input() center: Center
   private map!: google.maps.Map;
   private infoWindow!: google.maps.InfoWindow;
-  constructor(private mapLoader:GoogleMapApiService) {
+  private apiKey = '19f94dc26867426993b1cfae267970fc';
+  address: string="";
+
+
+  constructor(private mapLoader:GoogleMapApiService,private readonly http: HttpClient) {
     this.center = new Center();
   }
 
@@ -60,9 +66,22 @@ export class CenterFormComponent implements OnInit {
         });
 
         this.infoWindow.open( this.map, marker);
-
+        this.getAddress(mapsMouseEvent.latLng.lat(),mapsMouseEvent.latLng.lng())
       })
     })
+  }
+
+  getAddress(latitude:any,longitude:any) {
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${this.apiKey}`;
+    this.http.get(url).subscribe((response: any) => {
+      this.address = response.results[0].formatted;
+      console.log(this.address)
+      let temp = this.address.split(",")
+
+        this.center.country =temp[temp.length-1]
+        this.center.city =temp[temp.length-2].replace(/\d/g, "");
+
+    });
   }
 
 }
