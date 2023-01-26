@@ -48,9 +48,9 @@ insert into center_address (city, street, country, street_number, longitude, lat
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Bulu', '68 Haas Circle', 'Indonesia', '212', 110.8344302, -7.7595897, '696ad31a-f069-4b75-a2fb-b706acd41767');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Babakan', '1784 Carpenter Court', 'Indonesia', '5654', 106.804564, -6.588201, '9a70f727-0efd-4047-b8d9-f0281e7c38c1');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Amparo', '38 Susan Road', 'Brazil', '310', -46.7694191, -22.7064041, '300d4552-ef84-46ae-a5b2-42f810ec37fe');
-insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Gaoqiao', '472 Buhler Plaza', 'China', '4650', 50.249509, 31.364902, '532fbd46-8677-4990-89d2-73e1d37c534a');
+insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Gaoqiao', '472 Buhler Plaza', 'China', '4650', 108.249509, 31.364902, '532fbd46-8677-4990-89d2-73e1d37c534a');
 --center---
-insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b9f2eb7c53c1', '532fbd46-8677-4990-89d2-73e1d37c534a', 'Kassulke, Koepp and Windler', 'Change Other Device in Thoracic Duct, External Approach', 1);
+insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b9f2eb7c53c1', 'd6a4c034-83ef-4c6d-8419-c4b39059810b', 'Kassulke, Koepp and Windler', 'Change Other Device in Thoracic Duct, External Approach', 1);
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-52584a2194d2', '2848e74d-c1a9-40dc-9764-402bb5553ee9', 'Bednar, Davis and Schumm', 'Excision of Left Renal Artery, Percutaneous Approach', 2);
 insert into center (id, address, name, description, avg_grade) values ('262bb7c8-28a8-43fe-8c24-d79a00055872', '5ee042dc-c099-433d-8a91-d6eda807f917', 'Bogisich-Zulauf', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 1.5);
 
@@ -58,7 +58,7 @@ insert into center (id, address, name, description, avg_grade) values ('ef81c6fc
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-52584a2194d4', '9a70f727-0efd-4047-b8d9-f0281e7c38c1', 'Betanija', 'Excision of Left Renal Artery, Percutaneous Approach', 3.3);
 insert into center (id, address, name, description, avg_grade) values ('262bb7c8-28a8-43fe-8c24-d79a00011875', '1e02993f-e3a9-4ed6-8fa2-955078bc3eaf', 'Health Care', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 3);
 
-insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b1f2eb7c53a6', '532fbd46-8677-4990-89d2-73e1d37c534a', 'Russian health care ', 'Change Other Device in Thoracic Duct, External Approach', 2.8);
+insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b1f2eb7c53a6', 'cbdb6c8e-a454-46ce-b489-552269672301', 'Russian health care ', 'Change Other Device in Thoracic Duct, External Approach', 2.8);
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-88584a1177d7', 'd72c7792-a60d-4b4b-83b2-c70b094e1eec', 'Pfizer', 'Excision of Left Renal Artery, Percutaneous Approach', 4.8);
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-88584a1177d0', '9d473513-ff91-4369-9767-7ca9dc015190', 'Your care', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 2.5);
 
@@ -198,6 +198,7 @@ insert into schedule_appointment (id,appointment_id, customer_id,status) values 
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120006','4136b08e-62b6-11ed-9b6a-0242ac120008','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120007','4136b08e-62b6-11ed-9b6a-0242ac120009','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('11fd9cac-6d9b-475a-bfd9-9108751307c9','5b5fae11-a0a3-4401-9b6b-3e0d660c97a7','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('23f78eed-3464-4134-ac2a-e10f5b2176b9','3133ae9b-b868-4d40-a7e3-24adbb937107','0dcce2a4-62b6-11ed-9b6a-0242ac120002','ACCEPTED');
 
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('168067ce-6381-11ed-81ce-0242ac120002','BRONZE','You have 5% discharge in our ambulances.',10);
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('abc12a02-62b6-11ed-9b6a-0242ac120002','SILVER','You have 15% discharge in our ambulances.',25);
@@ -239,6 +240,8 @@ insert into customer_form (id, had_cancer, had_transfusion, is_age, is_allergic,
 
 
 insert into customer_qr_code (id, qrcode , customer_id) values ('f10e1485-8b9a-4e5b-980e-69299121944a','iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAAC4klEQVR4Xu2XQY6jMBBFC3nhHVzAkq/hHVdKLgDkAnAl73wNS74A2XlhUfMro4ae0cwitjSaRayWOuJFMfz6/lUQ/23R7xfO9SEfIutfEk9dtseY8HFxzIFIN5DATx9nLgPb1dldW1xpIHTPdmPeciFShzZdI/E0jfYg9eAyjc2E4xDsQmrRZeZGAg3Srs2daXL41q/qvEtQn2Du198vlXubYGX7xG4MMaTmr1VLPN00r4RlD1cGn9axgQSa5F/iUO65QIb5a58aktOi00Jpk5obcnx8aVBDOE6u3EbcvrkR7+O1Tw2BlpkfOXYhPSBqgB8biIcN0zGqXacnS622FsJRfM34eXU4mvR3Dd4nGfVBnRXnCA02r05f15F7ViuZzkPOMulLgzoyQ8icniHh8B3OzNc+7xPG2YWi5u5Nrw3p0p/qVBCP546DRzCXHt6hODWR2GU+JPDgHYia9rGBcFrliKDUvIxxyEocVE18wXNPWnL0IDP7bylWQXKZvRlC7JjmgEAt/dhAkJ0+9mQfAaJGROmV8RVEfh7ug5x2d7h9NI0GIhogD1Bn7EOdp9OJNSTgoZVUGDnqX5HQQjw/xD4IP7QL04/2yqoKgmbIuF8cYvlK7+zlqhoSiZBVaGhxzub2iqt6gguBkVWbR9ktHuLqZjWkdBBVm0GqjU3K/dL6fYJQ92jaaLaGiDH1nCe4iqgHwi+gK6LU+Gy3c58aEtFgB2gpM516NZ8G4k2XDSC8c0jG03nmakigwaM4aiG7ODlw61ntCpIZ11aNuy5Q4ubMlVU1RMHUGwY6xF6WQ3PtU0E8LGNlIsNuLk5EMq1UEyyEH0ZFzMIezQcjdgPBDOvljeQZlEx5+uq0NeQ1Pe0IP371ilDaiLxJSFaResJE9N07dQROVMvPlPJ4eWokGFJgRkLsIUTPya6KQEuM1aXzMl/f3HWCa4i8l0jHxmsTJlmMUfvpxAry5/UhHyLrfyY/AJKIZCIJVDEjAAAAAElFTkSuQmCC','0dcce2a4-62b6-11ed-9b6a-0242ac120002');
+insert into customer_qr_code (id, qrcode , customer_id) values ('23f78eed-3464-4134-ac2a-e10f5b2176b9','iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAAC4ElEQVR4Xu2XTY7bMAyFaWjhnXMBAbqGd7qSfYE4voB9Je10DQG6gL3TwjD7mGKUtGgXQwNFFyEGk4y+wNTw55Eh/pvR7wfVPuRDxP4lCdSUdPcZbx89cyRqL5DIe8TLcWO39G5rHcufakJj4ZV5LcdA5mxtc5HEfHp3Uga8+8sEfqJ7EA0SiYuE92C21o7s1kL4/R6dbxPkJ9rx9fNL5r5NxHDAO9MYJOdP05JAA/FCMHf2xxTy4i+QSBOniTOHY0R+erpfISHvIT+Q6ogzSz2fNToKUlLXus3L9anNm6f7FcJuZjOX1EhQjzGa+SvbGhKp61HOKJ+8i1snn9YTO7R5hSs2Zy9XrjHQkJK54MwwJ6QdNV7rWkPC0QSzEFrNbbh+C4dXCFyZveQ9StrP3k7Vj4bkOfDp7Rhs11pqj+4rBiqS7kS34E4vZxulWjsqkndEVAQvzxLULFWpJowHw4/hwg8PKTVypiYF/zdKBjpqTrIT5KHWjoJADIJbY2qYJhHUo/MXSEGfpY7cHBHUBCmtGq8hAY/nmRHOn5V4TOJcTRIUdC7IM/xQgw9WPxpiFn8MHq2M64skvDRRQZhFqDC0fZ4Lwulqz6mIW1Ha3iyt3B1rhSiWmsQ0hoT1BHsK2nfo3UvFNMTeMCt6swY0seP3aaYh0BVRgptkGwWOuF4gBQ9OI2PYWiI+ydQO1hCRgYy7NxA/GUTomAsEb9msBXMDvWuw4j1NS+AnyEKHYlwZXUKvXUxDqPNIjnnI8JGGW2q2FaQwNH5pcWsUNWrH1l1MRQzaDusJQfYKWvDNj4IEtwfRmIGwrcv0kG5WE4F2LGg126D52qPuYhqCHTY4fCPZI+Y/6vpt0iqILE34OgIplfUTinWNYBEm0SrCHLOIwVvt6IjsYo9etAoLy40vEmzEUoznU0SfjaImiCXW6oN62a+hfK/eVhDJT8bE7kSV01jyVitRQf5sH/IhYv8z+QHgwH8WmJ9apgAAAABJRU5ErkJggg==','0dcce2a4-62b6-11ed-9b6a-0242ac120002');
+
 
 --offers
 INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-10-28 18:17:57.049000', 'ivi', false, 1000);
@@ -256,3 +259,4 @@ INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id
 --
 INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:05:00.295000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:10:43.429000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+

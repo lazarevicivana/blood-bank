@@ -1,0 +1,40 @@
+
+<div class="row col col-md">
+<div class="col-6 col-md-6">
+  <mat-form-field appearance="fill" class="example-form-field filter-item">
+    <mat-label>Sort by date</mat-label>
+    <mat-select placeholder="Date sort" [(ngModel)]="sortOrder" (selectionChange)="sortArray(sortOrder)" >
+      <mat-option [value]="sort[0]">Ascending</mat-option>
+      <mat-option [value]="sort[1]">Descending</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field class="example-form-field filter-item" appearance="fill">
+    <mat-label>Filter</mat-label>
+    <mat-select [(ngModel)] = "filterStatus" (selectionChange)="filterArray(filterStatus)">
+      <mat-option [value]="status[3]">ALL</mat-option>
+      <mat-option [value]="status[0]">PENDING</mat-option>
+      <mat-option [value]="status[1]">ACCEPTED</mat-option>
+      <mat-option [value]="status[2]">REJECTED</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+</div>
+
+<div class="window grid-container">
+  <div class="card" *ngFor="let code of codes">
+    <div class="card1">
+      <div class="header">
+        {{code.status}}
+      </div>
+      <div class="point">
+        {{ code.date | date: 'EEE, MMM d, y' }}
+      </div>
+
+      <div  >
+        <img [src]="getImage(code.qrcode)">
+      </div>
+    </div>
+  </div>
+</div>
