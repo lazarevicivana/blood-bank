@@ -6,10 +6,7 @@ import ftn.uns.ac.rs.bloodbank.blood.service.BloodContractService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,8 +19,8 @@ public class BloodContractController {
     ResponseEntity<List<BloodContract>> getAvailableOffers(){
         return  ResponseEntity.ok(bloodContractService.getAvailableOffers());
     }
-    @PostMapping(path = "/createOffer")
-    public ResponseEntity<?> CreateOffer(OfferDto offerDto){
+    @PostMapping()
+    public ResponseEntity<?> CreateOffer(@RequestBody OfferDto offerDto){
         bloodContractService.createOffer(offerDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

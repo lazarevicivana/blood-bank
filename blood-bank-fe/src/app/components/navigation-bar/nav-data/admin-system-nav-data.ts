@@ -28,6 +28,12 @@ export const adminSystemNavData =[
     icon: 'person-add-outline',
     label: 'Create System Administrator',
     num:4
+  },
+  {
+    routeLink: 'blood-requests',
+    icon: 'medkit-outline',
+    label: 'Blood requests',
+    num:5
   }
 
 ]

@@ -3,6 +3,7 @@ import {BloodRequest} from "../../../model/Responses/BloodRequest";
 import {BloodType} from "../../../model/BloodType";
 import {MatDialog} from "@angular/material/dialog";
 import{MakeOfferPreviewComponent} from "../make-offer-preview/make-offer-preview.component";
+import {BloodRequestService} from "../../../services/blood-request.service";
 
 @Component({
   selector: 'app-blood-requests',
@@ -11,165 +12,23 @@ import{MakeOfferPreviewComponent} from "../make-offer-preview/make-offer-preview
 })
 export class BloodRequestsComponent implements OnInit {
 
-  constructor(private dialog : MatDialog) { }
+  constructor(private dialog : MatDialog, private  bloodRequestService:BloodRequestService) { }
   requests:BloodRequest[] = []
   ngOnInit(): void {
-    var bloodReqest: BloodRequest = {
-      dateOfDelivery: new Date,
-      hospitalName: "Healthy hospital",
-      bloodUnits: [
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
+    this.bloodRequestService.getContracts().subscribe({
+      next: res=>{
+        this.requests = res;
+        console.log(res)
+      }
+    })
 
-      ]
-    }
-    var bloodReqest1: BloodRequest = {
-      dateOfDelivery: new Date,
-      hospitalName: "Healthy hospital",
-      bloodUnits: [
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-
-      ]
-    }
-    var bloodReqest2: BloodRequest = {
-      dateOfDelivery: new Date,
-      hospitalName: "Healthy hospital",
-      bloodUnits: [
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-      ]
-    }
-    var bloodReqest3: BloodRequest = {
-      dateOfDelivery: new Date,
-      hospitalName: "Healthy hospital",
-      bloodUnits: [
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-
-      ]
-    }
-    var bloodReqest4: BloodRequest = {
-      dateOfDelivery: new Date,
-      hospitalName: "Healthy hospital",
-      bloodUnits: [
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-
-      ]
-    }
-    var bloodReqest5: BloodRequest = {
-      dateOfDelivery: new Date,
-      hospitalName: "Healthy hospital",
-      bloodUnits: [
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-        {
-          id: '1',
-          bloodAmount: 50,
-          bloodType: BloodType.VALUE3,
-        },
-        {
-          id: '2',
-          bloodAmount: 30,
-          bloodType: BloodType.VALUE1,
-        },
-
-      ]
-    }
-    var newRequests:BloodRequest[] = [bloodReqest,bloodReqest1,bloodReqest2,bloodReqest4,bloodReqest5,bloodReqest3,bloodReqest5,bloodReqest
-    ,bloodReqest3,bloodReqest2,bloodReqest4,bloodReqest1]
-    this.requests = newRequests
   }
 
   makeOffer(br: BloodRequest) {
     console.log(br)
     this.dialog.open(MakeOfferPreviewComponent, {
-      width: '600px',
-      height:'500px',
+      width: '50%',
+      height:'80%',
       data: { request: br}
     });
   }

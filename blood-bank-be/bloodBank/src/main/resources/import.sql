@@ -256,3 +256,20 @@ INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id
 --
 INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:05:00.295000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:10:43.429000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+--bloods
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-01-28 17:17:57.049000', 'private', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-01-28 17:17:57.049000', 'pro', false, 1000);
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (7, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (8, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (10, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (11, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (1, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (2, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (4, 30, 'A_POSITIVE');
+INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (5, 70, 'A_NEGATIVE');
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
+INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:47:41.674000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:47:59.071000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
