@@ -11,7 +11,6 @@ import ftn.uns.ac.rs.bloodbank.blood.repository.BloodUnitRepository;
 import ftn.uns.ac.rs.bloodbank.center.repository.CenterRepository;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiBadRequestException;
 import ftn.uns.ac.rs.bloodbank.globalExceptions.ApiNotFoundException;
-import ftn.uns.ac.rs.bloodbank.rabbitmq.connectionFactory.MessagingConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
@@ -46,10 +45,10 @@ public class BloodContractService {
                 .bloodUnits(newBloodUnits)
                 .build();
         bloodContractRepository.save(newContract);
-        rabbitTemplate.convertAndSend(MessagingConfig.EXCHANGE_STATIC, MessagingConfig.QUEUE_STATIC_H1, "Works");
+        //rabbitTemplate.convertAndSend(MessagingConfig.EXCHANGE_STATIC, MessagingConfig.QUEUE_STATIC_H1, "Works");
     }
-    public List<BloodContract> getAvailableOffers(){
-        return this.bloodContractRepository.getAvailableOffers();
+    public List<BloodContract> getAvailableContracts(){
+        return this.bloodContractRepository.getAvailableContracts();
     }
 
     public void createOffer(OfferDto offerDto) {

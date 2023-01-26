@@ -6,7 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "blood_offer")
+@Entity(name = "BloodOffer")
 @Table(name = "blood_offer")
 @Getter
 @Setter
@@ -25,5 +25,6 @@ public class BloodOffer {
     @JoinColumn(name = "blood_contract_id")
     private BloodContract bloodContract;
     private Date offerDate;
+    private boolean isSended;
 
 }

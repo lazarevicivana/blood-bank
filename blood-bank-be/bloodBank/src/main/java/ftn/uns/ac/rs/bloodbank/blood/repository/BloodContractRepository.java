@@ -11,5 +11,5 @@ public interface BloodContractRepository extends JpaRepository<BloodContract, Lo
     @Query("SELECT bc from BloodContract bc where bc.isExpired = false and bc.hospitalName=?1")
     Optional<BloodContract> getCurrentContract(String hospitalName);
     @Query("SELECT bc from BloodContract bc where bc.isExpired = false")
-    List<BloodContract> getAvailableOffers();
+    List<BloodContract> getAvailableContracts();
 }

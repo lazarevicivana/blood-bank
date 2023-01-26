@@ -17,7 +17,7 @@ public class BloodContractController {
     private final BloodContractService bloodContractService;
     @GetMapping()
     ResponseEntity<List<BloodContract>> getAvailableOffers(){
-        return  ResponseEntity.ok(bloodContractService.getAvailableOffers());
+        return  ResponseEntity.ok(bloodContractService.getAvailableContracts());
     }
     @PostMapping()
     public ResponseEntity<?> CreateOffer(@RequestBody OfferDto offerDto){
