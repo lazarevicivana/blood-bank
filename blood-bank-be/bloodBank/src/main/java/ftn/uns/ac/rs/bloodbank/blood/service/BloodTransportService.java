@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Service
 public class BloodTransportService {
 
-    public void startBloodTransportRequest(){
+    public void getTransportCoordinates(){
 
     }
 }

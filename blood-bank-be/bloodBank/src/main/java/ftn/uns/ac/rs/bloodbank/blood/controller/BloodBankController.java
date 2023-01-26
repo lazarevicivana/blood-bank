@@ -41,13 +41,13 @@ public class BloodBankController {
 	public Mono<Boolean> startTransport(){
 		var start = LocationCoordinate
 				.builder()
-				.longitude(11111.0)
-				.latitude(22222.0)
+				.longitude(1.0)
+				.latitude(1.0)
 				.build();
 		var finish = LocationCoordinate
 				.builder()
-				.longitude(11211.0)
-				.latitude(22222.0)
+				.longitude(10.0)
+				.latitude(10.0)
 				.build();
 		var bloodTransport = BloodTransportRequest
 				.builder()
