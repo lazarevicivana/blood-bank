@@ -18,10 +18,16 @@ export const adminSystemNavData =[
     num:2
   },
   {
+    routeLink: 'blood-transport',
+    icon: 'business-outline',
+    label: 'Blood transport',
+    num:3
+  },
+  {
     routeLink: 'system-admin-create',
     icon: 'person-add-outline',
     label: 'Create System Administrator',
-    num:3
+    num:4
   }
 
 ]

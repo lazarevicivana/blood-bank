@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {BloodRequest} from "../../../model/Responses/BloodRequest";
 import {BloodType} from "../../../model/BloodType";
+import {MatDialog} from "@angular/material/dialog";
+import{MakeOfferPreviewComponent} from "../make-offer-preview/make-offer-preview.component";
 
 @Component({
   selector: 'app-blood-requests',
@@ -9,7 +11,7 @@ import {BloodType} from "../../../model/BloodType";
 })
 export class BloodRequestsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog : MatDialog) { }
   requests:BloodRequest[] = []
   ngOnInit(): void {
     var bloodReqest: BloodRequest = {
@@ -161,5 +163,14 @@ export class BloodRequestsComponent implements OnInit {
     var newRequests:BloodRequest[] = [bloodReqest,bloodReqest1,bloodReqest2,bloodReqest4,bloodReqest5,bloodReqest3,bloodReqest5,bloodReqest
     ,bloodReqest3,bloodReqest2,bloodReqest4,bloodReqest1]
     this.requests = newRequests
+  }
+
+  makeOffer(br: BloodRequest) {
+    console.log(br)
+    this.dialog.open(MakeOfferPreviewComponent, {
+      width: '600px',
+      height:'500px',
+      data: { request: br}
+    });
   }
 }

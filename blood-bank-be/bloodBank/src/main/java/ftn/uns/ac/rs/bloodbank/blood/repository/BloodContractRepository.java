@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface BloodContractRepository extends JpaRepository<BloodContract, Long> {
     @Query("SELECT bc from BloodContract bc where bc.isExpired = false and bc.hospitalName=?1")
     Optional<BloodContract> getCurrentContract(String hospitalName);
+    @Query("SELECT bc from BloodContract bc where bc.isExpired = false")
+    Optional<BloodContract> getCurrentOffers();
 }
