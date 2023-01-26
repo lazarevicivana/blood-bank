@@ -40,6 +40,7 @@ import { ManagerCalendarComponent } from './view/manager-calendar/manager-calend
 import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
 import { CancelAppointmentDialogComponent } from './view/cancel-appointment-dialog/cancel-appointment-dialog.component';
 import {FileUploadModule} from "ng2-file-upload";
+import { BloodTransportComponent } from './view/blood-transport/blood-transport.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import {FileUploadModule} from "ng2-file-upload";
         CreateSystemAdminComponent,
         ManagerCalendarComponent,
         CustomerCalendarComponent,
-        CancelAppointmentDialogComponent
+        CancelAppointmentDialogComponent,
+        BloodTransportComponent
     ],
     imports: [
         BrowserModule,
