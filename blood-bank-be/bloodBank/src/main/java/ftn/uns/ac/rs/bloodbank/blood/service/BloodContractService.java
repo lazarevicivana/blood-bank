@@ -24,7 +24,6 @@ import java.util.List;
 public class BloodContractService {
     private final BloodContractRepository bloodContractRepository;
     private final BloodUnitRepository bloodUnitRepository;
-    private final RabbitTemplate rabbitTemplate;
     private final BloodOfferRepository bloodOfferRepository;
     private final BloodBankRepository bloodBankRepository;
     private final CenterRepository centerRepository;
