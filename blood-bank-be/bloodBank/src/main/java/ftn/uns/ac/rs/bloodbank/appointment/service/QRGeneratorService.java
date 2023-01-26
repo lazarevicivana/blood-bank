@@ -1,4 +1,5 @@
 package ftn.uns.ac.rs.bloodbank.appointment.service;
+
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
@@ -6,9 +7,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
 import com.google.zxing.qrcode.QRCodeWriter;
-import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentIdResponse;
 import ftn.uns.ac.rs.bloodbank.appointment.dto.AppointmentQRCodeDto;
-import ftn.uns.ac.rs.bloodbank.appointment.model.AppointmentStatus;
 import ftn.uns.ac.rs.bloodbank.appointment.model.ScheduleAppointment;
 import ftn.uns.ac.rs.bloodbank.appointment.repository.ScheduleAppointmentRepository;
 import ftn.uns.ac.rs.bloodbank.common.DateTimeService;
@@ -16,10 +15,8 @@ import ftn.uns.ac.rs.bloodbank.customer.service.CustomerQRCodeService;
 import ftn.uns.ac.rs.bloodbank.email.EmailService;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -29,7 +26,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.UUID;
