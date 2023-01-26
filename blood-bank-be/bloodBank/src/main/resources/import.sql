@@ -48,9 +48,9 @@ insert into center_address (city, street, country, street_number, longitude, lat
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Bulu', '68 Haas Circle', 'Indonesia', '212', 110.8344302, -7.7595897, '696ad31a-f069-4b75-a2fb-b706acd41767');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Babakan', '1784 Carpenter Court', 'Indonesia', '5654', 106.804564, -6.588201, '9a70f727-0efd-4047-b8d9-f0281e7c38c1');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Amparo', '38 Susan Road', 'Brazil', '310', -46.7694191, -22.7064041, '300d4552-ef84-46ae-a5b2-42f810ec37fe');
-insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Gaoqiao', '472 Buhler Plaza', 'China', '4650', 108.249509, 31.364902, '532fbd46-8677-4990-89d2-73e1d37c534a');
+insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Gaoqiao', '472 Buhler Plaza', 'China', '4650', 50.249509, 31.364902, '532fbd46-8677-4990-89d2-73e1d37c534a');
 --center---
-insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b9f2eb7c53c1', 'd6a4c034-83ef-4c6d-8419-c4b39059810b', 'Kassulke, Koepp and Windler', 'Change Other Device in Thoracic Duct, External Approach', 1);
+insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b9f2eb7c53c1', '532fbd46-8677-4990-89d2-73e1d37c534a', 'Kassulke, Koepp and Windler', 'Change Other Device in Thoracic Duct, External Approach', 1);
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-52584a2194d2', '2848e74d-c1a9-40dc-9764-402bb5553ee9', 'Bednar, Davis and Schumm', 'Excision of Left Renal Artery, Percutaneous Approach', 2);
 insert into center (id, address, name, description, avg_grade) values ('262bb7c8-28a8-43fe-8c24-d79a00055872', '5ee042dc-c099-433d-8a91-d6eda807f917', 'Bogisich-Zulauf', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 1.5);
 
@@ -58,7 +58,7 @@ insert into center (id, address, name, description, avg_grade) values ('ef81c6fc
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-52584a2194d4', '9a70f727-0efd-4047-b8d9-f0281e7c38c1', 'Betanija', 'Excision of Left Renal Artery, Percutaneous Approach', 3.3);
 insert into center (id, address, name, description, avg_grade) values ('262bb7c8-28a8-43fe-8c24-d79a00011875', '1e02993f-e3a9-4ed6-8fa2-955078bc3eaf', 'Health Care', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 3);
 
-insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b1f2eb7c53a6', 'cbdb6c8e-a454-46ce-b489-552269672301', 'Russian health care ', 'Change Other Device in Thoracic Duct, External Approach', 2.8);
+insert into center (id, address, name, description, avg_grade) values ('ef81c6fc-bd01-4148-b460-b1f2eb7c53a6', '532fbd46-8677-4990-89d2-73e1d37c534a', 'Russian health care ', 'Change Other Device in Thoracic Duct, External Approach', 2.8);
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-88584a1177d7', 'd72c7792-a60d-4b4b-83b2-c70b094e1eec', 'Pfizer', 'Excision of Left Renal Artery, Percutaneous Approach', 4.8);
 insert into center (id, address, name, description, avg_grade) values ('d4f7ab7c-9662-4680-be9f-88584a1177d0', '9d473513-ff91-4369-9767-7ca9dc015190', 'Your care', 'Excision of Left Colic Artery, Perc Endo Approach, Diagn', 2.5);
 
@@ -182,15 +182,15 @@ insert into appointment (id, date, deleted,finish_Time, start_time, center_id) v
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('3aaf2288-4eb0-4dfa-93ef-2efc94348d6a','2023-02-11T16:17:57.049Z',false,'15:00','14:00','025967b5-1dbd-4f55-ba78-2615830e3913');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('75b3388c-3d1d-4a1d-b1d6-c1c86298d932','2023-02-11T16:17:57.049Z',false,'15:00','14:00','6fc73c01-8d1f-44e6-83f5-47c01d653b12');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('c3b37866-f87f-4c05-8ee6-04476ff6f516','2023-02-11T16:17:57.049Z',false,'15:00','14:00','76dece30-ad72-4f66-a283-3323e5243211');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('8d70fb07-161f-42c1-b12f-7b171cf32f37','2023-02-11T16:17:57.049Z',false,'15:00','14:00','b53992af-19a5-4be1-9cfe-139bd0c81440');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('e61ad3af-60bf-45ce-8dd5-228839b00552','2023-02-11T16:17:57.049Z',false,'15:00','14:00','42b82373-c643-48da-a0a1-76e4fa0b5b89');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('8d70fb07-161f-42c1-b12f-7b171cf32f37','2023-08-11T16:17:57.049Z',false,'15:00','14:00','b53992af-19a5-4be1-9cfe-139bd0c81440');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('e61ad3af-60bf-45ce-8dd5-228839b00552','2023-08-11T16:17:57.049Z',false,'15:00','14:00','42b82373-c643-48da-a0a1-76e4fa0b5b89');
 
 
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('11122233-62b6-11ed-9b6a-0242ac120002','2020-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('33322233-62b6-11ed-9b6a-0242ac120002','2021-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('5b5fae11-a0a3-4401-9b6b-3e0d660c97a7','2023-01-29T16:17:57.049Z',false,'09:00','08:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
-insert into schedule_appointment (id,appointment_id, customer_id,status) values ('64b37a96-62a8-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120005','a0e141aa-62a9-11ed-9b6a-0242ac120002','ACCEPTED');
-insert into schedule_appointment (id,appointment_id, customer_id,status) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120003','a0e141aa-62a9-11ed-9b6a-0242ac120002','ACCEPTED');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('5b5fae11-a0a3-4401-9b6b-3e0d660c97a7','2024-08-29T16:17:57.049Z',false,'09:00','08:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('64b37a96-62a8-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120005','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120003','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120004','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120003','4136b08e-62b6-11ed-9b6a-0242ac120002','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120004','4136b08e-62b6-11ed-9b6a-0242ac120006','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');

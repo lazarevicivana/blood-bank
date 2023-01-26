@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.webjars.NotFoundException;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -19,6 +20,7 @@ public class BloodTransferTask implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(BloodOffer.class);
     private final BloodOfferRepository bloodOfferRepository;
+    private final BloodContractRepository bloodContractRepository;
     private final BloodTransportService bloodTransportService;
 
 
@@ -27,9 +29,10 @@ public class BloodTransferTask implements CommandLineRunner {
         Date today = getToday();
         var bloodContracts = bloodOfferRepository.findAll();
         bloodContracts.stream().forEach(b -> {
-            if(b.getOfferDate().compareTo(today) == 0){
-                log.info("Domain> " + b.getOfferDate());
-                bloodTransportService.startTransport();
+            var contract = bloodContractRepository.findById(b.getBloodContract().getId()).orElseThrow(() -> new NotFoundException("no contract"));
+            if(contract.getDeliveryDate().compareTo(today) == 0){
+                log.info("Domain> " + contract.getDeliveryDate());
+                bloodTransportService.startTransport(b);
             }
         });
     }
