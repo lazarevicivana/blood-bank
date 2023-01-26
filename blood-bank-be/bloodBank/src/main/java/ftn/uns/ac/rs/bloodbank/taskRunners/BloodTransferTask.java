@@ -26,7 +26,7 @@ public class BloodTransferTask implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Date today = getToday();
+    /*    Date today = getToday();
         var bloodContracts = bloodOfferRepository.findAll();
         bloodContracts.stream().forEach(b -> {
             var contract = bloodContractRepository.findById(b.getBloodContract().getId()).orElseThrow(() -> new NotFoundException("no contract"));
@@ -34,7 +34,7 @@ public class BloodTransferTask implements CommandLineRunner {
                 log.info("Domain> " + contract.getDeliveryDate());
                 bloodTransportService.startTransport(b);
             }
-        });
+        })*/;
     }
 
     private static Date getToday() {

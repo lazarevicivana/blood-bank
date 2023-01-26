@@ -1,5 +1,5 @@
 --center_address
-insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Versailles', '68 Sauthoff Way', 'France', '8090', 2.1203554, 48.8048649, 'd6a4c034-83ef-4c6d-8419-c4b39059810b');
+insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Versailles', '68 Sauthoff Way', 'France', '8090', 31.1203554, 48.8048649, 'd6a4c034-83ef-4c6d-8419-c4b39059810b');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Alae', '13 Glacier Hill Avenue', 'Philippines', '028', 124.7568082, 8.5131518, '2848e74d-c1a9-40dc-9764-402bb5553ee9');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Tiwi', '1 Glendale Street', 'Philippines', '715', 123.6791749, 13.4570619, '5ee042dc-c099-433d-8a91-d6eda807f917');
 insert into center_address (city, street, country, street_number, longitude, latitude, id) values ('Wenping', '915 Grover Road', 'China', '38256', 114.174463, 22.279062, 'e50b7594-2f43-468d-b227-6be21ef4da1a');
@@ -244,18 +244,13 @@ insert into customer_qr_code (id, qrcode , customer_id) values ('23f78eed-3464-4
 
 
 --offers
-INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-10-28 18:17:57.049000', 'ivi', false, 1000);
-INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-10-28 18:17:57.049000', 'private', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-01-26 18:17:57.049000', 'ivi', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-10-26 18:17:57.049000', 'private', false, 1000);
 --
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
 --
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
-INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
 --
 INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:05:00.295000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:10:43.429000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
