@@ -28,6 +28,7 @@ import {AdminGuard} from "../guards/admin.guard";
 import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calendar.component";
 import {LoginGuard} from "../guards/login.guard";
 import {BloodTransportComponent} from "./view/blood-transport/blood-transport.component";
+import {BloodRequestsComponent} from "./view/blood/blood-requests/blood-requests.component";
 
 
 const routes: Routes = [
@@ -49,6 +50,8 @@ const routes: Routes = [
   { path:'first-login',component:FirstLoginComponent,canActivate:[LoginGuard]},
   { path:'calendar',component:ManagerCalendarComponent,canActivate:[CenterAdminGuard]},
   { path:'customer-calendar',component:CustomerCalendarComponent,canActivate:[CustomerGuard]},
+  { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
+  { path:'blood-requests',component:BloodRequestsComponent,canActivate:[CenterAdminGuard]},
   { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
   { path:'blood-transport',component:BloodTransportComponent}
 

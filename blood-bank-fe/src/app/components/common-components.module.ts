@@ -15,6 +15,7 @@ import {SignOutComponent} from "./sign-out/sign-out.component";
 import {DialogSignComponent} from "./dialog-sign/dialog-sign.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import { BloodCardComponent } from './blood-card/blood-card.component';
+import { BloodRequestCardComponent } from './blood-request-card/blood-request-card.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { BloodCardComponent } from './blood-card/blood-card.component';
     FirstLoginComponent,
     DialogSignComponent,
     SignOutComponent,
-    BloodCardComponent
+    BloodCardComponent,
+    BloodRequestCardComponent
   ],
     imports: [
         CommonModule, MaterialModule, ReactiveFormsModule, MatRadioModule, FormsModule, NgToastModule, MatDialogModule
@@ -42,7 +44,8 @@ import { BloodCardComponent } from './blood-card/blood-card.component';
         AppointmentFilterBarComponent,
         SignOutComponent,
         DialogSignComponent,
-        BloodCardComponent
+        BloodCardComponent,
+        BloodRequestCardComponent
     ]
 
 })
