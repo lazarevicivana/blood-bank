@@ -19,14 +19,8 @@ export const stuffNavData=[
   },
   {
     routeLink: 'calendar',
-    icon: 'medkit-outline',
+    icon: 'calendar',
     label: 'Calendar',
     num:3
-  },
-  {
-    routeLink: 'blood-requests',
-    icon: 'calendar',
-    label: 'Blood requests',
-    num:4
   }
 ];

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BloodContractConsumer {
+public class BloodContractConsumer implements ICustomerMq{
     private static final Logger log = LoggerFactory.getLogger(BloodContractConsumer.class);
     private final ObjectMapper objectMapper;
     private final BloodContractService bloodContractService;
@@ -30,9 +30,5 @@ public class BloodContractConsumer {
         }
         bloodContractService.createContract(map);
         log.info("Domain name> " + map.getHospitalName());
-    }
-    @RabbitListener(queues="${QUEUE_LOCATION}")
-    public void handlerLocation(Object message) {
-        log.info("Consumer location> " + message);
     }
 }

@@ -1,3 +1,33 @@
 .fade-element{
   animation: fadeInOut 1s ease-in-out 1;
 }
+.info{
+  background-color: #c9d1ef;
+  border-radius: 20px;
+  margin:2%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.label{
+  border-right-color: #333333;
+  border-right-width: 1px;
+  border-right-style:  solid;
+  width: 40%;
+  align-items: center;
+}
+.text{
+  padding: 2%;
+  text-align: center;
+
+}
+.centers{
+  margin-left: 20%;
+  margin-top: 5%;
+  width: 60%;
+}
+.input{
+  padding: 5%;
+  background-color: #f2f2f5;
+  border-radius: 10px;
+  margin: 5%;
+}
