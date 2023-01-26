@@ -1,8 +1,11 @@
-package ftn.uns.ac.rs.bloodbank.blood.model;
+package ftn.uns.ac.rs.bloodbank.blood.repository;
 
 import ftn.uns.ac.rs.bloodbank.blood.dto.BloodContractDto;
+import ftn.uns.ac.rs.bloodbank.blood.model.BloodContract;
+import ftn.uns.ac.rs.bloodbank.blood.model.BloodUnit;
+import ftn.uns.ac.rs.bloodbank.blood.repository.BloodContractRepository;
+import ftn.uns.ac.rs.bloodbank.blood.repository.BloodUnitRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

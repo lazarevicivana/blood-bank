@@ -1,5 +1,6 @@
-package ftn.uns.ac.rs.bloodbank.blood.model;
+package ftn.uns.ac.rs.bloodbank.blood.repository;
 
+import ftn.uns.ac.rs.bloodbank.blood.model.BloodContract;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
