@@ -188,6 +188,7 @@ insert into appointment (id, date, deleted,finish_Time, start_time, center_id) v
 
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('11122233-62b6-11ed-9b6a-0242ac120002','2020-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('33322233-62b6-11ed-9b6a-0242ac120002','2021-11-11T16:17:57.049Z',false,'15:00','14:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+insert into appointment (id, date, deleted,finish_Time, start_time, center_id) values ('5b5fae11-a0a3-4401-9b6b-3e0d660c97a7','2023-01-29T16:17:57.049Z',false,'09:00','08:00','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('64b37a96-62a8-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120005','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('cb8d11b8-62a9-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120003','a0e141aa-62a9-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120002','4136b08e-62b6-11ed-9b6a-0242ac120004','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
@@ -196,6 +197,7 @@ insert into schedule_appointment (id,appointment_id, customer_id,status) values 
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120005','4136b08e-62b6-11ed-9b6a-0242ac120007','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120006','4136b08e-62b6-11ed-9b6a-0242ac120008','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 insert into schedule_appointment (id,appointment_id, customer_id,status) values ('57b52a02-62b6-11ed-9b6a-0242ac120007','4136b08e-62b6-11ed-9b6a-0242ac120009','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
+insert into schedule_appointment (id,appointment_id, customer_id,status) values ('11fd9cac-6d9b-475a-bfd9-9108751307c9','5b5fae11-a0a3-4401-9b6b-3e0d660c97a7','0dcce2a4-62b6-11ed-9b6a-0242ac120002','PENDING');
 
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('168067ce-6381-11ed-81ce-0242ac120002','BRONZE','You have 5% discharge in our ambulances.',10);
 insert into predefined_loyalty_program(id,customer_category,loyalty_convenience,number_of_points) values ('abc12a02-62b6-11ed-9b6a-0242ac120002','SILVER','You have 15% discharge in our ambulances.',25);
@@ -231,3 +233,6 @@ insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1d
 insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3705','O_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',0,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
+
+--customer form
+insert into customer_form (id, had_cancer, had_transfusion, is_age, is_allergic, is_blood_pressure_normal, is_dentis, is_piercing_tattoo, is_pregnant, is_sexual, is_sick, is_under_therapy, is_weight, on_period, submission_date, use_medication, customer) values ('17aaffa1-0875-48a0-bd4d-bf6910c658fc',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,'2023-01-29T16:17:57.049Z',FALSE,'0dcce2a4-62b6-11ed-9b6a-0242ac120002');
