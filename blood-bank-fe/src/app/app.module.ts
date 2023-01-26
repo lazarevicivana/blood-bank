@@ -45,6 +45,7 @@ import { BloodTransportComponent } from './view/blood-transport/blood-transport.
 
 import { BloodRequestsComponent } from './view/blood/blood-requests/blood-requests.component';
 import { MakeOfferPreviewComponent } from './view/blood/make-offer-preview/make-offer-preview.component';
+import { CenterVisitationHistoryComponent } from './view/customer/center-visitation-history/center-visitation-history.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { MakeOfferPreviewComponent } from './view/blood/make-offer-preview/make-
         CancelAppointmentDialogComponent,
         BloodTransportComponent,
         BloodRequestsComponent,
-        MakeOfferPreviewComponent
+        MakeOfferPreviewComponent,
+        CenterVisitationHistoryComponent
     ],
     imports: [
         BrowserModule,

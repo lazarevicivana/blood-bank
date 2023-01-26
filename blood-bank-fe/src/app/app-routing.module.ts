@@ -29,6 +29,9 @@ import {CustomerCalendarComponent} from "./view/customer-calendar/customer-calen
 import {LoginGuard} from "../guards/login.guard";
 import {BloodTransportComponent} from "./view/blood-transport/blood-transport.component";
 import {BloodRequestsComponent} from "./view/blood/blood-requests/blood-requests.component";
+import {
+  CenterVisitationHistoryComponent
+} from "./view/customer/center-visitation-history/center-visitation-history.component";
 
 
 const routes: Routes = [
@@ -53,7 +56,8 @@ const routes: Routes = [
   { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
   { path:'blood-requests',component:BloodRequestsComponent,canActivate:[CenterAdminGuard]},
   { path:'sign-out',component:SignOutComponent,canActivate:[LoginGuard]},
-  { path:'blood-transport',component:BloodTransportComponent}
+  { path:'blood-transport',component:BloodTransportComponent},
+  { path:'passed-appointments',component:CenterVisitationHistoryComponent}
 
 ];
 
