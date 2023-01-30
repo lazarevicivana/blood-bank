@@ -156,6 +156,7 @@ insert into application_user (user_role,id, username, password, name, phone, sur
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b31d', 'ivi', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Ivana', '283-314-3046', 'Lazarevic', '4525567465', 'ivanalazarevic@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','FEMALE',false);
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b32d', 'miki', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Milan', '283-314-3046', 'Milankovic', '4525567465', 'miki@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','MALE',false);
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b33d', 'zalons', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Aleksa', '283-314-3046', 'Zakic', '4525567465', 'miki@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','ef81c6fc-bd01-4148-b460-b9f2eb7c53c1','MALE',true);
+insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,center_id,gender,first_log_in) values (1,'34713840-ddf3-49b2-9cae-47334cb6b34d', 'lela', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Lela', '283-314-3046', 'Lelic', '4525567465', 'lela@gmail.com', 'ROLE_CENTER_ADMIN', true, false,false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','d4f7ab7c-9662-4680-be9f-52584a2194d2','MALE',false);
 --customers--
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,profession,penalty,gender,first_log_in) values (3,'34713840-ddf3-49b2-9cae-47334cb6b31b', 'customer', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_CUSTOMER',true,false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','3efbe2a3-645a-4d69-974a-3dfdb06913eb',0,'MALE',false);
 insert into application_user (user_role,id, username, password, name, phone, surname, jmbg, email, role, enabled, deleted,locked,address,gender,first_log_in) values (2,'8a05df51-6c71-433c-802d-96a916273d7c', 'admin', '$2a$10$kHyLZYU9hrZ6HR4TC274Wes2x314j3yMCigBEB4OoIQHyzjC4D2V6', 'Kristel', '283-314-3046', 'Shwalbe', '4525567465', 'kshwalbe0@arizona.edu', 'ROLE_SYSTEM_ADMIN', true, false, false, 'a4750193-0dfe-4059-b56c-d4919ec7252e','MALE',false);
@@ -253,6 +254,15 @@ insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1d
 insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3706','AB_POSITIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3707','AB_NEGATIVE',500,'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3708','A_POSITIVE',500,'d4f7ab7c-9662-4680-be9f-52584a2194d2');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3709','A_NEGATIVE',500,'d4f7ab7c-9662-4680-be9f-52584a2194d2');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3710','B_POSITIVE',500,'d4f7ab7c-9662-4680-be9f-52584a2194d2');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3711','B_NEGATIVE',500,'d4f7ab7c-9662-4680-be9f-52584a2194d2');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3712','O_POSITIVE',500,'d4f7ab7c-9662-4680-be9f-52584a2194d2');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3713','O_NEGATIVE',500,'d4f7ab7c-9662-4680-be9f-52584a2194d2');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3714','AB_POSITIVE',500,'d4f7ab7c-9662-4680-be9f-52584a2194d2');
+insert into blood_bank (id,blood_type,blood_unit,center_id) values ('125967b5-1dbd-4f55-ba78-2615830e3715','AB_NEGATIVE',500,'d4f7ab7c-9662-4680-be9f-52584a2194d2');
+
 --customer form
 insert into customer_form (id, had_cancer, had_transfusion, is_age, is_allergic, is_blood_pressure_normal, is_dentis, is_piercing_tattoo, is_pregnant, is_sexual, is_sick, is_under_therapy, is_weight, on_period, submission_date, use_medication, customer) values ('17aaffa1-0875-48a0-bd4d-bf6910c658fc',FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,'2023-01-29T16:17:57.049Z',FALSE,'a0e141aa-62a9-11ed-9b6a-0242ac120002');
 
@@ -262,8 +272,8 @@ insert into customer_qr_code (id, qrcode , customer_id) values ('23f78eed-3464-4
 
 
 --offers
-INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-10-28 18:17:57.049000', 'ivi', false, 1000);
-INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-10-28 18:17:57.049000', 'private', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-02-28 18:17:57.049000', 'ivi', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-01-28 18:17:57.049000', 'private', false, 1000);
 --
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 1);
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
@@ -278,8 +288,7 @@ INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id
 -- INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (7, '2023-01-26 20:05:00.295000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 -- INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id) VALUES (8, '2023-01-26 20:10:43.429000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1');
 --bloods
-INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-01-28 17:17:57.049000', 'private', false, 1000);
-INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (6, '2023-01-28 17:17:57.049000', 'pro', false, 1000);
+INSERT INTO public.blood_contract (id, delivery_date, hospital_name, is_expired, price) VALUES (3, '2023-01-31 17:17:57.049000', 'private', false, 1000);
 INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (7, 30, 'A_POSITIVE');
 INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (8, 70, 'A_NEGATIVE');
 INSERT INTO public.blood_unit (id, blood_amount, blood_type) VALUES (10, 30, 'A_POSITIVE');
@@ -292,5 +301,5 @@ INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (3, 2);
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 4);
 INSERT INTO public.blood_contract_blood_units (blood_contract_id, blood_units_id) VALUES (6, 5);
-INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id, is_sended) VALUES (7, '2023-01-26 20:47:41.674000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1',false);
-INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id,is_sended) VALUES (8, '2023-01-26 20:47:59.071000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1',false);
+INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id, is_sended) VALUES (7, '2023-01-28 20:47:41.674000', 6, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1',false);
+-- INSERT INTO public.blood_offer (id, offer_date, blood_contract_id, center_id,is_sended) VALUES (8, '2023-01-26 20:47:59.071000', 3, 'ef81c6fc-bd01-4148-b460-b9f2eb7c53c1',false);

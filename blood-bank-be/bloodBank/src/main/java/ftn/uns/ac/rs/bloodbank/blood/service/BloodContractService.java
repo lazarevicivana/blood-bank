@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -47,7 +48,10 @@ public class BloodContractService {
         //rabbitTemplate.convertAndSend(MessagingConfig.EXCHANGE_STATIC, MessagingConfig.QUEUE_STATIC_H1, "Works");
     }
     public List<BloodContract> getAvailableContracts(){
-        return this.bloodContractRepository.getAvailableContracts();
+        var con = this.bloodContractRepository.getAvailableContracts();
+        var list = con.stream().filter(bloodContract -> bloodOfferRepository.getOfferForContract(bloodContract.getId()).isEmpty())
+                .toList();
+        return list;
     }
 
     public void createOffer(OfferDto offerDto) {

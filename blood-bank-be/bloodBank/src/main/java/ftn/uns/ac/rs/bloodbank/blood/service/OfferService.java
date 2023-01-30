@@ -23,7 +23,7 @@ public class OfferService {
     private final RabbitTemplate rabbitTemplate;
     private static final int dateLap = 2;
     private static final Logger log = LoggerFactory.getLogger(OfferService.class);
-    @Scheduled(cron = "30 * * * * *")
+    @Scheduled(cron = "59 * * * * *")
     //@Scheduled(cron = "* * * 1 * * ")
     //every day in the month
     public void sendOffer(){

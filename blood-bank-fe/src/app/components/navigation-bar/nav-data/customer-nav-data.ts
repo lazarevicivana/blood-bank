@@ -25,13 +25,13 @@ export const customerNavData=[
   },
   {
     routeLink: 'passed-appointments',
-    icon: 'calendar',
-    label: 'Calendar',
+    icon: 'cloud',
+    label: 'Passed Appointments',
     num:4
   },
   {
     routeLink: 'customer-qr-codes',
-    icon: 'calendar',
+    icon: 'clipboard',
     label: 'QR codes',
     num:5
   }

@@ -1,4 +1,0 @@
-#Key and value types
-#Thu Jan 26 20:25:04 CET 2023
-keyType=java.time.LocalDateTime
-valueType=java.util.ArrayList

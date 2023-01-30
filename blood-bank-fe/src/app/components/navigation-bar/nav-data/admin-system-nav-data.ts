@@ -19,7 +19,7 @@ export const adminSystemNavData =[
   },
   {
     routeLink: 'blood-transport',
-    icon: 'business-outline',
+    icon: 'location',
     label: 'Blood transport',
     num:3
   },

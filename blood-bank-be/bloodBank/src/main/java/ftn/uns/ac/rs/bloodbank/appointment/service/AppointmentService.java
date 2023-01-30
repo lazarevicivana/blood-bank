@@ -29,8 +29,7 @@ public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final CenterAdminRepository centerAdminRepository;
     private final CenterRepository centerRepository;
-    @Transactional()
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Transactional
     public void createAppointment(AppointmentRequest appointmentRequest){
         if (appointmentRequest == null) {
                 throw new ApiBadRequestException("Bad request appointment is null!");
@@ -58,8 +57,8 @@ public class AppointmentService {
         throw new PessimisticLockingFailureException("The record is locked by another user.");
     }
     }
-
-    private void checkStaffAvailability(AppointmentRequest appointmentRequest){
+    @Transactional
+    public void checkStaffAvailability(AppointmentRequest appointmentRequest){
         Set<CenterAdministrator> staff = getCenterAdministrators(appointmentRequest);
         var appointments = appointmentRepository.getAllAppointmentsForCenter(appointmentRequest.getCenterId());
         for (CenterAdministrator admin:staff ) {
