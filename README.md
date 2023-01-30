@@ -12,6 +12,7 @@ Full stack academic ISA project. A web application for managing blood donations 
 - Angular
 - Spring Boot
 - PostgresSQL
+- Java
 
 ## Requirements
 - Node.js
