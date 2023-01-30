@@ -48,6 +48,12 @@ For the Angular application install all dependecies (npm install) and have the b
 -Calendar page
 ![image](https://user-images.githubusercontent.com/93544830/215599314-1c553d83-6ec0-4e9c-a579-db2ec670979d.png)
 
+![image](https://user-images.githubusercontent.com/93544830/215599480-7c06b143-9440-45f9-8e19-afe5ed0c4d7e.png)
+- Blood suply
+![image](https://user-images.githubusercontent.com/93544830/215599673-f4c90fe2-270b-45f4-a377-52930640598b.png)
+
+
+
 
 
 
