@@ -28,6 +28,23 @@ For the Angular application install all dependecies (npm install) and have the b
 - **System administrator** : admin    **password**: password
 - **Center administrator** : ivi    **password**: password
 
+## Screenshots
+- Login page
+![image](https://user-images.githubusercontent.com/93544830/215596488-d853d593-f15b-46ff-a625-c657845e6c57.png)
+
+- Main page
+![image](https://user-images.githubusercontent.com/93544830/215596693-0232404d-6007-4cce-b221-a856ac0dbc15.png)
+
+-Center profile
+![image](https://user-images.githubusercontent.com/93544830/215597085-6878e10e-a57b-4793-b0a8-60191db51214.png)
+
+-Questionnaire to become blood donor
+![image](https://user-images.githubusercontent.com/93544830/215597231-9f16efb0-5c20-4760-9ec4-9b3e71073992.png)
+
+
+
+
+
 
 
 
