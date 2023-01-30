@@ -42,6 +42,14 @@ For the Angular application install all dependecies (npm install) and have the b
 -Questionnaire to become blood donor
 ![image](https://user-images.githubusercontent.com/93544830/215597231-9f16efb0-5c20-4760-9ec4-9b3e71073992.png)
 
+-Create center page
+![image](https://user-images.githubusercontent.com/93544830/215599079-43115898-34e3-439c-84ae-9372fe1d27aa.png)
+
+-Calendar page
+![image](https://user-images.githubusercontent.com/93544830/215599314-1c553d83-6ec0-4e9c-a579-db2ec670979d.png)
+
+
+
 
 
 
